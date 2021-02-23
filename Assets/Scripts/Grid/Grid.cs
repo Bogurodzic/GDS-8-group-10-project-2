@@ -91,4 +91,42 @@ public class Grid
         GetCellPosition(worldPosition, out x, out y);
         return GetValue(x, y);
     }
+
+
+    public void ShowRange(int unitXPosition, int unitYPosition, int range)
+    {
+        int initialPoints = unitXPosition + unitYPosition;
+        int maxRangePoints = initialPoints + range;
+        int minRangePoints = initialPoints - range;
+        
+        for (int x = 0; x < gridArray.GetLength(0); x++)
+        {
+            for (int y = 0; y < gridArray.GetLength(1); y++)
+            {
+                int cellPoints = 0;
+                
+                if (x > unitXPosition && y > unitYPosition ||  x < unitXPosition && y < unitYPosition || y == unitYPosition || x == unitXPosition )
+                {
+                    cellPoints = x + y;
+                } else if (x < unitXPosition && y > unitYPosition)
+                {
+                    cellPoints = unitXPosition + (unitXPosition - x) + y;
+                } else if (x > unitXPosition && y < unitYPosition)
+                {
+                    cellPoints = x - ((x - unitXPosition) * 2) + y;
+                }
+                
+                                    
+                if (cellPoints <= maxRangePoints && cellPoints >= minRangePoints)
+                {
+                    SetValue(x, y, 1);
+                }
+                else
+                {
+                    SetValue(x, y, 0);
+                }
+            }
+        }
+
+    }
 }
