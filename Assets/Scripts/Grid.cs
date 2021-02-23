@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,10 +32,32 @@ public class Grid
         
         Debug.DrawLine(GetCellPosition(0, height), GetCellPosition(width, height), Color.white, 100f);
         Debug.DrawLine(GetCellPosition(width, 0), GetCellPosition(width, height), Color.white, 100f);
+        gridArray[2,2].SetText("69");
     }
 
     private Vector3 GetCellPosition(int x, int y)
     {
         return new Vector3(x, y) * cellSize;
+    }
+
+    private void GetXY(Vector3 worldPosition, out int x, out int y)
+    {
+        x = Mathf.FloorToInt(worldPosition.x / cellSize);
+        y = Mathf.FloorToInt(worldPosition.y / cellSize);
+    }
+
+    public void SetValue(int x, int y, int value)
+    {
+        if (x >= 0 && y >= 0 && x < width && y < height)
+        {
+            gridArray[x, y].SetText(value + "");
+        } 
+    }
+
+    public void SetValue(Vector3 worldPosition, int value)
+    {
+        int x, y;
+        GetXY(worldPosition, out x, out y);
+        SetValue(x, y, value);
     }
 }
