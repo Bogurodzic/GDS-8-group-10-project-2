@@ -60,4 +60,24 @@ public class Grid
         GetXY(worldPosition, out x, out y);
         SetValue(x, y, value);
     }
+
+    public int GetValue(int x, int y)
+    {
+        if (x >= 0 && y >= 0 && x < width && y < height)
+        {
+            GridCell cell = gridArray[x, y];
+            return x + y;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
+    public int GetValue(Vector3 worldPosition)
+    {
+        int x, y;
+        GetXY(worldPosition, out x, out y);
+        return GetValue(x, y);
+    }
 }
