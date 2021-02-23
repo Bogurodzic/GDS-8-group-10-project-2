@@ -95,29 +95,13 @@ public class Grid
 
     public void ShowRange(int unitXPosition, int unitYPosition, int range)
     {
-        int initialPoints = unitXPosition + unitYPosition;
-        int maxRangePoints = initialPoints + range;
-        int minRangePoints = initialPoints - range;
+
         
         for (int x = 0; x < gridArray.GetLength(0); x++)
         {
             for (int y = 0; y < gridArray.GetLength(1); y++)
             {
-                int cellPoints = 0;
-                
-                if (x > unitXPosition && y > unitYPosition ||  x < unitXPosition && y < unitYPosition || y == unitYPosition || x == unitXPosition )
-                {
-                    cellPoints = x + y;
-                } else if (x < unitXPosition && y > unitYPosition)
-                {
-                    cellPoints = unitXPosition + (unitXPosition - x) + y;
-                } else if (x > unitXPosition && y < unitYPosition)
-                {
-                    cellPoints = x - ((x - unitXPosition) * 2) + y;
-                }
-                
-                                    
-                if (cellPoints <= maxRangePoints && cellPoints >= minRangePoints)
+                if (IsPositionInRange(unitXPosition, unitYPosition, x, y, range))
                 {
                     SetValue(x, y, 1);
                 }
@@ -128,5 +112,34 @@ public class Grid
             }
         }
 
+    }
+
+    public bool IsPositionInRange(int unitXPosition, int unitYPosition, int x, int y, int range)
+    {
+        int initialPoints = unitXPosition + unitYPosition;
+        int maxRangePoints = initialPoints + range;
+        int minRangePoints = initialPoints - range;
+        
+        int cellPoints = 0;
+                
+        if (x > unitXPosition && y > unitYPosition ||  x < unitXPosition && y < unitYPosition || y == unitYPosition || x == unitXPosition )
+        {
+            cellPoints = x + y;
+        } else if (x < unitXPosition && y > unitYPosition)
+        {
+            cellPoints = unitXPosition + (unitXPosition - x) + y;
+        } else if (x > unitXPosition && y < unitYPosition)
+        {
+            cellPoints = x - ((x - unitXPosition) * 2) + y;
+        }
+        
+        if (cellPoints <= maxRangePoints && cellPoints >= minRangePoints)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

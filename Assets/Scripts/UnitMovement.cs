@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class UnitMovement : MonoBehaviour
 {
+    public int movementRange = 5;
     private Grid _grid;
     private bool _isActive = true;
-    
     private int _xPosition;
     private int _yPosition;
     void Start()
@@ -22,9 +22,14 @@ public class UnitMovement : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 Vector3 mouseVector3 = GridUtils.GetMouseWorldPosition(Input.mousePosition);
-                Vector3 cellPosition = _grid.GetCellCenter(mouseVector3);
-                cellPosition.z = -1;
-                transform.position = cellPosition;
+                int x, y;
+                _grid.GetCellPosition(mouseVector3, out x, out y);
+                if (_grid.IsPositionInRange(_xPosition, _yPosition, x, y, movementRange))
+                {
+                    Vector3 cellPositionCenter = _grid.GetCellCenter(mouseVector3);
+                    cellPositionCenter.z = -1;
+                    transform.position = cellPositionCenter; 
+                }
             }
             
         }
