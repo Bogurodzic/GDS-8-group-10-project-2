@@ -11,7 +11,9 @@ public static class GridUtils
 
     public static Vector3 GetMouseWorldPosition(Vector3 mousePosition, Camera camera)
     {
-        return camera.ScreenToWorldPoint(mousePosition);
+        Vector3 worldPosiiton = camera.ScreenToWorldPoint(mousePosition);
+        worldPosiiton.z = 0;
+        return worldPosiiton;
     }
 
 }

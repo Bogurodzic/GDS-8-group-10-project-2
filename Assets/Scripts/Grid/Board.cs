@@ -2,14 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Board : MonoBehaviour
 {
     private Grid grid;
+    private GridManager _gridManager;
 
     private void Awake()
     {
-        grid = new Grid(14, 8, 10f, new Vector3(-70,-40,0));
+        LoadGridManager();
+        Debug.Log(_gridManager);
+        grid = new Grid(_gridManager.GetGridSize().x, _gridManager.GetGridSize().y, _gridManager.GetGridCellSize().x, new Vector3( _gridManager.GetGridPosition().x * _gridManager.GetGridCellSize().x,_gridManager.GetGridPosition().y * _gridManager.GetGridCellSize().x,0));
         Debug.Log(grid);
     }
 
@@ -27,5 +31,10 @@ public class Board : MonoBehaviour
     public Grid GetGrid()
     {
         return grid;
+    }
+
+    private void LoadGridManager()
+    {
+        _gridManager = GameObject.Find("GridManager").GetComponent<GridManager>();
     }
 }
