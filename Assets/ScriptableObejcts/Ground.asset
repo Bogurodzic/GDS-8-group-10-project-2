@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a1ffce9740fb4c63848ef97ca5a18f5, type: 3}
   m_Name: Ground
   m_EditorClassIdentifier: 
-  tiles: []
+  tiles:
+  - {fileID: 11400000, guid: 2610214a86cf140b0be9a978d0b4d5ba, type: 2}
   movementCost: 1
+  bonusDef: 0
   isObstacle: 0
