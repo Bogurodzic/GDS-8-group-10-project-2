@@ -6,7 +6,7 @@ public class UnitRange : MonoBehaviour
 {
     public int range = 5;
     
-    private bool _showRange = true;
+    private bool _showRange = false;
     private Grid _grid;
     private UnitMovement _unitMovement;
     
@@ -43,7 +43,7 @@ public class UnitRange : MonoBehaviour
     {
         int unitXPosition = _unitMovement.GetUnitXPosition();
         int unitYPosition = _unitMovement.GetUnitYPosition();
-        Debug.Log("Show " + unitXPosition + " " + unitYPosition);
+        //Debug.Log("Show " + unitXPosition + " " + unitYPosition);
         _grid.ShowRange(unitXPosition, unitYPosition, range);
     }
 }

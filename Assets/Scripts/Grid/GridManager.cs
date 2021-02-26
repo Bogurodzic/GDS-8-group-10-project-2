@@ -67,4 +67,9 @@ public class GridManager : MonoBehaviour
     {
         return _gridCellSize;
     }
+
+    public void DestroyTile(Vector3Int position)
+    {
+        _map.SetTile(position, null);
+    }
 }

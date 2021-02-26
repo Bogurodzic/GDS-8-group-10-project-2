@@ -9,10 +9,12 @@ public class GridCell
     private Transform parent;
     private Vector3 localPosition;
     private GameObject cellGameObject;
+    private PathNode _pathNode;
 
-    public GridCell(string text, Transform parent, Vector3 localPosition)
+    public GridCell(int x, int y, Transform parent, Vector3 localPosition)
     {
-        this.text = text;
+        this._pathNode = new PathNode(null, x, y);
+        this.text = x + " "  + y;
         this.parent = parent;
         this.localPosition = localPosition;
         RenderCell();
@@ -37,5 +39,10 @@ public class GridCell
     {
         TextMesh textMesh = cellGameObject.GetComponent<TextMesh>();
         textMesh.text = text;
+    }
+
+    public PathNode GetPathNode()
+    {
+        return _pathNode;
     }
 }

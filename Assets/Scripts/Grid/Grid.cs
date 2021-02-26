@@ -24,14 +24,19 @@ public class Grid
         {
             for (int y = 0; y < gridArray.GetLength(1); y++)
             {
-                gridArray[x, y] = new GridCell(x + "," + y, null, GetCellPosition(x, y) + new Vector3(cellSize, cellSize) * .5f);
-                Debug.DrawLine(GetCellPosition(x, y), GetCellPosition(x, y+1), Color.white, 100f);
-                Debug.DrawLine(GetCellPosition(x, y), GetCellPosition(x+1, y), Color.white, 100f);
+                gridArray[x, y] = new GridCell(x, y, null, GetCellPosition(x, y) + new Vector3(cellSize, cellSize) * .5f);
+                //Debug.DrawLine(GetCellPosition(x, y), GetCellPosition(x, y+1), Color.white, 100f);
+                //Debug.DrawLine(GetCellPosition(x, y), GetCellPosition(x+1, y), Color.white, 100f);
             }
         }
         
-        Debug.DrawLine(GetCellPosition(0, height), GetCellPosition(width, height), Color.white, 100f);
-        Debug.DrawLine(GetCellPosition(width, 0), GetCellPosition(width, height), Color.white, 100f);
+        //Debug.DrawLine(GetCellPosition(0, height), GetCellPosition(width, height), Color.white, 100f);
+        //Debug.DrawLine(GetCellPosition(width, 0), GetCellPosition(width, height), Color.white, 100f);
+    }
+
+    public GridCell GetCell(int x, int y)
+    {
+        return gridArray[x, y];
     }
 
     public Vector3 GetCellCenter(int x, int y)
@@ -141,5 +146,15 @@ public class Grid
         {
             return false;
         }
+    }
+
+    public int GetGridWidth()
+    {
+        return gridArray.GetLength(0);
+    }
+
+    public int GetGridHeight()
+    {
+        return gridArray.GetLength(1);
     }
 }

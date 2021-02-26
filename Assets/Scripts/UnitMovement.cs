@@ -46,7 +46,6 @@ public class UnitMovement : MonoBehaviour
     private void UpdateUnitPosition()
     {
         _grid.GetCellPosition(transform.position, out _xPosition, out _yPosition);
-        Debug.Log(_xPosition + " " + _yPosition);
     }
 
     public int GetUnitXPosition()
