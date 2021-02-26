@@ -10,6 +10,7 @@ public class Grid
     private float cellSize;
     private Vector3 originPosition;
     private GridCell[,] gridArray;
+    private Pathfinding _pathfinding;
 
     public Grid(int width, int height, float cellSize, Vector3 originPosition)
     {
@@ -32,6 +33,7 @@ public class Grid
         
         //Debug.DrawLine(GetCellPosition(0, height), GetCellPosition(width, height), Color.white, 100f);
         //Debug.DrawLine(GetCellPosition(width, 0), GetCellPosition(width, height), Color.white, 100f);
+        _pathfinding = new Pathfinding(this);
     }
 
     public GridCell GetCell(int x, int y)
@@ -156,5 +158,10 @@ public class Grid
     public int GetGridHeight()
     {
         return gridArray.GetLength(1);
+    }
+
+    public List<PathNode> FindPath(int startX, int startY, int endX, int endY)
+    {
+        return _pathfinding.FindPath(startX, startY, endX, endY);
     }
 }

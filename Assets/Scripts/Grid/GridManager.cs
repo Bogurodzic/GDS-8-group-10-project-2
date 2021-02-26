@@ -38,8 +38,6 @@ public class GridManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mouseVector3 = GridUtils.GetMouseWorldPosition(Input.mousePosition);
-            Debug.Log("Mouse Vector " + mouseVector3);
-
             Vector3Int gridCellPosition = _map.WorldToCell(mouseVector3);
             TileBase clickedTile = _map.GetTile(gridCellPosition);
             Debug.Log("At position " + gridCellPosition + " there is tile "  + clickedTile + "movement cost: " + _dataFromTiles[clickedTile].movementCost);
@@ -75,7 +73,6 @@ public class GridManager : MonoBehaviour
 
         int tilePositionX = _gridPosition.x + x;
         int tilePositionY = _gridPosition.y + y;
-        Debug.Log("Destroy Tile " + tilePositionX + ":" + tilePositionY);
         _map.SetTile(new Vector3Int(tilePositionX, tilePositionY, 0), null);
     }
 }

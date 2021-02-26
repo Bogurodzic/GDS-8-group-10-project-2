@@ -12,21 +12,15 @@ public class Pathfinding
     private List<PathNode> _openList;
     private List<PathNode> _closedList;
     
-    public Pathfinding(int width, int height, float cellSize, Vector3 originPosition)
+    public Pathfinding(Grid grid)
     {
-        _grid = new Grid(width, height, cellSize, originPosition);
+        this._grid = grid;
     }
 
     public List<PathNode> FindPath(int startX, int startY, int endX, int endY)
     {
         PathNode startNode = _grid.GetCell(startX, startY).GetPathNode();
         PathNode endNode = _grid.GetCell(endX, endY).GetPathNode();
-        Debug.Log("Width: " + _grid.GetGridWidth() + " Height: " + _grid.GetGridHeight());
-        Debug.Log("start node");
-        Debug.Log(startNode);
-        Debug.Log("end node");
-        Debug.Log(endNode);
-
         _openList = new List<PathNode> { startNode };
         _closedList = new List<PathNode>();
 
@@ -57,34 +51,21 @@ public class Pathfinding
             _openList.Remove(currentNode);
             _closedList.Add(currentNode);
 
-            Debug.Log("current node");
-            Debug.Log(currentNode);
-            Debug.Log("current node costs g" + currentNode.gCost + " h" + currentNode.hCost + " f" + currentNode.fCost);
+
             foreach (PathNode neighbourNode in GetNeighbourList(currentNode))
             {
-                Debug.Log("neighbourNode");
-                Debug.Log(neighbourNode);
-
                 if (_closedList.Contains(neighbourNode)) continue;
-
-                Debug.Log("not in closed list");
-
+                
                 int tentativeGCost = currentNode.gCost + CalculateDistanceCost(currentNode, neighbourNode);
-                Debug.Log("tentative G cost: +" + tentativeGCost + "current G Cost: " + neighbourNode.gCost);
-
                 if (tentativeGCost < neighbourNode.gCost)
                 {
-                    Debug.Log("is less");
                     neighbourNode.cameFromNode = currentNode;
                     neighbourNode.gCost = tentativeGCost;
                     neighbourNode.hCost = CalculateDistanceCost(neighbourNode, endNode);
                     neighbourNode.CalculateFCost();
 
-                    Debug.Log("is in open?: " + !_openList.Contains(neighbourNode) );
                     if (!_openList.Contains(neighbourNode))
                     {
-                        Debug.Log("adding neighbourhood node");
-
                         _openList.Add(neighbourNode);
                     }
                 }
@@ -100,28 +81,22 @@ public class Pathfinding
 
         if (currentNode.x - 1 >= 0)
         {
-            //left
             neighbourList.Add(_grid.GetCell(currentNode.x - 1, currentNode.y).GetPathNode());
         }
 
         if (currentNode.x + 1 < _grid.GetGridWidth())
         {
-            //right
             neighbourList.Add(_grid.GetCell(currentNode.x + 1, currentNode.y).GetPathNode());
-
         }
         
         if (currentNode.y - 1 >= 0)
         {
-            //down
             neighbourList.Add(_grid.GetCell(currentNode.x, currentNode.y -1).GetPathNode());
         }
         
         if (currentNode.y + 1 < _grid.GetGridHeight())
         {
-            //right
             neighbourList.Add(_grid.GetCell(currentNode.x, currentNode.y + 1).GetPathNode());
-
         }
 
         return neighbourList;

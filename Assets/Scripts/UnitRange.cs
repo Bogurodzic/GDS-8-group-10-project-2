@@ -43,7 +43,6 @@ public class UnitRange : MonoBehaviour
     {
         int unitXPosition = _unitMovement.GetUnitXPosition();
         int unitYPosition = _unitMovement.GetUnitYPosition();
-        //Debug.Log("Show " + unitXPosition + " " + unitYPosition);
         _grid.ShowRange(unitXPosition, unitYPosition, range);
     }
 }
