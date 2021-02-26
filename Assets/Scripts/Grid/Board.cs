@@ -27,7 +27,9 @@ public class Board : MonoBehaviour
             mouseVector3.z = 0;
             //Debug.Log(mouseVector3);
             //_pathfinding.GetGrid().SetValue(mouseVector3, 666);
-            List<PathNode> path = _pathfinding.FindPath(0, 0, 5, 5);
+            int endX, endY;
+            _pathfinding.GetGrid().GetCellPosition(mouseVector3, out endX, out endY);
+            List<PathNode> path = _pathfinding.FindPath(0, 0, endX, endY);
             Debug.Log(path);
             if (path != null)
             {
