@@ -33,10 +33,8 @@ public class Board : MonoBehaviour
             {
                 for (int i = 0; i < path.Count - 1; i++)
                 {
-                    Debug.Log(path[i]);
-
-                    Debug.DrawLine(new Vector3(path[i].x, path[i].y) * 10f , new Vector3(path[i+1].x, path[i+1].y) * 10f, Color.red);
-                    _gridManager.DestroyTile(new Vector3Int(path[i].x, path[i].y, 0));
+                    Debug.Log(i + ":" + path[i]);
+                    _gridManager.DestroyTile(path[i].x, path[i].y);
                 }
             }
         }
