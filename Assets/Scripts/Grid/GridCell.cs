@@ -11,9 +11,9 @@ public class GridCell
     private GameObject cellGameObject;
     private PathNode _pathNode;
 
-    public GridCell(int x, int y, Transform parent, Vector3 localPosition)
+    public GridCell(int x, int y, Transform parent, Vector3 localPosition, GridManager gridManager)
     {
-        this._pathNode = new PathNode(null, x, y);
+        this._pathNode = new PathNode(null, x, y, gridManager.GetTileData(x, y));
         this.text = x + " "  + y;
         this.parent = parent;
         this.localPosition = localPosition;

@@ -12,14 +12,18 @@ public class PathNode
     public int gCost;
     public int hCost;
     public int fCost;
+    public float movementCost;
+    public bool isObstacle;
 
     public PathNode cameFromNode;
 
-    public PathNode(Grid grid, int x, int y)
+    public PathNode(Grid grid, int x, int y, TileData tileData)
     {
         this._grid = grid;
         this.x = x;
         this.y = y;
+        this.movementCost = tileData.movementCost;
+        this.isObstacle = tileData.isObstacle;
     }
 
     public void CalculateFCost()

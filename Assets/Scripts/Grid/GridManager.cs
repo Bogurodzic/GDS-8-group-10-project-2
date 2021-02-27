@@ -75,4 +75,31 @@ public class GridManager : MonoBehaviour
         int tilePositionY = _gridPosition.y + y;
         _map.SetTile(new Vector3Int(tilePositionX, tilePositionY, 0), null);
     }
+
+    public float GetTileCost(int x, int y)
+    {
+        int tilePositionX = _gridPosition.x + x;
+        int tilePositionY = _gridPosition.y + y;
+        TileBase clickedTile = _map.GetTile(new Vector3Int(tilePositionX, tilePositionY, 0));
+
+        return _dataFromTiles[clickedTile].movementCost;
+    }
+
+    public bool IsTileObstacle(int x, int y)
+    {
+        int tilePositionX = _gridPosition.x + x;
+        int tilePositionY = _gridPosition.y + y;
+        TileBase clickedTile = _map.GetTile(new Vector3Int(tilePositionX, tilePositionY, 0));
+
+        return _dataFromTiles[clickedTile].isObstacle;  
+    }
+
+    public TileData GetTileData(int x, int y)
+    {
+        int tilePositionX = _gridPosition.x + x;
+        int tilePositionY = _gridPosition.y + y;
+        TileBase clickedTile = _map.GetTile(new Vector3Int(tilePositionX, tilePositionY, 0));
+
+        return _dataFromTiles[clickedTile];  
+    }
 }

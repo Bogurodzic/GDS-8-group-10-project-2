@@ -6,7 +6,7 @@ public class UnitRange : MonoBehaviour
 {
     public int range = 5;
     
-    private bool _showRange = false;
+    private bool _showRange = true;
     private Grid _grid;
     private UnitMovement _unitMovement;
     
