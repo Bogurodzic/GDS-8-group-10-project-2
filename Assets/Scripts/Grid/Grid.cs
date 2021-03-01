@@ -110,26 +110,43 @@ public class Grid
         {
             for (int y = 0; y < gridArray.GetLength(1); y++)
             {
-                if (IsPositionInRange(unitXPosition, unitYPosition, x, y, range))
+                if (IsPositionInRange(x, y, range))
                 {
-                    //SetValue(x, y, 1);
+                    _gridManager.ChangeColor(x, y, Color.red);
                 }
                 else
                 {
-                    //SetValue(x, y, 0);
+                    _gridManager.ResetColor(x, y);
                 }
             }
         }
 
     }
 
-    public bool IsPositionInRange(int unitXPosition, int unitYPosition, int x, int y, int range)
+    public void HideRange()
     {
-        Debug.Log("cellg" + GetCell(x, y).GetPathNode().gCost);
-        Debug.Log("cellh" + GetCell(x, y).GetPathNode().hCost);
-        Debug.Log("cellf" + GetCell(x, y).GetPathNode().fCost);
-        SetValue(x, y, GetCell(x, y).GetPathNode().gCost);
-        return false;
+        for (int x = 0; x < gridArray.GetLength(0); x++)
+        {
+            for (int y = 0; y < gridArray.GetLength(1); y++)
+            {
+                _gridManager.ResetColor(x, y);
+            }
+        }
+    }
+
+    public bool IsPositionInRange(int x, int y, int range)
+    {
+        int gCost = GetCell(x, y).GetPathNode().gCost;
+        SetValue(x, y, gCost);
+        //Debug.Log("range:" + range + " X: " + x + " Y:" + y +  " G:" + gCost + "?" + (range <= gCost));
+        if (range >= gCost)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public int GetGridWidth()

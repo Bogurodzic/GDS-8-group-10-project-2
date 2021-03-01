@@ -24,7 +24,6 @@ public class PathNode
         this.y = y;
         this.movementCost = tileData.movementCost;
         this.isObstacle = tileData.isObstacle;
-        Debug.Log("TILE DATA: "  + movementCost);
     }
 
     public void CalculateFCost()

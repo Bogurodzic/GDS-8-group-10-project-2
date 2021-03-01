@@ -59,7 +59,6 @@ public class Pathfinding
                 pathNode.gCost = 9999;
                 pathNode.CalculateFCost();
                 pathNode.cameFromNode = null;
-                Debug.Log(pathNode);
             }
         }
     }

@@ -38,7 +38,7 @@ public class Board : MonoBehaviour
             for (int i = 0; i < path.Count - 1; i++)
             {
                 Debug.Log(i + ":" + path[i]);
-                _gridManager.DestroyTile(path[i].x, path[i].y);
+                _gridManager.ChangeColor(path[i].x, path[i].y, Color.blue);
             }
         }
     }

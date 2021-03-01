@@ -6,7 +6,7 @@ public class UnitRange : MonoBehaviour
 {
     public int range = 5;
     
-    private bool _showRange = true;
+    private bool _showRange = false;
     private Grid _grid;
     private UnitMovement _unitMovement;
     
@@ -17,9 +17,14 @@ public class UnitRange : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && !_showRange)
         {
-            ShowUnitRange();
+            ShowPlayerRange();
+            _showRange = true;
+        } else if (Input.GetKeyDown(KeyCode.Space) && _showRange)
+        {
+            HideRange();
+            _showRange = false;
         }
     }
     
@@ -39,10 +44,20 @@ public class UnitRange : MonoBehaviour
         LoadUnitMovement();
     }
 
-    private void ShowUnitRange()
+    private void ShowPlayerRange()
     {
         int unitXPosition = _unitMovement.GetUnitXPosition();
         int unitYPosition = _unitMovement.GetUnitYPosition();
-        _grid.ShowRange(unitXPosition, unitYPosition, range);
+        ShowUnitRange(unitXPosition, unitYPosition, range);
+    }
+
+    private void ShowUnitRange(int x, int y, int range)
+    {
+        _grid.ShowRange(x, y, range);
+    }
+
+    private void HideRange()
+    {
+        _grid.HideRange();
     }
 }

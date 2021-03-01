@@ -76,6 +76,23 @@ public class GridManager : MonoBehaviour
         _map.SetTile(new Vector3Int(tilePositionX, tilePositionY, 0), null);
     }
 
+    public void ChangeColor(int x, int y, Color color)
+    {
+        int tilePositionX = _gridPosition.x + x;
+        int tilePositionY = _gridPosition.y + y;
+        _map.SetTileFlags(new Vector3Int(tilePositionX, tilePositionY, 0), TileFlags.None);
+        _map.SetColor(new Vector3Int(tilePositionX, tilePositionY, 0), color);
+    }
+
+    public void ResetColor(int x, int y)
+    {
+        int tilePositionX = _gridPosition.x + x;
+        int tilePositionY = _gridPosition.y + y;
+        Debug.Log(_map.GetColor(new Vector3Int(tilePositionX, tilePositionY, 0)));
+        _map.SetTileFlags(new Vector3Int(tilePositionX, tilePositionY, 0), TileFlags.None);
+        _map.SetColor(new Vector3Int(tilePositionX, tilePositionY, 0), Color.white); 
+    }
+
     public float GetTileCost(int x, int y)
     {
         int tilePositionX = _gridPosition.x + x;
