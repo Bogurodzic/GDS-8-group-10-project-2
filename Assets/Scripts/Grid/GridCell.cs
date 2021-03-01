@@ -50,7 +50,7 @@ public class GridCell
     public void RemoveOccupiedBy()
     {
         _occupiedBy = null;
-        Debug.Log("REMOVE");
+        Debug.Log("REMOVE:" + localPosition);
 
         Debug.Log(this);
     }
@@ -58,7 +58,7 @@ public class GridCell
     public void AddOccupiedBy(Unit unit)
     {
         _occupiedBy = unit;
-        Debug.Log("ADD");
+        Debug.Log("ADD" + localPosition);
 
         Debug.Log(this);
 

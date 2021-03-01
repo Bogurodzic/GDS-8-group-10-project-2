@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Enums;
 using UnityEngine;
 
 public class Unit : MonoBehaviour
@@ -10,6 +11,7 @@ public class Unit : MonoBehaviour
     private UnitMovement _unitMovement;
     private UnitStatistics _unitStatistics;
     private UnitRange _unitRange;
+    private RangeType _activityType;
     void Start()
     {
         LoadGrid();
@@ -25,6 +27,7 @@ public class Unit : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             HandleActivatingUnit();
+            HandleAttack();
         }
 
         if (Input.GetMouseButtonDown(1))
@@ -32,6 +35,7 @@ public class Unit : MonoBehaviour
             if (IsActive())
             {
                 _unitRange.ShowUnitRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition());
+                _activityType = RangeType.Attack;
             }
         }
     }
@@ -55,14 +59,35 @@ public class Unit : MonoBehaviour
         {
             ActivateUnit();
         }
-        else if (IsActive() && !_unitMovement.IsInMovementRange(mouseX, mouseY))
+        else if (IsActive() && IsMovementActive() && !_unitMovement.IsInMovementRange(mouseX, mouseY))
         {
             DeactivateUnit();
-        } else if (IsActive() && _unitMovement.IsInMovementRange(mouseX, mouseY))
+        } else if (IsActive() && IsMovementActive() && _unitMovement.IsInMovementRange(mouseX, mouseY))
         {
             _unitMovement.Move(mouseX, mouseY, this);
             DeactivateUnit();
         }
+    }
+
+    private void HandleAttack()
+    {
+        Vector3 mouseVector3 = GridUtils.GetMouseWorldPosition(Input.mousePosition);
+        mouseVector3.z = 0;
+        int mouseX, mouseY;
+        _grid.GetCellPosition(mouseVector3, out mouseX, out mouseY);
+        
+        if (IsActive() && IsAttackActive() && _unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
+        {
+            Debug.Log(_grid.GetCell(mouseX, mouseY).GetOccupiedBy());
+            Attack.AttackUnit(this, _grid.GetCell(mouseX, mouseY).GetOccupiedBy());
+            DeactivateUnit();
+        }
+        else if (IsActive() && IsAttackActive() && !_unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
+        {
+            DeactivateUnit();
+        }
+        Debug.Log("HANDLE ATTACK: " + IsAttackActive() + ":" + IsUnitTurn() + ":" + _unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY) + ":" + _grid.GetCell(mouseX, mouseY).GetOccupiedBy());
+
     }
     
 
@@ -71,9 +96,33 @@ public class Unit : MonoBehaviour
         return _isActive;
     }
 
+    public bool IsMovementActive()
+    {
+        if (_activityType == RangeType.Movement)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public bool IsAttackActive()
+    {
+        if (_activityType == RangeType.Attack)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        } 
+    }
+
     public bool IsUnitTurn()
     {
-        return true;
+        return Turn.IsUnitTurn(_unitStatistics.team);
     }
 
     public bool IsUnitClicked(int mouseX, int mouseY)
@@ -92,6 +141,7 @@ public class Unit : MonoBehaviour
     
     private void ActivateUnit()
     {
+        _activityType = RangeType.Movement;
         _unitMovement.ShowMovementRange();
         _gridManager.ChangeColor(GetUnitXPosition(), GetUnitYPosition(), Color.magenta);
         _isActive = true;
@@ -101,6 +151,12 @@ public class Unit : MonoBehaviour
     {
         _unitMovement.HideMovementRange();
         _isActive = false;
+        Invoke("NextTurn", 0.05f);
+    }
+
+    private void NextTurn()
+    {
+        Turn.NextTurn();
     }
 
     public UnitStatistics GetStatistics()
@@ -146,4 +202,5 @@ public class Unit : MonoBehaviour
         _grid.GetCellPosition(transform.position, out positionX, out positionY);
         return positionY;
     }
+    
 }

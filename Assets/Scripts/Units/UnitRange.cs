@@ -48,4 +48,17 @@ public class UnitRange : MonoBehaviour
     {
         _grid.HideRange();
     }
+    
+    public bool IsInAttackRange(int x, int y, int targetX, int targetY)
+    {
+        _grid.CalculateCostToAllTiles(x, y);
+        if (_grid.IsPositionInRange(targetX, targetY, range, RangeType.Attack))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

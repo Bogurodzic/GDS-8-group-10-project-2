@@ -78,11 +78,13 @@ public class UnitMovement : MonoBehaviour
 
     private void RemoveUnitFromCurrentCell()
     {
+        UpdateUnitPosition();
         _grid.GetCell(GetUnitXPosition(), GetUnitYPosition()).RemoveOccupiedBy();
     }
 
     private void AddUnitToCurrentCell(Unit unit)
     {
+        UpdateUnitPosition();
         _grid.GetCell(GetUnitXPosition(), GetUnitYPosition()).AddOccupiedBy(unit);
     }
     
