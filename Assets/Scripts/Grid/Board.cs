@@ -20,8 +20,8 @@ public class Board : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            ChooseCell();
-            Move();
+            //ChooseCell();
+            //Move();
         }
     }
 
@@ -56,7 +56,7 @@ public class Board : MonoBehaviour
     {
         return _grid;
     }
-
+    
     private void LoadGridManager()
     {
         _gridManager = GameObject.Find("GridManager").GetComponent<GridManager>();

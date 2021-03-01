@@ -29,7 +29,7 @@ public class GridCell
         this.cellGameObject = gameObject;
 
         TextMesh textMesh = gameObject.GetComponent<TextMesh>();
-        textMesh.text = this.text;
+        //textMesh.text = this.text;
         textMesh.fontSize = 40;
         textMesh.alignment = TextAlignment.Center;
         textMesh.anchor = TextAnchor.MiddleCenter;

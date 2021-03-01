@@ -88,7 +88,6 @@ public class GridManager : MonoBehaviour
     {
         int tilePositionX = _gridPosition.x + x;
         int tilePositionY = _gridPosition.y + y;
-        Debug.Log(_map.GetColor(new Vector3Int(tilePositionX, tilePositionY, 0)));
         _map.SetTileFlags(new Vector3Int(tilePositionX, tilePositionY, 0), TileFlags.None);
         _map.SetColor(new Vector3Int(tilePositionX, tilePositionY, 0), Color.white); 
     }

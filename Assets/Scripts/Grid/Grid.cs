@@ -66,7 +66,7 @@ public class Grid
         y = Mathf.FloorToInt((worldPosition - originPosition).y / cellSize);
     }
 
-    public void SetValue(int x, int y, int value)
+    public void SetValue(int x, int y, string value)
     {
         if (x >= 0 && y >= 0 && x < width && y < height)
         {
@@ -78,7 +78,7 @@ public class Grid
     {
         int x, y;
         GetCellPosition(worldPosition, out x, out y);
-        SetValue(x, y, value);
+        SetValue(x, y, value + "");
     }
 
     public int GetValue(int x, int y)
@@ -130,6 +130,7 @@ public class Grid
             for (int y = 0; y < gridArray.GetLength(1); y++)
             {
                 _gridManager.ResetColor(x, y);
+                SetValue(x, y, "");
             }
         }
     }
@@ -137,7 +138,7 @@ public class Grid
     public bool IsPositionInRange(int x, int y, int range)
     {
         int gCost = GetCell(x, y).GetPathNode().gCost;
-        SetValue(x, y, gCost);
+        //SetValue(x, y, gCost + "");
         //Debug.Log("range:" + range + " X: " + x + " Y:" + y +  " G:" + gCost + "?" + (range <= gCost));
         if (range >= gCost)
         {
