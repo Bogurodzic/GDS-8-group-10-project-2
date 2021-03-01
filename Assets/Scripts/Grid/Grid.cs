@@ -151,7 +151,14 @@ public class Grid
 
         if (range >= cost && cost > 0)
         {
-            return true;
+            if ((rangeType == RangeType.Movement && !GetCell(x, y).GetOccupiedBy()) || rangeType == RangeType.Attack)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         else
         {

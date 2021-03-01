@@ -32,11 +32,7 @@ public class Unit : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            if (IsActive())
-            {
-                _unitRange.ShowUnitRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition());
-                _activityType = RangeType.Attack;
-            }
+            HandleActivatingAttackMode();
         }
     }
 
@@ -76,18 +72,24 @@ public class Unit : MonoBehaviour
         int mouseX, mouseY;
         _grid.GetCellPosition(mouseVector3, out mouseX, out mouseY);
         
-        if (IsActive() && IsAttackActive() && _unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
+        if (IsActive() && IsUnitTurn() && IsAttackActive() && _unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
         {
-            Debug.Log(_grid.GetCell(mouseX, mouseY).GetOccupiedBy());
             Attack.AttackUnit(this, _grid.GetCell(mouseX, mouseY).GetOccupiedBy());
             DeactivateUnit();
         }
-        else if (IsActive() && IsAttackActive() && !_unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
+        else if (IsActive() && IsUnitTurn() && IsAttackActive() && !_unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
         {
             DeactivateUnit();
         }
-        Debug.Log("HANDLE ATTACK: " + IsAttackActive() + ":" + IsUnitTurn() + ":" + _unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY) + ":" + _grid.GetCell(mouseX, mouseY).GetOccupiedBy());
+    }
 
+    private void HandleActivatingAttackMode()
+    {
+        if (IsActive() && IsUnitTurn())
+        {
+            _unitRange.ShowUnitRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition());
+            _activityType = RangeType.Attack;
+        }
     }
     
 
