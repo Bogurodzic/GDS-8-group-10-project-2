@@ -8,11 +8,16 @@ public class Unit : MonoBehaviour
     private Grid _grid;
     private GridManager _gridManager;
     private UnitMovement _unitMovement;
+    private UnitStatistics _unitStatistics;
+    private UnitRange _unitRange;
     void Start()
     {
         LoadGrid();
         LoadGridManager();
         LoadUnitMovement();
+        LoadUnitStatistics();
+        LoadUnitRange();
+        PlaceUnitOnBoard();
     }
 
     void Update()
@@ -21,6 +26,22 @@ public class Unit : MonoBehaviour
         {
             HandleActivatingUnit();
         }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (IsActive())
+            {
+                _unitRange.ShowUnitRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition());
+            }
+        }
+    }
+
+    private void PlaceUnitOnBoard()
+    {
+        int positionX, positionY;
+        _grid.GetCellPosition(transform.position, out positionX, out positionY);
+
+        _grid.GetCell(positionX, positionY).AddOccupiedBy(this);
     }
 
     private void HandleActivatingUnit()
@@ -39,7 +60,7 @@ public class Unit : MonoBehaviour
             DeactivateUnit();
         } else if (IsActive() && _unitMovement.IsInMovementRange(mouseX, mouseY))
         {
-            _unitMovement.Move(mouseX, mouseY);
+            _unitMovement.Move(mouseX, mouseY, this);
             DeactivateUnit();
         }
     }
@@ -71,17 +92,20 @@ public class Unit : MonoBehaviour
     
     private void ActivateUnit()
     {
-        _grid.HideRange();
-        _grid.ShowRange(GetUnitXPosition(), GetUnitYPosition(), 5);
+        _unitMovement.ShowMovementRange();
         _gridManager.ChangeColor(GetUnitXPosition(), GetUnitYPosition(), Color.magenta);
         _isActive = true;
     }
 
     public void DeactivateUnit()
     {
-        _grid.HideRange();
-        _gridManager.ResetColor(GetUnitXPosition(), GetUnitYPosition());
+        _unitMovement.HideMovementRange();
         _isActive = false;
+    }
+
+    public UnitStatistics GetStatistics()
+    {
+        return _unitStatistics;
     }
     
     private void LoadGrid()
@@ -97,6 +121,16 @@ public class Unit : MonoBehaviour
     private void LoadUnitMovement()
     {
         _unitMovement = gameObject.GetComponent<UnitMovement>();
+    }
+    
+    private void LoadUnitStatistics()
+    {
+        _unitStatistics = gameObject.GetComponent<UnitStatistics>();
+    }
+
+    private void LoadUnitRange()
+    {
+        _unitRange = gameObject.GetComponent<UnitRange>();
     }
 
     private int GetUnitXPosition()

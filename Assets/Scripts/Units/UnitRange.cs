@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Enums;
 using UnityEngine;
 
 public class UnitRange : MonoBehaviour
 {
-    public int range = 5;
+    public int range = 1;
     
     private bool _showRange = false;
     private Grid _grid;
@@ -17,15 +18,7 @@ public class UnitRange : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !_showRange)
-        {
-            ShowPlayerRange();
-            _showRange = true;
-        } else if (Input.GetKeyDown(KeyCode.Space) && _showRange)
-        {
-            HideRange();
-            _showRange = false;
-        }
+
     }
     
     private void LoadGrid()
@@ -43,20 +36,15 @@ public class UnitRange : MonoBehaviour
         LoadGrid();
         LoadUnitMovement();
     }
+    
 
-    private void ShowPlayerRange()
+    public void ShowUnitRange(int x, int y)
     {
-        int unitXPosition = _unitMovement.GetUnitXPosition();
-        int unitYPosition = _unitMovement.GetUnitYPosition();
-        ShowUnitRange(unitXPosition, unitYPosition, range);
+        HideRange();
+        _grid.ShowRange(x, y, range, RangeType.Attack);
     }
 
-    private void ShowUnitRange(int x, int y, int range)
-    {
-        _grid.ShowRange(x, y, range);
-    }
-
-    private void HideRange()
+    public void HideRange()
     {
         _grid.HideRange();
     }

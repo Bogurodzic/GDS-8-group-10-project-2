@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Enums;
 using UnityEngine;
 
 public class Grid
@@ -102,7 +103,7 @@ public class Grid
     }
 
 
-    public void ShowRange(int unitXPosition, int unitYPosition, int range)
+    public void ShowRange(int unitXPosition, int unitYPosition, int range, RangeType rangeType)
     {
         CalculateCostToAllTiles(unitXPosition, unitYPosition);
         
@@ -110,7 +111,7 @@ public class Grid
         {
             for (int y = 0; y < gridArray.GetLength(1); y++)
             {
-                if (IsPositionInRange(x, y, range))
+                if (IsPositionInRange(x, y, range, rangeType))
                 {
                     _gridManager.ChangeColor(x, y, Color.red);
                 }
@@ -122,6 +123,7 @@ public class Grid
         }
 
     }
+    
 
     public void HideRange()
     {
@@ -135,12 +137,19 @@ public class Grid
         }
     }
 
-    public bool IsPositionInRange(int x, int y, int range)
+    public bool IsPositionInRange(int x, int y, int range, RangeType rangeType)
     {
-        int gCost = GetCell(x, y).GetPathNode().gCost;
-        //SetValue(x, y, gCost + "");
-        //Debug.Log("range:" + range + " X: " + x + " Y:" + y +  " G:" + gCost + "?" + (range <= gCost));
-        if (range >= gCost)
+        int cost;
+        if (rangeType == RangeType.Movement)
+        {
+            cost  = GetCell(x, y).GetPathNode().gCost;
+        }
+        else
+        {
+            cost = GetCell(x, y).GetPathNode().hCost;
+        }
+
+        if (range >= cost && cost > 0)
         {
             return true;
         }

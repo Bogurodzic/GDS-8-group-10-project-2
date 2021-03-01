@@ -10,6 +10,7 @@ public class GridCell
     private Vector3 localPosition;
     private GameObject cellGameObject;
     private PathNode _pathNode;
+    private Unit _occupiedBy;
 
     public GridCell(int x, int y, Transform parent, Vector3 localPosition, GridManager gridManager)
     {
@@ -44,5 +45,27 @@ public class GridCell
     public PathNode GetPathNode()
     {
         return _pathNode;
+    }
+
+    public void RemoveOccupiedBy()
+    {
+        _occupiedBy = null;
+        Debug.Log("REMOVE");
+
+        Debug.Log(this);
+    }
+
+    public void AddOccupiedBy(Unit unit)
+    {
+        _occupiedBy = unit;
+        Debug.Log("ADD");
+
+        Debug.Log(this);
+
+    }
+
+    public Unit GetOccupiedBy()
+    {
+        return _occupiedBy;
     }
 }

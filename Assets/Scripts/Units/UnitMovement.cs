@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Enums;
 using UnityEngine;
 
 public class UnitMovement : MonoBehaviour
@@ -11,14 +12,12 @@ public class UnitMovement : MonoBehaviour
     void Start()
     {
         LoadGrid();
-        //LoadUnit();
     }
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-           // HandleMovingUnit();
         }
 
         UpdateUnitPosition();
@@ -28,26 +27,7 @@ public class UnitMovement : MonoBehaviour
     {
         _grid = GameObject.Find("Testing").GetComponent<Board>().GetGrid();
     }
-
-    /*private void LoadUnit()
-    {
-        _unit = gameObject.GetComponent<Unit>();
-    }
-
-    private void HandleMovingUnit()
-    {
-        if (_unit.IsActive())
-        {
-            Vector3 mouseVector3 = GridUtils.GetMouseWorldPosition(Input.mousePosition);
-            int x, y;
-            _grid.GetCellPosition(mouseVector3, out x, out y);
-            if (IsInMovementRange(x, y))
-            {
-                Move(x, y);
-            }
-        }
-    }*/
-
+    
     private void UpdateUnitPosition()
     {
         _grid.GetCellPosition(transform.position, out _xPosition, out _yPosition);
@@ -63,10 +43,21 @@ public class UnitMovement : MonoBehaviour
         return _yPosition;
     }
 
+    public void ShowMovementRange()
+    {
+        _grid.HideRange();
+        _grid.ShowRange(GetUnitXPosition(), GetUnitYPosition(), movementRange, RangeType.Movement);
+    }
+    
+    public void HideMovementRange()
+    {
+        _grid.HideRange();
+    }
+
     public bool IsInMovementRange(int x, int y)
     {
         _grid.CalculateCostToAllTiles(_xPosition, _yPosition);
-        if (_grid.IsPositionInRange(x, y, movementRange))
+        if (_grid.IsPositionInRange(x, y, movementRange, RangeType.Movement))
         {
             return true;
         }
@@ -76,10 +67,23 @@ public class UnitMovement : MonoBehaviour
         }
     }
 
-    public void Move(int x, int y)
+    public void Move(int x, int y, Unit unit)
     {
+        RemoveUnitFromCurrentCell();
         Vector3 cellPositionCenter = _grid.GetCellCenter(x, y);
         cellPositionCenter.z = -1;
-        transform.position = cellPositionCenter; 
+        transform.position = cellPositionCenter;
+        AddUnitToCurrentCell(unit);
     }
+
+    private void RemoveUnitFromCurrentCell()
+    {
+        _grid.GetCell(GetUnitXPosition(), GetUnitYPosition()).RemoveOccupiedBy();
+    }
+
+    private void AddUnitToCurrentCell(Unit unit)
+    {
+        _grid.GetCell(GetUnitXPosition(), GetUnitYPosition()).AddOccupiedBy(unit);
+    }
+    
 }

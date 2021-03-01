@@ -57,6 +57,7 @@ public class Pathfinding
             {
                 PathNode pathNode = _grid.GetCell(x, y).GetPathNode();
                 pathNode.gCost = 9999;
+                pathNode.hCost = 9999;
                 pathNode.CalculateFCost();
                 pathNode.cameFromNode = null;
             }
