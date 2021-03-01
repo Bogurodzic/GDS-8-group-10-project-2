@@ -17,7 +17,7 @@ public class UnitRange : MonoBehaviour
 
     void Update()
     {
-        if (_showRange)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             ShowUnitRange();
         }

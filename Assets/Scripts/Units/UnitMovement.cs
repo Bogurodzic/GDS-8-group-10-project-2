@@ -24,12 +24,12 @@ public class UnitMovement : MonoBehaviour
                 Vector3 mouseVector3 = GridUtils.GetMouseWorldPosition(Input.mousePosition);
                 int x, y;
                 _grid.GetCellPosition(mouseVector3, out x, out y);
-                if (_grid.IsPositionInRange(_xPosition, _yPosition, x, y, movementRange))
-                {
+                //if (_grid.IsPositionInRange(_xPosition, _yPosition, x, y, movementRange))
+                //{
                     Vector3 cellPositionCenter = _grid.GetCellCenter(mouseVector3);
                     cellPositionCenter.z = -1;
                     transform.position = cellPositionCenter; 
-                }
+                //}
             }
             
         }
