@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a1ffce9740fb4c63848ef97ca5a18f5, type: 3}
-  m_Name: Rocks
+  m_Name: Fruits
   m_EditorClassIdentifier: 
   tiles:
-  - {fileID: 11400000, guid: ee29b72ea3a0948d68aca649eea7f002, type: 2}
-  movementCost: 0
+  - {fileID: 11400000, guid: 239bdd129d25947158481603f36c3fa2, type: 2}
+  movementCost: 1
   bonusDef: 0
-  isObstacle: 0
+  isObstacle: 1
