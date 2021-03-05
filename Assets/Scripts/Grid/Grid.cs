@@ -105,7 +105,7 @@ public class Grid
 
     public void ShowRange(int unitXPosition, int unitYPosition, int minRange, int maxRange, RangeType rangeType)
     {
-        CalculateCostToAllTiles(unitXPosition, unitYPosition);
+        CalculateCostToAllTiles(unitXPosition, unitYPosition, rangeType);
         
         for (int x = 0; x < gridArray.GetLength(0); x++)
         {
@@ -197,8 +197,8 @@ public class Grid
         return _pathfinding.FindPath(startX, startY, endX, endY);
     }
 
-    public void CalculateCostToAllTiles(int x, int y)
+    public void CalculateCostToAllTiles(int x, int y, RangeType rangeType)
     {
-        _pathfinding.CalculateCostToAllTiles(x,y);
+        _pathfinding.CalculateCostToAllTiles(x,y, rangeType);
     }
 }

@@ -11,6 +11,7 @@ public class UnitStatistics : MonoBehaviour
     public int maxHp = 100;
     public int currentHp;
     public int movementRange = 6;
+    public bool flatDefend = true;
     void Start()
     {
         currentHp = maxHp;

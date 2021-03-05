@@ -56,7 +56,7 @@ public class UnitMovement : MonoBehaviour
 
     public bool IsInMovementRange(int x, int y)
     {
-        _grid.CalculateCostToAllTiles(_xPosition, _yPosition);
+        _grid.CalculateCostToAllTiles(_xPosition, _yPosition, RangeType.Movement);
         if (_grid.IsPositionInRange(x, y, movementRange, movementRange, RangeType.Movement))
         {
             return true;
