@@ -37,6 +37,14 @@ public class Unit : MonoBehaviour
         {
             HandleActivatingAttackMode();
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (IsActive() && IsUnitTurn())
+            {
+                SkipTurn();
+            }
+        }
     }
 
     private void PlaceUnitOnBoard()
@@ -181,6 +189,13 @@ public class Unit : MonoBehaviour
     }
 
     public void DeactivateUnit()
+    {
+        //_unitMovement.HideMovementRange();
+        //_isActive = false;
+        //Invoke("NextTurn", 0.05f);
+    }
+
+    public void SkipTurn()
     {
         _unitMovement.HideMovementRange();
         _isActive = false;
