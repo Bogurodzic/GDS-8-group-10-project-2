@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Enums;
 using UnityEngine;
 
 public class Pathfinding
@@ -34,7 +35,7 @@ public class Pathfinding
         return IterateOverOpenListWithEndNode(endNode);
     }
 
-    public void CalculateCostToAllTiles(int startX, int startY)
+    public void CalculateCostToAllTiles(int startX, int startY, RangeType rangeType)
     {
         PathNode startNode = _grid.GetCell(startX, startY).GetPathNode();
         _openList = new List<PathNode> { startNode };
@@ -46,7 +47,7 @@ public class Pathfinding
         startNode.hCost = CalculateDistanceCost(startNode, startNode);
         startNode.CalculateFCost(); 
         
-        IterateOverOpenListWithoutEndNode(startNode);
+        IterateOverOpenListWithoutEndNode(startNode, rangeType);
     }
 
     private void ResetPathNodes()
@@ -64,7 +65,7 @@ public class Pathfinding
         }
     }
 
-    private void IterateOverOpenListWithoutEndNode(PathNode startNode)
+    private void IterateOverOpenListWithoutEndNode(PathNode startNode, RangeType rangeType)
     {
         while (_openList.Count > 0)
         {
@@ -76,7 +77,7 @@ public class Pathfinding
             foreach (PathNode neighbourNode in GetNeighbourList(currentNode))
             {
                 if (_closedList.Contains(neighbourNode)) continue;
-                if (neighbourNode.isObstacle)
+                if (neighbourNode.isObstacle || (rangeType == RangeType.Movement && neighbourNode.isOccupied))
                 {
                     _closedList.Add(neighbourNode);
                     continue;
