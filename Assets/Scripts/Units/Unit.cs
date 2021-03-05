@@ -72,7 +72,7 @@ public class Unit : MonoBehaviour
         int mouseX, mouseY;
         _grid.GetCellPosition(mouseVector3, out mouseX, out mouseY);
         
-        if (IsActive() && IsUnitTurn() && IsAttackActive() && _unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
+        if (IsActive() && IsUnitTurn() && IsAttackActive() && IsCellOcuppiedByEnemy(mouseX, mouseY) && _unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
         {
             Attack.AttackUnit(this, _grid.GetCell(mouseX, mouseY).GetOccupiedBy());
             DeactivateUnit();
@@ -80,6 +80,18 @@ public class Unit : MonoBehaviour
         else if (IsActive() && IsUnitTurn() && IsAttackActive() && !_unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
         {
             DeactivateUnit();
+        }
+    }
+
+    private bool IsCellOcuppiedByEnemy(int mouseX, int mouseY)
+    {
+        if (_grid.GetCell(mouseX, mouseY).GetOccupiedBy() != null && _grid.GetCell(mouseX, mouseY).GetOccupiedBy()._unitStatistics.team != _unitStatistics.team)
+        {
+            return true; 
+        }
+        else
+        {
+            return false;
         }
     }
 
