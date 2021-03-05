@@ -17,9 +17,10 @@ public static class Attack
     private static void DealDamage(int damage, Unit unit)
     {
       int finalDamage;
-      if (true)
+      if (!unit.GetStatistics().flatDefend)
       {
-        finalDamage = damage - (damage * unit.GetStatistics().defend);
+        Debug.Log("resistance " + ((float)unit.GetStatistics().defend/100));
+        finalDamage = (int)((float)damage - ((float)damage * ((float)unit.GetStatistics().defend/100)));
       }
       else
       {
@@ -35,7 +36,7 @@ public static class Attack
 
       string dealDamageLog;
 
-      if (true)
+      if (!unit.GetStatistics().flatDefend)
       {
         dealDamageLog = "Defender recieved " + finalDamage + "(" + damage + " reduced by "  + unit.GetStatistics().defend + "% resistance)" + "\n";
       } else 
