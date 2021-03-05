@@ -13,11 +13,13 @@ public class Unit : MonoBehaviour
     private UnitStatistics _unitStatistics;
     private UnitRange _unitRange;
     private RangeType _activityType;
+    private CombatLog _combatLog;
     void Start()
     {
         LoadSprite();
         LoadGrid();
         LoadGridManager();
+        LoadCombatLog();
         LoadUnitMovement();
         LoadUnitStatistics();
         LoadUnitRange();
@@ -101,7 +103,7 @@ public class Unit : MonoBehaviour
         
         if (IsActive() && IsUnitTurn() && IsAttackActive() && IsCellOcuppiedByEnemy(mouseX, mouseY) && _unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
         {
-            Attack.AttackUnit(this, _grid.GetCell(mouseX, mouseY).GetOccupiedBy());
+            _combatLog.LogCombat(Attack.AttackUnit(this, _grid.GetCell(mouseX, mouseY).GetOccupiedBy()));
             DeactivateUnit();
         }
         else if (IsActive() && IsUnitTurn() && IsAttackActive() && !_unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
@@ -220,6 +222,11 @@ public class Unit : MonoBehaviour
     private void LoadGrid()
     {
         _grid = GameObject.Find("Testing").GetComponent<Board>().GetGrid();
+    }
+
+    private void LoadCombatLog()
+    {
+        _combatLog = GameObject.Find("CombatLog").GetComponent<CombatLog>();
     }
 
     private void LoadGridManager()
