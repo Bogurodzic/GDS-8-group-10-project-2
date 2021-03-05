@@ -53,6 +53,7 @@ public class GridCell
         Debug.Log("REMOVE:" + localPosition);
 
         Debug.Log(this);
+        _pathNode.isObstacle = false;
     }
 
     public void AddOccupiedBy(Unit unit)
@@ -61,6 +62,7 @@ public class GridCell
         Debug.Log("ADD" + localPosition);
 
         Debug.Log(this);
+        _pathNode.isObstacle = true;
 
     }
 

@@ -103,7 +103,7 @@ public class Grid
     }
 
 
-    public void ShowRange(int unitXPosition, int unitYPosition, int range, RangeType rangeType)
+    public void ShowRange(int unitXPosition, int unitYPosition, int minRange, int maxRange, RangeType rangeType)
     {
         CalculateCostToAllTiles(unitXPosition, unitYPosition);
         
@@ -111,7 +111,7 @@ public class Grid
         {
             for (int y = 0; y < gridArray.GetLength(1); y++)
             {
-                if (IsPositionInRange(x, y, range, rangeType))
+                if (IsPositionInRange(x, y, minRange, maxRange, rangeType))
                 {
                     _gridManager.ChangeColor(x, y, Color.red);
                 }
@@ -137,7 +137,7 @@ public class Grid
         }
     }
 
-    public bool IsPositionInRange(int x, int y, int range, RangeType rangeType)
+    public bool IsPositionInRange(int x, int y, int minRange, int maxRange, RangeType rangeType)
     {
         int cost;
         if (rangeType == RangeType.Movement)
@@ -148,12 +148,19 @@ public class Grid
         {
             cost = GetCell(x, y).GetPathNode().hCost;
         }
-
-        if (range >= cost && cost > 0)
+        
+        if (rangeType == RangeType.Movement)
         {
-            if ((rangeType == RangeType.Movement && !GetCell(x, y).GetOccupiedBy()) || rangeType == RangeType.Attack)
+            if (minRange >= cost && cost > 0)
             {
-                return true;
+                if ((rangeType == RangeType.Movement && !GetCell(x, y).GetOccupiedBy()))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {
@@ -162,8 +169,17 @@ public class Grid
         }
         else
         {
-            return false;
+            if (minRange <= cost && maxRange >= cost && cost > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
+
+
     }
 
     public int GetGridWidth()

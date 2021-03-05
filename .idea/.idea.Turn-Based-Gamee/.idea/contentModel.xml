@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.3/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/JetBrains/Rider2020.3/resharper-host/local/Transient/Rider/v203/SolutionCaches/_Turn-Based-Gamee.588835388.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="ScriptableObejcts" t="Include">
+          <e p="TileData.cs" t="Include" />
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="Battle" t="Include">
+            <e p="Attack.cs" t="Include" />
+            <e p="Turn.cs" t="Include" />
+          </e>
+          <e p="Enums" t="Include">
+            <e p="RangeType.cs" t="Include" />
+          </e>
+          <e p="Grid" t="Include">
+            <e p="Board.cs" t="Include" />
+            <e p="Grid.cs" t="Include" />
+            <e p="GridCell.cs" t="Include" />
+            <e p="GridManager.cs" t="Include" />
+            <e p="GridUtils.cs" t="Include" />
+          </e>
+          <e p="Pathfinding" t="Include">
+            <e p="Pathfinding.cs" t="Include" />
+            <e p="PathNode.cs" t="Include" />
+          </e>
+          <e p="UI" t="Include">
+            <e p="CombatLog.cs" t="Include" />
+            <e p="TurnText.cs" t="Include" />
+          </e>
+          <e p="Units" t="Include">
+            <e p="Unit.cs" t="Include" />
+            <e p="UnitMovement.cs" t="Include" />
+            <e p="UnitRange.cs" t="Include" />
+            <e p="UnitStatistics.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp/bin" t="ExcludeRecursive" />
+      <e p="Turn-Based-Gamee.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>

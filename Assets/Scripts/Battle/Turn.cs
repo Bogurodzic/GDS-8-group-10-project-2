@@ -29,4 +29,9 @@ public static class Turn
             return false;
         }
     }
+
+    public static int GetUnitTurn()
+    {
+        return _currentTurn;
+    }
 }
