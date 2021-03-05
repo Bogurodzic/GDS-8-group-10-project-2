@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class UnitRange : MonoBehaviour
 {
-    public int range = 1;
+    public int minRange = 2;
+    public int maxRange = 3;
     
     private bool _showRange = false;
     private Grid _grid;
@@ -41,7 +42,7 @@ public class UnitRange : MonoBehaviour
     public void ShowUnitRange(int x, int y)
     {
         HideRange();
-        _grid.ShowRange(x, y, range, RangeType.Attack);
+        _grid.ShowRange(x, y, minRange, maxRange, RangeType.Attack);
     }
 
     public void HideRange()
@@ -52,7 +53,7 @@ public class UnitRange : MonoBehaviour
     public bool IsInAttackRange(int x, int y, int targetX, int targetY)
     {
         _grid.CalculateCostToAllTiles(x, y);
-        if (_grid.IsPositionInRange(targetX, targetY, range, RangeType.Attack))
+        if (_grid.IsPositionInRange(targetX, targetY, minRange, maxRange, RangeType.Attack))
         {
             return true;
         }

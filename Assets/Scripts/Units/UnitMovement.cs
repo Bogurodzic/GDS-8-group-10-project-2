@@ -46,7 +46,7 @@ public class UnitMovement : MonoBehaviour
     public void ShowMovementRange()
     {
         _grid.HideRange();
-        _grid.ShowRange(GetUnitXPosition(), GetUnitYPosition(), movementRange, RangeType.Movement);
+        _grid.ShowRange(GetUnitXPosition(), GetUnitYPosition(), movementRange, movementRange, RangeType.Movement);
     }
     
     public void HideMovementRange()
@@ -57,7 +57,7 @@ public class UnitMovement : MonoBehaviour
     public bool IsInMovementRange(int x, int y)
     {
         _grid.CalculateCostToAllTiles(_xPosition, _yPosition);
-        if (_grid.IsPositionInRange(x, y, movementRange, RangeType.Movement))
+        if (_grid.IsPositionInRange(x, y, movementRange, movementRange, RangeType.Movement))
         {
             return true;
         }
