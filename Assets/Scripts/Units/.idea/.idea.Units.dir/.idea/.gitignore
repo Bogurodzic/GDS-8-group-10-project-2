@@ -2,8 +2,8 @@
 /shelf/
 /workspace.xml
 # Rider ignored files
+/.idea.Units.iml
 /modules.xml
-/.idea.Turn-Based-Gamee.iml
 /contentModel.xml
 /projectSettingsUpdater.xml
 # Datasource local storage ignored files
