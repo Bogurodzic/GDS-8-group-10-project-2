@@ -8,18 +8,21 @@ public class Unit : MonoBehaviour
     private bool _isActive = false;
     private Grid _grid;
     private GridManager _gridManager;
+    private SpriteRenderer _sprite;
     private UnitMovement _unitMovement;
     private UnitStatistics _unitStatistics;
     private UnitRange _unitRange;
     private RangeType _activityType;
     void Start()
     {
+        LoadSprite();
         LoadGrid();
         LoadGridManager();
         LoadUnitMovement();
         LoadUnitStatistics();
         LoadUnitRange();
         PlaceUnitOnBoard();
+        AddTeamColorToSprite();
     }
 
     void Update()
@@ -42,6 +45,22 @@ public class Unit : MonoBehaviour
         _grid.GetCellPosition(transform.position, out positionX, out positionY);
 
         _grid.GetCell(positionX, positionY).AddOccupiedBy(this);
+    }
+
+    private void AddTeamColorToSprite()
+    {
+        Color color;
+
+        if (_unitStatistics.team == 1)
+        {
+            color = Color.blue;
+        }
+        else
+        {
+            color = Color.red;
+        }
+
+        _sprite.color = color;
     }
 
     private void HandleActivatingUnit()
@@ -176,6 +195,11 @@ public class Unit : MonoBehaviour
     public UnitStatistics GetStatistics()
     {
         return _unitStatistics;
+    }
+
+    private void LoadSprite()
+    {
+        _sprite = gameObject.GetComponent<SpriteRenderer>();
     }
     
     private void LoadGrid()

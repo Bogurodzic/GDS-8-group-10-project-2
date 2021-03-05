@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9ea6c1fe-6767-43df-abde-f4f8039ac897" name="Default Changelist" comment="" />
+    <list default="true" id="9ea6c1fe-6767-43df-abde-f4f8039ac897" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +16,7 @@
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/Scripts/Battle/Turn.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/TurnText.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1pLb0eqZaQJiXIFPJRkhff1DHdr" />
@@ -59,7 +62,7 @@
       <option name="presentableId" value="Default" />
       <updated>1614965097426</updated>
       <workItem from="1614965102564" duration="123000" />
-      <workItem from="1614965581079" duration="479000" />
+      <workItem from="1614965581079" duration="826000" />
     </task>
     <servers />
   </component>
