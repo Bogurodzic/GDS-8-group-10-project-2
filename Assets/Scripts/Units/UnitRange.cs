@@ -39,9 +39,13 @@ public class UnitRange : MonoBehaviour
     }
     
 
-    public void ShowUnitRange(int x, int y)
+    public void ShowUnitRange(int x, int y, bool hidePreviouseRange = true)
     {
-        HideRange();
+        if (hidePreviouseRange)
+        {
+            _grid.HideRange();
+        }
+
         _grid.ShowRange(x, y, minRange, maxRange, RangeType.Attack);
     }
 

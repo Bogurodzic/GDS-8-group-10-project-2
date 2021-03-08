@@ -185,7 +185,8 @@ public class Unit : MonoBehaviour
     private void ActivateUnit()
     {
         _activityType = RangeType.Movement;
-        _unitMovement.ShowMovementRange();
+        _unitMovement.ShowMovementRange(false, _unitRange.minRange, _unitRange.maxRange);
+        //_unitRange.ShowUnitRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(), _unitStatistics.movementRange, false, true);
         _gridManager.ChangeColor(GetUnitXPosition(), GetUnitYPosition(), Color.magenta);
         _isActive = true;
     }

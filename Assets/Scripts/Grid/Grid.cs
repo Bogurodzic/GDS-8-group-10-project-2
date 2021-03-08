@@ -113,15 +113,18 @@ public class Grid
             {
                 if (IsPositionInRange(x, y, minRange, maxRange, rangeType))
                 {
-                    _gridManager.ChangeColor(x, y, Color.red);
-                }
-                else
-                {
-                    _gridManager.ResetColor(x, y);
+                    if (rangeType == RangeType.Attack)
+                    {
+                        _gridManager.ChangeColor(x, y, Color.red);
+                    }
+                    else
+                    {
+                        _gridManager.ChangeColor(x, y, Color.blue);
+   
+                    }
                 }
             }
         }
-
     }
     
 

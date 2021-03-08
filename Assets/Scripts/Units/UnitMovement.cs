@@ -43,10 +43,15 @@ public class UnitMovement : MonoBehaviour
         return _yPosition;
     }
 
-    public void ShowMovementRange()
+    public void ShowMovementRange(bool hidePreviouseRange = true, int minExtendRange = 0, int maxExtendRange = 0)
     {
-        _grid.HideRange();
+        if (hidePreviouseRange)
+        {
+            _grid.HideRange();
+        }
         _grid.ShowRange(GetUnitXPosition(), GetUnitYPosition(), movementRange, movementRange, RangeType.Movement);
+        _grid.ShowRange(GetUnitXPosition(), GetUnitYPosition(), movementRange+minExtendRange, movementRange+maxExtendRange, RangeType.Attack);
+
     }
     
     public void HideMovementRange()
