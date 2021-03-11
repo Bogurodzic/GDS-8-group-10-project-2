@@ -296,6 +296,11 @@ public class Unit : MonoBehaviour
     {
         return _unitStatistics;
     }
+
+    public UnitRange getUnitRange()
+    {
+        return _unitRange;
+    }
     
     private int GetUnitXPosition()
     {

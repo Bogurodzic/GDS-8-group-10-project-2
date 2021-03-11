@@ -84,9 +84,24 @@ public class UnitMovement : MonoBehaviour
     public void MoveBeforeAttack(int x, int y, Unit unit)
     {
         PathNode targetNode = _grid.GetCell(x, y).GetPathNode();
-        PathNode lastMovableNode = targetNode.lastMovableNode;
+        PathNode lastMovableNode = GetOptimalDistanceNode(targetNode, unit) ;
         
         Move(lastMovableNode.x, lastMovableNode.y, unit);
+    }
+
+    private PathNode GetOptimalDistanceNode(PathNode targetNode, Unit unit)
+    {
+        
+        PathNode optimalDistanceNode = targetNode.lastMovableNode;
+        int optimalDistance = targetNode.hCost - optimalDistanceNode.hCost;
+
+        while (optimalDistance < unit.getUnitRange().maxRange)
+        {
+            optimalDistanceNode = optimalDistanceNode.cameFromNode;
+            optimalDistance = targetNode.hCost - optimalDistanceNode.hCost;
+        }
+
+        return optimalDistanceNode;
     }
 
     private void RemoveUnitFromCurrentCell()
