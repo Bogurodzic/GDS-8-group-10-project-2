@@ -10,7 +10,6 @@ public class UnitRange : MonoBehaviour
     
     private bool _showRange = false;
     private Grid _grid;
-    private UnitMovement _unitMovement;
     
     void Start()
     {
@@ -26,19 +25,12 @@ public class UnitRange : MonoBehaviour
     {
         _grid = GameObject.Find("Testing").GetComponent<Board>().GetGrid();
     }
-
-    private void LoadUnitMovement()
-    {
-        _unitMovement = gameObject.GetComponent<UnitMovement>();
-    }
-
+    
     private void LoadComponents()
     {
         LoadGrid();
-        LoadUnitMovement();
     }
     
-
     public void ShowUnitRange(bool hidePreviouseRange = true)
     {
         if (hidePreviouseRange)
@@ -56,7 +48,6 @@ public class UnitRange : MonoBehaviour
     
     public bool IsInAttackRange(int x, int y, int targetX, int targetY)
     {
-        //_grid.CalculateCostToAllTiles(x, y, RangeType.Attack);
         if (_grid.GetCell(targetX, targetY).GetPathNode().isAttackable)
         {
             return true;

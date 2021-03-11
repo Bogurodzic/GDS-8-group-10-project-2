@@ -15,6 +15,7 @@
             <e p="Turn.cs" t="Include" />
           </e>
           <e p="Enums" t="Include">
+            <e p="ActionType.cs" t="Include" />
             <e p="RangeType.cs" t="Include" />
             <e p="UnitPhase.cs" t="Include" />
           </e>
