@@ -81,6 +81,14 @@ public class UnitMovement : MonoBehaviour
         AddUnitToCurrentCell(unit);
     }
 
+    public void MoveBeforeAttack(int x, int y, Unit unit)
+    {
+        PathNode targetNode = _grid.GetCell(x, y).GetPathNode();
+        PathNode lastMovableNode = targetNode.lastMovableNode;
+        
+        Move(lastMovableNode.x, lastMovableNode.y, unit);
+    }
+
     private void RemoveUnitFromCurrentCell()
     {
         UpdateUnitPosition();

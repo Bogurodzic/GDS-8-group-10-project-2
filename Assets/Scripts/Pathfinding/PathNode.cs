@@ -19,6 +19,7 @@ public class PathNode
     public bool isAttackable;
 
     public PathNode cameFromNode;
+    public PathNode lastMovableNode;
 
     public PathNode(Grid grid, int x, int y, TileData tileData)
     {

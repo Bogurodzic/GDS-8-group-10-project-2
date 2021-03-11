@@ -116,11 +116,13 @@ public class Pathfinding
                     if (movementRange >= neighbourNode.gCost)
                     {
                         neighbourNode.isMovable = true;
+                        neighbourNode.lastMovableNode = currentNode;
                     } else if (neighbourNode.gCost > movementRange)
                     {
                         if (lastMovableNode == null)
                         {
                             lastMovableNode = currentNode;
+                            
                         }
 
                         int distanceFromLastMovableNode = neighbourNode.hCost - lastMovableNode.hCost;
@@ -128,10 +130,12 @@ public class Pathfinding
                         if (minAttackRange <= neighbourNode.hCost && maxAttackRange >= neighbourNode.hCost)
                         {
                             neighbourNode.isAttackable = true;
+                            neighbourNode.lastMovableNode = lastMovableNode;
                         }
                         if (minAttackRange <= distanceFromLastMovableNode && maxAttackRange >= distanceFromLastMovableNode)
                         {
                             neighbourNode.isAttackable = true;
+                            neighbourNode.lastMovableNode = lastMovableNode;
                         }
                         
                     }
