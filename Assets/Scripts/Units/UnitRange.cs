@@ -39,14 +39,14 @@ public class UnitRange : MonoBehaviour
     }
     
 
-    public void ShowUnitRange(int x, int y, bool hidePreviouseRange = true)
+    public void ShowUnitRange(bool hidePreviouseRange = true)
     {
         if (hidePreviouseRange)
         {
             _grid.HideRange();
         }
 
-        _grid.ShowRange(x, y, minRange, maxRange, RangeType.Attack);
+        _grid.ShowRange(RangeType.Attack);
     }
 
     public void HideRange()
@@ -56,8 +56,8 @@ public class UnitRange : MonoBehaviour
     
     public bool IsInAttackRange(int x, int y, int targetX, int targetY)
     {
-        _grid.CalculateCostToAllTiles(x, y, RangeType.Attack);
-        if (_grid.IsPositionInRange(targetX, targetY, minRange, maxRange, RangeType.Attack))
+        //_grid.CalculateCostToAllTiles(x, y, RangeType.Attack);
+        if (_grid.GetCell(targetX, targetY).GetPathNode().isAttackable)
         {
             return true;
         }

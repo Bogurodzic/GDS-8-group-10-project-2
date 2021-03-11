@@ -15,6 +15,8 @@ public class PathNode
     public float movementCost;
     public bool isObstacle;
     public bool isOccupied;
+    public bool isMovable;
+    public bool isAttackable;
 
     public PathNode cameFromNode;
 

@@ -35,13 +35,7 @@ public class GridManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 mouseVector3 = GridUtils.GetMouseWorldPosition(Input.mousePosition);
-            Vector3Int gridCellPosition = _map.WorldToCell(mouseVector3);
-            TileBase clickedTile = _map.GetTile(gridCellPosition);
-            Debug.Log("At position " + gridCellPosition + " there is tile "  + clickedTile + "movement cost: " + _dataFromTiles[clickedTile].movementCost);
-        }
+
     }
 
     private void SetGridSize()
@@ -117,5 +111,16 @@ public class GridManager : MonoBehaviour
         TileBase clickedTile = _map.GetTile(new Vector3Int(tilePositionX, tilePositionY, 0));
 
         return _dataFromTiles[clickedTile];  
+    }
+
+    private void DebugTile()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 mouseVector3 = GridUtils.GetMouseWorldPosition(Input.mousePosition);
+            Vector3Int gridCellPosition = _map.WorldToCell(mouseVector3);
+            TileBase clickedTile = _map.GetTile(gridCellPosition);
+            Debug.Log("At position " + gridCellPosition + " there is tile "  + clickedTile + "movement cost: " + _dataFromTiles[clickedTile].movementCost);
+        }
     }
 }

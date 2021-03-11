@@ -101,28 +101,31 @@ public class Grid
         GetCellPosition(worldPosition, out x, out y);
         return GetValue(x, y);
     }
-
-
-    public void ShowRange(int unitXPosition, int unitYPosition, int minRange, int maxRange, RangeType rangeType)
+    
+    public void ShowRange(RangeType rangeType)
     {
-        CalculateCostToAllTiles(unitXPosition, unitYPosition, rangeType);
         
         for (int x = 0; x < gridArray.GetLength(0); x++)
         {
             for (int y = 0; y < gridArray.GetLength(1); y++)
             {
-                if (IsPositionInRange(x, y, minRange, maxRange, rangeType))
+                
+                if (rangeType == RangeType.Movement)
                 {
-                    if (rangeType == RangeType.Attack)
-                    {
-                        _gridManager.ChangeColor(x, y, Color.red);
-                    }
-                    else
+                    if (GetCell(x, y).GetPathNode().isMovable)
                     {
                         _gridManager.ChangeColor(x, y, Color.blue);
-   
                     }
                 }
+
+                if (rangeType == RangeType.Attack)
+                {
+                    if (GetCell(x, y).GetPathNode().isAttackable)
+                    {
+                        _gridManager.ChangeColor(x, y, Color.red);
+                    } 
+                }
+
             }
         }
     }
@@ -198,6 +201,12 @@ public class Grid
     public List<PathNode> FindPath(int startX, int startY, int endX, int endY)
     {
         return _pathfinding.FindPath(startX, startY, endX, endY);
+    }
+    
+    public void CalculateCostToAllTiles(int unitXPosition, int unitYPosition, int movementRange, int minAttackRange,
+        int maxAttackRange)
+    {
+        _pathfinding.CalculateCostToAllTiles(unitXPosition, unitYPosition, movementRange, minAttackRange, maxAttackRange);
     }
 
     public void CalculateCostToAllTiles(int x, int y, RangeType rangeType)

@@ -43,15 +43,15 @@ public class UnitMovement : MonoBehaviour
         return _yPosition;
     }
 
-    public void ShowMovementRange(bool hidePreviouseRange = true, int minExtendRange = 0, int maxExtendRange = 0)
+    public void ShowMovementRange(bool hidePreviouseRange = true)
     {
         if (hidePreviouseRange)
         {
             _grid.HideRange();
         }
-        _grid.ShowRange(GetUnitXPosition(), GetUnitYPosition(), movementRange, movementRange, RangeType.Movement);
-        _grid.ShowRange(GetUnitXPosition(), GetUnitYPosition(), movementRange+minExtendRange, movementRange+maxExtendRange, RangeType.Attack);
 
+        _grid.ShowRange(RangeType.Movement);
+        Debug.Log("SHOW RANGE");
     }
     
     public void HideMovementRange()
@@ -61,8 +61,8 @@ public class UnitMovement : MonoBehaviour
 
     public bool IsInMovementRange(int x, int y)
     {
-        _grid.CalculateCostToAllTiles(_xPosition, _yPosition, RangeType.Movement);
-        if (_grid.IsPositionInRange(x, y, movementRange, movementRange, RangeType.Movement))
+        //_grid.CalculateCostToAllTiles(_xPosition, _yPosition, RangeType.Movement);
+        if (_grid.GetCell(x, y).GetPathNode().isMovable)
         {
             return true;
         }

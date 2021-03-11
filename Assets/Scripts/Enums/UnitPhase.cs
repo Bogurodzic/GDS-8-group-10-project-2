@@ -1,10 +1,12 @@
 namespace Enums
 {
-    public enum UnityPhase
+    public enum UnitPhase
     {
+        Inactive,
         Standby,
         AfterMovement,
         AfterAttack,
         AfterDash,
+        OnCooldown,
     }
 }

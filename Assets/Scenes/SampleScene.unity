@@ -707,12 +707,17 @@ PrefabInstance:
     - target: {fileID: 4627574333829354504, guid: 25b5167d6667348c983814bf20d1e38d,
         type: 3}
       propertyPath: maxRange
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4627574333829354504, guid: 25b5167d6667348c983814bf20d1e38d,
         type: 3}
       propertyPath: minRange
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627574333829354505, guid: 25b5167d6667348c983814bf20d1e38d,
+        type: 3}
+      propertyPath: movementRange
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4627574333829354507, guid: 25b5167d6667348c983814bf20d1e38d,
         type: 3}
@@ -722,12 +727,12 @@ PrefabInstance:
     - target: {fileID: 4627574333829354507, guid: 25b5167d6667348c983814bf20d1e38d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -34
+      value: -14.6
       objectReference: {fileID: 0}
     - target: {fileID: 4627574333829354507, guid: 25b5167d6667348c983814bf20d1e38d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -33.3
+      value: -34.4
       objectReference: {fileID: 0}
     - target: {fileID: 4627574333829354507, guid: 25b5167d6667348c983814bf20d1e38d,
         type: 3}
@@ -886,8 +891,8 @@ Tilemap:
   - first: {x: -6, y: -4, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1039,8 +1044,8 @@ Tilemap:
   - first: {x: -3, y: -3, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1165,8 +1170,8 @@ Tilemap:
   - first: {x: -3, y: -2, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1291,8 +1296,8 @@ Tilemap:
   - first: {x: -3, y: -1, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1884,20 +1889,20 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 59
+  - m_RefCount: 63
     m_Data: {fileID: 11400000, guid: 2610214a86cf140b0be9a978d0b4d5ba, type: 2}
   - m_RefCount: 39
     m_Data: {fileID: 11400000, guid: ee29b72ea3a0948d68aca649eea7f002, type: 2}
-  - m_RefCount: 14
+  - m_RefCount: 10
     m_Data: {fileID: 11400000, guid: 2bedf7a80140e492bb98d17c152959fe, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 59
+  - m_RefCount: 63
     m_Data: {fileID: -7354707582034155357, guid: 41face6640e114faba661db45ee49c52,
       type: 3}
   - m_RefCount: 39
     m_Data: {fileID: 1586363765906278735, guid: 41face6640e114faba661db45ee49c52,
       type: 3}
-  - m_RefCount: 14
+  - m_RefCount: 10
     m_Data: {fileID: 430249297543539289, guid: 41face6640e114faba661db45ee49c52, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 112
@@ -1965,12 +1970,17 @@ PrefabInstance:
     - target: {fileID: 4627574333829354504, guid: 25b5167d6667348c983814bf20d1e38d,
         type: 3}
       propertyPath: maxRange
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4627574333829354504, guid: 25b5167d6667348c983814bf20d1e38d,
         type: 3}
       propertyPath: minRange
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627574333829354505, guid: 25b5167d6667348c983814bf20d1e38d,
+        type: 3}
+      propertyPath: movementRange
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4627574333829354507, guid: 25b5167d6667348c983814bf20d1e38d,
         type: 3}
@@ -2036,6 +2046,16 @@ PrefabInstance:
         type: 3}
       propertyPath: minAttack
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627574333829354511, guid: 25b5167d6667348c983814bf20d1e38d,
+        type: 3}
+      propertyPath: attackRange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4627574333829354511, guid: 25b5167d6667348c983814bf20d1e38d,
+        type: 3}
+      propertyPath: movementRange
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25b5167d6667348c983814bf20d1e38d, type: 3}
