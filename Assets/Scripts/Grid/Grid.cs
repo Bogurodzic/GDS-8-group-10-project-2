@@ -184,8 +184,23 @@ public class Grid
                 return false;
             }
         }
+    }
 
+    public bool IsPositionInAttackRange(int x, int y, int minRange, int maxRange)
+    {
+        int cost = GetCell(x, y).GetPathNode().hCost;
 
+        if (minRange <= cost && maxRange >= cost)
+        {   
+            Debug.Log("IS IN RANGE:" + cost);
+            return true;
+        }
+        else
+        {
+            Debug.Log("IS NOT IN RANGE:" + cost);
+
+            return false;
+        }
     }
 
     public int GetGridWidth()

@@ -103,6 +103,7 @@ public class Pathfinding
                     continue;
                 } else if ((neighbourNode.isOccupied && _grid.GetCell(neighbourNode.x, neighbourNode.y).GetOccupiedBy().GetStatistics().team != Turn.GetUnitTurn()))
                 {
+                    neighbourNode.hCost = CalculateDistanceCost(neighbourNode, startNode);
                     IterateOverOpenListWithoutEndNodeForAttack(currentNode, minAttackRange, maxAttackRange);
                     _closedList.Add(neighbourNode);
                     continue;
@@ -122,6 +123,7 @@ public class Pathfinding
                         neighbourNode.lastMovableNode = currentNode;
                     } else if (neighbourNode.gCost > movementRange && currentNode.gCost <= movementRange)
                     {
+
                         IterateOverOpenListWithoutEndNodeForAttack(currentNode, minAttackRange, maxAttackRange);
                     }
 

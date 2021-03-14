@@ -169,7 +169,10 @@ public class Unit : MonoBehaviour
             
         } else if ((_unitPhase == UnitPhase.Standby) && IsCellOcuppiedByEnemy(mouseX, mouseY) && _unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
         {
-            _unitMovement.MoveBeforeAttack(mouseX, mouseY, this);
+            if (!_grid.IsPositionInAttackRange(mouseX, mouseY, _unitRange.minRange, _unitRange.maxRange))
+            {            
+                _unitMovement.MoveBeforeAttack(mouseX, mouseY, this);
+            }
             _combatLog.LogCombat(Attack.AttackUnit(this, _grid.GetCell(mouseX, mouseY).GetOccupiedBy()));
             EndAction(ActionType.Attack);
         }
