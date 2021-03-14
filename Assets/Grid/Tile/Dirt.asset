@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: CubeMaterial.mat
+  m_Name: Dirt
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -7354707582034155357, guid: 41face6640e114faba661db45ee49c52,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4945d4a7e5bc24da1be29e8c7ea22e3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

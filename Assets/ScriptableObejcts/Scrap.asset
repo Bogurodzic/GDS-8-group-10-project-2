@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Scrap
   m_EditorClassIdentifier: 
   tiles:
-  - {fileID: 11400000, guid: 2bedf7a80140e492bb98d17c152959fe, type: 2}
-  movementCost: 4
+  - {fileID: 11400000, guid: 19e3f92a5cac54be7b3f79d251db71ca, type: 2}
+  movementCost: 2
   bonusDef: 20
   isObstacle: 0

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a1ffce9740fb4c63848ef97ca5a18f5, type: 3}
   m_Name: Water
   m_EditorClassIdentifier: 
-  tiles: []
+  tiles:
+  - {fileID: 11400000, guid: 41f4952e79a974a608a670cb840b3e38, type: 2}
   movementCost: 2
   bonusDef: 0
   isObstacle: 0

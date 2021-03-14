@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Ground
   m_EditorClassIdentifier: 
   tiles:
-  - {fileID: 11400000, guid: 2610214a86cf140b0be9a978d0b4d5ba, type: 2}
+  - {fileID: 11400000, guid: 390916e6a570e46c0bddcdc3dafb025f, type: 2}
+  - {fileID: 11400000, guid: fdb5fe38d8a7d41c0b398e3d93da322d, type: 2}
   movementCost: 1
   bonusDef: 0
   isObstacle: 0
