@@ -51,7 +51,6 @@ public class UnitMovement : MonoBehaviour
         }
 
         _grid.ShowRange(RangeType.Movement);
-        Debug.Log("SHOW RANGE");
     }
     
     public void HideMovementRange()
@@ -61,7 +60,6 @@ public class UnitMovement : MonoBehaviour
 
     public bool IsInMovementRange(int x, int y)
     {
-        //_grid.CalculateCostToAllTiles(_xPosition, _yPosition, RangeType.Movement);
         if (_grid.GetCell(x, y).GetPathNode().isMovable)
         {
             return true;
@@ -97,6 +95,11 @@ public class UnitMovement : MonoBehaviour
 
         while (optimalDistance < unit.getUnitRange().maxRange)
         {
+            if (targetNode.hCost - optimalDistanceNode.cameFromNode.hCost > unit.getUnitRange().maxRange)
+            {
+                break;
+            }
+            
             optimalDistanceNode = optimalDistanceNode.cameFromNode;
             optimalDistance = targetNode.hCost - optimalDistanceNode.hCost;
         }

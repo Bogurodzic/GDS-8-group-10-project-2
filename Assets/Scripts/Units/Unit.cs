@@ -162,9 +162,8 @@ public class Unit : MonoBehaviour
         int mouseX, mouseY;
         _grid.GetCellPosition(mouseVector3, out mouseX, out mouseY);
 
-        if ((_unitPhase == UnitPhase.Standby) && IsCellOcuppiedByEnemy(mouseX, mouseY) && _unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
+        if (_unitPhase == UnitPhase.AfterMovement && IsCellOcuppiedByEnemy(mouseX, mouseY) && _unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
         {
-            _unitMovement.MoveBeforeAttack(mouseX, mouseY, this);
             _combatLog.LogCombat(Attack.AttackUnit(this, _grid.GetCell(mouseX, mouseY).GetOccupiedBy()));
             EndAction(ActionType.Attack);
             
@@ -217,8 +216,8 @@ public class Unit : MonoBehaviour
     {
         _activityType = RangeType.Movement;
         _grid.CalculateCostToAllTiles(GetUnitXPosition(), GetUnitYPosition(), _unitMovement.movementRange, _unitRange.minRange, _unitRange.maxRange);
-        _unitMovement.ShowMovementRange(true);
-        _unitRange.ShowUnitRange(false);
+        _unitRange.ShowUnitRange(true);
+        _unitMovement.ShowMovementRange(false);
         _gridManager.ChangeColor(GetUnitXPosition(), GetUnitYPosition(), Color.magenta);
         SetUnitPhase(UnitPhase.Standby);
     }

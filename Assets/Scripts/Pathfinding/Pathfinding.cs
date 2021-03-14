@@ -53,7 +53,6 @@ public class Pathfinding
     public void CalculateCostToAllTiles(int startX, int startY, int movementRange, int minAttackRange,
         int maxAttackRange)
     {
-        //Debug.Log("CalculateCostToAllTiles");
         PathNode startNode = _grid.GetCell(startX, startY).GetPathNode();
         _openList = new List<PathNode> { startNode };
         _closedList = new List<PathNode>();
@@ -87,7 +86,6 @@ public class Pathfinding
     private void IterateOverOpenListWithoutEndNode(PathNode startNode, int movementRange, int minAttackRange,
         int maxAttackRange)
     {
-        PathNode lastMovableNode = null;
         while (_openList.Count > 0)
         {
             PathNode currentNode = GetLowestFCostNode(_openList);
@@ -101,6 +99,11 @@ public class Pathfinding
                 if (_closedList.Contains(neighbourNode)) continue;
                 if (neighbourNode.isObstacle)
                 {
+                    _closedList.Add(neighbourNode);
+                    continue;
+                } else if ((neighbourNode.isOccupied && _grid.GetCell(neighbourNode.x, neighbourNode.y).GetOccupiedBy().GetStatistics().team != Turn.GetUnitTurn()))
+                {
+                    IterateOverOpenListWithoutEndNodeForAttack(currentNode, minAttackRange, maxAttackRange);
                     _closedList.Add(neighbourNode);
                     continue;
                 }
@@ -117,27 +120,9 @@ public class Pathfinding
                     {
                         neighbourNode.isMovable = true;
                         neighbourNode.lastMovableNode = currentNode;
-                    } else if (neighbourNode.gCost > movementRange)
+                    } else if (neighbourNode.gCost > movementRange && currentNode.gCost <= movementRange)
                     {
-                        if (lastMovableNode == null)
-                        {
-                            lastMovableNode = currentNode;
-                            
-                        }
-
-                        int distanceFromLastMovableNode = neighbourNode.hCost - lastMovableNode.hCost;
-
-                        if (minAttackRange <= neighbourNode.hCost && maxAttackRange >= neighbourNode.hCost)
-                        {
-                            neighbourNode.isAttackable = true;
-                            neighbourNode.lastMovableNode = lastMovableNode;
-                        }
-                        if (minAttackRange <= distanceFromLastMovableNode && maxAttackRange >= distanceFromLastMovableNode)
-                        {
-                            neighbourNode.isAttackable = true;
-                            neighbourNode.lastMovableNode = lastMovableNode;
-                        }
-                        
+                        IterateOverOpenListWithoutEndNodeForAttack(currentNode, minAttackRange, maxAttackRange);
                     }
 
                     if (!_openList.Contains(neighbourNode))
@@ -150,6 +135,37 @@ public class Pathfinding
 
     }
 
+    private void IterateOverOpenListWithoutEndNodeForAttack(PathNode startNode, int minAttackRange, int maxAttackRange)
+    {
+        List<PathNode> openList = new List<PathNode> { startNode };
+        List<PathNode> closedList = new List<PathNode>();
+        
+        while (openList.Count > 0)
+        {
+            PathNode currentNode = GetLowestFCostNode(openList);
+
+            openList.Remove(currentNode);
+            closedList.Add(currentNode);
+
+
+            foreach (PathNode neighbourNode in GetNeighbourList(currentNode))
+            {
+                if (closedList.Contains(neighbourNode)) continue;
+
+                int hCost = CalculateDistanceCost(neighbourNode, startNode);
+                if (minAttackRange <= hCost && maxAttackRange >= hCost)
+                {
+                    neighbourNode.lastMovableNode = startNode;
+                    neighbourNode.isAttackable = true;
+                    
+                    if (!openList.Contains(neighbourNode))
+                    {
+                        openList.Add(neighbourNode);
+                    }
+                }
+            }
+        }
+    }
 
     private void IterateOverOpenListWithoutEndNode(PathNode startNode, RangeType rangeType)
     {
