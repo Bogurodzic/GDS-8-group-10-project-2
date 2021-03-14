@@ -26,6 +26,10 @@
             <e p="GridManager.cs" t="Include" />
             <e p="GridUtils.cs" t="Include" />
           </e>
+          <e p="MainMenu" t="Include">
+            <e p="QuitGame.cs" t="Include" />
+            <e p="StartGame.cs" t="Include" />
+          </e>
           <e p="Pathfinding" t="Include">
             <e p="Pathfinding.cs" t="Include" />
             <e p="PathNode.cs" t="Include" />
