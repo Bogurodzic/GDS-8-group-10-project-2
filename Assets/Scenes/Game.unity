@@ -908,7 +908,7 @@ GameObject:
   - component: {fileID: 1142398757}
   - component: {fileID: 1142398756}
   m_Layer: 5
-  m_Name: PickPanel
+  m_Name: PickPanelWrapper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1087,6 +1087,7 @@ GameObject:
   - component: {fileID: 1421706375}
   - component: {fileID: 1421706374}
   - component: {fileID: 1421706373}
+  - component: {fileID: 1421706376}
   m_Layer: 5
   m_Name: ReadyButton
   m_TagString: Untagged
@@ -1155,7 +1156,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1421706374}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1421706376}
+        m_MethodName: ReadyClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1421706374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1193,6 +1205,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1421706371}
   m_CullTransparentMesh: 0
+--- !u!114 &1421706376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421706371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3858492b5f32e49d98f696b3af1d6aa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notReadySprite: {fileID: 21300000, guid: 7d4a75cd86a264e97afb2da6094e0254, type: 3}
+  readySprite: {fileID: 21300000, guid: 3e416b4117f6a4015aa2cd677473ccee, type: 3}
 --- !u!1001 &1516646368
 PrefabInstance:
   m_ObjectHideFlags: 0

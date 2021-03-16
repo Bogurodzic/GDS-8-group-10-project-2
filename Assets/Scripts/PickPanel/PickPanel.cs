@@ -13,8 +13,10 @@ public class PickPanel : MonoBehaviour
     public int player2ActiveChoices = 0;
 
     private LinkedList<GameObject> portraits = new LinkedList<GameObject>();
+    private ReadyButton _readyButton;
     void Start()
     {
+        LoadReadyButton();
         CreatePortraits();
     }
 
@@ -36,14 +38,45 @@ public class PickPanel : MonoBehaviour
             portraits.AddLast(portrait);
         }
     }
+
+    private void LoadReadyButton()
+    {
+        _readyButton = GameObject.Find("ReadyButton").GetComponent<ReadyButton>();
+        Debug.Log("Rady button");
+        Debug.Log(_readyButton);
+    }
+
+    private void ResetPortraits()
+    {
+        foreach (var portrait in portraits)
+        {
+            portrait.GetComponent<Portrait>().SetPotraitActive(false);
+        }
+    }
     
     public bool CanActivatePotrait()
     {
         ReloadActivePortrait();
-        if (player1ActiveChoices < maxPlayerChoices)
+        if (CanCurrentPlayerActivatePortrait())
         {
             return true;
 
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private bool CanCurrentPlayerActivatePortrait()
+    {
+        if (currentPlayerPickingTurn == 1 && player1ActiveChoices < maxPlayerChoices)
+        {
+            return true;
+        }
+        else if (currentPlayerPickingTurn == 2 && player2ActiveChoices < maxPlayerChoices)
+        {
+            return true;
         }
         else
         {
@@ -63,6 +96,65 @@ public class PickPanel : MonoBehaviour
             }
         }
 
-        player1ActiveChoices = playerActiveChoices;
+        SetActivePlayerChoices(playerActiveChoices);
+    }
+
+    public void ReloadReadyButton()
+    {
+        if (IsCurrentPlayerReady())
+        {
+            _readyButton.SetReady(true);
+        }
+        else
+        {
+            _readyButton.SetReady(false);
+        }
+    }
+
+    public void ReloadPickPanel()
+    {
+        ReloadActivePortrait();
+        ReloadReadyButton();
+    }
+
+    public void HandleReadyClicked()
+    {
+        if (currentPlayerPickingTurn == 1)
+        {
+            NextPlayerPickingTurn();
+        }
+        else
+        {
+            DeactivatePanel();
+        }
+    }
+
+    private void NextPlayerPickingTurn()
+    {
+        currentPlayerPickingTurn = 2;
+        ResetPortraits();
+        ReloadReadyButton();
+    }
+
+    private void DeactivatePanel()
+    {
+        Destroy(GameObject.Find("PickPanelWrapper"));
+    }
+
+    private bool IsCurrentPlayerReady()
+    {
+        return (currentPlayerPickingTurn == 1 && player1ActiveChoices == maxPlayerChoices) || (currentPlayerPickingTurn == 2 && player2ActiveChoices ==  maxPlayerChoices);
+    }
+
+    private void SetActivePlayerChoices(int choices)
+    {
+        if (currentPlayerPickingTurn == 1)
+        {
+            player1ActiveChoices = choices;
+        }
+        else
+        {
+            player2ActiveChoices = choices;
+        }
     }
 }

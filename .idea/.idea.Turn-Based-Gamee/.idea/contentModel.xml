@@ -43,6 +43,7 @@
             <e p="PickPanel.cs" t="Include" />
             <e p="Portrait.cs" t="Include" />
             <e p="PortraitFrame.cs" t="Include" />
+            <e p="ReadyButton.cs" t="Include" />
           </e>
           <e p="UI" t="Include">
             <e p="CombatLog.cs" t="Include" />

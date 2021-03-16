@@ -56,6 +56,13 @@ public class Portrait : MonoBehaviour
             _isActive = true;
         }
         _portraitFrame.SetActive(_isActive);
+        _pickPanel.ReloadPickPanel();
+    }
+
+    public void SetPotraitActive(bool isActive)
+    {
+        _isActive = isActive;
+        _portraitFrame.SetActive((isActive));
     }
 
     public bool isActive()
