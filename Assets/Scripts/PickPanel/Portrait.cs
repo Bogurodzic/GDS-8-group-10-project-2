@@ -79,4 +79,9 @@ public class Portrait : MonoBehaviour
     {
         return _isActive;
     }
+
+    public UnitData GetUnitData()
+    {
+        return _unitData;
+    }
 }

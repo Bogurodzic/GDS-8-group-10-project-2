@@ -136,14 +136,32 @@ public class PickPanel : MonoBehaviour
 
     private void NextPlayerPickingTurn()
     {
+        PickedUnits.AddPlayerPickedUnits(GetCurrentPlayerPickedUnits());
         Turn.NextTurn();
         currentPlayerPickingTurn = 2;
         ResetPortraits();
         ReloadReadyButton();
     }
 
+    private LinkedList<UnitData> GetCurrentPlayerPickedUnits()
+    {
+        LinkedList<UnitData> pickedUnits = new LinkedList<UnitData>();
+
+        foreach (var portrait in portraits)
+        {
+            Portrait portraitInstance = portrait.GetComponent<Portrait>();
+            if (portraitInstance.isActive())
+            {
+                pickedUnits.AddLast(portraitInstance.GetUnitData());
+            }
+        }
+
+        return pickedUnits;
+    }
+
     private void DeactivatePanel()
     {
+        PickedUnits.AddPlayerPickedUnits(GetCurrentPlayerPickedUnits());
         Destroy(GameObject.Find("PickPanelWrapper"));
     }
 

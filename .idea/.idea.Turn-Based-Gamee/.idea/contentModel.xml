@@ -40,6 +40,7 @@
             <e p="PathNode.cs" t="Include" />
           </e>
           <e p="PickPanel" t="Include">
+            <e p="PickedUnits.cs" t="Include" />
             <e p="PickPanel.cs" t="Include" />
             <e p="PlayerTurnText.cs" t="Include" />
             <e p="Portrait.cs" t="Include" />
