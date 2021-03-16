@@ -14,6 +14,7 @@ public class Unit : MonoBehaviour
     private RangeType _activityType;
     private UnitPhase _unitPhase = UnitPhase.Inactive;
     private CombatLog _combatLog;
+    public UnitData unitData;
     void Start()
     {
         LoadSprite();
@@ -321,6 +322,7 @@ public class Unit : MonoBehaviour
     private void LoadSprite()
     {
         _sprite = gameObject.GetComponent<SpriteRenderer>();
+        _sprite.sprite = unitData.unitSprite;
     }
     
     private void LoadGrid()
@@ -341,15 +343,18 @@ public class Unit : MonoBehaviour
     private void LoadUnitMovement()
     {
         _unitMovement = gameObject.GetComponent<UnitMovement>();
+        _unitMovement.LoadUnitMovement(unitData);
     }
     
     private void LoadUnitStatistics()
     {
         _unitStatistics = gameObject.GetComponent<UnitStatistics>();
+        _unitStatistics.LoadUnitStatistics(unitData);
     }
 
     private void LoadUnitRange()
     {
         _unitRange = gameObject.GetComponent<UnitRange>();
+        _unitRange.LoadUnitRange(unitData);
     }
 }

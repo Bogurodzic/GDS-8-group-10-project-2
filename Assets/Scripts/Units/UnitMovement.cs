@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class UnitMovement : MonoBehaviour
 {
-    public int movementRange = 5;
+    public int movementRange;
     private Grid _grid;
     private int _xPosition;
     private int _yPosition;
@@ -21,6 +21,11 @@ public class UnitMovement : MonoBehaviour
         }
 
         UpdateUnitPosition();
+    }
+
+    public void LoadUnitMovement(UnitData unitData)
+    {
+        movementRange = unitData.movementRange;
     }
 
     private void LoadGrid()
@@ -91,7 +96,7 @@ public class UnitMovement : MonoBehaviour
     {
         
         PathNode optimalDistanceNode = targetNode.lastMovableNode;
-        int optimalDistance = targetNode.hCost - optimalDistanceNode.hCost;
+       /* int optimalDistance = targetNode.hCost - optimalDistanceNode.hCost;
 
         while (optimalDistance < unit.getUnitRange().maxRange)
         {
@@ -102,7 +107,7 @@ public class UnitMovement : MonoBehaviour
             
             optimalDistanceNode = optimalDistanceNode.cameFromNode;
             optimalDistance = targetNode.hCost - optimalDistanceNode.hCost;
-        }
+        } */
 
         return optimalDistanceNode;
     }

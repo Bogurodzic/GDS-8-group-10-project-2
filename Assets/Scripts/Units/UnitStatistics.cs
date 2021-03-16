@@ -5,19 +5,24 @@ using UnityEngine;
 public class UnitStatistics : MonoBehaviour
 {
     public int team = 1;
-    public int minAttack = 20;
-    public int maxAttack = 40;
-    public int defend = 0;
-    public int maxHp = 100;
+    public int minAttack;
+    public int maxAttack;
+    public int defend;
+    public int maxHp;
     public int currentHp;
     public bool flatDefend = true;
-    void Start()
+
+    public void LoadUnitStatistics(UnitData unitData)
     {
-        currentHp = maxHp;
+        minAttack = unitData.minAttack;
+        maxAttack = unitData.maxAttack;
+        defend = unitData.defend;
+        maxHp = unitData.maxHp;
+        ReloadCurrentHp();
     }
 
-    void Update()
+    private void ReloadCurrentHp()
     {
-        
+        currentHp = maxHp;
     }
 }

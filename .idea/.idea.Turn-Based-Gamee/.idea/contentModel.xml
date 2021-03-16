@@ -7,7 +7,12 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="ScriptableObejcts" t="Include">
-          <e p="TileData.cs" t="Include" />
+          <e p="TileData" t="Include">
+            <e p="TileData.cs" t="Include" />
+          </e>
+          <e p="UnitData" t="Include">
+            <e p="UnitData.cs" t="Include" />
+          </e>
         </e>
         <e p="Scripts" t="Include">
           <e p="Battle" t="Include">
@@ -33,6 +38,11 @@
           <e p="Pathfinding" t="Include">
             <e p="Pathfinding.cs" t="Include" />
             <e p="PathNode.cs" t="Include" />
+          </e>
+          <e p="PickPanel" t="Include">
+            <e p="PickPanel.cs" t="Include" />
+            <e p="Portrait.cs" t="Include" />
+            <e p="PortraitFrame.cs" t="Include" />
           </e>
           <e p="UI" t="Include">
             <e p="CombatLog.cs" t="Include" />

@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class UnitRange : MonoBehaviour
 {
-    public int minRange = 2;
-    public int maxRange = 3;
+    public int minRange;
+    public int maxRange;
     
     private bool _showRange = false;
     private Grid _grid;
@@ -19,6 +19,12 @@ public class UnitRange : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void LoadUnitRange(UnitData unitData)
+    {
+        minRange = unitData.minAttackRange;
+        maxRange = unitData.maxAttackRange;
     }
     
     private void LoadGrid()
