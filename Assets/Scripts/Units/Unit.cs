@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Enums;
 using UnityEngine;
@@ -14,9 +15,16 @@ public class Unit : MonoBehaviour
     private RangeType _activityType;
     private UnitPhase _unitPhase = UnitPhase.Inactive;
     private CombatLog _combatLog;
+    private bool _isDeployed = false;
+    private bool _isPreDeployed = false;
+    private int _preDeployedX = -9999;
+    private int _preDeployedY = -9999;
+        
     public UnitData unitData;
+    
     void Start()
     {
+        /*
         LoadSprite();
         LoadGrid();
         LoadGridManager();
@@ -26,27 +34,32 @@ public class Unit : MonoBehaviour
         LoadUnitRange();
         PlaceUnitOnBoard();
         AddTeamColorToSprite();
+        */
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Turn.GetCurrentTurnType() == TurnType.RegularGame)
         {
-            HandleAction();
-        }
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            HandleActivatingAttackMode();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (IsUnitTurn())
+            if (Input.GetMouseButtonDown(0))
             {
-                SkipTurn();
+                HandleAction();
             }
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                HandleActivatingAttackMode();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (IsUnitTurn())
+                {
+                    SkipTurn();
+                }
+            }         
         }
+
     }
 
     private void PlaceUnitOnBoard()
@@ -322,7 +335,6 @@ public class Unit : MonoBehaviour
     private void LoadSprite()
     {
         _sprite = gameObject.GetComponent<SpriteRenderer>();
-        _sprite.sprite = unitData.unitSprite;
     }
     
     private void LoadGrid()
@@ -343,18 +355,81 @@ public class Unit : MonoBehaviour
     private void LoadUnitMovement()
     {
         _unitMovement = gameObject.GetComponent<UnitMovement>();
-        _unitMovement.LoadUnitMovement(unitData);
     }
     
     private void LoadUnitStatistics()
     {
         _unitStatistics = gameObject.GetComponent<UnitStatistics>();
-        _unitStatistics.LoadUnitStatistics(unitData);
     }
 
     private void LoadUnitRange()
     {
         _unitRange = gameObject.GetComponent<UnitRange>();
+    }
+
+    public void LoadUnitData(UnitData unitDataToLoad)
+    {
+        unitData = unitDataToLoad;
+        LoadSprite();
+        LoadGrid();
+        LoadGridManager();
+        LoadCombatLog();
+        LoadUnitMovement();
+        LoadUnitStatistics();
+        LoadUnitRange();
+        //PlaceUnitOnBoard();
+        //AddTeamColorToSprite();
+        ReloadUnitData();
+    }
+
+    public void ReloadUnitData()
+    {
+        Debug.Log(_unitMovement);
+        _unitMovement.LoadUnitMovement(unitData);
+        _unitStatistics.LoadUnitStatistics(unitData);
         _unitRange.LoadUnitRange(unitData);
+        _sprite.sprite = unitData.unitSprite;
+    }
+
+    public bool IsUnitDeployed()
+    {
+        return _isDeployed;
+    }
+
+    public bool IsUnitPreDeployed()
+    {
+        return _isPreDeployed;
+    }
+
+    public void HandleDeployment(int x, int y)
+    {
+        if (!IsUnitPreDeployed())
+        {
+            PreDeploy(x, y);
+        } else if (!IsUnitDeployed() && x == _preDeployedX && y == _preDeployedY)
+        {
+            Deploy(x, y);
+        }
+        else
+        {
+            PreDeploy(x, y);
+        }
+    }
+
+    public void Deploy(int x, int y)
+    {
+        Debug.Log("DEPLOY");
+        _isDeployed = true;
+        PlaceUnitOnBoard();
+    }
+
+    public void PreDeploy(int x, int y)
+    {
+        _isPreDeployed = true;
+        Vector3 cellCenterPosition = _grid.GetCellCenter(x, y);
+        gameObject.transform.position = cellCenterPosition;
+        _preDeployedX = x;
+        _preDeployedY = y;
+        Debug.Log("PREDEPLOY");
     }
 }

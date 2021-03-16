@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Enums;
 using UnityEngine;
 
 public class PickPanel : MonoBehaviour
@@ -162,6 +163,8 @@ public class PickPanel : MonoBehaviour
     private void DeactivatePanel()
     {
         PickedUnits.AddPlayerPickedUnits(GetCurrentPlayerPickedUnits());
+        Turn.NextTurn();
+        Turn.SetTurnType(TurnType.Deployment);
         Destroy(GameObject.Find("PickPanelWrapper"));
     }
 

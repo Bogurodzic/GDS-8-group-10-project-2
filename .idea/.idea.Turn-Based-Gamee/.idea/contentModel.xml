@@ -22,6 +22,7 @@
           <e p="Enums" t="Include">
             <e p="ActionType.cs" t="Include" />
             <e p="RangeType.cs" t="Include" />
+            <e p="TurnType.cs" t="Include" />
             <e p="UnitPhase.cs" t="Include" />
           </e>
           <e p="Grid" t="Include">
@@ -63,8 +64,12 @@
             <e p="CombatLog.cs" t="Include" />
             <e p="TurnText.cs" t="Include" />
           </e>
+          <e p="UnitDeployment" t="Include">
+            <e p="UnitDeployment.cs" t="Include" />
+          </e>
           <e p="Units" t="Include">
             <e p="Unit.cs" t="Include" />
+            <e p="UnitList.cs" t="Include" />
             <e p="UnitMovement.cs" t="Include" />
             <e p="UnitRange.cs" t="Include" />
             <e p="UnitStatistics.cs" t="Include" />

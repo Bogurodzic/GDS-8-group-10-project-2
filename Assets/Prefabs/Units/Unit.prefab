@@ -74,7 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a28ecc67d9b8e4fba9ce0fee112e9209, type: 3}
+  m_Sprite: {fileID: -5749117314582653529, guid: 41face6640e114faba661db45ee49c52,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4703ab8e8e29c4cde930195c95e36799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementRange: 5
+  movementRange: 3
 --- !u!114 &4627574333829354504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,7 +111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b76e4451dba24a4798819a79248271d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 5
+  minRange: 1
+  maxRange: 6
 --- !u!114 &4627574333829354510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63bf9d69f2f1049369bb470f05eb906b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitData: {fileID: 11400000, guid: 05793ac1b176c469d8d83c8b2de76e58, type: 2}
 --- !u!114 &4627574333829354511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,8 +139,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 1
-  attack: 20
+  minAttack: 50
+  maxAttack: 50
   defend: 0
   maxHp: 100
   currentHp: 0
-  movementRange: 6
+  flatDefend: 1

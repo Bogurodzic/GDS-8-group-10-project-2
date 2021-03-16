@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Enums;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -33,10 +34,7 @@ public class GridManager : MonoBehaviour
         
     }
 
-    void Update()
-    {
 
-    }
 
     private void SetGridSize()
     {
