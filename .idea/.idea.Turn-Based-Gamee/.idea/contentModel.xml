@@ -41,9 +41,11 @@
           </e>
           <e p="PickPanel" t="Include">
             <e p="PickPanel.cs" t="Include" />
+            <e p="PlayerTurnText.cs" t="Include" />
             <e p="Portrait.cs" t="Include" />
             <e p="PortraitFrame.cs" t="Include" />
             <e p="ReadyButton.cs" t="Include" />
+            <e p="RemainingSelectionText.cs" t="Include" />
             <e p="UnitInfo" t="Include">
               <e p="UnitAbilityInfo.cs" t="Include" />
               <e p="UnitAttackInfo.cs" t="Include" />

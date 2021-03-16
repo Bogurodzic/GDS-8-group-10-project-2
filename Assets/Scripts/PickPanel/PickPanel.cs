@@ -136,6 +136,7 @@ public class PickPanel : MonoBehaviour
 
     private void NextPlayerPickingTurn()
     {
+        Turn.NextTurn();
         currentPlayerPickingTurn = 2;
         ResetPortraits();
         ReloadReadyButton();
@@ -171,5 +172,17 @@ public class PickPanel : MonoBehaviour
     public void ResetUnitInfo()
     {
         _unitInfo.ResetText();
+    }
+
+    public int GetRemainingSelections()
+    {
+        if (currentPlayerPickingTurn == 1)
+        {
+            return maxPlayerChoices - player1ActiveChoices;
+        }
+        else
+        {
+            return maxPlayerChoices - player2ActiveChoices;
+        }
     }
 }
