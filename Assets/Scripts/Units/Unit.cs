@@ -378,7 +378,7 @@ public class Unit : MonoBehaviour
         LoadUnitStatistics();
         LoadUnitRange();
         //PlaceUnitOnBoard();
-        //AddTeamColorToSprite();
+        AddTeamColorToSprite();
         ReloadUnitData();
     }
 

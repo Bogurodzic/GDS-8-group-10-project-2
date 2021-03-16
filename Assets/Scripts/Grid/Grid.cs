@@ -266,7 +266,14 @@ public class Grid
         }
         else
         {
-            return false;
+            if (mouseX == GetGridWidth() - 1 && (mouseY >= 0 && mouseY < GetGridHeight()))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

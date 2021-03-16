@@ -2,19 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ea6c1fe-6767-43df-abde-f4f8039ac897" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/TurnType.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/TurnType.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Units/Unit.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Units/Unit.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Battle/Turn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Battle/Turn.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Grid/Board.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Grid/Board.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Grid/Grid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Grid/Grid.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Grid/GridManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Grid/GridManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PickPanel/PickPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PickPanel/PickPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PickPanel/PickedUnits.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PickPanel/PickedUnits.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UnitDeployment/UnitDeployment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UnitDeployment/UnitDeployment.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/UnitList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/UnitList.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,11 +81,11 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Battle/Turn.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/PickedUnits.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridManager.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/Grid.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UnitDeployment/UnitDeployment.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/PickPanel.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitList.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/Grid.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/Board.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitList.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UnitDeployment/UnitDeployment.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
     </changedPaths>
   </component>
@@ -147,7 +140,7 @@
       <workItem from="1614965102564" duration="123000" />
       <workItem from="1614965581079" duration="5041000" />
       <workItem from="1615234679328" duration="13992000" />
-      <workItem from="1615474273110" duration="52715000" />
+      <workItem from="1615474273110" duration="55495000" />
     </task>
     <servers />
   </component>

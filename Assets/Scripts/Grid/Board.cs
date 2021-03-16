@@ -39,6 +39,21 @@ public class Board : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && _grid.IsMouseOverDeploymentCell())
         {
             DeployUnit();
+            if (_unitList.GetNextUnitToDeploy().GetComponent<Unit>().IsUnitDeployed())
+            {
+                if (_unitList.IsAnyUnitToDeploy())
+                {
+                    Turn.NextTurn();
+                    _unitList.HandleNextUnitToDeploy();
+                }
+                else
+                {
+                    _grid.HideRange();
+                    Turn.NextTurn();
+                    Turn.SetTurnType(TurnType.RegularGame);
+                }
+
+            }
         }
     }
 

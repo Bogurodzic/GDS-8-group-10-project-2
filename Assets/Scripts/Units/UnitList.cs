@@ -27,6 +27,7 @@ public class UnitList : MonoBehaviour
         foreach (var player1PickedUnit in player1PickedUnits)
         {
             GameObject pickedUnit = Instantiate(unitPrefab);
+            pickedUnit.GetComponent<UnitStatistics>().team = 1;
             pickedUnit.transform.position = Vector3.one * -999;
             pickedUnit.GetComponent<Unit>().LoadUnitData(player1PickedUnit);
             player1UnitList.AddLast(pickedUnit);
@@ -35,6 +36,7 @@ public class UnitList : MonoBehaviour
         foreach (var player2PickedUnit in player2PickedUnits)
         {
             GameObject pickedUnit = Instantiate(unitPrefab);
+            pickedUnit.GetComponent<UnitStatistics>().team = 2;
             pickedUnit.transform.position = Vector3.one * -999;
             pickedUnit.GetComponent<Unit>().LoadUnitData(player2PickedUnit);
             player2UnitList.AddLast(pickedUnit);
@@ -45,12 +47,48 @@ public class UnitList : MonoBehaviour
     {
         if (Turn.GetUnitTurn() == 1)
         {
-            _nextUnitToDeploy = player1UnitList.First.Value;
+            _nextUnitToDeploy = FindNextUnitToDeploy(player1UnitList);
         }
         else
         {
-            _nextUnitToDeploy = player2UnitList.First.Value;
+            _nextUnitToDeploy = FindNextUnitToDeploy(player2UnitList);
         }
+    }
+
+    public bool IsAnyUnitToDeploy()
+    {
+        GameObject last1playerUnit = FindNextUnitToDeploy(player1UnitList);
+        GameObject last2playerUnit = FindNextUnitToDeploy(player2UnitList);
+
+        if (!last1playerUnit.GetComponent<Unit>().IsUnitDeployed() ||
+            !last2playerUnit.GetComponent<Unit>().IsUnitDeployed())
+        {
+            Debug.Log("THERE IS TILL UNIT TO DEPLOY");
+            return true;
+        }
+        else
+        {
+            Debug.Log("THERE IS NO MORE UNIT TO DEPLOY");
+
+            return false;
+        }
+
+    }
+
+    private GameObject FindNextUnitToDeploy(LinkedList<GameObject> playerUnitList)
+    {
+        LinkedList<GameObject>.Enumerator playerUnitListEnumerator = playerUnitList.GetEnumerator();
+        playerUnitListEnumerator.MoveNext();
+        GameObject nextUnitToDeploy = playerUnitListEnumerator.Current;
+        Unit unit = nextUnitToDeploy.GetComponent<Unit>();
+
+        while (unit.IsUnitDeployed() && playerUnitListEnumerator.MoveNext())
+        {
+            nextUnitToDeploy = playerUnitListEnumerator.Current;
+            unit = nextUnitToDeploy.GetComponent<Unit>();
+        }
+        
+        return nextUnitToDeploy;
     }
 
     public GameObject GetNextUnitToDeploy()

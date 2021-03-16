@@ -20,6 +20,9 @@ public class UnitDeployment : MonoBehaviour
         if (CanActiveDeployment() && !IsDeploymentActive())
         {
             ActiveDeployment();
+        } else if (IsDeploymentActive() && Turn.GetCurrentTurnType() == TurnType.Deployment)
+        {
+            ReloadAreaForPlacingUnit();
         }
     }
 
@@ -54,7 +57,22 @@ public class UnitDeployment : MonoBehaviour
         {
             _grid.HideRange();
             _grid.HiglightRightDeployArea();
+            _unitList.HandleNextUnitToDeploy();
         }
+    }
+
+    private void ReloadAreaForPlacingUnit()
+    {
+        if (Turn.GetUnitTurn() == 1)
+        {
+            _grid.HideRange();
+            _grid.HiglightLeftDeployArea();
+        }
+        else
+        {
+            _grid.HideRange();
+            _grid.HiglightRightDeployArea();
+        }  
     }
 
     public void DeactiveDeployment()
