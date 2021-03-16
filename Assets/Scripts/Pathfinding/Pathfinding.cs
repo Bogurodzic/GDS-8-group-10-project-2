@@ -170,6 +170,16 @@ public class Pathfinding
                         openList.Add(neighbourNode);
                     }
                 }
+                else
+                {
+                    neighbourNode.lastMovableNode = startNode;
+                    //neighbourNode.isAttackable = true;
+                    
+                    if (!openList.Contains(neighbourNode))
+                    {
+                        openList.Add(neighbourNode);
+                    }
+                }
             }
         }
     }
