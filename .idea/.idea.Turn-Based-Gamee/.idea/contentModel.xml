@@ -44,6 +44,17 @@
             <e p="Portrait.cs" t="Include" />
             <e p="PortraitFrame.cs" t="Include" />
             <e p="ReadyButton.cs" t="Include" />
+            <e p="UnitInfo" t="Include">
+              <e p="UnitAbilityInfo.cs" t="Include" />
+              <e p="UnitAttackInfo.cs" t="Include" />
+              <e p="UnitDefInfo.cs" t="Include" />
+              <e p="UnitHpInfo.cs" t="Include" />
+              <e p="UnitInfo.cs" t="Include" />
+              <e p="UnitInfoText.cs" t="Include" />
+              <e p="UnitMovementInfo.cs" t="Include" />
+              <e p="UnitNameInfo.cs" t="Include" />
+              <e p="UnitRangeInfo.cs" t="Include" />
+            </e>
           </e>
           <e p="UI" t="Include">
             <e p="CombatLog.cs" t="Include" />

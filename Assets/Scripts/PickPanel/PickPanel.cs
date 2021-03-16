@@ -14,10 +14,12 @@ public class PickPanel : MonoBehaviour
 
     private LinkedList<GameObject> portraits = new LinkedList<GameObject>();
     private ReadyButton _readyButton;
+    private UnitInfo _unitInfo;
     void Start()
     {
         LoadReadyButton();
         CreatePortraits();
+        LoadUnitInfo();
     }
 
     void Update()
@@ -42,8 +44,11 @@ public class PickPanel : MonoBehaviour
     private void LoadReadyButton()
     {
         _readyButton = GameObject.Find("ReadyButton").GetComponent<ReadyButton>();
-        Debug.Log("Rady button");
-        Debug.Log(_readyButton);
+    }
+
+    private void LoadUnitInfo()
+    {
+        _unitInfo = GameObject.Find("UnitInfo").GetComponent<UnitInfo>();
     }
 
     private void ResetPortraits()
@@ -156,5 +161,15 @@ public class PickPanel : MonoBehaviour
         {
             player2ActiveChoices = choices;
         }
+    }
+
+    public void DisplayUnitInfo(UnitData unitData)
+    {
+        _unitInfo.LoadUnitData(unitData);
+    }
+
+    public void ResetUnitInfo()
+    {
+        _unitInfo.ResetText();
     }
 }
