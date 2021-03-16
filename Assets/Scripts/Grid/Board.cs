@@ -19,7 +19,7 @@ public class Board : MonoBehaviour
 
     void Update()
     {
-        if (Turn.GetCurrentTurnType() == TurnType.Deployment)
+        if (Turn.GetCurrentTurnType() == TurnType.Deployment && _unitList.ReadyForDeploy())
         {
             HandleDeployment();
         }
@@ -27,6 +27,10 @@ public class Board : MonoBehaviour
 
     private void HandleDeployment()
     {
+        Debug.Log(_grid);
+        Debug.Log(_unitList);
+        Debug.Log(_unitList.GetNextUnitToDeploy());
+        Debug.Log(_unitList.GetNextUnitToDeploy().GetComponent<Unit>());
         if (_grid.IsMouseOverDeploymentCell() && !_unitList.GetNextUnitToDeploy().GetComponent<Unit>().IsUnitPreDeployed())
         {
             ShowUnitOverCell();

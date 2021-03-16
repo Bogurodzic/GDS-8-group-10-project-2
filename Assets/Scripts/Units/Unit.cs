@@ -15,6 +15,8 @@ public class Unit : MonoBehaviour
     private RangeType _activityType;
     private UnitPhase _unitPhase = UnitPhase.Inactive;
     private CombatLog _combatLog;
+
+
     private bool _isDeployed = false;
     private bool _isPreDeployed = false;
     private int _preDeployedX = -9999;
@@ -53,7 +55,7 @@ public class Unit : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (IsUnitTurn())
+                if (IsUnitTurn() && IsActive())
                 {
                     SkipTurn();
                 }
@@ -202,6 +204,7 @@ public class Unit : MonoBehaviour
     {
         return Turn.IsUnitTurn(_unitStatistics.team) && _unitPhase != UnitPhase.OnCooldown;
     }
+    
 
     public bool IsUnitClicked(int mouseX, int mouseY)
     {
@@ -384,7 +387,6 @@ public class Unit : MonoBehaviour
 
     public void ReloadUnitData()
     {
-        Debug.Log(_unitMovement);
         _unitMovement.LoadUnitMovement(unitData);
         _unitStatistics.LoadUnitStatistics(unitData);
         _unitRange.LoadUnitRange(unitData);
@@ -418,7 +420,6 @@ public class Unit : MonoBehaviour
 
     public void Deploy(int x, int y)
     {
-        Debug.Log("DEPLOY");
         _isDeployed = true;
         PlaceUnitOnBoard();
     }
@@ -430,6 +431,5 @@ public class Unit : MonoBehaviour
         gameObject.transform.position = cellCenterPosition;
         _preDeployedX = x;
         _preDeployedY = y;
-        Debug.Log("PREDEPLOY");
     }
 }

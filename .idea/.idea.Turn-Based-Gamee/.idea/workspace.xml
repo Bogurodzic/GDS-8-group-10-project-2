@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9ea6c1fe-6767-43df-abde-f4f8039ac897" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Grid/Board.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Grid/Board.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Grid/Grid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Grid/Grid.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UnitDeployment/UnitDeployment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UnitDeployment/UnitDeployment.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/UnitList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/UnitList.cs" afterDir="false" />
     </list>
@@ -83,10 +83,10 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/PickPanel.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/Grid.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/Board.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitList.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UnitDeployment/UnitDeployment.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/Board.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitList.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1pLb0eqZaQJiXIFPJRkhff1DHdr" />
@@ -140,7 +140,7 @@
       <workItem from="1614965102564" duration="123000" />
       <workItem from="1614965581079" duration="5041000" />
       <workItem from="1615234679328" duration="13992000" />
-      <workItem from="1615474273110" duration="55495000" />
+      <workItem from="1615474273110" duration="57475000" />
     </task>
     <servers />
   </component>

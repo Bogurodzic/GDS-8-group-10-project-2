@@ -9,6 +9,7 @@ public class UnitList : MonoBehaviour
     private LinkedList<GameObject> player2UnitList = new LinkedList<GameObject>();
 
     private GameObject _nextUnitToDeploy;
+    private bool _readyForDeploy = false;
 
     void Start()
     {
@@ -41,10 +42,22 @@ public class UnitList : MonoBehaviour
             pickedUnit.GetComponent<Unit>().LoadUnitData(player2PickedUnit);
             player2UnitList.AddLast(pickedUnit);
         }
+
+        _readyForDeploy = true;
     }
 
     public void HandleNextUnitToDeploy()
     {
+        Debug.Log("HandleNextUnitToDeploy");
+        foreach (var o in player1UnitList)
+        {
+            Debug.Log(o);
+        }
+        foreach (var o in player2UnitList)
+        {
+            Debug.Log(o);
+        }
+
         if (Turn.GetUnitTurn() == 1)
         {
             _nextUnitToDeploy = FindNextUnitToDeploy(player1UnitList);
@@ -94,5 +107,10 @@ public class UnitList : MonoBehaviour
     public GameObject GetNextUnitToDeploy()
     {
         return _nextUnitToDeploy;
+    }
+
+    public bool ReadyForDeploy()
+    {
+        return _readyForDeploy;
     }
 }
