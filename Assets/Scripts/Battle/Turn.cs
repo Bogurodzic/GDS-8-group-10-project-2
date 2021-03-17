@@ -5,7 +5,7 @@ using UnityEngine;
 
 public static class Turn
 {
-    private static TurnType _currentTurnType = TurnType.RegularGame;
+    private static TurnType _currentTurnType = TurnType.Pick;
     private static int _currentTurn = 1;
 
     public static void NextTurn()

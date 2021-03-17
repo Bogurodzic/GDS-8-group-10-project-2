@@ -6,7 +6,14 @@ public class UnitAbilityInfo : UnitInfoText
 {
     protected override void LoadUnitText()
     {
-        txt.text = _initialText + " ";
+        if (_unitData.unitAbility)
+        {
+            txt.text = _initialText + " " + _unitData.unitAbility.description;
+        }
+        else
+        {
+            txt.text = _initialText + " None";
+        }
     }
     
 }

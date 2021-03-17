@@ -41,7 +41,14 @@ public class Grid
 
     public GridCell GetCell(int x, int y)
     {
-        return gridArray[x, y];
+        if (x >= 0 && y >= 0 && x < width && y < height)
+        {
+            return gridArray[x, y];
+        }
+        else
+        {
+            return null;
+        }
     }
 
     public Vector3 GetCellCenter(int x, int y)

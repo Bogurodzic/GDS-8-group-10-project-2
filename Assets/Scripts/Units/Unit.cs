@@ -26,17 +26,7 @@ public class Unit : MonoBehaviour
     
     void Start()
     {
-        /*
-        LoadSprite();
-        LoadGrid();
-        LoadGridManager();
-        LoadCombatLog();
-        LoadUnitMovement();
-        LoadUnitStatistics();
-        LoadUnitRange();
-        PlaceUnitOnBoard();
-        AddTeamColorToSprite();
-        */
+
     }
 
     void Update()
@@ -100,6 +90,9 @@ public class Unit : MonoBehaviour
                 HandleDeactivatingUnit();
                 HandleAttack();
                 HandleMovement();
+                break;
+            case UnitPhase.AbilityActivated:
+                Debug.Log("ABILITY ACTIVATED");
                 break;
             case UnitPhase.AfterMovement:
                 HandleAttack();
@@ -200,6 +193,11 @@ public class Unit : MonoBehaviour
         return _unitPhase != UnitPhase.Inactive && _unitPhase != UnitPhase.OnCooldown;
     }
 
+    public bool IsAbilityActive()
+    {
+        return IsActive() && unitData.unitAbility;
+    }
+
     public bool IsUnitTurn()
     {
         return Turn.IsUnitTurn(_unitStatistics.team) && _unitPhase != UnitPhase.OnCooldown;
@@ -286,6 +284,11 @@ public class Unit : MonoBehaviour
         SetUnitPhase(UnitPhase.AfterAttack);
         _grid.CalculateCostToAllTiles(GetUnitXPosition(), GetUnitYPosition(), _unitMovement.movementRange, 0, 0);
         _unitMovement.ShowMovementRange(true);
+    }
+
+    public void ToggleAbility()
+    {
+        SetUnitPhase(UnitPhase.AbilityActivated);
     }
 
     public void DeactivateUnit()

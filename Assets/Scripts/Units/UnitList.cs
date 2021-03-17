@@ -113,6 +113,24 @@ public class UnitList : MonoBehaviour
         return nextUnitToDeploy;
     }
 
+    private GameObject FindActiveUnit(LinkedList<GameObject> playerUnitList)
+    {
+        LinkedList<GameObject>.Enumerator playerUnitListEnumerator = playerUnitList.GetEnumerator();
+        playerUnitListEnumerator.MoveNext();
+        GameObject activeUnit = playerUnitListEnumerator.Current;
+        Debug.Log("activeUnit");
+        Debug.Log(activeUnit);
+
+        Unit unit = activeUnit.GetComponent<Unit>();
+        while (!unit.IsActive() && playerUnitListEnumerator.MoveNext())
+        {
+            activeUnit = playerUnitListEnumerator.Current;
+            unit = activeUnit.GetComponent<Unit>();
+        }
+
+        return activeUnit;
+    }
+
     public GameObject GetNextUnitToDeploy()
     {
         return _nextUnitToDeploy;
@@ -121,5 +139,20 @@ public class UnitList : MonoBehaviour
     public bool ReadyForDeploy()
     {
         return _readyForDeploy;
+    }
+
+   public GameObject GetActiveUnit()
+    {
+        GameObject activeUnitFromPlayer1UnitList = FindActiveUnit(player1UnitList);
+
+        if (activeUnitFromPlayer1UnitList.GetComponent<Unit>().IsActive())
+        {
+            return activeUnitFromPlayer1UnitList;
+        }
+        
+        GameObject activeUnitFromPlayer2UnitList = FindActiveUnit(player2UnitList);
+
+        return activeUnitFromPlayer2UnitList;
+
     }
 }

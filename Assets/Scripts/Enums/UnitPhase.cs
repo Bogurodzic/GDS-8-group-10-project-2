@@ -7,6 +7,7 @@ namespace Enums
         AfterMovement,
         AfterAttack,
         AfterDash,
+        AbilityActivated,
         OnCooldown,
     }
 }

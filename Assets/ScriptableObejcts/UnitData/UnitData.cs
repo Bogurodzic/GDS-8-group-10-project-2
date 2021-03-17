@@ -11,6 +11,7 @@ public class UnitData : ScriptableObject
     public int movementRange;
     public int minAttackRange;
     public int maxAttackRange;
+    public AbilitiesData unitAbility;
     public Sprite unitSprite;
     public Sprite unitPickerSprite;
     public Sprite unitListSprite;
