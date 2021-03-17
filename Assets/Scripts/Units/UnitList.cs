@@ -5,6 +5,7 @@ using UnityEngine;
 public class UnitList : MonoBehaviour
 {
     public GameObject unitPrefab;
+    public UnitData bossUnitData;
     private LinkedList<GameObject> player1UnitList = new LinkedList<GameObject>();
     private LinkedList<GameObject> player2UnitList = new LinkedList<GameObject>();
 
@@ -16,7 +17,6 @@ public class UnitList : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -25,6 +25,19 @@ public class UnitList : MonoBehaviour
     public void CreateUnitListForPlayers(LinkedList<UnitData> player1PickedUnits,
         LinkedList<UnitData> player2PickedUnits)
     {
+        GameObject boss1 = Instantiate(unitPrefab);
+        boss1.GetComponent<UnitStatistics>().team = 1;
+        boss1.transform.position = Vector3.one * -999;
+        boss1.GetComponent<Unit>().LoadUnitData(bossUnitData);
+        player1UnitList.AddLast(boss1);
+        
+        GameObject boss2 = Instantiate(unitPrefab);
+        boss2.GetComponent<UnitStatistics>().team = 2;
+        boss2.transform.position = Vector3.one * -999;
+        boss2.GetComponent<Unit>().LoadUnitData(bossUnitData);
+        player2UnitList.AddLast(boss2);
+        
+        
         foreach (var player1PickedUnit in player1PickedUnits)
         {
             GameObject pickedUnit = Instantiate(unitPrefab);
@@ -48,7 +61,6 @@ public class UnitList : MonoBehaviour
 
     public void HandleNextUnitToDeploy()
     {
-        Debug.Log("HandleNextUnitToDeploy");
         foreach (var o in player1UnitList)
         {
             Debug.Log(o);
@@ -76,13 +88,10 @@ public class UnitList : MonoBehaviour
         if (!last1playerUnit.GetComponent<Unit>().IsUnitDeployed() ||
             !last2playerUnit.GetComponent<Unit>().IsUnitDeployed())
         {
-            Debug.Log("THERE IS TILL UNIT TO DEPLOY");
             return true;
         }
         else
         {
-            Debug.Log("THERE IS NO MORE UNIT TO DEPLOY");
-
             return false;
         }
 

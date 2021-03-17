@@ -1239,6 +1239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitPrefab: {fileID: 4627574333829354501, guid: 25b5167d6667348c983814bf20d1e38d,
     type: 3}
+  bossUnitData: {fileID: 11400000, guid: 411bfc2df0be34749a7a6ad9baf30ac8, type: 2}
 --- !u!4 &965933481
 Transform:
   m_ObjectHideFlags: 0
