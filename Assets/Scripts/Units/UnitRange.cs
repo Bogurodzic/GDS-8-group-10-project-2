@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class UnitRange : MonoBehaviour
 {
-    public int minRange = 2;
-    public int maxRange = 3;
+    public int minRange;
+    public int maxRange;
     
     private bool _showRange = false;
     private Grid _grid;
-    private UnitMovement _unitMovement;
     
     void Start()
     {
@@ -21,28 +20,31 @@ public class UnitRange : MonoBehaviour
     {
 
     }
+
+    public void LoadUnitRange(UnitData unitData)
+    {
+        minRange = unitData.minAttackRange;
+        maxRange = unitData.maxAttackRange;
+    }
     
     private void LoadGrid()
     {
         _grid = GameObject.Find("Testing").GetComponent<Board>().GetGrid();
     }
-
-    private void LoadUnitMovement()
-    {
-        _unitMovement = gameObject.GetComponent<UnitMovement>();
-    }
-
+    
     private void LoadComponents()
     {
         LoadGrid();
-        LoadUnitMovement();
     }
     
-
-    public void ShowUnitRange(int x, int y)
+    public void ShowUnitRange(bool hidePreviouseRange = true)
     {
-        HideRange();
-        _grid.ShowRange(x, y, minRange, maxRange, RangeType.Attack);
+        if (hidePreviouseRange)
+        {
+            _grid.HideRange();
+        }
+
+        _grid.ShowRange(RangeType.Attack);
     }
 
     public void HideRange()
@@ -52,8 +54,7 @@ public class UnitRange : MonoBehaviour
     
     public bool IsInAttackRange(int x, int y, int targetX, int targetY)
     {
-        _grid.CalculateCostToAllTiles(x, y, RangeType.Attack);
-        if (_grid.IsPositionInRange(targetX, targetY, minRange, maxRange, RangeType.Attack))
+        if (_grid.GetCell(targetX, targetY).GetPathNode().isAttackable)
         {
             return true;
         }

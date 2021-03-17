@@ -41,7 +41,14 @@ public class Grid
 
     public GridCell GetCell(int x, int y)
     {
-        return gridArray[x, y];
+        if (x >= 0 && y >= 0 && x < width && y < height)
+        {
+            return gridArray[x, y];
+        }
+        else
+        {
+            return null;
+        }
     }
 
     public Vector3 GetCellCenter(int x, int y)
@@ -101,27 +108,33 @@ public class Grid
         GetCellPosition(worldPosition, out x, out y);
         return GetValue(x, y);
     }
-
-
-    public void ShowRange(int unitXPosition, int unitYPosition, int minRange, int maxRange, RangeType rangeType)
+    
+    public void ShowRange(RangeType rangeType)
     {
-        CalculateCostToAllTiles(unitXPosition, unitYPosition, rangeType);
         
         for (int x = 0; x < gridArray.GetLength(0); x++)
         {
             for (int y = 0; y < gridArray.GetLength(1); y++)
             {
-                if (IsPositionInRange(x, y, minRange, maxRange, rangeType))
+                
+                if (rangeType == RangeType.Movement)
                 {
-                    _gridManager.ChangeColor(x, y, Color.red);
+                    if (GetCell(x, y).GetPathNode().isMovable)
+                    {
+                        _gridManager.ChangeColor(x, y, Color.blue);
+                    }
                 }
-                else
+
+                if (rangeType == RangeType.Attack)
                 {
-                    _gridManager.ResetColor(x, y);
+                    if (GetCell(x, y).GetPathNode().isAttackable)
+                    {
+                        _gridManager.ChangeColor(x, y, Color.red);
+                    } 
                 }
+
             }
         }
-
     }
     
 
@@ -178,8 +191,23 @@ public class Grid
                 return false;
             }
         }
+    }
 
+    public bool IsPositionInAttackRange(int x, int y, int minRange, int maxRange)
+    {
+        int cost = GetCell(x, y).GetPathNode().hCost;
 
+        if (minRange <= cost && maxRange >= cost)
+        {   
+            Debug.Log("IS IN RANGE:" + cost);
+            return true;
+        }
+        else
+        {
+            Debug.Log("IS NOT IN RANGE:" + cost);
+
+            return false;
+        }
     }
 
     public int GetGridWidth()
@@ -196,9 +224,63 @@ public class Grid
     {
         return _pathfinding.FindPath(startX, startY, endX, endY);
     }
+    
+    public void CalculateCostToAllTiles(int unitXPosition, int unitYPosition, int movementRange, int minAttackRange,
+        int maxAttackRange)
+    {
+        _pathfinding.CalculateCostToAllTiles(unitXPosition, unitYPosition, movementRange, minAttackRange, maxAttackRange);
+    }
 
     public void CalculateCostToAllTiles(int x, int y, RangeType rangeType)
     {
         _pathfinding.CalculateCostToAllTiles(x,y, rangeType);
+    }
+
+    public void HiglightLeftDeployArea()
+    {
+        
+        for (int i = 0; i < GetGridHeight(); i++)
+        {
+            _gridManager.ChangeColor(0, i, Color.yellow);
+        }
+    }
+
+    public void HiglightRightDeployArea()
+    {
+        for (int i = 0; i < GetGridHeight(); i++)
+        {
+            _gridManager.ChangeColor(GetGridWidth()-1, i, Color.yellow);
+        }
+    }
+
+    public bool IsMouseOverDeploymentCell()
+    {
+        Vector3 mouseVector3 = GridUtils.GetMouseWorldPosition(Input.mousePosition);
+        mouseVector3.z = 0;
+        int mouseX, mouseY;
+        GetCellPosition(mouseVector3, out mouseX, out mouseY);
+        
+        if (Turn.GetUnitTurn() == 1)
+        {
+            if (mouseX == 0 && (mouseY >= 0 && mouseY < GetGridHeight()))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            if (mouseX == GetGridWidth() - 1 && (mouseY >= 0 && mouseY < GetGridHeight()))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Enums;
 using UnityEngine;
 
 public static class Turn
 {
+    private static TurnType _currentTurnType = TurnType.Pick;
     private static int _currentTurn = 1;
 
     public static void NextTurn()
@@ -33,5 +35,15 @@ public static class Turn
     public static int GetUnitTurn()
     {
         return _currentTurn;
+    }
+
+    public static TurnType GetCurrentTurnType()
+    {
+        return _currentTurnType;
+    }
+
+    public static void SetTurnType(TurnType turnType)
+    {
+        _currentTurnType = turnType;
     }
 }

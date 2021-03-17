@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class UnitMovement : MonoBehaviour
 {
-    public int movementRange = 5;
+    public int movementRange;
     private Grid _grid;
     private int _xPosition;
     private int _yPosition;
@@ -21,6 +21,11 @@ public class UnitMovement : MonoBehaviour
         }
 
         UpdateUnitPosition();
+    }
+
+    public void LoadUnitMovement(UnitData unitData)
+    {
+        movementRange = unitData.movementRange;
     }
 
     private void LoadGrid()
@@ -43,10 +48,14 @@ public class UnitMovement : MonoBehaviour
         return _yPosition;
     }
 
-    public void ShowMovementRange()
+    public void ShowMovementRange(bool hidePreviouseRange = true)
     {
-        _grid.HideRange();
-        _grid.ShowRange(GetUnitXPosition(), GetUnitYPosition(), movementRange, movementRange, RangeType.Movement);
+        if (hidePreviouseRange)
+        {
+            _grid.HideRange();
+        }
+
+        _grid.ShowRange(RangeType.Movement);
     }
     
     public void HideMovementRange()
@@ -56,8 +65,7 @@ public class UnitMovement : MonoBehaviour
 
     public bool IsInMovementRange(int x, int y)
     {
-        _grid.CalculateCostToAllTiles(_xPosition, _yPosition, RangeType.Movement);
-        if (_grid.IsPositionInRange(x, y, movementRange, movementRange, RangeType.Movement))
+        if (_grid.GetCell(x, y).GetPathNode().isMovable)
         {
             return true;
         }
@@ -74,6 +82,34 @@ public class UnitMovement : MonoBehaviour
         cellPositionCenter.z = -1;
         transform.position = cellPositionCenter;
         AddUnitToCurrentCell(unit);
+    }
+
+    public void MoveBeforeAttack(int x, int y, Unit unit)
+    {
+        PathNode targetNode = _grid.GetCell(x, y).GetPathNode();
+        PathNode lastMovableNode = GetOptimalDistanceNode(targetNode, unit) ;
+        
+        Move(lastMovableNode.x, lastMovableNode.y, unit);
+    }
+
+    private PathNode GetOptimalDistanceNode(PathNode targetNode, Unit unit)
+    {
+        
+        PathNode optimalDistanceNode = targetNode.lastMovableNode;
+       /* int optimalDistance = targetNode.hCost - optimalDistanceNode.hCost;
+
+        while (optimalDistance < unit.getUnitRange().maxRange)
+        {
+            if (targetNode.hCost - optimalDistanceNode.cameFromNode.hCost > unit.getUnitRange().maxRange)
+            {
+                break;
+            }
+            
+            optimalDistanceNode = optimalDistanceNode.cameFromNode;
+            optimalDistance = targetNode.hCost - optimalDistanceNode.hCost;
+        } */
+
+        return optimalDistanceNode;
     }
 
     private void RemoveUnitFromCurrentCell()

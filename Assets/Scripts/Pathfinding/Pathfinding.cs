@@ -50,6 +50,22 @@ public class Pathfinding
         IterateOverOpenListWithoutEndNode(startNode, rangeType);
     }
 
+    public void CalculateCostToAllTiles(int startX, int startY, int movementRange, int minAttackRange,
+        int maxAttackRange)
+    {
+        PathNode startNode = _grid.GetCell(startX, startY).GetPathNode();
+        _openList = new List<PathNode> { startNode };
+        _closedList = new List<PathNode>();
+
+        ResetPathNodes();
+        
+        startNode.gCost = 0;
+        startNode.hCost = CalculateDistanceCost(startNode, startNode);
+        startNode.CalculateFCost(); 
+        
+        IterateOverOpenListWithoutEndNode(startNode, movementRange, minAttackRange, maxAttackRange);
+    }
+
     private void ResetPathNodes()
     {
         for (int x = 0; x < _grid.GetGridWidth(); x++)
@@ -61,6 +77,109 @@ public class Pathfinding
                 pathNode.hCost = 9999;
                 pathNode.CalculateFCost();
                 pathNode.cameFromNode = null;
+                pathNode.isAttackable = false;
+                pathNode.isMovable = false;
+            }
+        }
+    }
+    
+    private void IterateOverOpenListWithoutEndNode(PathNode startNode, int movementRange, int minAttackRange,
+        int maxAttackRange)
+    {
+        while (_openList.Count > 0)
+        {
+            PathNode currentNode = GetLowestFCostNode(_openList);
+
+            _openList.Remove(currentNode);
+            _closedList.Add(currentNode);
+
+
+            foreach (PathNode neighbourNode in GetNeighbourList(currentNode))
+            {
+                if (_closedList.Contains(neighbourNode)) continue;
+                if (neighbourNode.isObstacle)
+                {
+                    _closedList.Add(neighbourNode);
+                    continue;
+                } else if ((neighbourNode.isOccupied && _grid.GetCell(neighbourNode.x, neighbourNode.y).GetOccupiedBy().GetStatistics().team != Turn.GetUnitTurn()))
+                {
+                    neighbourNode.hCost = CalculateDistanceCost(neighbourNode, startNode);
+
+                    if (movementRange >= neighbourNode.gCost)
+                    {
+                        neighbourNode.isAttackable = true;
+                        neighbourNode.lastMovableNode = currentNode;
+                    }
+                    _closedList.Add(neighbourNode);
+                    continue;
+                }
+                
+                int tentativeGCost = currentNode.gCost + (int) neighbourNode.movementCost;
+                if (tentativeGCost < neighbourNode.gCost)
+                {
+                    neighbourNode.cameFromNode = currentNode;
+                    neighbourNode.gCost = tentativeGCost;
+                    neighbourNode.hCost = CalculateDistanceCost(neighbourNode, startNode);
+                    neighbourNode.CalculateFCost();
+
+                    if (movementRange >= neighbourNode.gCost)
+                    {
+                        neighbourNode.isMovable = true;
+                        neighbourNode.lastMovableNode = currentNode;
+                    } else if (neighbourNode.gCost > movementRange && currentNode.gCost <= movementRange)
+                    {
+
+                        IterateOverOpenListWithoutEndNodeForAttack(currentNode, minAttackRange, maxAttackRange);
+                    }
+
+                    if (!_openList.Contains(neighbourNode))
+                    {
+                        _openList.Add(neighbourNode);
+                    }
+                }
+            }
+        }
+
+    }
+
+    private void IterateOverOpenListWithoutEndNodeForAttack(PathNode startNode, int minAttackRange, int maxAttackRange)
+    {
+        List<PathNode> openList = new List<PathNode> { startNode };
+        List<PathNode> closedList = new List<PathNode>();
+        
+        while (openList.Count > 0)
+        {
+            PathNode currentNode = GetLowestFCostNode(openList);
+
+            openList.Remove(currentNode);
+            closedList.Add(currentNode);
+
+
+            foreach (PathNode neighbourNode in GetNeighbourList(currentNode))
+            {
+                if (closedList.Contains(neighbourNode)) continue;
+
+                int hCost = CalculateDistanceCost(neighbourNode, startNode);
+                if (minAttackRange <= hCost && maxAttackRange >= hCost)
+                {
+                    neighbourNode.lastMovableNode = startNode;
+                    neighbourNode.isAttackable = true;
+                    
+                    if (!openList.Contains(neighbourNode))
+                    {
+                        openList.Add(neighbourNode);
+                    }
+                }
+                else
+                {
+                    neighbourNode.lastMovableNode = startNode;
+                    //neighbourNode.isAttackable = true;
+                    
+                    if (!openList.Contains(neighbourNode))
+                    {
+                        openList.Add(neighbourNode);
+                    }
+                }
             }
         }
     }

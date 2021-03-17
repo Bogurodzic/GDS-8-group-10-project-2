@@ -15,8 +15,11 @@ public class PathNode
     public float movementCost;
     public bool isObstacle;
     public bool isOccupied;
+    public bool isMovable;
+    public bool isAttackable;
 
     public PathNode cameFromNode;
+    public PathNode lastMovableNode;
 
     public PathNode(Grid grid, int x, int y, TileData tileData)
     {

@@ -1,11 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Enums;
 using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    private bool _isActive = false;
     private Grid _grid;
     private GridManager _gridManager;
     private SpriteRenderer _sprite;
@@ -13,40 +13,45 @@ public class Unit : MonoBehaviour
     private UnitStatistics _unitStatistics;
     private UnitRange _unitRange;
     private RangeType _activityType;
+    private UnitPhase _unitPhase = UnitPhase.Inactive;
     private CombatLog _combatLog;
+
+
+    private bool _isDeployed = false;
+    private bool _isPreDeployed = false;
+    private int _preDeployedX = -9999;
+    private int _preDeployedY = -9999;
+        
+    public UnitData unitData;
+    
     void Start()
     {
-        LoadSprite();
-        LoadGrid();
-        LoadGridManager();
-        LoadCombatLog();
-        LoadUnitMovement();
-        LoadUnitStatistics();
-        LoadUnitRange();
-        PlaceUnitOnBoard();
-        AddTeamColorToSprite();
+
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Turn.GetCurrentTurnType() == TurnType.RegularGame)
         {
-            HandleActivatingUnit();
-            HandleAttack();
-        }
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            HandleActivatingAttackMode();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (IsActive() && IsUnitTurn())
+            if (Input.GetMouseButtonDown(0))
             {
-                SkipTurn();
+                HandleAction();
             }
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                HandleActivatingAttackMode();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (IsUnitTurn() && IsActive())
+                {
+                    SkipTurn();
+                }
+            }         
         }
+
     }
 
     private void PlaceUnitOnBoard()
@@ -73,100 +78,131 @@ public class Unit : MonoBehaviour
         _sprite.color = color;
     }
 
-    private void HandleActivatingUnit()
+    private void HandleAction()
     {
-        Vector3 mouseVector3 = GridUtils.GetMouseWorldPosition(Input.mousePosition);
-        mouseVector3.z = 0;
-        int mouseX, mouseY;
-        _grid.GetCellPosition(mouseVector3, out mouseX, out mouseY);
-
-        if (IsUnitTurn() && IsUnitClicked(mouseX, mouseY))
+        switch (_unitPhase)
         {
-            ActivateUnit();
+            case UnitPhase.Inactive:
+                HandleTogglingUnit();
+                break;
+            case UnitPhase.Standby:
+                HandleTogglingUnit();
+                HandleDeactivatingUnit();
+                HandleAttack();
+                HandleMovement();
+                break;
+            case UnitPhase.AbilityActivated:
+                Debug.Log("ABILITY ACTIVATED");
+                break;
+            case UnitPhase.AfterMovement:
+                HandleAttack();
+                break;
+            case UnitPhase.AfterAttack:
+                HandleDash();
+                break;
+            case UnitPhase.AfterDash:
+                break;
+            case UnitPhase.OnCooldown:
+                break;
         }
-        else if (IsActive() && IsMovementActive() && !_unitMovement.IsInMovementRange(mouseX, mouseY))
-        {
-            DeactivateUnit();
-        } else if (IsActive() && IsMovementActive() && _unitMovement.IsInMovementRange(mouseX, mouseY))
-        {
-            _unitMovement.Move(mouseX, mouseY, this);
-            DeactivateUnit();
-        }
+  
     }
 
-    private void HandleAttack()
+    private void EndAction(ActionType actionType)
+    {
+        switch (actionType)
+        {         
+            case ActionType.Activation:
+                ActivateUnit();
+                break;
+            case ActionType.Deactivation:
+                DeactivateUnit();
+                break;
+            case ActionType.Movement:
+                SetUnitPhase(UnitPhase.AfterMovement);
+                HandleActivatingAttackMode();
+                break;
+            case ActionType.Attack:
+                ActivateDash();
+                break;
+            case ActionType.Ability:
+                break;
+            case ActionType.Dash:
+                SkipTurn();
+                break;
+            case ActionType.SkipTurn:
+                Invoke("NextTurn", 0.05f);
+                break;
+        }
+    }
+    
+    private void HandleMovement()
     {
         Vector3 mouseVector3 = GridUtils.GetMouseWorldPosition(Input.mousePosition);
         mouseVector3.z = 0;
         int mouseX, mouseY;
         _grid.GetCellPosition(mouseVector3, out mouseX, out mouseY);
         
-        if (IsActive() && IsUnitTurn() && IsAttackActive() && IsCellOcuppiedByEnemy(mouseX, mouseY) && _unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
+        if (_unitPhase == UnitPhase.Standby && _unitMovement.IsInMovementRange(mouseX, mouseY))
         {
-            _combatLog.LogCombat(Attack.AttackUnit(this, _grid.GetCell(mouseX, mouseY).GetOccupiedBy()));
-            DeactivateUnit();
-        }
-        else if (IsActive() && IsUnitTurn() && IsAttackActive() && !_unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
-        {
-            DeactivateUnit();
-        }
-    }
-
-    private bool IsCellOcuppiedByEnemy(int mouseX, int mouseY)
-    {
-        if (_grid.GetCell(mouseX, mouseY).GetOccupiedBy() != null && _grid.GetCell(mouseX, mouseY).GetOccupiedBy()._unitStatistics.team != _unitStatistics.team)
-        {
-            return true; 
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    private void HandleActivatingAttackMode()
-    {
-        if (IsActive() && IsUnitTurn())
-        {
-            _unitRange.ShowUnitRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition());
-            _activityType = RangeType.Attack;
+            _unitMovement.Move(mouseX, mouseY, this);
+            EndAction(ActionType.Movement);
         }
     }
     
+    private void HandleDash()
+    {
+        Vector3 mouseVector3 = GridUtils.GetMouseWorldPosition(Input.mousePosition);
+        mouseVector3.z = 0;
+        int mouseX, mouseY;
+        _grid.GetCellPosition(mouseVector3, out mouseX, out mouseY);
+        
+        if (_unitMovement.IsInMovementRange(mouseX, mouseY))
+        {
+            _unitMovement.Move(mouseX, mouseY, this);
+            EndAction(ActionType.Dash);
+        }
+    }
+    
+    private void HandleAttack()
+    {
+        Vector3 mouseVector3 = GridUtils.GetMouseWorldPosition(Input.mousePosition);
+        mouseVector3.z = 0;
+        int mouseX, mouseY;
+        _grid.GetCellPosition(mouseVector3, out mouseX, out mouseY);
 
+        if (_unitPhase == UnitPhase.AfterMovement && IsCellOcuppiedByEnemy(mouseX, mouseY) && _unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
+        {
+            _combatLog.LogCombat(Attack.AttackUnit(this, _grid.GetCell(mouseX, mouseY).GetOccupiedBy()));
+            EndAction(ActionType.Attack);
+            
+        } else if ((_unitPhase == UnitPhase.Standby) && IsCellOcuppiedByEnemy(mouseX, mouseY) && _unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
+        {
+            if (!_grid.IsPositionInAttackRange(mouseX, mouseY, _unitRange.minRange, _unitRange.maxRange))
+            {            
+                _unitMovement.MoveBeforeAttack(mouseX, mouseY, this);
+            }
+            _combatLog.LogCombat(Attack.AttackUnit(this, _grid.GetCell(mouseX, mouseY).GetOccupiedBy()));
+            EndAction(ActionType.Attack);
+        }
+
+    }
+    
     public bool IsActive()
     {
-        return _isActive;
+        return _unitPhase != UnitPhase.Inactive && _unitPhase != UnitPhase.OnCooldown;
     }
 
-    public bool IsMovementActive()
+    public bool IsAbilityActive()
     {
-        if (_activityType == RangeType.Movement)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public bool IsAttackActive()
-    {
-        if (_activityType == RangeType.Attack)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        } 
+        return IsActive() && unitData.unitAbility;
     }
 
     public bool IsUnitTurn()
     {
-        return Turn.IsUnitTurn(_unitStatistics.team);
+        return Turn.IsUnitTurn(_unitStatistics.team) && _unitPhase != UnitPhase.OnCooldown;
     }
+    
 
     public bool IsUnitClicked(int mouseX, int mouseY)
     {
@@ -182,26 +218,90 @@ public class Unit : MonoBehaviour
         }
     }
     
+    private bool IsCellOcuppiedByEnemy(int mouseX, int mouseY)
+    {
+        if (_grid.GetCell(mouseX, mouseY).GetOccupiedBy() != null && _grid.GetCell(mouseX, mouseY).GetOccupiedBy()._unitStatistics.team != _unitStatistics.team)
+        {
+            return true; 
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
     private void ActivateUnit()
     {
         _activityType = RangeType.Movement;
-        _unitMovement.ShowMovementRange();
+        _grid.CalculateCostToAllTiles(GetUnitXPosition(), GetUnitYPosition(), _unitMovement.movementRange, _unitRange.minRange, _unitRange.maxRange);
+        _unitRange.ShowUnitRange(true);
+        _unitMovement.ShowMovementRange(false);
         _gridManager.ChangeColor(GetUnitXPosition(), GetUnitYPosition(), Color.magenta);
-        _isActive = true;
+        SetUnitPhase(UnitPhase.Standby);
+    }
+    
+    private void HandleTogglingUnit()
+    {
+        Vector3 mouseVector3 = GridUtils.GetMouseWorldPosition(Input.mousePosition);
+        mouseVector3.z = 0;
+        int mouseX, mouseY;
+        _grid.GetCellPosition(mouseVector3, out mouseX, out mouseY);
+
+        if (IsUnitTurn() && IsUnitClicked(mouseX, mouseY))
+        {
+            EndAction(ActionType.Activation);
+        }
+        else if (IsActive() && IsUnitClicked(mouseX, mouseY))
+        {
+            EndAction(ActionType.Deactivation);
+        }
+    }
+
+    private void HandleDeactivatingUnit()
+    {
+        Vector3 mouseVector3 = GridUtils.GetMouseWorldPosition(Input.mousePosition);
+        mouseVector3.z = 0;
+        int mouseX, mouseY;
+        _grid.GetCellPosition(mouseVector3, out mouseX, out mouseY);
+
+        if (IsActive() && !_unitMovement.IsInMovementRange(mouseX, mouseY) && !_unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(),_unitMovement.GetUnitYPosition(),mouseX, mouseY))
+        {
+            EndAction(ActionType.Deactivation);
+        }
+    }
+    
+    private void HandleActivatingAttackMode()
+    {
+        if (IsUnitTurn())
+        {
+            _grid.CalculateCostToAllTiles(GetUnitXPosition(), GetUnitYPosition(), 0, _unitRange.minRange, _unitRange.maxRange);
+            _unitRange.ShowUnitRange(true);
+        }
+    }
+
+    private void ActivateDash()
+    {
+        SetUnitPhase(UnitPhase.AfterAttack);
+        _grid.CalculateCostToAllTiles(GetUnitXPosition(), GetUnitYPosition(), _unitMovement.movementRange, 0, 0);
+        _unitMovement.ShowMovementRange(true);
+    }
+
+    public void ToggleAbility()
+    {
+        SetUnitPhase(UnitPhase.AbilityActivated);
     }
 
     public void DeactivateUnit()
     {
-        //_unitMovement.HideMovementRange();
-        //_isActive = false;
-        //Invoke("NextTurn", 0.05f);
+        SetUnitPhase(UnitPhase.Inactive);
+        _grid.HideRange();
     }
 
     public void SkipTurn()
     {
-        _unitMovement.HideMovementRange();
-        _isActive = false;
-        Invoke("NextTurn", 0.05f);
+        _grid.HideRange();
+        SetUnitPhase(UnitPhase.OnCooldown);
+        EndAction(ActionType.SkipTurn);
     }
 
     private void NextTurn()
@@ -209,11 +309,35 @@ public class Unit : MonoBehaviour
         Turn.NextTurn();
     }
 
+    private void SetUnitPhase(UnitPhase unitPhase)
+    {
+        _unitPhase = unitPhase;
+    }
+    
     public UnitStatistics GetStatistics()
     {
         return _unitStatistics;
     }
 
+    public UnitRange getUnitRange()
+    {
+        return _unitRange;
+    }
+    
+    private int GetUnitXPosition()
+    {
+        int positionX, positionY;
+        _grid.GetCellPosition(transform.position, out positionX, out positionY);
+        return positionX;
+    }
+    
+    private int GetUnitYPosition()
+    {
+        int positionX, positionY;
+        _grid.GetCellPosition(transform.position, out positionX, out positionY);
+        return positionY;
+    }
+    
     private void LoadSprite()
     {
         _sprite = gameObject.GetComponent<SpriteRenderer>();
@@ -249,18 +373,66 @@ public class Unit : MonoBehaviour
         _unitRange = gameObject.GetComponent<UnitRange>();
     }
 
-    private int GetUnitXPosition()
+    public void LoadUnitData(UnitData unitDataToLoad)
     {
-        int positionX, positionY;
-        _grid.GetCellPosition(transform.position, out positionX, out positionY);
-        return positionX;
+        unitData = unitDataToLoad;
+        LoadSprite();
+        LoadGrid();
+        LoadGridManager();
+        LoadCombatLog();
+        LoadUnitMovement();
+        LoadUnitStatistics();
+        LoadUnitRange();
+        //PlaceUnitOnBoard();
+        AddTeamColorToSprite();
+        ReloadUnitData();
     }
-    
-    private int GetUnitYPosition()
+
+    public void ReloadUnitData()
     {
-        int positionX, positionY;
-        _grid.GetCellPosition(transform.position, out positionX, out positionY);
-        return positionY;
+        _unitMovement.LoadUnitMovement(unitData);
+        _unitStatistics.LoadUnitStatistics(unitData);
+        _unitRange.LoadUnitRange(unitData);
+        _sprite.sprite = unitData.unitSprite;
     }
-    
+
+    public bool IsUnitDeployed()
+    {
+        return _isDeployed;
+    }
+
+    public bool IsUnitPreDeployed()
+    {
+        return _isPreDeployed;
+    }
+
+    public void HandleDeployment(int x, int y)
+    {
+        if (!IsUnitPreDeployed())
+        {
+            PreDeploy(x, y);
+        } else if (!IsUnitDeployed() && x == _preDeployedX && y == _preDeployedY)
+        {
+            Deploy(x, y);
+        }
+        else
+        {
+            PreDeploy(x, y);
+        }
+    }
+
+    public void Deploy(int x, int y)
+    {
+        _isDeployed = true;
+        PlaceUnitOnBoard();
+    }
+
+    public void PreDeploy(int x, int y)
+    {
+        _isPreDeployed = true;
+        Vector3 cellCenterPosition = _grid.GetCellCenter(x, y);
+        gameObject.transform.position = cellCenterPosition;
+        _preDeployedX = x;
+        _preDeployedY = y;
+    }
 }
