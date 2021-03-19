@@ -10,12 +10,14 @@ public class AbilityButton : MonoBehaviour
     private Image _image;
     private UnitList _unitList;
     private bool _isReady;
+    private Text _buttonText;
     public Sprite readyButtonSprite;
     public Sprite notReadyButtonSprite;
     void Start()
     {
         LoadSprite();
         LoadUnitList();
+        LoadButtonText();
     }
 
     void Update()
@@ -23,7 +25,7 @@ public class AbilityButton : MonoBehaviour
         if (Turn.GetCurrentTurnType() == TurnType.RegularGame)
         { 
             SetIsReady(IsUnitAbilityActive());
-            ReloadSprite();        
+            ReloadSprite();
         }
 
     }
@@ -39,6 +41,11 @@ public class AbilityButton : MonoBehaviour
         //_sprite = gameObject.GetComponent<SpriteRenderer>();
     }
 
+    private void LoadButtonText()
+    {
+        _buttonText = gameObject.GetComponentInChildren<Text>();
+    }
+
     private void ReloadSprite()
     {
         if (_isReady)
@@ -49,6 +56,14 @@ public class AbilityButton : MonoBehaviour
         else
         {
             _image.sprite = notReadyButtonSprite;
+            if (GetRemainingAbilityCD() > 0)
+            {
+                _buttonText.text = "" + GetRemainingAbilityCD();
+            }
+            else
+            {
+                _buttonText.text = "";
+            }
         }
     }
 
@@ -63,13 +78,18 @@ public class AbilityButton : MonoBehaviour
         return _unitList.GetActiveUnit().GetComponent<Unit>().IsAbilityActive();
     }
 
+    private int GetRemainingAbilityCD()
+    {
+        return _unitList.GetActiveUnit().GetComponent<Unit>().GetUnitAbility().GetRemainingAbilityCD();
+
+    }
+
     public void HandleAbility()
     {
         Debug.Log("Handle ability 1");
         if (IsUnitAbilityActive())
         {
             Debug.Log("Handle ability 2");
-
             ActivateAbility();
         }
     }

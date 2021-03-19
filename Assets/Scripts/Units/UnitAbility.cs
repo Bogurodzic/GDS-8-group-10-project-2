@@ -9,6 +9,7 @@ public class UnitAbility : MonoBehaviour
     private AbilitiesData _abilitiesData;
     private Grid _grid;
     private CombatLog _combatLog;
+    private int cdTurns = 0;
     void Start()
     {
         LoadGrid();
@@ -60,10 +61,12 @@ public class UnitAbility : MonoBehaviour
                 if (_abilitiesData.damage > 0)
                 {
                     _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(targetX, targetY).GetOccupiedBy()));
+                    PutAbilityOnCD();
                     return true;  
                 } else if (_abilitiesData.heal > 0)
                 {
                     _combatLog.LogCombat(Ability.HealUnit(_abilitiesData, _grid.GetCell(targetX, targetY).GetOccupiedBy()));
+                    PutAbilityOnCD();
                     return true;
                 }
             }
@@ -104,6 +107,7 @@ public class UnitAbility : MonoBehaviour
                     _grid.GetCell(unitX, unitY - 1).GetOccupiedBy())
                 {
                     Debug.Log("Handle ability 11.2");
+                    PutAbilityOnCD();
                     return true;
                 }
                 else
@@ -143,7 +147,35 @@ public class UnitAbility : MonoBehaviour
             _grid.HideRange();
             _grid.ShowRange(RangeType.Attack);
         }
-        
-        
+    }
+
+    public bool IsAbilityReadyToCast()
+    {
+        if (_abilitiesData && cdTurns == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private void PutAbilityOnCD()
+    {
+        cdTurns = _abilitiesData.cooldown;
+    }
+
+    public void RemoveOneTurnFromAbilityCD()
+    {
+        if (cdTurns > 0)
+        {
+            cdTurns = cdTurns - 1;
+        } 
+    }
+
+    public int GetRemainingAbilityCD()
+    {
+        return cdTurns;
     }
 }

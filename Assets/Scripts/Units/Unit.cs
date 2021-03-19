@@ -204,8 +204,9 @@ public class Unit : MonoBehaviour
 
     public bool IsAbilityActive()
     {
-        return IsActive() && unitData.unitAbility;
+        return IsActive() && unitData.unitAbility && _unitAbility.IsAbilityReadyToCast();
     }
+    
 
     public bool IsUnitTurn()
     {
@@ -337,6 +338,7 @@ public class Unit : MonoBehaviour
     public void ResetUnitCD()
     {
         AddTeamColorToSprite();
+        _unitAbility.RemoveOneTurnFromAbilityCD();
         SetUnitPhase(UnitPhase.Inactive);
     }
 
@@ -366,6 +368,11 @@ public class Unit : MonoBehaviour
     public UnitRange getUnitRange()
     {
         return _unitRange;
+    }
+
+    public UnitAbility GetUnitAbility()
+    {
+        return _unitAbility;
     }
     
     private int GetUnitXPosition()
