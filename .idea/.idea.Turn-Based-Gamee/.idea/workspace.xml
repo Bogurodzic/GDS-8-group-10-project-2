@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ea6c1fe-6767-43df-abde-f4f8039ac897" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Units/Unit.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Units/Unit.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObejcts/AbilitiesData/AbilitiesData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObejcts/AbilitiesData/AbilitiesData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Battle/Attack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Battle/Attack.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enums/AbilityType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/AbilityType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enums/ActionType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/ActionType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Grid/Grid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Grid/Grid.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/AbilityButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/AbilityButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/UnitList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/UnitList.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/UnitMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/UnitMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/UnitRange.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/UnitRange.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Battle/Ability.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Battle/Ability.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/UnitAbility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/UnitAbility.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,9 +88,9 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitList.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/Grid.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/AbilityButton.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Battle/Attack.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Enums/ActionType.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Battle/Attack.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Battle/Ability.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitAbility.cs" />
     </changedPaths>
@@ -156,7 +146,7 @@
       <workItem from="1614965102564" duration="123000" />
       <workItem from="1614965581079" duration="5041000" />
       <workItem from="1615234679328" duration="13992000" />
-      <workItem from="1615474273110" duration="77047000" />
+      <workItem from="1615474273110" duration="78506000" />
     </task>
     <servers />
   </component>

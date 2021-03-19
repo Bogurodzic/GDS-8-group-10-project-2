@@ -55,8 +55,19 @@ public class UnitAbility : MonoBehaviour
         if (_grid.GetCell(targetX, targetY).GetOccupiedBy() &&
             _grid.GetCell(targetX, targetY).GetPathNode().isAttackable)
         {
-            _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(targetX, targetY).GetOccupiedBy()));
-            return true;
+            if (_abilitiesData.damage > 0)
+            {
+                _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(targetX, targetY).GetOccupiedBy()));
+                return true;  
+            } else if (_abilitiesData.heal > 0)
+            {
+                _combatLog.LogCombat(Ability.HealUnit(_abilitiesData, _grid.GetCell(targetX, targetY).GetOccupiedBy()));
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         else
         {
@@ -76,5 +87,12 @@ public class UnitAbility : MonoBehaviour
             _grid.HideRange();
             _grid.ShowRange(RangeType.Attack);
         }
+
+        if (_abilitiesData.abilityType == AbilityType.Circle)
+        {
+            
+        }
+        
+        
     }
 }
