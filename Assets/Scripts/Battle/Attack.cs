@@ -64,34 +64,3 @@ public static class Attack
 }
 
 
-/*
-
-  private dealDamage(damage: number, unit: IUnit): void {
-    let finalDamage: number;
-    if (!this.flatReduction) {
-      finalDamage = damage - (damage * (unit.resistance/100));
-    } else {
-      finalDamage = damage - unit.resistance;
-    }
-    finalDamage = Math.round(finalDamage);
-    if (finalDamage < 0) {
-      finalDamage = 0;
-    }
-    
-    let dealDamageLog: string;
-
-    if (!this.flatReduction) {
-      dealDamageLog = 'Defender recieved ' + finalDamage + '(' + damage + ' reduced by ' + unit.resistance + '% resistance)';
-    } else {
-      dealDamageLog = 'Defender recieved ' + finalDamage + '(' + damage + ' reduced by ' + unit.resistance + ' resistance)';
-    }
-    this.log.push(dealDamageLog);
-
-    unit.hp.current  = unit.hp.current - finalDamage;
-
-    const currentDefenderHp: string =  unit.hp.current > 0 ? 'Current defender hp: ' +  unit.hp.current : 'Defender is dead';
-    this.log.push(currentDefenderHp);
-  }
-
-
-*/

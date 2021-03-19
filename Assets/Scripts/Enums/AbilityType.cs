@@ -4,6 +4,7 @@ namespace Enums
     {
         SingleTarget,
         Aoe,
-        Circle
+        Circle,
+        Dash
     }
 }

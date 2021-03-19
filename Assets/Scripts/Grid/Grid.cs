@@ -39,6 +39,18 @@ public class Grid
         _pathfinding = new Pathfinding(this);
     }
 
+    public bool IsClickInBoardRange(int x, int y)
+    {
+        if (x >= 0 && y >= 0 && x < width && y < height)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }   
+    }
+
     public GridCell GetCell(int x, int y)
     {
         if (x >= 0 && y >= 0 && x < width && y < height)

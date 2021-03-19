@@ -19,6 +19,7 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="Battle" t="Include">
+            <e p="Ability.cs" t="Include" />
             <e p="Attack.cs" t="Include" />
             <e p="Turn.cs" t="Include" />
           </e>
@@ -76,6 +77,7 @@
           </e>
           <e p="Units" t="Include">
             <e p="Unit.cs" t="Include" />
+            <e p="UnitAbility.cs" t="Include" />
             <e p="UnitList.cs" t="Include" />
             <e p="UnitMovement.cs" t="Include" />
             <e p="UnitRange.cs" t="Include" />

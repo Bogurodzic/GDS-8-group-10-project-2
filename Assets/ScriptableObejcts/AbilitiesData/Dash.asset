@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e83d435aec704e55af2b4140a918c98, type: 3}
-  m_Name: Whirlwind
+  m_Name: Dash
   m_EditorClassIdentifier: 
-  description: Attack everyone around unit
+  description: 
   minRange: 1
-  maxRange: 1
-  areaOfEffect: 1
-  cooldown: 3
-  damage: 50
+  maxRange: 4
+  areaOfEffect: 0
+  cooldown: 0
+  damage: 0
   heal: 0
-  abilityType: 2
+  abilityType: 3

@@ -65,7 +65,7 @@ public class UnitMovement : MonoBehaviour
 
     public bool IsInMovementRange(int x, int y)
     {
-        if (_grid.GetCell(x, y).GetPathNode().isMovable)
+        if (x >= 0 && y >= 0 && x < _grid.GetGridWidth() && y < _grid.GetGridHeight() && _grid.GetCell(x, y).GetPathNode().isMovable)
         {
             return true;
         }

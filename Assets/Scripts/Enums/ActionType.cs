@@ -5,9 +5,10 @@ namespace Enums
         Movement,
         Attack,
         Dash,
-        Ability,
+        ExecuteAbility,
         SkipTurn,
         Activation,
-        Deactivation
+        Deactivation,
+        ActiveAbility
     }
 }

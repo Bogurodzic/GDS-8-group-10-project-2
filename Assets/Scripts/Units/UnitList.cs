@@ -118,9 +118,7 @@ public class UnitList : MonoBehaviour
         LinkedList<GameObject>.Enumerator playerUnitListEnumerator = playerUnitList.GetEnumerator();
         playerUnitListEnumerator.MoveNext();
         GameObject activeUnit = playerUnitListEnumerator.Current;
-        Debug.Log("activeUnit");
-        Debug.Log(activeUnit);
-
+        
         Unit unit = activeUnit.GetComponent<Unit>();
         while (!unit.IsActive() && playerUnitListEnumerator.MoveNext())
         {

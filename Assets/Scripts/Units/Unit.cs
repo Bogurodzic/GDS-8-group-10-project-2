@@ -15,8 +15,8 @@ public class Unit : MonoBehaviour
     private RangeType _activityType;
     private UnitPhase _unitPhase = UnitPhase.Inactive;
     private CombatLog _combatLog;
-
-
+    private UnitAbility _unitAbility;
+    
     private bool _isDeployed = false;
     private bool _isPreDeployed = false;
     private int _preDeployedX = -9999;
@@ -87,12 +87,12 @@ public class Unit : MonoBehaviour
                 break;
             case UnitPhase.Standby:
                 HandleTogglingUnit();
-                HandleDeactivatingUnit();
+                //HandleDeactivatingUnit();
                 HandleAttack();
                 HandleMovement();
                 break;
             case UnitPhase.AbilityActivated:
-                Debug.Log("ABILITY ACTIVATED");
+                ExecuteAbility();
                 break;
             case UnitPhase.AfterMovement:
                 HandleAttack();
@@ -125,7 +125,11 @@ public class Unit : MonoBehaviour
             case ActionType.Attack:
                 ActivateDash();
                 break;
-            case ActionType.Ability:
+            case ActionType.ActiveAbility:
+                ActiveAbility();
+                break;
+            case ActionType.ExecuteAbility:
+                SkipTurn();
                 break;
             case ActionType.Dash:
                 SkipTurn();
@@ -220,7 +224,7 @@ public class Unit : MonoBehaviour
     
     private bool IsCellOcuppiedByEnemy(int mouseX, int mouseY)
     {
-        if (_grid.GetCell(mouseX, mouseY).GetOccupiedBy() != null && _grid.GetCell(mouseX, mouseY).GetOccupiedBy()._unitStatistics.team != _unitStatistics.team)
+        if (_grid.IsClickInBoardRange(mouseX, mouseY) && _grid.GetCell(mouseX, mouseY).GetOccupiedBy() != null && _grid.GetCell(mouseX, mouseY).GetOccupiedBy()._unitStatistics.team != _unitStatistics.team)
         {
             return true; 
         }
@@ -233,11 +237,16 @@ public class Unit : MonoBehaviour
     private void ActivateUnit()
     {
         _activityType = RangeType.Movement;
-        _grid.CalculateCostToAllTiles(GetUnitXPosition(), GetUnitYPosition(), _unitMovement.movementRange, _unitRange.minRange, _unitRange.maxRange);
+        ReloadRanges();
         _unitRange.ShowUnitRange(true);
         _unitMovement.ShowMovementRange(false);
         _gridManager.ChangeColor(GetUnitXPosition(), GetUnitYPosition(), Color.magenta);
         SetUnitPhase(UnitPhase.Standby);
+    }
+
+    private void ReloadRanges()
+    {
+        _grid.CalculateCostToAllTiles(GetUnitXPosition(), GetUnitYPosition(), _unitMovement.movementRange, _unitRange.minRange, _unitRange.maxRange);
     }
     
     private void HandleTogglingUnit()
@@ -288,8 +297,31 @@ public class Unit : MonoBehaviour
 
     public void ToggleAbility()
     {
-        SetUnitPhase(UnitPhase.AbilityActivated);
+        Debug.Log("Handle ability 3");
+        EndAction(ActionType.ActiveAbility);
     }
+
+    private void ActiveAbility()
+    {
+        SetUnitPhase(UnitPhase.AbilityActivated);
+        Debug.Log("Handle ability 4");
+        _unitAbility.ActiveAbility(GetUnitXPosition(), GetUnitYPosition());
+    }
+
+    private void ExecuteAbility()
+    {
+        Vector3 mouseVector3 = GridUtils.GetMouseWorldPosition(Input.mousePosition);
+        mouseVector3.z = 0;
+        int mouseX, mouseY;
+        _grid.GetCellPosition(mouseVector3, out mouseX, out mouseY);
+
+        if (_unitAbility.ExecuteAbility(mouseX, mouseY))
+        {
+            EndAction(ActionType.ExecuteAbility);
+        }
+    }
+
+
 
     public void DeactivateUnit()
     {
@@ -373,6 +405,11 @@ public class Unit : MonoBehaviour
         _unitRange = gameObject.GetComponent<UnitRange>();
     }
 
+    private void LoadUnitAbility()
+    {
+        _unitAbility = gameObject.GetComponent<UnitAbility>();
+    }
+
     public void LoadUnitData(UnitData unitDataToLoad)
     {
         unitData = unitDataToLoad;
@@ -383,6 +420,7 @@ public class Unit : MonoBehaviour
         LoadUnitMovement();
         LoadUnitStatistics();
         LoadUnitRange();
+        LoadUnitAbility();
         //PlaceUnitOnBoard();
         AddTeamColorToSprite();
         ReloadUnitData();
@@ -393,6 +431,7 @@ public class Unit : MonoBehaviour
         _unitMovement.LoadUnitMovement(unitData);
         _unitStatistics.LoadUnitStatistics(unitData);
         _unitRange.LoadUnitRange(unitData);
+        _unitAbility.LoadUnitAbility(unitData);
         _sprite.sprite = unitData.unitSprite;
     }
 

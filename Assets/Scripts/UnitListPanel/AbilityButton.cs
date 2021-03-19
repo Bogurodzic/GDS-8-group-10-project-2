@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using Enums;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AbilityButton : MonoBehaviour
 {
     private SpriteRenderer _sprite;
+    private Image _image;
     private UnitList _unitList;
     private bool _isReady;
     public Sprite readyButtonSprite;
@@ -33,18 +35,20 @@ public class AbilityButton : MonoBehaviour
 
     private void LoadSprite()
     {
-        _sprite = gameObject.GetComponent<SpriteRenderer>();
+        _image = gameObject.GetComponent<Image>();
+        //_sprite = gameObject.GetComponent<SpriteRenderer>();
     }
 
     private void ReloadSprite()
     {
         if (_isReady)
         {
-            _sprite.sprite = readyButtonSprite;
+            //_sprite.sprite = readyButtonSprite;
+            _image.sprite = readyButtonSprite;
         }
         else
         {
-            _sprite.sprite = notReadyButtonSprite;
+            _image.sprite = notReadyButtonSprite;
         }
     }
 
@@ -61,9 +65,18 @@ public class AbilityButton : MonoBehaviour
 
     public void HandleAbility()
     {
+        Debug.Log("Handle ability 1");
         if (IsUnitAbilityActive())
         {
-           _unitList.GetActiveUnit().GetComponent<Unit>().ToggleAbility();
+            Debug.Log("Handle ability 2");
+
+            ActivateAbility();
         }
+    }
+
+    private void ActivateAbility()
+    {
+        _unitList.GetActiveUnit().GetComponent<Unit>().ToggleAbility();
+
     }
 }
