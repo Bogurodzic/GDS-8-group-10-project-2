@@ -197,6 +197,11 @@ public class Unit : MonoBehaviour
         return _unitPhase != UnitPhase.Inactive && _unitPhase != UnitPhase.OnCooldown;
     }
 
+    public bool IsOnCD()
+    {
+        return _unitPhase == UnitPhase.OnCooldown;
+    }
+
     public bool IsAbilityActive()
     {
         return IsActive() && unitData.unitAbility;
@@ -329,9 +334,16 @@ public class Unit : MonoBehaviour
         _grid.HideRange();
     }
 
+    public void ResetUnitCD()
+    {
+        AddTeamColorToSprite();
+        SetUnitPhase(UnitPhase.Inactive);
+    }
+
     public void SkipTurn()
     {
         _grid.HideRange();
+        _sprite.color = Color.black;
         SetUnitPhase(UnitPhase.OnCooldown);
         EndAction(ActionType.SkipTurn);
     }

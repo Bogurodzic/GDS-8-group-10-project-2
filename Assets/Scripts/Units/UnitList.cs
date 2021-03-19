@@ -125,8 +125,42 @@ public class UnitList : MonoBehaviour
             activeUnit = playerUnitListEnumerator.Current;
             unit = activeUnit.GetComponent<Unit>();
         }
-
+        
         return activeUnit;
+    }
+
+    private void ResetAllUnitsOnCD()
+    {
+        foreach (var o in player1UnitList)
+        {
+            o.GetComponent<Unit>().ResetUnitCD();
+        }
+        
+        foreach (var o in player2UnitList)
+        {
+            o.GetComponent<Unit>().ResetUnitCD();
+        }
+        
+    }
+
+    private bool AreAllUnitsOnCD()
+    {
+        bool allUnitsAreOnCD = true;
+        foreach (var o in player1UnitList)
+        {
+            if (!o.GetComponent<Unit>().IsOnCD())
+            {
+                allUnitsAreOnCD = false;
+            }
+        }
+        foreach (var o in player2UnitList)
+        {
+            if (!o.GetComponent<Unit>().IsOnCD())
+            {
+                allUnitsAreOnCD = false;
+            }
+        }
+        return allUnitsAreOnCD;
     }
 
     public GameObject GetNextUnitToDeploy()
@@ -141,6 +175,11 @@ public class UnitList : MonoBehaviour
 
    public GameObject GetActiveUnit()
     {
+        if (AreAllUnitsOnCD())
+        {
+            ResetAllUnitsOnCD();
+        }
+        
         GameObject activeUnitFromPlayer1UnitList = FindActiveUnit(player1UnitList);
 
         if (activeUnitFromPlayer1UnitList.GetComponent<Unit>().IsActive())
@@ -149,7 +188,7 @@ public class UnitList : MonoBehaviour
         }
         
         GameObject activeUnitFromPlayer2UnitList = FindActiveUnit(player2UnitList);
-
+        
         return activeUnitFromPlayer2UnitList;
 
     }
