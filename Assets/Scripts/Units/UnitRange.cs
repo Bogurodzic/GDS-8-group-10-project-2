@@ -54,7 +54,7 @@ public class UnitRange : MonoBehaviour
     
     public bool IsInAttackRange(int x, int y, int targetX, int targetY)
     {
-        if (_grid.GetCell(targetX, targetY).GetPathNode().isAttackable)
+        if (targetX >= 0 && targetY >= 0 && targetX < _grid.GetGridWidth() && targetY < _grid.GetGridHeight() && _grid.GetCell(targetX, targetY).GetPathNode().isAttackable)
         {
             return true;
         }

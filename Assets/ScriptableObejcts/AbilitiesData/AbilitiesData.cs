@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Enums;
 using UnityEngine;
 [CreateAssetMenu]
 public class AbilitiesData : ScriptableObject
@@ -11,4 +12,5 @@ public class AbilitiesData : ScriptableObject
     public int cooldown;
     public int damage;
     public int heal;
+    public AbilityType abilityType;
 }
