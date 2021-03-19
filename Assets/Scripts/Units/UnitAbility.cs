@@ -50,29 +50,76 @@ public class UnitAbility : MonoBehaviour
         }
     }
 
-    public bool ExecuteAbility(int targetX, int targetY)
+    public bool ExecuteAbility(int targetX, int targetY, int unitX, int unitY)
     {
-        if (_grid.GetCell(targetX, targetY).GetOccupiedBy() &&
-            _grid.GetCell(targetX, targetY).GetPathNode().isAttackable)
+        if (_abilitiesData.abilityType == AbilityType.SingleTarget)
         {
-            if (_abilitiesData.damage > 0)
+            if (_grid.GetCell(targetX, targetY).GetOccupiedBy() &&
+                _grid.GetCell(targetX, targetY).GetPathNode().isAttackable)
             {
-                _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(targetX, targetY).GetOccupiedBy()));
-                return true;  
-            } else if (_abilitiesData.heal > 0)
-            {
-                _combatLog.LogCombat(Ability.HealUnit(_abilitiesData, _grid.GetCell(targetX, targetY).GetOccupiedBy()));
-                return true;
+                if (_abilitiesData.damage > 0)
+                {
+                    _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(targetX, targetY).GetOccupiedBy()));
+                    return true;  
+                } else if (_abilitiesData.heal > 0)
+                {
+                    _combatLog.LogCombat(Ability.HealUnit(_abilitiesData, _grid.GetCell(targetX, targetY).GetOccupiedBy()));
+                    return true;
+                }
             }
             else
             {
                 return false;
+            }         
+        } else if (_abilitiesData.abilityType == AbilityType.Circle)
+        {
+            Debug.Log("Handle ability 9.2");
+            if (_grid.GetCell(targetX, targetY).GetOccupiedBy() &&
+                _grid.GetCell(targetX, targetY).GetPathNode().isAttackable)
+            {
+                Debug.Log("Handle ability 10.2");
+                if (_grid.GetCell(unitX + 1, unitY).GetOccupiedBy())
+                {
+                    _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(unitX + 1, unitY).GetOccupiedBy()));
+                }
+                    
+                if (_grid.GetCell(unitX - 1, unitY ).GetOccupiedBy())
+                {
+                    _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(unitX - 1, unitY).GetOccupiedBy()));
+                }
+                    
+                if (_grid.GetCell(unitX, unitY + 1).GetOccupiedBy())
+                {
+                    _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(unitX, unitY + 1).GetOccupiedBy()));
+                }
+                    
+                if (_grid.GetCell(unitX, unitY - 1).GetOccupiedBy())
+                {
+                    _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(unitX, unitY - 1).GetOccupiedBy()));
+                }
+
+                if (_grid.GetCell(unitX + 1, unitY).GetOccupiedBy() ||
+                    _grid.GetCell(unitX - 1, unitY).GetOccupiedBy() ||
+                    _grid.GetCell(unitX, unitY + 1).GetOccupiedBy() ||
+                    _grid.GetCell(unitX, unitY - 1).GetOccupiedBy())
+                {
+                    Debug.Log("Handle ability 11.2");
+                    return true;
+                }
+                else
+                {
+                    Debug.Log("Handle ability 12.2");
+                    return false;
+                }
             }
         }
         else
         {
             return false;
         }
+
+        return false;
+
     }
 
     private void ShowAbilityRange(int unitPositionX, int unitPositionY)
@@ -81,7 +128,7 @@ public class UnitAbility : MonoBehaviour
 
         if (_abilitiesData.abilityType == AbilityType.SingleTarget)
         {
-            Debug.Log("Handle ability 8");
+            Debug.Log("Handle ability 8.1");
 
             _grid.CalculateCostToAllTiles(unitPositionX, unitPositionY, 0, _abilitiesData.minRange, _abilitiesData.maxRange);
             _grid.HideRange();
@@ -90,7 +137,11 @@ public class UnitAbility : MonoBehaviour
 
         if (_abilitiesData.abilityType == AbilityType.Circle)
         {
-            
+            Debug.Log("Handle ability 8.2");
+
+            _grid.CalculateCostToAllTiles(unitPositionX, unitPositionY, 0, 1, 1);
+            _grid.HideRange();
+            _grid.ShowRange(RangeType.Attack);
         }
         
         

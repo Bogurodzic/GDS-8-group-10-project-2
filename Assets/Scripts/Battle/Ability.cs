@@ -16,6 +16,12 @@ public class Ability {
             _temporaryLog += damageLog;
             DealDamage(damage, defender);
 
+        } else if (abilityData.abilityType == AbilityType.Circle)
+        {
+            int damage = abilityData.damage;
+            string damageLog = "Attacker will damage defender for " + damage + "\n";
+            _temporaryLog += damageLog;
+            DealDamage(damage, defender);
         }
         return _temporaryLog;
     }

@@ -315,7 +315,7 @@ public class Unit : MonoBehaviour
         int mouseX, mouseY;
         _grid.GetCellPosition(mouseVector3, out mouseX, out mouseY);
 
-        if (_unitAbility.ExecuteAbility(mouseX, mouseY))
+        if (_unitAbility.ExecuteAbility(mouseX, mouseY, GetUnitXPosition(), GetUnitYPosition()))
         {
             EndAction(ActionType.ExecuteAbility);
         }

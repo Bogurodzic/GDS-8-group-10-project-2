@@ -4,6 +4,7 @@
     <list default="true" id="9ea6c1fe-6767-43df-abde-f4f8039ac897" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Battle/Ability.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Battle/Ability.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/UnitAbility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/UnitAbility.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,8 +92,8 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Battle/Attack.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Enums/ActionType.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Battle/Ability.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitAbility.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Battle/Ability.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1pLb0eqZaQJiXIFPJRkhff1DHdr" />
@@ -146,7 +147,7 @@
       <workItem from="1614965102564" duration="123000" />
       <workItem from="1614965581079" duration="5041000" />
       <workItem from="1615234679328" duration="13992000" />
-      <workItem from="1615474273110" duration="78506000" />
+      <workItem from="1615474273110" duration="79962000" />
     </task>
     <servers />
   </component>
