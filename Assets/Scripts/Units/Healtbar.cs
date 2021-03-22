@@ -9,6 +9,7 @@ public class Healtbar : MonoBehaviour
 
     public Slider Slider;
     public Text healthText;
+    public Text damageText;
     public Vector3 Offset;
     public float sliderSpeed = 10f;
 
@@ -18,9 +19,13 @@ public class Healtbar : MonoBehaviour
     private float targetProgress;
     private bool _isVisible = false;
     private bool _blockSlider = false;
+
+    private float _previousHealth;
+    
     
     public void SetHealth(float health, float maxHealth)
     {
+ 
         //Slider.gameObject.SetActive(health > 0);
         //Slider.value = health/maxHealth;
         //Slider.maxValue = 1f;
@@ -28,6 +33,13 @@ public class Healtbar : MonoBehaviour
         {
             BlockSlider();
             SetSliderVisbility(true);
+        }
+        
+        if (health != _previousHealth)
+        {
+            float dealedDamage = _previousHealth - health;
+            ShowDamageText(dealedDamage);
+            _previousHealth = health;
         }
         
         targetProgress = health / maxHealth;
@@ -108,5 +120,16 @@ public class Healtbar : MonoBehaviour
     private void SetText(float health, float maxHealth)
     {
         healthText.text = health + "/" + maxHealth;
+    }
+
+    private void ShowDamageText(float damage)
+    {
+        damageText.text = damage + "";
+        Invoke("HideDmageText", 2f);
+    }
+
+    private void HideDmageText()
+    {
+        damageText.text = "";
     }
 }
