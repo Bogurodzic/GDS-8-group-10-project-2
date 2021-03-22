@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ea6c1fe-6767-43df-abde-f4f8039ac897" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Units/Unit.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Units/Unit.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Healtbar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Healtbar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grid/TilePallette/Land.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grid/TilePallette/Land.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Grid/GridManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Grid/GridManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +69,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/Portrait.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Enums/TurnType.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/PickedUnits.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UnitDeployment/UnitDeployment.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Pathfinding/Pathfinding.cs" />
       <option value="$PROJECT_DIR$/Assets/ScriptableObejcts/Abilities/Abilities.cs" />
@@ -93,6 +92,7 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitAbility.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Healtbar.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridManager.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1pLb0eqZaQJiXIFPJRkhff1DHdr" />
@@ -147,7 +147,7 @@
       <workItem from="1614965581079" duration="5041000" />
       <workItem from="1615234679328" duration="13992000" />
       <workItem from="1615474273110" duration="82583000" />
-      <workItem from="1616418609889" duration="9102000" />
+      <workItem from="1616418609889" duration="9796000" />
     </task>
     <servers />
   </component>
