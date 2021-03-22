@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Enums;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,14 +16,20 @@ public class Healtbar : MonoBehaviour
     private Color Low = new Color(178/255f,34/255f,34/255f);
     private Color High = new Color(107/255f,142/255f,35/255f);
     private float targetProgress;
-    
-    
+    private bool _isVisible = false;
+    private bool _blockSlider = false;
     
     public void SetHealth(float health, float maxHealth)
     {
-        Slider.gameObject.SetActive(health > 0);
+        //Slider.gameObject.SetActive(health > 0);
         //Slider.value = health/maxHealth;
         //Slider.maxValue = 1f;
+        if (Turn.GetCurrentTurnType() == TurnType.RegularGame)
+        {
+            BlockSlider();
+            SetSliderVisbility(true);
+        }
+        
         targetProgress = health / maxHealth;
         
         Debug.Log(Slider.gameObject.active);
@@ -44,7 +51,36 @@ public class Healtbar : MonoBehaviour
     private void ReloadSliderColor()
     {
         Slider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(Low, High, Slider.normalizedValue);
+    }
+
+    private void ReloadHealthbarVisibility()
+    {
+        if (_isVisible || _blockSlider)
+        {
+            Slider.gameObject.SetActive(true);
+        }
+        else
+        {
+            Slider.gameObject.SetActive(false);
+
+        }
+    }
+
+    public void SetSliderVisbility(bool isVisible)
+    {
+
+            _isVisible = isVisible;
         
+    }
+
+    public void BlockSlider()
+    {
+        _blockSlider = true;
+    }
+
+    private void UnlockSlider()
+    {
+        _blockSlider = false;
     }
 
     void Update()
@@ -56,6 +92,12 @@ public class Healtbar : MonoBehaviour
             Slider.value = Slider.value - 0.01f * Time.deltaTime * sliderSpeed;
             ReloadSliderColor();
         }
+        else
+        {
+            UnlockSlider();
+        }
+
+        ReloadHealthbarVisibility();
     }
 
     private void LoadText()
