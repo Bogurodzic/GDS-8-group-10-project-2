@@ -178,4 +178,14 @@ public class UnitAbility : MonoBehaviour
     {
         return cdTurns;
     }
+
+    public AbilitiesData GetAbilitiesData()
+    {
+        return _abilitiesData;
+    }
+
+    public AbilityType GetAbilityType()
+    {
+        return _abilitiesData.abilityType;
+    }
 }

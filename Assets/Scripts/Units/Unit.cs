@@ -123,13 +123,27 @@ public class Unit : MonoBehaviour
                 HandleActivatingAttackMode();
                 break;
             case ActionType.Attack:
-                SkipTurn();
+                if (_unitAbility.GetAbilityType() == AbilityType.Dash)
+                {
+                    ActivateDash();
+                }
+                else
+                {
+                    SkipTurn();
+                }
                 break;
             case ActionType.ActiveAbility:
                 ActiveAbility();
                 break;
             case ActionType.ExecuteAbility:
-                SkipTurn();
+                if (_unitAbility.GetAbilityType() == AbilityType.Dash)
+                {
+                    ActivateDash();
+                }
+                else
+                {
+                    SkipTurn();
+                }
                 break;
             case ActionType.Dash:
                 SkipTurn();
