@@ -23,6 +23,7 @@ public class Unit : MonoBehaviour
     private int _preDeployedY = -9999;
         
     public UnitData unitData;
+    private Healtbar _healtbar;
     
     void Start()
     {
@@ -51,7 +52,6 @@ public class Unit : MonoBehaviour
                 }
             }         
         }
-
     }
 
     private void PlaceUnitOnBoard()
@@ -86,6 +86,7 @@ public class Unit : MonoBehaviour
                 HandleTogglingUnit();
                 break;
             case UnitPhase.Standby:
+                SetHealth();
                 HandleTogglingUnit();
                 //HandleDeactivatingUnit();
                 HandleAttack();
@@ -192,6 +193,7 @@ public class Unit : MonoBehaviour
         if (_unitPhase == UnitPhase.AfterMovement && IsCellOcuppiedByEnemy(mouseX, mouseY) && _unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
         {
             _combatLog.LogCombat(Attack.AttackUnit(this, _grid.GetCell(mouseX, mouseY).GetOccupiedBy()));
+            _grid.GetCell(mouseX, mouseY).GetOccupiedBy().SetHealth();
             EndAction(ActionType.Attack);
             
         } else if ((_unitPhase == UnitPhase.Standby) && IsCellOcuppiedByEnemy(mouseX, mouseY) && _unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
@@ -201,6 +203,7 @@ public class Unit : MonoBehaviour
                 _unitMovement.MoveBeforeAttack(mouseX, mouseY, this);
             }
             _combatLog.LogCombat(Attack.AttackUnit(this, _grid.GetCell(mouseX, mouseY).GetOccupiedBy()));
+            _grid.GetCell(mouseX, mouseY).GetOccupiedBy().SetHealth();
             EndAction(ActionType.Attack);
         }
 
@@ -443,6 +446,11 @@ public class Unit : MonoBehaviour
         _unitAbility = gameObject.GetComponent<UnitAbility>();
     }
 
+    private void LoadHealthbar()
+    {
+        _healtbar = gameObject.GetComponentInChildren<Healtbar>();
+    }
+
     public void LoadUnitData(UnitData unitDataToLoad)
     {
         unitData = unitDataToLoad;
@@ -454,9 +462,16 @@ public class Unit : MonoBehaviour
         LoadUnitStatistics();
         LoadUnitRange();
         LoadUnitAbility();
+        LoadHealthbar();
         //PlaceUnitOnBoard();
         AddTeamColorToSprite();
         ReloadUnitData();
+        SetHealth();
+    }
+
+    public void SetHealth()
+    {
+        _healtbar.SetHealth(_unitStatistics.currentHp, _unitStatistics.maxHp);
     }
 
     public void ReloadUnitData()

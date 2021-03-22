@@ -62,10 +62,14 @@ public class UnitAbility : MonoBehaviour
                 {
                     _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(targetX, targetY).GetOccupiedBy()));
                     PutAbilityOnCD();
+                    _grid.GetCell(targetX, targetY).GetOccupiedBy().SetHealth();
+
                     return true;  
                 } else if (_abilitiesData.heal > 0)
                 {
                     _combatLog.LogCombat(Ability.HealUnit(_abilitiesData, _grid.GetCell(targetX, targetY).GetOccupiedBy()));
+                    _grid.GetCell(targetX, targetY).GetOccupiedBy().SetHealth();
+
                     PutAbilityOnCD();
                     return true;
                 }
