@@ -123,7 +123,7 @@ public class Unit : MonoBehaviour
                 HandleActivatingAttackMode();
                 break;
             case ActionType.Attack:
-                ActivateDash();
+                SkipTurn();
                 break;
             case ActionType.ActiveAbility:
                 ActiveAbility();
