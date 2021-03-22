@@ -76,6 +76,7 @@
             <e p="AbilityButton.cs" t="Include" />
           </e>
           <e p="Units" t="Include">
+            <e p="Healtbar.cs" t="Include" />
             <e p="Unit.cs" t="Include" />
             <e p="UnitAbility.cs" t="Include" />
             <e p="UnitList.cs" t="Include" />

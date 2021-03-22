@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
+    public UnitData unitData;
+
     private Grid _grid;
     private GridManager _gridManager;
     private SpriteRenderer _sprite;
@@ -16,13 +18,14 @@ public class Unit : MonoBehaviour
     private UnitPhase _unitPhase = UnitPhase.Inactive;
     private CombatLog _combatLog;
     private UnitAbility _unitAbility;
-    
+    private Healtbar _healtbar;
+
     private bool _isDeployed = false;
     private bool _isPreDeployed = false;
     private int _preDeployedX = -9999;
     private int _preDeployedY = -9999;
-        
-    public UnitData unitData;
+    private bool _isUnitHovered = false;
+
     
     void Start()
     {
@@ -49,9 +52,28 @@ public class Unit : MonoBehaviour
                 {
                     SkipTurn();
                 }
-            }         
-        }
+            }
 
+            HandleHoveringUnit();
+        }
+    }
+
+    private void HandleHoveringUnit()
+    {
+        Vector3 mouseVector3 = GridUtils.GetMouseWorldPosition(Input.mousePosition);
+        mouseVector3.z = 0;
+        int mouseX, mouseY;
+        _grid.GetCellPosition(mouseVector3, out mouseX, out mouseY);
+        
+        if (!IsActive() && mouseX == GetUnitXPosition() && mouseY == GetUnitYPosition() && !_isUnitHovered)
+        {
+            _isUnitHovered = true;
+            _healtbar.SetSliderVisbility(true);
+        } else if (!IsActive() && (mouseX != GetUnitXPosition() || mouseY != GetUnitYPosition()) && _isUnitHovered)
+        {
+            _isUnitHovered = false;
+            _healtbar.SetSliderVisbility(false);
+        }
     }
 
     private void PlaceUnitOnBoard()
@@ -86,6 +108,7 @@ public class Unit : MonoBehaviour
                 HandleTogglingUnit();
                 break;
             case UnitPhase.Standby:
+                SetHealth();
                 HandleTogglingUnit();
                 //HandleDeactivatingUnit();
                 HandleAttack();
@@ -123,13 +146,27 @@ public class Unit : MonoBehaviour
                 HandleActivatingAttackMode();
                 break;
             case ActionType.Attack:
-                ActivateDash();
+                if (_unitAbility.GetAbilityType() == AbilityType.Dash)
+                {
+                    ActivateDash();
+                }
+                else
+                {
+                    SkipTurn();
+                }
                 break;
             case ActionType.ActiveAbility:
                 ActiveAbility();
                 break;
             case ActionType.ExecuteAbility:
-                SkipTurn();
+                if (_unitAbility.GetAbilityType() == AbilityType.Dash)
+                {
+                    ActivateDash();
+                }
+                else
+                {
+                    SkipTurn();
+                }
                 break;
             case ActionType.Dash:
                 SkipTurn();
@@ -178,6 +215,7 @@ public class Unit : MonoBehaviour
         if (_unitPhase == UnitPhase.AfterMovement && IsCellOcuppiedByEnemy(mouseX, mouseY) && _unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
         {
             _combatLog.LogCombat(Attack.AttackUnit(this, _grid.GetCell(mouseX, mouseY).GetOccupiedBy()));
+            _grid.GetCell(mouseX, mouseY).GetOccupiedBy().SetHealth();
             EndAction(ActionType.Attack);
             
         } else if ((_unitPhase == UnitPhase.Standby) && IsCellOcuppiedByEnemy(mouseX, mouseY) && _unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
@@ -187,6 +225,7 @@ public class Unit : MonoBehaviour
                 _unitMovement.MoveBeforeAttack(mouseX, mouseY, this);
             }
             _combatLog.LogCombat(Attack.AttackUnit(this, _grid.GetCell(mouseX, mouseY).GetOccupiedBy()));
+            _grid.GetCell(mouseX, mouseY).GetOccupiedBy().SetHealth();
             EndAction(ActionType.Attack);
         }
 
@@ -247,6 +286,7 @@ public class Unit : MonoBehaviour
         _unitRange.ShowUnitRange(true);
         _unitMovement.ShowMovementRange(false);
         _gridManager.ChangeColor(GetUnitXPosition(), GetUnitYPosition(), Color.magenta);
+        _healtbar.SetSliderVisbility(true);
         SetUnitPhase(UnitPhase.Standby);
     }
 
@@ -331,6 +371,7 @@ public class Unit : MonoBehaviour
 
     public void DeactivateUnit()
     {
+        _healtbar.SetSliderVisbility(false);
         SetUnitPhase(UnitPhase.Inactive);
         _grid.HideRange();
     }
@@ -429,6 +470,11 @@ public class Unit : MonoBehaviour
         _unitAbility = gameObject.GetComponent<UnitAbility>();
     }
 
+    private void LoadHealthbar()
+    {
+        _healtbar = gameObject.GetComponentInChildren<Healtbar>();
+    }
+
     public void LoadUnitData(UnitData unitDataToLoad)
     {
         unitData = unitDataToLoad;
@@ -440,9 +486,16 @@ public class Unit : MonoBehaviour
         LoadUnitStatistics();
         LoadUnitRange();
         LoadUnitAbility();
+        LoadHealthbar();
         //PlaceUnitOnBoard();
         AddTeamColorToSprite();
         ReloadUnitData();
+        SetHealth();
+    }
+
+    public void SetHealth()
+    {
+        _healtbar.SetHealth(_unitStatistics.currentHp, _unitStatistics.maxHp);
     }
 
     public void ReloadUnitData()

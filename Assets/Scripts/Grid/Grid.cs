@@ -274,7 +274,7 @@ public class Grid
         
         if (Turn.GetUnitTurn() == 1)
         {
-            if (mouseX == 0 && (mouseY >= 0 && mouseY < GetGridHeight()))
+            if (mouseX == 0 && (mouseY >= 0 && mouseY < GetGridHeight()) && !GetCell(mouseX, mouseY).GetPathNode().isOccupied)
             {
                 return true;
             }
@@ -285,7 +285,7 @@ public class Grid
         }
         else
         {
-            if (mouseX == GetGridWidth() - 1 && (mouseY >= 0 && mouseY < GetGridHeight()))
+            if (mouseX == GetGridWidth() - 1 && (mouseY >= 0 && mouseY < GetGridHeight()) && !GetCell(mouseX, mouseY).GetPathNode().isOccupied)
             {
                 return true;
             }
