@@ -13,7 +13,22 @@ MonoBehaviour:
   m_Name: Water
   m_EditorClassIdentifier: 
   tiles:
-  - {fileID: 11400000, guid: 41f4952e79a974a608a670cb840b3e38, type: 2}
+  - {fileID: 11400000, guid: d1f0f716a18554fc0a34c3a2bb8c5336, type: 2}
+  - {fileID: 11400000, guid: e2b87d91932b443da8bc802ce1b856ce, type: 2}
+  - {fileID: 11400000, guid: 709920543f1a94254b10acbb080aa032, type: 2}
+  - {fileID: 11400000, guid: 8ebcd1ea607cb47128c058268553d47d, type: 2}
+  - {fileID: 11400000, guid: 116ea2411f7c6423eb30b45925ebdca7, type: 2}
+  - {fileID: 11400000, guid: 8539591708c374a0791f58b7098f153e, type: 2}
+  - {fileID: 11400000, guid: 2b43276f7b8a44751935cbdc3776033c, type: 2}
+  - {fileID: 11400000, guid: dfed5304d4da54a1ca295af8d7965e8c, type: 2}
+  - {fileID: 11400000, guid: 476984b0f731e413494b15cd1e89cbe5, type: 2}
+  - {fileID: 11400000, guid: 5850388523f9e4b4a9a983118c7e9367, type: 2}
+  - {fileID: 11400000, guid: ea8312058e05a4a09a6f8ecf5397e54a, type: 2}
+  - {fileID: 11400000, guid: 4a1542bf0b72a40b68a8b1129f1e7311, type: 2}
+  - {fileID: 11400000, guid: 8cec232d9a6094bb29a2b9fb430c7016, type: 2}
+  - {fileID: 11400000, guid: 1e2d9cd39d000486db1e499a5685b9be, type: 2}
+  - {fileID: 11400000, guid: 1352e2807ba7145ff80c1f5807bb55a7, type: 2}
+  - {fileID: 11400000, guid: bd4ec0180bf004f0f9e6cb0cbbd57c4c, type: 2}
   movementCost: 2
   bonusDef: 0
   isObstacle: 0

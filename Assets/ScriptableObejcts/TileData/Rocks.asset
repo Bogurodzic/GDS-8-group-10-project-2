@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: Rocks
   m_EditorClassIdentifier: 
   tiles:
-  - {fileID: 11400000, guid: ee29b72ea3a0948d68aca649eea7f002, type: 2}
-  movementCost: 0
-  bonusDef: 0
-  isObstacle: 1
+  - {fileID: 11400000, guid: b1463f9e055a545beaa46a9c7876b8f1, type: 2}
+  - {fileID: 11400000, guid: 1ef58837ff06345a58c18b53fb941908, type: 2}
+  - {fileID: 11400000, guid: 4c75a04c3dcae456aab3fef794ae9f45, type: 2}
+  - {fileID: 11400000, guid: aaf2b29633550451d940f6ac83e0b1a4, type: 2}
+  movementCost: 1
+  bonusDef: 20
+  isObstacle: 0
