@@ -3,24 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9ea6c1fe-6767-43df-abde-f4f8039ac897" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObejcts/UnitData/UnitData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObejcts/UnitData/UnitData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Units/ARCHER_PLACEHOLDER.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Units/ARCHER_PLACEHOLDER.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Units/BARBARIAN_PLACEHOLDER.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Units/BARBARIAN_PLACEHOLDER.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Units/BOSS_PLACEHOLDER.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Units/BOSS_PLACEHOLDER.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Units/EDWARD_PLACEHOLDER.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Units/EDWARD_PLACEHOLDER.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Units/MANATARMS_PLACEHOLDER.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Units/MANATARMS_PLACEHOLDER.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Units/ROGUE_PLACEHOLDER.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Units/ROGUE_PLACEHOLDER.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Units/SPEARMAN_PLACEHOLDER.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Units/SPEARMAN_PLACEHOLDER.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Units/WIZARD_PLACEHOLDER.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Units/WIZARD_PLACEHOLDER.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Grid/TilePallette/Land.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grid/TilePallette/Land.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +147,7 @@
       <workItem from="1614965581079" duration="5041000" />
       <workItem from="1615234679328" duration="13992000" />
       <workItem from="1615474273110" duration="82583000" />
-      <workItem from="1616418609889" duration="10858000" />
+      <workItem from="1616418609889" duration="13258000" />
     </task>
     <servers />
   </component>
