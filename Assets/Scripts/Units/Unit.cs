@@ -84,20 +84,20 @@ public class Unit : MonoBehaviour
         _grid.GetCell(positionX, positionY).AddOccupiedBy(this);
     }
 
-    private void AddTeamColorToSprite()
+    private void ReloadSprite()
     {
-        Color color;
-
         if (_unitStatistics.team == 1)
         {
-            color = Color.blue;
+            _sprite.sprite = unitData.unitSpriteTeam1;
+            if (!_sprite.flipX)
+            {
+                _sprite.flipX = true;
+            }
         }
         else
         {
-            color = Color.red;
+            _sprite.sprite = unitData.unitSpriteTeam2;
         }
-
-        _sprite.color = color;
     }
 
     private void HandleAction()
@@ -378,7 +378,7 @@ public class Unit : MonoBehaviour
 
     public void ResetUnitCD()
     {
-        AddTeamColorToSprite();
+        ReloadSprite();
         _unitAbility.RemoveOneTurnFromAbilityCD();
         SetUnitPhase(UnitPhase.Inactive);
     }
@@ -488,7 +488,6 @@ public class Unit : MonoBehaviour
         LoadUnitAbility();
         LoadHealthbar();
         //PlaceUnitOnBoard();
-        AddTeamColorToSprite();
         ReloadUnitData();
         SetHealth();
     }
@@ -504,7 +503,7 @@ public class Unit : MonoBehaviour
         _unitStatistics.LoadUnitStatistics(unitData);
         _unitRange.LoadUnitRange(unitData);
         _unitAbility.LoadUnitAbility(unitData);
-        _sprite.sprite = unitData.unitSprite;
+        ReloadSprite();
     }
 
     public bool IsUnitDeployed()

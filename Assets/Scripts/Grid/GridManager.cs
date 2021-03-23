@@ -107,7 +107,7 @@ public class GridManager : MonoBehaviour
         int tilePositionX = _gridPosition.x + x;
         int tilePositionY = _gridPosition.y + y;
         TileBase clickedTile = _map.GetTile(new Vector3Int(tilePositionX, tilePositionY, 0));
-
+        Debug.Log(clickedTile);
         return _dataFromTiles[clickedTile];  
     }
 
