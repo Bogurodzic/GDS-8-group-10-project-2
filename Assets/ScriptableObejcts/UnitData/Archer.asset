@@ -24,4 +24,5 @@ MonoBehaviour:
   unitSpriteTeam2: {fileID: 21300000, guid: 2c84943369eda4d95be42da0085bfac1, type: 3}
   unitPickerSprite: {fileID: -7709173555601886852, guid: 117d62492eb5a4ce58205e32a69770dd,
     type: 3}
-  unitListSprite: {fileID: 0}
+  unitListSprite: {fileID: -1603400164423443452, guid: 89ac21b47f81f40fab3a998bc1ba7861,
+    type: 3}

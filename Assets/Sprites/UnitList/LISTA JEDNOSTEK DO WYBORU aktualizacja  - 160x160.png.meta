@@ -1,34 +1,34 @@
 fileFormatVersion: 2
-guid: 7bf5c63e2b3624a429641106dfa066b2
+guid: 89ac21b47f81f40fab3a998bc1ba7861
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1814349297377949138
-    second: LISTA_JEDNOSTEK_DO_WYBORU_-_PLACEHOLDER_140x140_0
+      213: 5179177888183385488
+    second: LISTA JEDNOSTEK DO WYBORU aktualizacja  - 160x160_0
   - first:
-      213: 2340162475786425208
-    second: LISTA_JEDNOSTEK_DO_WYBORU_-_PLACEHOLDER_140x140_1
+      213: -8336898582869875532
+    second: LISTA JEDNOSTEK DO WYBORU aktualizacja  - 160x160_1
   - first:
-      213: -122512092711028332
-    second: LISTA_JEDNOSTEK_DO_WYBORU_-_PLACEHOLDER_140x140_2
+      213: 4021901342150729866
+    second: LISTA JEDNOSTEK DO WYBORU aktualizacja  - 160x160_2
   - first:
-      213: -4241214904624108924
-    second: LISTA_JEDNOSTEK_DO_WYBORU_-_PLACEHOLDER_140x140_3
+      213: -1603400164423443452
+    second: LISTA JEDNOSTEK DO WYBORU aktualizacja  - 160x160_3
   - first:
-      213: 7134389602272930344
-    second: LISTA_JEDNOSTEK_DO_WYBORU_-_PLACEHOLDER_140x140_4
+      213: -3318599381743113759
+    second: LISTA JEDNOSTEK DO WYBORU aktualizacja  - 160x160_4
   - first:
-      213: 6544527992014167988
-    second: LISTA_JEDNOSTEK_DO_WYBORU_-_PLACEHOLDER_140x140_5
+      213: 785491092164136635
+    second: LISTA JEDNOSTEK DO WYBORU aktualizacja  - 160x160_5
   - first:
-      213: 9217212769327833019
-    second: LISTA_JEDNOSTEK_DO_WYBORU_-_PLACEHOLDER_140x140_6
+      213: 7335469425060238200
+    second: LISTA JEDNOSTEK DO WYBORU aktualizacja  - 160x160_6
   - first:
-      213: 8318067800298429741
-    second: LISTA_JEDNOSTEK_DO_WYBORU_-_PLACEHOLDER_140x140_7
+      213: -1182605644274145553
+    second: LISTA JEDNOSTEK DO WYBORU aktualizacja  - 160x160_7
   - first:
-      213: -4865524381374668051
-    second: LISTA_JEDNOSTEK_DO_WYBORU_-_PLACEHOLDER_140x140_8
+      213: 8746389353966651759
+    second: LISTA JEDNOSTEK DO WYBORU aktualizacja  - 160x160_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -72,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1
+  spritePixelsToUnits: 10
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -114,7 +114,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LISTA_JEDNOSTEK_DO_WYBORU_-_PLACEHOLDER_140x140_0
+      name: LISTA JEDNOSTEK DO WYBORU aktualizacja  - 160x160_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,14 +128,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d531b8b21ddd2910800000000000000
-      internalID: 1814349297377949138
+      spriteID: 09d7abd49d220e740800000000000000
+      internalID: 5179177888183385488
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LISTA_JEDNOSTEK_DO_WYBORU_-_PLACEHOLDER_140x140_1
+      name: LISTA JEDNOSTEK DO WYBORU aktualizacja  - 160x160_1
       rect:
         serializedVersion: 2
         x: 140
@@ -149,14 +149,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 873d2fd7f5de97020800000000000000
-      internalID: 2340162475786425208
+      spriteID: 4b4659fd8e26d4c80800000000000000
+      internalID: -8336898582869875532
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LISTA_JEDNOSTEK_DO_WYBORU_-_PLACEHOLDER_140x140_2
+      name: LISTA JEDNOSTEK DO WYBORU aktualizacja  - 160x160_2
       rect:
         serializedVersion: 2
         x: 280
@@ -170,14 +170,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 499f44996efbc4ef0800000000000000
-      internalID: -122512092711028332
+      spriteID: a80af8436f9a0d730800000000000000
+      internalID: 4021901342150729866
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LISTA_JEDNOSTEK_DO_WYBORU_-_PLACEHOLDER_140x140_3
+      name: LISTA JEDNOSTEK DO WYBORU aktualizacja  - 160x160_3
       rect:
         serializedVersion: 2
         x: 0
@@ -191,14 +191,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48aa9c1e38d2425c0800000000000000
-      internalID: -4241214904624108924
+      spriteID: 40cdcbeab049fb9e0800000000000000
+      internalID: -1603400164423443452
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LISTA_JEDNOSTEK_DO_WYBORU_-_PLACEHOLDER_140x140_4
+      name: LISTA JEDNOSTEK DO WYBORU aktualizacja  - 160x160_4
       rect:
         serializedVersion: 2
         x: 140
@@ -212,14 +212,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82ae7bc2b81720360800000000000000
-      internalID: 7134389602272930344
+      spriteID: 1e9ee5be177f1f1d0800000000000000
+      internalID: -3318599381743113759
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LISTA_JEDNOSTEK_DO_WYBORU_-_PLACEHOLDER_140x140_5
+      name: LISTA JEDNOSTEK DO WYBORU aktualizacja  - 160x160_5
       rect:
         serializedVersion: 2
         x: 280
@@ -233,14 +233,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4bfda9ac885d2da50800000000000000
-      internalID: 6544527992014167988
+      spriteID: bbe4da29cff96ea00800000000000000
+      internalID: 785491092164136635
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LISTA_JEDNOSTEK_DO_WYBORU_-_PLACEHOLDER_140x140_6
+      name: LISTA JEDNOSTEK DO WYBORU aktualizacja  - 160x160_6
       rect:
         serializedVersion: 2
         x: 0
@@ -254,14 +254,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bbfdaf6cd2e1aef70800000000000000
-      internalID: 9217212769327833019
+      spriteID: 873547db392dcc560800000000000000
+      internalID: 7335469425060238200
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LISTA_JEDNOSTEK_DO_WYBORU_-_PLACEHOLDER_140x140_7
+      name: LISTA JEDNOSTEK DO WYBORU aktualizacja  - 160x160_7
       rect:
         serializedVersion: 2
         x: 140
@@ -275,14 +275,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2d1766e796bf6370800000000000000
-      internalID: 8318067800298429741
+      spriteID: fe6eaa7ae6a869fe0800000000000000
+      internalID: -1182605644274145553
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LISTA_JEDNOSTEK_DO_WYBORU_-_PLACEHOLDER_140x140_8
+      name: LISTA JEDNOSTEK DO WYBORU aktualizacja  - 160x160_8
       rect:
         serializedVersion: 2
         x: 280
@@ -296,8 +296,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de229229a5f2a7cb0800000000000000
-      internalID: -4865524381374668051
+      spriteID: f69c07ee6ca616970800000000000000
+      internalID: 8746389353966651759
       vertices: []
       indices: 
       edges: []

@@ -18,6 +18,7 @@ public class AbilityButton : MonoBehaviour
         LoadSprite();
         LoadUnitList();
         LoadButtonText();
+        gameObject.SetActive(false);
     }
 
     void Update()

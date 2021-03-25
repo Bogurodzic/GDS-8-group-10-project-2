@@ -192,4 +192,16 @@ public class UnitList : MonoBehaviour
         return activeUnitFromPlayer2UnitList;
 
     }
+
+   public LinkedList<GameObject> GetPlayerUnitList(int playerTeam)
+   {
+       if (playerTeam == 1)
+       {
+           return player1UnitList;
+       }
+       else
+       {
+           return player2UnitList;
+       }
+   }
 }
