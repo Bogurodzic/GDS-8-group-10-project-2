@@ -13,13 +13,12 @@ public class PickPanel : MonoBehaviour
     public int player1ActiveChoices = 0;
     public int player2ActiveChoices = 0;
 
-    private LinkedList<GameObject> portraits = new LinkedList<GameObject>();
+    public GameObject[] portraits;
     private ReadyButton _readyButton;
     private UnitInfo _unitInfo;
     void Start()
     {
         LoadReadyButton();
-        CreatePortraits();
         LoadUnitInfo();
     }
 
@@ -27,21 +26,7 @@ public class PickPanel : MonoBehaviour
     {
         
     }
-
-    private void CreatePortraits()
-    {
-        for (int i = 0; i < unitsToPick.Length; i++)
-        {
-            GameObject portrait = Instantiate(portraitPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-            portrait.transform.parent = gameObject.transform;
-            portrait.transform.localScale = new Vector3(1.6f, 1.6f, 1.6f);
-            portrait.transform.position = new Vector3(925 + i * 550, portrait.transform.position.y,
-                  portrait.transform.position.z);
-            portrait.GetComponent<Portrait>().LoadUnitData(unitsToPick[i]);
-            portraits.AddLast(portrait);
-        }
-    }
-
+    
     private void LoadReadyButton()
     {
         _readyButton = GameObject.Find("ReadyButton").GetComponent<ReadyButton>();
