@@ -63,8 +63,15 @@ public class UnitListPortrait : MonoBehaviour
 
     public void OnClick()
     {
-        _unitListPanel.DeactivateAllPlayerUnits();
-        _unit.HandleTogglingFromFrame();
+        if (_unit.IsActive())
+        {
+            _unit.DeactivateUnit();
+        }
+        else
+        {
+            _unitListPanel.DeactivateAllPlayerUnits();
+            _unit.HandleTogglingFromFrame();
+        }
     }
 
     public void SetPotraitActive(bool isActive)

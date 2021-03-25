@@ -110,7 +110,7 @@ public class Unit : MonoBehaviour
             case UnitPhase.Standby:
                 SetHealth();
                 HandleTogglingUnit();
-                //HandleDeactivatingUnit();
+                HandleDeactivatingUnit();
                 HandleAttack();
                 HandleMovement();
                 break;
@@ -301,13 +301,20 @@ public class Unit : MonoBehaviour
         mouseVector3.z = 0;
         int mouseX, mouseY;
         _grid.GetCellPosition(mouseVector3, out mouseX, out mouseY);
+        
+        Debug.Log("Handle Toggling Unit 1");
+        Debug.Log(IsUnitTurn());
+        Debug.Log(IsUnitClicked(mouseX, mouseY));
 
-        if (IsUnitTurn() && IsUnitClicked(mouseX, mouseY))
-        {
+        if (IsUnitTurn() && !IsActive() && IsUnitClicked(mouseX, mouseY))
+        {       
+            Debug.Log("Handle Toggling Unit 2");
             EndAction(ActionType.Activation);
         }
-        else if (IsActive() && IsUnitClicked(mouseX, mouseY))
+        else if (IsUnitTurn() && IsActive() && IsUnitClicked(mouseX, mouseY))
         {
+            Debug.Log("Handle Toggling Unit 3");
+
             EndAction(ActionType.Deactivation);
         }
     }
@@ -331,7 +338,11 @@ public class Unit : MonoBehaviour
         int mouseX, mouseY;
         _grid.GetCellPosition(mouseVector3, out mouseX, out mouseY);
 
-        if (IsActive() && !_unitMovement.IsInMovementRange(mouseX, mouseY) && !_unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(),_unitMovement.GetUnitYPosition(),mouseX, mouseY))
+        Debug.Log("HandleDeactivatingUnit");
+        Debug.Log(mouseX);
+        Debug.Log(mouseY);
+        if (IsActive() && !_unitMovement.IsInMovementRange(mouseX, mouseY) && !_unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(),_unitMovement.GetUnitYPosition(),mouseX, mouseY) &&
+            (mouseX < _grid.GetGridWidth() && mouseY < _grid.GetGridHeight() && mouseX >= 0 && mouseY >= 0))
         {
             EndAction(ActionType.Deactivation);
         }
