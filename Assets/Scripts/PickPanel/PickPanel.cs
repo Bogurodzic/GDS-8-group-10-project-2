@@ -110,6 +110,7 @@ public class PickPanel : MonoBehaviour
 
     public void HandleReadyClicked()
     {
+        Debug.Log("HandleReadyClicked");
         if (currentPlayerPickingTurn == 1)
         {
             NextPlayerPickingTurn();
@@ -122,6 +123,8 @@ public class PickPanel : MonoBehaviour
 
     private void NextPlayerPickingTurn()
     {
+        Debug.Log("READY");
+        Debug.Log(GetCurrentPlayerPickedUnits());
         PickedUnits.AddPlayerPickedUnits(GetCurrentPlayerPickedUnits());
         Turn.NextTurn();
         currentPlayerPickingTurn = 2;

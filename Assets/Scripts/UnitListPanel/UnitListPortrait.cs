@@ -10,7 +10,8 @@ public class UnitListPortrait : MonoBehaviour
     private Image _portraitImage;
     private PortraitFrame _portraitFrame;
     private bool _isActive;
-    private PickPanel _pickPanel;
+    private UnitListPanel _unitListPanel;
+    private Unit _unit;
 
     public void Start()
     {
@@ -28,18 +29,14 @@ public class UnitListPortrait : MonoBehaviour
         _portraitImage.sprite = _unitData.unitListSprite;
     }
 
-    public void LoadUnitData(UnitData unitDataToLoad)
+    public void LoadUnitData(Unit unitToLoad)
     {
-        _unitData = unitDataToLoad;
+        _unit = unitToLoad;
+        _unitData = unitToLoad.unitData;
         LoadPortraitImage();
         ReloadPortraitImage();
         LoadPortraitFrame();
-        LoadPickPanel();
-    }
-
-    public void RenderUnitData()
-    {
-        LoadUnitData(_unitData);
+        LoadUnitListPanel();
     }
 
     private void LoadPortraitFrame()
@@ -47,32 +44,27 @@ public class UnitListPortrait : MonoBehaviour
         _portraitFrame = gameObject.GetComponentInChildren<PortraitFrame>();
     }
 
-    private void LoadPickPanel()
+    private void LoadUnitListPanel()
     {
-        _pickPanel = gameObject.GetComponentInParent<PickPanel>();
+        _unitListPanel = gameObject.GetComponentInParent<UnitListPanel>();
     }
 
-    public void TogglePortrait()
-    {
-        if (_isActive)
-        {
-            _isActive = false;
-        } else if (_pickPanel.CanActivatePotrait())
-        {
-            _isActive = true;
-        }
-        _portraitFrame.SetActive(_isActive);
-        _pickPanel.ReloadPickPanel();
-    }
+
 
     public void OnHover()
     {
-        _pickPanel.DisplayUnitInfo(_unitData);
+        _unitListPanel.ShowUnitInfo(_unit);
     }
 
     public void OnHoverOut()
+    { 
+        _unitListPanel.HideUnitInfo();
+    }
+
+    public void OnClick()
     {
-        _pickPanel.ResetUnitInfo();
+        _unitListPanel.DeactivateAllPlayerUnits();
+        _unit.HandleTogglingFromFrame();
     }
 
     public void SetPotraitActive(bool isActive)

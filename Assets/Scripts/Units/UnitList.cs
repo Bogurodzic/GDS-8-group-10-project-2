@@ -204,4 +204,26 @@ public class UnitList : MonoBehaviour
            return player2UnitList;
        }
    }
+   
+   public void DeactivateAllPlayerUnits(int team)
+   {
+       if (team == 1)
+       {
+           foreach (var o in player1UnitList)
+           {
+               o.GetComponent<Unit>().DeactivateUnit();
+           } 
+       }
+
+       if (team == 2)
+       {
+           foreach (var o in player2UnitList)
+           {
+               o.GetComponent<Unit>().DeactivateUnit();
+           }
+       }
+        
+
+        
+   }
 }

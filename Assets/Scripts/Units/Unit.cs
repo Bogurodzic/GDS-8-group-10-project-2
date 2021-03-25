@@ -312,6 +312,18 @@ public class Unit : MonoBehaviour
         }
     }
 
+    public void HandleTogglingFromFrame()
+    {
+        if (IsUnitTurn() && !IsActive())
+        {
+            EndAction(ActionType.Activation);
+        } 
+        else if (IsUnitTurn() && IsActive())
+        {
+            EndAction(ActionType.Deactivation);
+        }
+    }
+
     private void HandleDeactivatingUnit()
     {
         Vector3 mouseVector3 = GridUtils.GetMouseWorldPosition(Input.mousePosition);
@@ -371,9 +383,12 @@ public class Unit : MonoBehaviour
 
     public void DeactivateUnit()
     {
-        _healtbar.SetSliderVisbility(false);
-        SetUnitPhase(UnitPhase.Inactive);
-        _grid.HideRange();
+        if (IsUnitTurn())
+        {
+            _healtbar.SetSliderVisbility(false);
+            SetUnitPhase(UnitPhase.Inactive);
+            _grid.HideRange(); 
+        }
     }
 
     public void ResetUnitCD()

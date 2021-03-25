@@ -54,6 +54,8 @@ public class Portrait : MonoBehaviour
 
     public void TogglePortrait()
     {
+        Debug.Log("CLICK");
+        Debug.Log(unitData);
         if (_isActive)
         {
             _isActive = false;

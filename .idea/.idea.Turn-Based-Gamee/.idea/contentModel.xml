@@ -75,6 +75,7 @@
           <e p="UnitListPanel" t="Include">
             <e p="AbilityButton.cs" t="Include" />
             <e p="UnitListPanel.cs" t="Include" />
+            <e p="UnitListPanelFrame.cs" t="Include" />
             <e p="UnitListPortrait.cs" t="Include" />
           </e>
           <e p="Units" t="Include">
