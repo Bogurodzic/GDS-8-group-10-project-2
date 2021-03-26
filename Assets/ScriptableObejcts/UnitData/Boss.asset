@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cea203f27a234a51b49477e5922c1bc, type: 3}
   m_Name: Boss
   m_EditorClassIdentifier: 
+  unitName: Boss
   minAttack: 100
   maxAttack: 200
   defend: 20
@@ -26,3 +27,4 @@ MonoBehaviour:
     type: 3}
   unitListSprite: {fileID: 4021901342150729866, guid: 89ac21b47f81f40fab3a998bc1ba7861,
     type: 3}
+  skeletonDataAsset: {fileID: 11400000, guid: 168a9c627dab445dc8bb9dd4085728c2, type: 2}

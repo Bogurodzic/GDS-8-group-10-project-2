@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cea203f27a234a51b49477e5922c1bc, type: 3}
   m_Name: Infantry
   m_EditorClassIdentifier: 
+  unitName: Infantry
   minAttack: 20
   maxAttack: 40
   defend: 0
@@ -26,3 +27,4 @@ MonoBehaviour:
     type: 3}
   unitListSprite: {fileID: 8746389353966651759, guid: 89ac21b47f81f40fab3a998bc1ba7861,
     type: 3}
+  skeletonDataAsset: {fileID: 11400000, guid: e38e7a79d66524639a258b19a1d77bbb, type: 2}

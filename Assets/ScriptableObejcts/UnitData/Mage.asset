@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cea203f27a234a51b49477e5922c1bc, type: 3}
   m_Name: Mage
   m_EditorClassIdentifier: 
+  unitName: Mage
   minAttack: 50
   maxAttack: 100
   defend: 0
@@ -26,3 +27,4 @@ MonoBehaviour:
     type: 3}
   unitListSprite: {fileID: 785491092164136635, guid: 89ac21b47f81f40fab3a998bc1ba7861,
     type: 3}
+  skeletonDataAsset: {fileID: 11400000, guid: 8d4a2ca7bf65e4625a11f8d28c34323a, type: 2}

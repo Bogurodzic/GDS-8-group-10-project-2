@@ -5,6 +5,7 @@ namespace Enums
         SingleTarget,
         Aoe,
         Circle,
-        Dash
+        Dash,
+        None
     }
 }

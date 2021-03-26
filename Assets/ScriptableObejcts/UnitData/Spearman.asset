@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cea203f27a234a51b49477e5922c1bc, type: 3}
   m_Name: Spearman
   m_EditorClassIdentifier: 
+  unitName: Spearman
   minAttack: 20
   maxAttack: 40
   defend: 10
@@ -26,3 +27,4 @@ MonoBehaviour:
     type: 3}
   unitListSprite: {fileID: 7335469425060238200, guid: 89ac21b47f81f40fab3a998bc1ba7861,
     type: 3}
+  skeletonDataAsset: {fileID: 11400000, guid: 24f198ceb86844d2791875038d174f7b, type: 2}

@@ -1,0 +1,398 @@
+
+GDS - Wizard.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+WIZARD BLUE/Body_Bottom
+  rotate: true
+  xy: 946, 168
+  size: 278, 240
+  orig: 280, 242
+  offset: 1, 1
+  index: -1
+WIZARD BLUE/Body_Top
+  rotate: true
+  xy: 1097, 476
+  size: 260, 237
+  orig: 262, 239
+  offset: 1, 1
+  index: -1
+WIZARD BLUE/Ear
+  rotate: true
+  xy: 446, 12
+  size: 55, 84
+  orig: 57, 86
+  offset: 1, 1
+  index: -1
+WIZARD RED/Ear
+  rotate: true
+  xy: 446, 12
+  size: 55, 84
+  orig: 55, 84
+  offset: 0, 0
+  index: -1
+WIZARD BLUE/Hat
+  rotate: false
+  xy: 2, 69
+  size: 470, 320
+  orig: 472, 322
+  offset: 1, 1
+  index: -1
+WIZARD BLUE/Head
+  rotate: false
+  xy: 850, 733
+  size: 245, 283
+  orig: 247, 285
+  offset: 1, 1
+  index: -1
+WIZARD BLUE/Hip
+  rotate: true
+  xy: 1427, 310
+  size: 185, 112
+  orig: 187, 114
+  offset: 1, 1
+  index: -1
+WIZARD RED/Hip
+  rotate: true
+  xy: 1427, 310
+  size: 185, 112
+  orig: 185, 112
+  offset: 0, 0
+  index: -1
+WIZARD BLUE/L_Arm
+  rotate: true
+  xy: 946, 32
+  size: 134, 177
+  orig: 136, 179
+  offset: 1, 1
+  index: -1
+WIZARD BLUE/L_Finger
+  rotate: true
+  xy: 532, 15
+  size: 52, 43
+  orig: 54, 45
+  offset: 1, 1
+  index: -1
+WIZARD RED/L_Finger
+  rotate: true
+  xy: 532, 15
+  size: 52, 43
+  orig: 52, 43
+  offset: 0, 0
+  index: -1
+WIZARD BLUE/L_Foot
+  rotate: false
+  xy: 354, 15
+  size: 90, 52
+  orig: 92, 54
+  offset: 1, 1
+  index: -1
+WIZARD BLUE/R_Foot
+  rotate: false
+  xy: 354, 15
+  size: 90, 52
+  orig: 92, 54
+  offset: 1, 1
+  index: -1
+WIZARD RED/L_Foot
+  rotate: false
+  xy: 354, 15
+  size: 90, 52
+  orig: 90, 52
+  offset: 0, 0
+  index: -1
+WIZARD RED/R_Foot
+  rotate: false
+  xy: 354, 15
+  size: 90, 52
+  orig: 90, 52
+  offset: 0, 0
+  index: -1
+WIZARD BLUE/L_Hand
+  rotate: true
+  xy: 1517, 10
+  size: 87, 80
+  orig: 89, 82
+  offset: 1, 1
+  index: -1
+WIZARD RED/L_Hand
+  rotate: true
+  xy: 1517, 10
+  size: 87, 80
+  orig: 87, 80
+  offset: 0, 0
+  index: -1
+WIZARD BLUE/L_Leg
+  rotate: true
+  xy: 1427, 234
+  size: 74, 141
+  orig: 76, 143
+  offset: 1, 1
+  index: -1
+WIZARD BLUE/R_Leg
+  rotate: true
+  xy: 1427, 234
+  size: 74, 141
+  orig: 76, 143
+  offset: 1, 1
+  index: -1
+WIZARD RED/L_Leg
+  rotate: true
+  xy: 1427, 234
+  size: 74, 141
+  orig: 74, 141
+  offset: 0, 0
+  index: -1
+WIZARD RED/R_Leg
+  rotate: true
+  xy: 1427, 234
+  size: 74, 141
+  orig: 74, 141
+  offset: 0, 0
+  index: -1
+WIZARD BLUE/L_Thigh
+  rotate: false
+  xy: 1570, 244
+  size: 73, 116
+  orig: 75, 118
+  offset: 1, 1
+  index: -1
+WIZARD BLUE/R_Thigh
+  rotate: false
+  xy: 1570, 244
+  size: 73, 116
+  orig: 75, 118
+  offset: 1, 1
+  index: -1
+WIZARD RED/L_Thigh
+  rotate: false
+  xy: 1570, 244
+  size: 73, 116
+  orig: 73, 116
+  offset: 0, 0
+  index: -1
+WIZARD RED/R_Thigh
+  rotate: false
+  xy: 1570, 244
+  size: 73, 116
+  orig: 73, 116
+  offset: 0, 0
+  index: -1
+WIZARD BLUE/L_eyebrow
+  rotate: false
+  xy: 138, 2
+  size: 76, 23
+  orig: 78, 25
+  offset: 1, 1
+  index: -1
+WIZARD RED/L_eyebrow
+  rotate: false
+  xy: 138, 2
+  size: 76, 23
+  orig: 76, 23
+  offset: 0, 0
+  index: -1
+WIZARD BLUE/L_shoulder
+  rotate: false
+  xy: 1541, 362
+  size: 131, 133
+  orig: 133, 135
+  offset: 1, 1
+  index: -1
+WIZARD BLUE/R_Arm
+  rotate: false
+  xy: 1304, 35
+  size: 134, 177
+  orig: 136, 179
+  offset: 1, 1
+  index: -1
+WIZARD BLUE/R_Finger
+  rotate: false
+  xy: 1440, 2
+  size: 75, 95
+  orig: 77, 97
+  offset: 1, 1
+  index: -1
+WIZARD RED/R_Finger
+  rotate: false
+  xy: 1440, 2
+  size: 75, 95
+  orig: 75, 95
+  offset: 0, 0
+  index: -1
+WIZARD BLUE/R_Hand
+  rotate: false
+  xy: 1645, 283
+  size: 76, 77
+  orig: 78, 79
+  offset: 1, 1
+  index: -1
+WIZARD RED/R_Hand
+  rotate: false
+  xy: 1645, 283
+  size: 76, 77
+  orig: 76, 77
+  offset: 0, 0
+  index: -1
+WIZARD BLUE/R_Weapon
+  rotate: false
+  xy: 2, 391
+  size: 422, 625
+  orig: 424, 627
+  offset: 1, 1
+  index: -1
+WIZARD BLUE/R_eyebrow
+  rotate: false
+  xy: 216, 2
+  size: 76, 23
+  orig: 78, 25
+  offset: 1, 1
+  index: -1
+WIZARD RED/R_eyebrow
+  rotate: false
+  xy: 216, 2
+  size: 76, 23
+  orig: 76, 23
+  offset: 0, 0
+  index: -1
+WIZARD BLUE/R_shoulder
+  rotate: false
+  xy: 1573, 109
+  size: 131, 133
+  orig: 133, 135
+  offset: 1, 1
+  index: -1
+WIZARD BLUE/beard
+  rotate: true
+  xy: 1336, 497
+  size: 239, 223
+  orig: 241, 225
+  offset: 1, 1
+  index: -1
+WIZARD RED/beard
+  rotate: true
+  xy: 1336, 497
+  size: 239, 223
+  orig: 239, 223
+  offset: 0, 0
+  index: -1
+WIZARD BLUE/eyes_close
+  rotate: false
+  xy: 2, 4
+  size: 134, 10
+  orig: 136, 12
+  offset: 1, 1
+  index: -1
+WIZARD RED/eyes_close
+  rotate: false
+  xy: 2, 4
+  size: 134, 10
+  orig: 134, 10
+  offset: 0, 0
+  index: -1
+WIZARD BLUE/eyes_hurt
+  rotate: false
+  xy: 2, 16
+  size: 127, 51
+  orig: 129, 53
+  offset: 1, 1
+  index: -1
+WIZARD RED/eyes_hurt
+  rotate: false
+  xy: 2, 16
+  size: 127, 51
+  orig: 127, 51
+  offset: 0, 0
+  index: -1
+WIZARD BLUE/eyes_open
+  rotate: false
+  xy: 131, 27
+  size: 134, 40
+  orig: 136, 42
+  offset: 1, 1
+  index: -1
+WIZARD RED/eyes_open
+  rotate: false
+  xy: 131, 27
+  size: 134, 40
+  orig: 134, 40
+  offset: 0, 0
+  index: -1
+WIZARD BLUE/mustache
+  rotate: false
+  xy: 267, 33
+  size: 85, 34
+  orig: 87, 36
+  offset: 1, 1
+  index: -1
+WIZARD RED/mustache
+  rotate: false
+  xy: 267, 33
+  size: 85, 34
+  orig: 85, 34
+  offset: 0, 0
+  index: -1
+WIZARD RED/Body_Bottom
+  rotate: true
+  xy: 1097, 738
+  size: 278, 240
+  orig: 278, 240
+  offset: 0, 0
+  index: -1
+WIZARD RED/Body_Top
+  rotate: true
+  xy: 1188, 214
+  size: 260, 237
+  orig: 260, 237
+  offset: 0, 0
+  index: -1
+WIZARD RED/Hat
+  rotate: false
+  xy: 474, 69
+  size: 470, 320
+  orig: 470, 320
+  offset: 0, 0
+  index: -1
+WIZARD RED/Head
+  rotate: false
+  xy: 850, 448
+  size: 245, 283
+  orig: 245, 283
+  offset: 0, 0
+  index: -1
+WIZARD RED/L_Arm
+  rotate: true
+  xy: 1125, 32
+  size: 134, 177
+  orig: 134, 177
+  offset: 0, 0
+  index: -1
+WIZARD RED/R_Arm
+  rotate: true
+  xy: 1125, 32
+  size: 134, 177
+  orig: 134, 177
+  offset: 0, 0
+  index: -1
+WIZARD RED/L_shoulder
+  rotate: false
+  xy: 1440, 99
+  size: 131, 133
+  orig: 131, 133
+  offset: 0, 0
+  index: -1
+WIZARD RED/R_shoulder
+  rotate: false
+  xy: 1440, 99
+  size: 131, 133
+  orig: 131, 133
+  offset: 0, 0
+  index: -1
+WIZARD RED/R_Weapon
+  rotate: false
+  xy: 426, 391
+  size: 422, 625
+  orig: 422, 625
+  offset: 0, 0
+  index: -1

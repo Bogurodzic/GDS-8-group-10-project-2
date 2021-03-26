@@ -190,6 +190,13 @@ public class UnitAbility : MonoBehaviour
 
     public AbilityType GetAbilityType()
     {
-        return _abilitiesData.abilityType;
+        if (_abilitiesData != null)
+        {
+            return _abilitiesData.abilityType;
+        }
+        else
+        {
+            return AbilityType.None;
+        }
     }
 }

@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using Enums;
+using Spine.Unity;
+using Spine.Unity.Editor;
 using UnityEngine;
 
 public class Unit : MonoBehaviour
@@ -11,6 +13,7 @@ public class Unit : MonoBehaviour
     private Grid _grid;
     private GridManager _gridManager;
     private SpriteRenderer _sprite;
+    private SkeletonAnimation _skeletonAnimation;
     private UnitMovement _unitMovement;
     private UnitStatistics _unitStatistics;
     private UnitRange _unitRange;
@@ -63,6 +66,12 @@ public class Unit : MonoBehaviour
         Vector3 mouseVector3 = GridUtils.GetMouseWorldPosition(Input.mousePosition);
         mouseVector3.z = 0;
         int mouseX, mouseY;
+        Debug.Log("GRID 1");
+        Debug.Log(_unitStatistics.team);
+        Debug.Log(unitData.name);
+        Debug.Log(_grid);
+        Debug.Log("GRID 2");
+
         _grid.GetCellPosition(mouseVector3, out mouseX, out mouseY);
         
         if (!IsActive() && mouseX == GetUnitXPosition() && mouseY == GetUnitYPosition() && !_isUnitHovered)
@@ -86,18 +95,68 @@ public class Unit : MonoBehaviour
 
     private void ReloadSprite()
     {
+        _skeletonAnimation.skeletonDataAsset = unitData.skeletonDataAsset;
+        
         if (_unitStatistics.team == 1)
         {
-            _sprite.sprite = unitData.unitSpriteTeam1;
-            if (!_sprite.flipX)
+            switch (unitData.unitName)
             {
-                _sprite.flipX = true;
+                case "Archer":
+                    _skeletonAnimation.initialSkinName = "ARCHER BLUE";
+                    break;
+                case "Boss":
+                    _skeletonAnimation.initialSkinName = "BOSS BLUE";
+                    break;
+                case "Infantry":
+                    _skeletonAnimation.initialSkinName = "SWORDMAN BLUE";
+                    break;
+                case "Mage":
+                    _skeletonAnimation.initialSkinName = "WIZARD BLUE";
+                    break;
+                case "Medic":
+                    _skeletonAnimation.initialSkinName = "MEDIC BLUE";
+                    break;
+                case "Rogue":
+                    _skeletonAnimation.initialSkinName = "ROGUE BLUE";
+                    break;
+                case "Spearman":
+                    _skeletonAnimation.initialSkinName = "SPEARMAN BLUE";
+                    break;
             }
+            
         }
         else
         {
-            _sprite.sprite = unitData.unitSpriteTeam2;
+            switch (unitData.unitName)
+            {
+                case "Archer":
+                    _skeletonAnimation.initialSkinName = "ARCHER RED";
+                    break;
+                case "Boss":
+                    _skeletonAnimation.initialSkinName = "BOSS RED";
+                    break;
+                case "Infantry":
+                    _skeletonAnimation.initialSkinName = "SWORDMAN RED";
+                    break;
+                case "Mage":
+                    _skeletonAnimation.initialSkinName = "WIZARD RED";
+                    break;
+                case "Medic":
+                    _skeletonAnimation.initialSkinName = "MEDIC RED";
+                    break;
+                case "Rogue":
+                    _skeletonAnimation.initialSkinName = "ROGUE RED";
+                    break;
+                case "Spearman":
+                    _skeletonAnimation.initialSkinName = "SPEARMAN RED";
+                    break;
+            }
         }
+
+        //_skeletonAnimation.loop = true;
+        //_skeletonAnimation.AnimationName = "IDLE";
+        SpineEditorUtilities.ReloadSkeletonDataAssetAndComponent(_skeletonAnimation);
+        _skeletonAnimation.AnimationState.SetAnimation(0, "IDLE", true);
     }
 
     private void HandleAction()
@@ -214,6 +273,8 @@ public class Unit : MonoBehaviour
 
         if (_unitPhase == UnitPhase.AfterMovement && IsCellOcuppiedByEnemy(mouseX, mouseY) && _unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
         {
+            AnimateUnit("ATTACK");
+            _grid.GetCell(mouseX, mouseY).GetOccupiedBy().AnimateUnit("HURT");
             _combatLog.LogCombat(Attack.AttackUnit(this, _grid.GetCell(mouseX, mouseY).GetOccupiedBy()));
             _grid.GetCell(mouseX, mouseY).GetOccupiedBy().SetHealth();
             EndAction(ActionType.Attack);
@@ -224,6 +285,8 @@ public class Unit : MonoBehaviour
             {            
                 _unitMovement.MoveBeforeAttack(mouseX, mouseY, this);
             }
+            AnimateUnit("ATTACK");
+            _grid.GetCell(mouseX, mouseY).GetOccupiedBy().AnimateUnit("HURT");
             _combatLog.LogCombat(Attack.AttackUnit(this, _grid.GetCell(mouseX, mouseY).GetOccupiedBy()));
             _grid.GetCell(mouseX, mouseY).GetOccupiedBy().SetHealth();
             EndAction(ActionType.Attack);
@@ -404,7 +467,7 @@ public class Unit : MonoBehaviour
 
     public void ResetUnitCD()
     {
-        ReloadSprite();
+        //ReloadSprite();
         _unitAbility.RemoveOneTurnFromAbilityCD();
         SetUnitPhase(UnitPhase.Inactive);
     }
@@ -412,7 +475,7 @@ public class Unit : MonoBehaviour
     public void SkipTurn()
     {
         _grid.HideRange();
-        _sprite.color = Color.black;
+        //_sprite.color = Color.black;
         SetUnitPhase(UnitPhase.OnCooldown);
         EndAction(ActionType.SkipTurn);
     }
@@ -441,6 +504,11 @@ public class Unit : MonoBehaviour
     {
         return _unitAbility;
     }
+
+    public SkeletonAnimation GetSkeletonAnimation()
+    {
+        return _skeletonAnimation;
+    }
     
     private int GetUnitXPosition()
     {
@@ -459,6 +527,7 @@ public class Unit : MonoBehaviour
     private void LoadSprite()
     {
         _sprite = gameObject.GetComponent<SpriteRenderer>();
+        _skeletonAnimation = gameObject.GetComponent<SkeletonAnimation>();
     }
     
     private void LoadGrid()
@@ -570,5 +639,11 @@ public class Unit : MonoBehaviour
         gameObject.transform.position = cellCenterPosition;
         _preDeployedX = x;
         _preDeployedY = y;
+    }
+
+    public void AnimateUnit(string animationName)
+    {
+        _skeletonAnimation.AnimationState.SetAnimation(0, animationName, false);
+        _skeletonAnimation.AnimationState.AddAnimation(0, "IDLE", true, 0f);
     }
 }

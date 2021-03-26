@@ -1,0 +1,356 @@
+
+GDS - SPEARMAN.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+SPEARMAN BLUE/Body
+  rotate: true
+  xy: 688, 486
+  size: 225, 333
+  orig: 227, 335
+  offset: 1, 1
+  index: -1
+SPEARMAN BLUE/Body_wear_dagger
+  rotate: true
+  xy: 713, 218
+  size: 180, 140
+  orig: 182, 142
+  offset: 1, 1
+  index: -1
+SPEARMAN BLUE/Head
+  rotate: true
+  xy: 402, 130
+  size: 265, 309
+  orig: 267, 311
+  offset: 1, 1
+  index: -1
+SPEARMAN BLUE/Helmet
+  rotate: true
+  xy: 402, 710
+  size: 312, 284
+  orig: 314, 286
+  offset: 1, 1
+  index: -1
+SPEARMAN BLUE/Hip
+  rotate: false
+  xy: 2, 15
+  size: 178, 109
+  orig: 180, 111
+  offset: 1, 1
+  index: -1
+SPEARMAN BLUE/L_Arm
+  rotate: true
+  xy: 361, 2
+  size: 122, 127
+  orig: 124, 129
+  offset: 1, 1
+  index: -1
+SPEARMAN BLUE/L_Finger
+  rotate: true
+  xy: 1023, 577
+  size: 53, 43
+  orig: 55, 45
+  offset: 1, 1
+  index: -1
+SPEARMAN BLUE/L_Foot
+  rotate: false
+  xy: 997, 249
+  size: 88, 49
+  orig: 90, 51
+  offset: 1, 1
+  index: -1
+SPEARMAN BLUE/L_Hand
+  rotate: true
+  xy: 1075, 150
+  size: 97, 83
+  orig: 99, 85
+  offset: 1, 1
+  index: -1
+SPEARMAN BLUE/L_Leg
+  rotate: true
+  xy: 688, 416
+  size: 68, 139
+  orig: 70, 141
+  offset: 1, 1
+  index: -1
+SPEARMAN BLUE/L_Shoulder
+  rotate: true
+  xy: 490, 4
+  size: 124, 147
+  orig: 126, 149
+  offset: 1, 1
+  index: -1
+SPEARMAN BLUE/L_Thigh
+  rotate: true
+  xy: 713, 141
+  size: 75, 119
+  orig: 77, 121
+  offset: 1, 1
+  index: -1
+SPEARMAN BLUE/L_eyebrow
+  rotate: false
+  xy: 855, 218
+  size: 50, 16
+  orig: 52, 18
+  offset: 1, 1
+  index: -1
+SPEARMAN BLUE/L_weapon
+  rotate: false
+  xy: 2, 126
+  size: 198, 896
+  orig: 200, 898
+  offset: 1, 1
+  index: -1
+SPEARMAN BLUE/R_Arm
+  rotate: false
+  xy: 1061, 13
+  size: 122, 127
+  orig: 124, 129
+  offset: 1, 1
+  index: -1
+SPEARMAN BLUE/R_Finger
+  rotate: false
+  xy: 1160, 174
+  size: 75, 95
+  orig: 77, 97
+  offset: 1, 1
+  index: -1
+SPEARMAN BLUE/R_Foot
+  rotate: false
+  xy: 1185, 26
+  size: 87, 49
+  orig: 89, 51
+  offset: 1, 1
+  index: -1
+SPEARMAN BLUE/R_Hand
+  rotate: false
+  xy: 1023, 632
+  size: 76, 79
+  orig: 78, 81
+  offset: 1, 1
+  index: -1
+SPEARMAN BLUE/R_Leg
+  rotate: true
+  xy: 829, 417
+  size: 67, 139
+  orig: 69, 141
+  offset: 1, 1
+  index: -1
+SPEARMAN BLUE/R_Shoulder
+  rotate: true
+  xy: 788, 15
+  size: 124, 147
+  orig: 126, 149
+  offset: 1, 1
+  index: -1
+SPEARMAN BLUE/R_Thigh
+  rotate: true
+  xy: 955, 142
+  size: 74, 118
+  orig: 76, 120
+  offset: 1, 1
+  index: -1
+SPEARMAN BLUE/R_eyebrow
+  rotate: false
+  xy: 959, 218
+  size: 50, 16
+  orig: 52, 18
+  offset: 1, 1
+  index: -1
+SPEARMAN BLUE/eyes_close
+  rotate: false
+  xy: 688, 400
+  size: 128, 14
+  orig: 130, 16
+  offset: 1, 1
+  index: -1
+SPEARMAN BLUE/eyes_open
+  rotate: false
+  xy: 970, 453
+  size: 138, 31
+  orig: 140, 33
+  offset: 1, 1
+  index: -1
+SPEARMAN BLUE/mouth_close
+  rotate: false
+  xy: 2, 5
+  size: 46, 8
+  orig: 48, 10
+  offset: 1, 1
+  index: -1
+SPEARMAN RED/Body
+  rotate: true
+  xy: 954, 798
+  size: 224, 333
+  orig: 224, 333
+  offset: 0, 0
+  index: -1
+SPEARMAN RED/Body_wear_dagger
+  rotate: true
+  xy: 855, 236
+  size: 179, 140
+  orig: 179, 140
+  offset: 0, 0
+  index: -1
+SPEARMAN RED/Head
+  rotate: false
+  xy: 688, 713
+  size: 264, 309
+  orig: 264, 309
+  offset: 0, 0
+  index: -1
+SPEARMAN RED/Helmet
+  rotate: true
+  xy: 402, 397
+  size: 311, 284
+  orig: 311, 284
+  offset: 0, 0
+  index: -1
+SPEARMAN RED/Hip
+  rotate: false
+  xy: 182, 15
+  size: 177, 109
+  orig: 177, 109
+  offset: 0, 0
+  index: -1
+SPEARMAN RED/L_Arm
+  rotate: false
+  xy: 937, 13
+  size: 122, 127
+  orig: 122, 127
+  offset: 0, 0
+  index: -1
+SPEARMAN RED/R_Arm
+  rotate: false
+  xy: 937, 13
+  size: 122, 127
+  orig: 122, 127
+  offset: 0, 0
+  index: -1
+SPEARMAN RED/L_Finger
+  rotate: true
+  xy: 1023, 523
+  size: 52, 43
+  orig: 52, 43
+  offset: 0, 0
+  index: -1
+SPEARMAN RED/L_Foot
+  rotate: false
+  xy: 1087, 271
+  size: 87, 49
+  orig: 87, 49
+  offset: 0, 0
+  index: -1
+SPEARMAN RED/R_Foot
+  rotate: false
+  xy: 1087, 271
+  size: 87, 49
+  orig: 87, 49
+  offset: 0, 0
+  index: -1
+SPEARMAN RED/L_Hand
+  rotate: true
+  xy: 1073, 322
+  size: 96, 83
+  orig: 96, 83
+  offset: 0, 0
+  index: -1
+SPEARMAN RED/L_Leg
+  rotate: true
+  xy: 954, 729
+  size: 67, 139
+  orig: 67, 139
+  offset: 0, 0
+  index: -1
+SPEARMAN RED/R_Leg
+  rotate: true
+  xy: 954, 729
+  size: 67, 139
+  orig: 67, 139
+  offset: 0, 0
+  index: -1
+SPEARMAN RED/L_Shoulder
+  rotate: true
+  xy: 639, 4
+  size: 124, 147
+  orig: 124, 147
+  offset: 0, 0
+  index: -1
+SPEARMAN RED/R_Shoulder
+  rotate: true
+  xy: 639, 4
+  size: 124, 147
+  orig: 124, 147
+  offset: 0, 0
+  index: -1
+SPEARMAN RED/L_Thigh
+  rotate: true
+  xy: 834, 142
+  size: 74, 119
+  orig: 74, 119
+  offset: 0, 0
+  index: -1
+SPEARMAN RED/L_eyebrow
+  rotate: false
+  xy: 907, 218
+  size: 50, 16
+  orig: 50, 16
+  offset: 0, 0
+  index: -1
+SPEARMAN RED/L_weapon
+  rotate: false
+  xy: 202, 126
+  size: 198, 896
+  orig: 198, 896
+  offset: 0, 0
+  index: -1
+SPEARMAN RED/R_Finger
+  rotate: false
+  xy: 1185, 77
+  size: 75, 95
+  orig: 75, 95
+  offset: 0, 0
+  index: -1
+SPEARMAN RED/R_Hand
+  rotate: false
+  xy: 1095, 717
+  size: 76, 79
+  orig: 76, 79
+  offset: 0, 0
+  index: -1
+SPEARMAN RED/R_Thigh
+  rotate: false
+  xy: 997, 300
+  size: 74, 118
+  orig: 74, 118
+  offset: 0, 0
+  index: -1
+SPEARMAN RED/R_eyebrow
+  rotate: false
+  xy: 1011, 231
+  size: 50, 16
+  orig: 50, 16
+  offset: 0, 0
+  index: -1
+SPEARMAN RED/eyes_close
+  rotate: false
+  xy: 954, 713
+  size: 128, 14
+  orig: 128, 14
+  offset: 0, 0
+  index: -1
+SPEARMAN RED/eyes_open
+  rotate: false
+  xy: 970, 420
+  size: 138, 31
+  orig: 138, 31
+  offset: 0, 0
+  index: -1
+SPEARMAN RED/mouth_close
+  rotate: false
+  xy: 50, 5
+  size: 46, 8
+  orig: 46, 8
+  offset: 0, 0
+  index: -1
