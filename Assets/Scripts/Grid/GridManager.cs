@@ -8,7 +8,13 @@ using UnityEngine.Tilemaps;
 public class GridManager : MonoBehaviour
 {
     [SerializeField] private Tilemap _map;
+    [SerializeField] private Tilemap _indicatorMap;
     [SerializeField] private List<TileData> _tileDatas;
+    
+    [SerializeField] private Tile _deployTile;
+    [SerializeField] private Tile _attackTile;
+    [SerializeField] private Tile _movementTile;
+
     private Dictionary<TileBase, TileData> _dataFromTiles;
 
     private Vector3Int _gridSize;
@@ -73,7 +79,22 @@ public class GridManager : MonoBehaviour
         int tilePositionX = _gridPosition.x + x;
         int tilePositionY = _gridPosition.y + y;
         _map.SetTileFlags(new Vector3Int(tilePositionX, tilePositionY, 0), TileFlags.None);
-        _map.SetColor(new Vector3Int(tilePositionX, tilePositionY, 0), color);
+
+
+        if (color == Color.red)
+        {
+            _indicatorMap.SetTile(new Vector3Int(tilePositionX, tilePositionY, 0), _attackTile);
+        }
+        
+        if (color == Color.yellow)
+        {
+            _indicatorMap.SetTile(new Vector3Int(tilePositionX, tilePositionY, 0), _deployTile);
+        }
+        
+        if (color == Color.blue)
+        {
+            _indicatorMap.SetTile(new Vector3Int(tilePositionX, tilePositionY, 0), _movementTile);
+        }
     }
 
     public void ResetColor(int x, int y)
@@ -81,7 +102,8 @@ public class GridManager : MonoBehaviour
         int tilePositionX = _gridPosition.x + x;
         int tilePositionY = _gridPosition.y + y;
         _map.SetTileFlags(new Vector3Int(tilePositionX, tilePositionY, 0), TileFlags.None);
-        _map.SetColor(new Vector3Int(tilePositionX, tilePositionY, 0), Color.white); 
+        
+        _indicatorMap.SetTile(new Vector3Int(tilePositionX, tilePositionY, 0), null);
     }
 
     public float GetTileCost(int x, int y)
