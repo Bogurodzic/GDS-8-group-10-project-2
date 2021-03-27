@@ -23,7 +23,7 @@ MonoBehaviour:
   unitAbility: {fileID: 0}
   unitSpriteTeam1: {fileID: 21300000, guid: ca3ea0a6dae7648b6adbc5cb65ac902f, type: 3}
   unitSpriteTeam2: {fileID: 21300000, guid: f1e0ef59c32cc475daa619ef69161579, type: 3}
-  unitPickerSprite: {fileID: 4063526388759995247, guid: 117d62492eb5a4ce58205e32a69770dd,
+  unitPickerSprite: {fileID: 7335469425060238200, guid: e12375eef647c43fd93b302bd9654290,
     type: 3}
   unitListSprite: {fileID: 7335469425060238200, guid: 89ac21b47f81f40fab3a998bc1ba7861,
     type: 3}

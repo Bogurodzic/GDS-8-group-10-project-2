@@ -6007,7 +6007,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9445a56c0942745058fdb287dbc360a0, type: 2}
+      objectReference: {fileID: 2100000, guid: 80e8f9d5616a44fbdaab3bd046d920c5, type: 2}
     - target: {fileID: 8673913214927299167, guid: 7f718f0962aa44e9cb733d46476f11a4,
         type: 3}
       propertyPath: loop
@@ -6021,13 +6021,13 @@ PrefabInstance:
     - target: {fileID: 8673913214927299167, guid: 7f718f0962aa44e9cb733d46476f11a4,
         type: 3}
       propertyPath: initialSkinName
-      value: ROGUE BLUE
+      value: BOSS BLUE
       objectReference: {fileID: 0}
     - target: {fileID: 8673913214927299167, guid: 7f718f0962aa44e9cb733d46476f11a4,
         type: 3}
       propertyPath: skeletonDataAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 73677a991ccee40dfb1bca76946633ed,
+      objectReference: {fileID: 11400000, guid: 168a9c627dab445dc8bb9dd4085728c2,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f718f0962aa44e9cb733d46476f11a4, type: 3}
