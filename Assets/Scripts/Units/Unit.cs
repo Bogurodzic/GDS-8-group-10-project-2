@@ -127,6 +127,7 @@ public class Unit : MonoBehaviour
         }
         else
         {
+            _skeletonAnimation.initialFlipX = true;
             switch (unitData.unitName)
             {
                 case "Archer":

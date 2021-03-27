@@ -92,6 +92,7 @@
           </e>
           <e p="UI" t="Include">
             <e p="CombatLog.cs" t="Include" />
+            <e p="SkipTurn.cs" t="Include" />
             <e p="TurnText.cs" t="Include" />
           </e>
           <e p="UnitDeployment" t="Include">
