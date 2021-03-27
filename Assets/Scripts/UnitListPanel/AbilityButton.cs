@@ -13,6 +13,7 @@ public class AbilityButton : MonoBehaviour
     private Text _buttonText;
     public Sprite readyButtonSprite;
     public Sprite notReadyButtonSprite;
+    public int abilityTeam;
     void Start()
     {
         LoadSprite();
@@ -30,7 +31,7 @@ public class AbilityButton : MonoBehaviour
         }
 
     }
-    
+
     private void LoadUnitList()
     {
         _unitList = GameObject.Find("UnitList").GetComponent<UnitList>();
@@ -67,16 +68,15 @@ public class AbilityButton : MonoBehaviour
             }
         }
     }
-
+    
     private void SetIsReady(bool isReady)
     {
         _isReady = isReady;
     }
     
-
     private bool IsUnitAbilityActive()
     {
-        return _unitList.GetActiveUnit().GetComponent<Unit>().IsAbilityActive();
+        return _unitList.GetActiveUnit().GetComponent<Unit>().IsAbilityActive() && _unitList.GetActiveUnit().GetComponent<Unit>().GetStatistics().team == abilityTeam;
     }
 
     private int GetRemainingAbilityCD()

@@ -25,7 +25,37 @@ public class UnitListPanel : MonoBehaviour
         {
             InitialisePanel();
         }
+
+        if (_panelInitialised)
+        {
+            ReloadButton();
+        }
     }
+
+
+    private void ReloadButton()
+    {
+        if (IsUnitTurn() && HasUnitAbility())
+        {
+            abilityButton.SetActive(true);
+        }
+        else
+        {
+            abilityButton.SetActive(false);
+        }
+
+    }
+    
+    private bool IsUnitTurn()
+    {
+        return _unitList.GetActiveUnit().GetComponent<Unit>().GetStatistics().team == team && Turn.IsUnitTurn(team) && _unitList.GetActiveUnit().GetComponent<Unit>().IsActive();
+    }
+
+    private bool HasUnitAbility()
+    {
+        return _unitList.GetActiveUnit().GetComponent<Unit>().GetUnitAbility().GetAbilityType() != AbilityType.None;
+    }
+
 
     private void InitialisePanel()
     {
@@ -35,7 +65,8 @@ public class UnitListPanel : MonoBehaviour
         LoadUnitListPanelFrame();
         RenderUnitListPortrait();
         unitListPanelFrame.SetActive(true);
-        abilityButton.SetActive(true);
+        HideUnitInfo();
+        abilityButton.SetActive(false);
     }
 
     private void LoadUnitListPanelFrame()
