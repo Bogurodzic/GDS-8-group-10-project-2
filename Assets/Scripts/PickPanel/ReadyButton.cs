@@ -52,7 +52,9 @@ public class ReadyButton : MonoBehaviour
 
     public void ReadyClicked()
     {
-        Debug.Log("ReadyClicked");
-        _pickPanel.HandleReadyClicked();
+        if (_isReady)
+        {
+            _pickPanel.HandleReadyClicked();
+        }
     }
 }
