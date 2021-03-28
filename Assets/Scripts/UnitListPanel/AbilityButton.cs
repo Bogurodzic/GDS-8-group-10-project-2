@@ -8,6 +8,7 @@ public class AbilityButton : MonoBehaviour
 {
     private SpriteRenderer _sprite;
     private Image _image;
+    private Button _button;
     private UnitList _unitList;
     private bool _isReady;
     private Text _buttonText;
@@ -19,6 +20,7 @@ public class AbilityButton : MonoBehaviour
         LoadSprite();
         LoadUnitList();
         LoadButtonText();
+        LoadButton();
         gameObject.SetActive(false);
     }
 
@@ -48,16 +50,46 @@ public class AbilityButton : MonoBehaviour
         _buttonText = gameObject.GetComponentInChildren<Text>();
     }
 
+    private void LoadButton()
+    {
+        _button = gameObject.GetComponent<Button>();
+    }
+
+    private void ReloadButtonStates(bool isActive)
+    {
+        SpriteState spriteState = new SpriteState();
+        spriteState = _button.spriteState;
+
+        if (isActive)
+        {
+            spriteState.pressedSprite = _unitList.GetActiveUnit().GetComponent<Unit>().unitData.unitAbility.abilityButtonActive;
+            spriteState.highlightedSprite =
+                _unitList.GetActiveUnit().GetComponent<Unit>().unitData.unitAbility.abilityButtonHover;
+            _image.sprite = _unitList.GetActiveUnit().GetComponent<Unit>().unitData.unitAbility.abilityButtonNormal;
+        }
+        else
+        {
+            spriteState.pressedSprite = _unitList.GetActiveUnit().GetComponent<Unit>().unitData.unitAbility.abilityButtonActive;
+            spriteState.highlightedSprite =
+                _unitList.GetActiveUnit().GetComponent<Unit>().unitData.unitAbility.abilityButtonActive;
+            _image.sprite = _unitList.GetActiveUnit().GetComponent<Unit>().unitData.unitAbility.abilityButtonActive;
+        }
+
+        
+        _button.spriteState = spriteState;
+    }
+
     private void ReloadSprite()
     {
         if (_isReady)
         {
             //_sprite.sprite = readyButtonSprite;
-            _image.sprite = readyButtonSprite;
+            ReloadButtonStates(true);
         }
         else
         {
-            _image.sprite = notReadyButtonSprite;
+            //_image.sprite = notReadyButtonSprite;
+            ReloadButtonStates(false);
             if (GetRemainingAbilityCD() > 0)
             {
                 _buttonText.text = "" + GetRemainingAbilityCD();
