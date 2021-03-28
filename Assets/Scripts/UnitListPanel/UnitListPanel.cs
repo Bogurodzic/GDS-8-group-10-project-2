@@ -95,10 +95,15 @@ public class UnitListPanel : MonoBehaviour
             index++;
         }
     }
+    
 
     public void DeactivateAllPlayerUnits()
     {
         _unitList.DeactivateAllPlayerUnits(team);
+        foreach (var unitListPortrait in unitListPortraits)
+        {
+            unitListPortrait.GetComponent<UnitListPortrait>().SetPotraitActive(false);
+        }
     }
 
     public void ShowUnitInfo(Unit unit)

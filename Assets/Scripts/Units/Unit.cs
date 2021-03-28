@@ -384,16 +384,20 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public void HandleTogglingFromFrame()
+    public bool HandleTogglingFromFrame()
     {
         if (IsUnitTurn() && !IsActive())
         {
             EndAction(ActionType.Activation);
+            return true;
         } 
         else if (IsUnitTurn() && IsActive())
         {
             EndAction(ActionType.Deactivation);
+            return false;
         }
+
+        return false;
     }
 
     private void HandleDeactivatingUnit()

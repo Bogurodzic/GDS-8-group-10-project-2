@@ -54,11 +54,13 @@ public class UnitListPortrait : MonoBehaviour
     public void OnHover()
     {
         _unitListPanel.ShowUnitInfo(_unit);
+        _portraitFrame.Hover();
     }
 
     public void OnHoverOut()
     { 
         _unitListPanel.HideUnitInfo();
+        _portraitFrame.HoverOut();
     }
 
     public void OnClick()
@@ -66,11 +68,22 @@ public class UnitListPortrait : MonoBehaviour
         if (_unit.IsActive())
         {
             _unit.DeactivateUnit();
+            SetPotraitActive(false);
         }
         else
         {
             _unitListPanel.DeactivateAllPlayerUnits();
-            _unit.HandleTogglingFromFrame();
+            bool isFrameReadyToActivate = _unit.HandleTogglingFromFrame();
+            Debug.Log("ISFRAMEREADYTOACTIVE");
+            Debug.Log(isFrameReadyToActivate);
+            if (isFrameReadyToActivate)
+            {
+                SetPotraitActive(true);
+            }
+            else
+            {
+                SetPotraitActive(false);
+            }
         }
     }
 
@@ -80,7 +93,7 @@ public class UnitListPortrait : MonoBehaviour
         _portraitFrame.SetActive((isActive));
     }
 
-    public bool isActive()
+    public bool IsActive()
     {
         return _isActive;
     }
