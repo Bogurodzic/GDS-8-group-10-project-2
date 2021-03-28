@@ -79,25 +79,36 @@ public class AbilityButton : MonoBehaviour
         return _unitList.GetActiveUnit().GetComponent<Unit>().IsAbilityActive() && _unitList.GetActiveUnit().GetComponent<Unit>().GetStatistics().team == abilityTeam;
     }
 
+    private bool IsAbilityActivated()
+    {
+        return _unitList.GetActiveUnit().GetComponent<Unit>().IsAbilityActivated();
+    }
+
     private int GetRemainingAbilityCD()
     {
         return _unitList.GetActiveUnit().GetComponent<Unit>().GetUnitAbility().GetRemainingAbilityCD();
-
     }
 
     public void HandleAbility()
     {
         Debug.Log("Handle ability 1");
-        if (IsUnitAbilityActive())
+        if (IsUnitAbilityActive() && !IsAbilityActivated())
         {
             Debug.Log("Handle ability 2");
             ActivateAbility();
+        } else if (IsUnitAbilityActive() && IsAbilityActivated())
+        {
+            DeactivateAbility();
         }
     }
 
     private void ActivateAbility()
     {
         _unitList.GetActiveUnit().GetComponent<Unit>().ToggleAbility();
-
+    }
+    
+    private void DeactivateAbility()
+    {
+        _unitList.GetActiveUnit().GetComponent<Unit>().DeactivateUnit();
     }
 }

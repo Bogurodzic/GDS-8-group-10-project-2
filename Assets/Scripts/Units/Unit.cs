@@ -28,7 +28,7 @@ public class Unit : MonoBehaviour
     private int _preDeployedX = -9999;
     private int _preDeployedY = -9999;
     private bool _isUnitHovered = false;
-
+    private UnitPhase _phaseBeforeAbility;
     
     void Start()
     {
@@ -431,7 +431,19 @@ public class Unit : MonoBehaviour
     public void ToggleAbility()
     {
         Debug.Log("Handle ability 3");
+        _phaseBeforeAbility = _unitPhase;
         EndAction(ActionType.ActiveAbility);
+    }
+
+    public void DeactivateAbility()
+    {
+        if (_phaseBeforeAbility == UnitPhase.Standby)
+        {
+            EndAction(ActionType.Activation);
+        } else if (_phaseBeforeAbility == UnitPhase.AfterMovement)
+        {
+            EndAction(ActionType.Movement);
+        }
     }
 
     private void ActiveAbility()
@@ -448,7 +460,7 @@ public class Unit : MonoBehaviour
         int mouseX, mouseY;
         _grid.GetCellPosition(mouseVector3, out mouseX, out mouseY);
 
-        if (_unitAbility.ExecuteAbility(mouseX, mouseY, GetUnitXPosition(), GetUnitYPosition()))
+        if (mouseX < _grid.GetGridWidth() && mouseY < _grid.GetGridHeight() && mouseX >= 0 && mouseY >= 0 &&_unitAbility.ExecuteAbility(mouseX, mouseY, GetUnitXPosition(), GetUnitYPosition()))
         {
             EndAction(ActionType.ExecuteAbility);
         }
@@ -610,6 +622,11 @@ public class Unit : MonoBehaviour
     public bool IsUnitPreDeployed()
     {
         return _isPreDeployed;
+    }
+
+    public bool IsAbilityActivated()
+    {
+        return _unitPhase == UnitPhase.AbilityActivated;
     }
 
     public void HandleDeployment(int x, int y)

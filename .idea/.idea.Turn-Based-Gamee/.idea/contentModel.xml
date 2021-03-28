@@ -64,6 +64,8 @@
           </e>
           <e p="MainMenu" t="Include">
             <e p="QuitGame.cs" t="Include" />
+            <e p="QuitWarning.cs" t="Include" />
+            <e p="QuitWarningPanel.cs" t="Include" />
             <e p="StartGame.cs" t="Include" />
           </e>
           <e p="Pathfinding" t="Include">

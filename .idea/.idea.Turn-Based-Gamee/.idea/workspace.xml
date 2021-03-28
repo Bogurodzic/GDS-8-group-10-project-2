@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ea6c1fe-6767-43df-abde-f4f8039ac897" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MainMenu/QuitGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MainMenu/QuitGame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/AbilityButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/AbilityButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +31,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PickPanel/PickedUnits.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PickPanel/PortraitFrame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPanelFrame.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MainMenu/QuitWarningPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitInfoText.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/09BAF65C-3F0F-440E-94EB-8E59838010B5/58/2bb99113/Transform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Units/Healtbar.cs" root0="FORCE_HIGHLIGHTING" />
@@ -41,14 +46,12 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitAbilityInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/CombatLog.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PickPanel/RemainingSelectionText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MainMenu/QuitWarning.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UnitDeployment/UnitDeployment.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ScriptableObejcts/UnitData/UnitData.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitStatistics.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/PickPortrait.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/PickList.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/PortraitFrame.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitHp.cs" />
@@ -84,7 +87,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitHpInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/Portrait.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/PickPanel.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/ReadyButton.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitList.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPanelFrame.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPortrait.cs" />
@@ -92,11 +94,15 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Enums/AbilityType.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitAbility.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPanel.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/AbilityButton.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/SkipTurn.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridUtils.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/ReadyButton.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/AbilityButton.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/MainMenu/QuitWarning.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/MainMenu/QuitGame.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/MainMenu/QuitWarningPanel.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1pLb0eqZaQJiXIFPJRkhff1DHdr" />
@@ -152,6 +158,7 @@
       <workItem from="1615234679328" duration="13992000" />
       <workItem from="1615474273110" duration="82583000" />
       <workItem from="1616418609889" duration="13258000" />
+      <workItem from="1616941003345" duration="1242000" />
     </task>
     <servers />
   </component>
