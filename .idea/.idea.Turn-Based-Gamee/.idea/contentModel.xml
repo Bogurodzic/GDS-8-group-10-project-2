@@ -63,6 +63,7 @@
             <e p="GridUtils.cs" t="Include" />
           </e>
           <e p="MainMenu" t="Include">
+            <e p="Credits.cs" t="Include" />
             <e p="QuitGame.cs" t="Include" />
             <e p="QuitWarning.cs" t="Include" />
             <e p="QuitWarningPanel.cs" t="Include" />
