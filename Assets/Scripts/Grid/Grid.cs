@@ -265,6 +265,11 @@ public class Grid
         }
     }
 
+    public void HighliteCell(int x, int y)
+    {
+        _gridManager.ChangeColor(x, y, Color.blue);
+    }
+
     public bool IsMouseOverDeploymentCell()
     {
         Vector3 mouseVector3 = GridUtils.GetMouseWorldPosition(Input.mousePosition);

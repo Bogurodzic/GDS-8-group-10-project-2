@@ -203,7 +203,7 @@ public class Unit : MonoBehaviour
                 break;
             case ActionType.Movement:
                 SetUnitPhase(UnitPhase.AfterMovement);
-                HandleActivatingAttackMode();
+                //HandleActivatingAttackMode();
                 break;
             case ActionType.Attack:
                 if (_unitAbility.GetAbilityType() == AbilityType.Dash)
@@ -246,6 +246,7 @@ public class Unit : MonoBehaviour
         
         if (_unitPhase == UnitPhase.Standby && _unitMovement.IsInMovementRange(mouseX, mouseY))
         {
+            AnimateLoopUnit("WALK");
             _unitMovement.Move(mouseX, mouseY, this);
             EndAction(ActionType.Movement);
         }
@@ -663,5 +664,10 @@ public class Unit : MonoBehaviour
     {
         _skeletonAnimation.AnimationState.SetAnimation(0, animationName, false);
         _skeletonAnimation.AnimationState.AddAnimation(0, "IDLE", true, 0f);
+    }
+
+    public void AnimateLoopUnit(string animationName)
+    {
+        _skeletonAnimation.AnimationState.SetAnimation(0, animationName, true);
     }
 }

@@ -6,9 +6,15 @@ using UnityEngine;
 public class UnitMovement : MonoBehaviour
 {
     public int movementRange;
+    public int movementSpeed = 1000;
     private Grid _grid;
     private int _xPosition;
     private int _yPosition;
+
+    private LinkedList<PathNode> _unitPath;
+    private PathNode _nextPathNode;
+    private Vector3 _nextUnitPosition;
+    private bool _animateMovement = false;
     void Start()
     {
         LoadGrid();
@@ -21,6 +27,8 @@ public class UnitMovement : MonoBehaviour
         }
 
         UpdateUnitPosition();
+        HandleAnimatingMovement();
+
     }
 
     public void LoadUnitMovement(UnitData unitData)
@@ -77,11 +85,64 @@ public class UnitMovement : MonoBehaviour
 
     public void Move(int x, int y, Unit unit)
     {
-        RemoveUnitFromCurrentCell();
-        Vector3 cellPositionCenter = _grid.GetCellCenter(x, y);
-        cellPositionCenter.z = -1;
-        transform.position = cellPositionCenter;
-        AddUnitToCurrentCell(unit);
+        //RemoveUnitFromCurrentCell();
+        _grid.HideRange();
+        //PathNode cameFromNode = _grid.GetCell(x, y).GetPathNode().cameFromNode;
+        //while (cameFromNode != null)
+        //{
+        //    Debug.Log(cameFromNode.x + ":" + cameFromNode.y);
+        //    _grid.HighliteCell(cameFromNode.x, cameFromNode.y);
+        //    cameFromNode = cameFromNode.cameFromNode;
+        //}
+        //cellPositionCenter.z = -1;
+        //transform.position = cellPositionCenter;
+        //AddUnitToCurrentCell(unit);
+        HandleMovmentTo(x, y, unit);
+    }
+
+    private void HandleMovmentTo(int x, int y, Unit unit)
+    {
+        LinkedList<PathNode> unitPath = new LinkedList<PathNode>();
+        _nextPathNode = _grid.GetCell(x, y).GetPathNode();
+        unitPath.AddFirst(_nextPathNode);
+        while (_nextPathNode.cameFromNode != null)
+        {
+            _nextPathNode = _nextPathNode.cameFromNode;
+            unitPath.AddFirst(_nextPathNode);
+        }
+
+        _unitPath = unitPath;
+        SetNewNextUnitPosition();
+        //Vector3 cellPositionCenter = _grid.GetCellCenter(x, y);
+        //_nextUnitPosition = cellPositionCenter;
+        //_animateMovement = true;
+    }
+
+    private void HandleAnimatingMovement()
+    {
+        if (_animateMovement)
+        {
+            float step = 10f * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, _nextUnitPosition, step);
+        }
+
+        if (transform.position == _nextUnitPosition)
+        {
+            _animateMovement = false;
+            SetNewNextUnitPosition();
+        }
+    }
+
+    private void SetNewNextUnitPosition()
+    {
+        if (_unitPath.Count > 0)
+        {
+            _nextPathNode = _unitPath.First.Value;
+            Vector3 cellPositionCenter = _grid.GetCellCenter(_nextPathNode.x, _nextPathNode.y);
+            _nextUnitPosition = cellPositionCenter;
+            _animateMovement = true;
+            _unitPath.RemoveFirst();
+        }
     }
 
     public void MoveBeforeAttack(int x, int y, Unit unit)
