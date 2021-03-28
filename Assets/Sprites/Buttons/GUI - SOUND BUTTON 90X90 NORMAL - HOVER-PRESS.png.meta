@@ -1,25 +1,16 @@
 fileFormatVersion: 2
-guid: c98ae7d4914ed488da46dd148b00fda5
+guid: 5f6a4c05a125b4213893bbf155631f7d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5127319055120969629
-    second: PLACEHOLDER_MENU_SOUND_NEXTTURN 120X120_0
+      213: -4455040122483006162
+    second: GUI - SOUND BUTTON 90X90 NORMAL - HOVER-PRESS_0
   - first:
-      213: 1579385235782730036
-    second: PLACEHOLDER_MENU_SOUND_NEXTTURN 120X120_1
+      213: 7922722200507970910
+    second: GUI - SOUND BUTTON 90X90 NORMAL - HOVER-PRESS_1
   - first:
-      213: 3947210035293863017
-    second: PLACEHOLDER_MENU_SOUND_NEXTTURN 120X120_2
-  - first:
-      213: -5353939288484257650
-    second: PLACEHOLDER_MENU_SOUND_NEXTTURN 120X120_3
-  - first:
-      213: 1249602116343811016
-    second: PLACEHOLDER_MENU_SOUND_NEXTTURN 120X120_4
-  - first:
-      213: 7528330425125761362
-    second: PLACEHOLDER_MENU_SOUND_NEXTTURN 120X120_5
+      213: -233329004182504239
+    second: GUI - SOUND BUTTON 90X90 NORMAL - HOVER-PRESS_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -105,97 +96,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PLACEHOLDER_MENU_SOUND_NEXTTURN 120X120_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 240
-        width: 120
-        height: 120
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d9fa392d385e72740800000000000000
-      internalID: 5127319055120969629
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PLACEHOLDER_MENU_SOUND_NEXTTURN 120X120_1
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 240
-        width: 120
-        height: 120
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4318356018a1be510800000000000000
-      internalID: 1579385235782730036
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PLACEHOLDER_MENU_SOUND_NEXTTURN 120X120_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 120
-        width: 120
-        height: 120
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 96c3c872d9e47c630800000000000000
-      internalID: 3947210035293863017
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PLACEHOLDER_MENU_SOUND_NEXTTURN 120X120_3
-      rect:
-        serializedVersion: 2
-        x: 120
-        y: 120
-        width: 120
-        height: 120
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e8063e0659cf2b5b0800000000000000
-      internalID: -5353939288484257650
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PLACEHOLDER_MENU_SOUND_NEXTTURN 120X120_4
+      name: GUI - SOUND BUTTON 90X90 NORMAL - HOVER-PRESS_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 120
-        height: 120
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,20 +110,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8cbcf3f018a775110800000000000000
-      internalID: 1249602116343811016
+      spriteID: e25a947cc948c22c0800000000000000
+      internalID: -4455040122483006162
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PLACEHOLDER_MENU_SOUND_NEXTTURN 120X120_5
+      name: GUI - SOUND BUTTON 90X90 NORMAL - HOVER-PRESS_1
       rect:
         serializedVersion: 2
-        x: 120
+        x: 90
         y: 0
-        width: 120
-        height: 120
+        width: 90
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,8 +131,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 251f26582a00a7860800000000000000
-      internalID: 7528330425125761362
+      spriteID: e55f06f6dd923fd60800000000000000
+      internalID: 7922722200507970910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GUI - SOUND BUTTON 90X90 NORMAL - HOVER-PRESS_2
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 0
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dcf7e5c18c03ccf0800000000000000
+      internalID: -233329004182504239
       vertices: []
       indices: 
       edges: []
