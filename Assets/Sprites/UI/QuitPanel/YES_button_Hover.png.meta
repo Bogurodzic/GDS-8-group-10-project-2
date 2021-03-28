@@ -1,16 +1,7 @@
 fileFormatVersion: 2
-guid: b8d1f23f3681f4920bcec072bc1bf315
+guid: 10d52a08578fe47aa8698f9f4668c62c
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -9219517552016110729
-    second: GUI - EXIT BUTTON 90X90 NORMAL - HOVER-PRESS_0
-  - first:
-      213: -2256222503287010348
-    second: GUI - EXIT BUTTON 90X90 NORMAL - HOVER-PRESS_1
-  - first:
-      213: -8044140009996997763
-    second: GUI - EXIT BUTTON 90X90 NORMAL - HOVER-PRESS_2
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -49,7 +40,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -94,70 +85,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: GUI - EXIT BUTTON 90X90 NORMAL - HOVER-PRESS_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 90
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 77bc99f22a1bd0080800000000000000
-      internalID: -9219517552016110729
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GUI - EXIT BUTTON 90X90 NORMAL - HOVER-PRESS_1
-      rect:
-        serializedVersion: 2
-        x: 90
-        y: 0
-        width: 90
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4dbc555569940b0e0800000000000000
-      internalID: -2256222503287010348
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: GUI - EXIT BUTTON 90X90 NORMAL - HOVER-PRESS_2
-      rect:
-        serializedVersion: 2
-        x: 180
-        y: 0
-        width: 90
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d7b2f94d7497d5090800000000000000
-      internalID: -8044140009996997763
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
