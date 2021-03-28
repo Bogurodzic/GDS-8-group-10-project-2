@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Enums;
 using UnityEngine;
 
 public class TurnText : MonoBehaviour
@@ -13,6 +14,6 @@ public class TurnText : MonoBehaviour
 
     void Update()
     {
-        txt.text = "Turn: " + Turn.GetUnitTurn();
+        txt.text = "PLAYER " + Turn.GetUnitTurn() + " TURN";
     }
 }

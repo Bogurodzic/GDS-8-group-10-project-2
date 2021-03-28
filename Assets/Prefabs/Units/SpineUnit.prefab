@@ -193,7 +193,7 @@ MonoBehaviour:
   Slider: {fileID: 3931477275534608282}
   healthText: {fileID: 7977299875167371915}
   damageText: {fileID: 2742067592664079118}
-  Offset: {x: 0, y: 3, z: 0}
+  Offset: {x: 0, y: 9, z: 0}
   sliderSpeed: 25
 --- !u!1 &3983837581737547450
 GameObject:
@@ -683,6 +683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementRange: 3
+  movementSpeed: 1000
 --- !u!114 &8673913214927299156
 MonoBehaviour:
   m_ObjectHideFlags: 0
