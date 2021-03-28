@@ -2118,6 +2118,11 @@ PrefabInstance:
       propertyPath: m_Transition
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4014943612353043883, guid: 3978488e52b3440d7b119329954badc2,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4014943612353043884, guid: 3978488e52b3440d7b119329954badc2,
         type: 3}
       propertyPath: abilityTeam
@@ -5317,8 +5322,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3858492b5f32e49d98f696b3af1d6aa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notReadySprite: {fileID: 21300000, guid: 538c6914183ef4e0a893e83a9f3bc155, type: 3}
-  readySprite: {fileID: 21300000, guid: 02ba21413c02741eda65528b2052ff80, type: 3}
+  normalButton: {fileID: 21300000, guid: 02ba21413c02741eda65528b2052ff80, type: 3}
+  hoverButton: {fileID: 21300000, guid: 14fdfa9a7303a480e83a5e944bc889f6, type: 3}
+  activeButton: {fileID: 21300000, guid: 538c6914183ef4e0a893e83a9f3bc155, type: 3}
 --- !u!1 &1515977586
 GameObject:
   m_ObjectHideFlags: 0
@@ -8181,6 +8187,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 5010c13f3b8e44f97ba7b461282ed338,
         type: 3}
+    - target: {fileID: 4014943612353043883, guid: 3978488e52b3440d7b119329954badc2,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4014943612353043884, guid: 3978488e52b3440d7b119329954badc2,
         type: 3}
       propertyPath: abilityTeam
