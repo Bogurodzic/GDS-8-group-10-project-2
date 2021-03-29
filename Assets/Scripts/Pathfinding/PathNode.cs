@@ -11,6 +11,7 @@ public class PathNode
     public int y;
     public int gCost;
     public int hCost;
+    public int hTemporary;
     public int fCost;
     public float movementCost;
     public bool isObstacle;

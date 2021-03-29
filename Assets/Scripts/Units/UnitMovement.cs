@@ -157,7 +157,10 @@ public class UnitMovement : MonoBehaviour
     public void MoveBeforeAttack(int x, int y, Unit unit, ActionType actionType)
     {
         PathNode targetNode = _grid.GetCell(x, y).GetPathNode();
-        PathNode lastMovableNode = GetOptimalDistanceNode(targetNode, unit);
+        PathNode lastMovableNode = targetNode.lastMovableNode;
+        Debug.Log("MoveBeforeAttackE: " + x + " " + y);
+
+        Debug.Log("LAST MOVABLE NODE: " + lastMovableNode.x + " " + lastMovableNode.y);
         Move(lastMovableNode.x, lastMovableNode.y, unit, actionType);
     }
 

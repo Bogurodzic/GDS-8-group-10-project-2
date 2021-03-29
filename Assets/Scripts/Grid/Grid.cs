@@ -157,7 +157,7 @@ public class Grid
             for (int y = 0; y < gridArray.GetLength(1); y++)
             {
                 _gridManager.ResetColor(x, y);
-                SetValue(x, y, "");
+                //SetValue(x, y, "");
             }
         }
     }

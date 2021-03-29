@@ -254,6 +254,9 @@ public class Unit : MonoBehaviour
                     SkipTurn();
                 }
                 break;
+            case ActionType.MovementBeforeAttack:
+                HandleAttackUnit(_attackAfterMovementXTarget, _attackAfterMovementYTarget);
+                break;
             case ActionType.ActiveAbility:
                 Debug.Log("END ACTION ACTIVATE ABILITY 1");
                 Debug.Log("END ACTION ACTIVATE ABILITY 2");
@@ -289,6 +292,7 @@ public class Unit : MonoBehaviour
                 Debug.Log("END DASH 3");
                 Debug.Log("END DASH 4");
                 Debug.Log("END DASH 5");
+                AnimateIdle();
                 SkipTurn();
                 break;
             case ActionType.SkipTurn:
@@ -361,6 +365,7 @@ public class Unit : MonoBehaviour
                 Debug.Log("HANDLE ATTACK 33");
                 Debug.Log("HANDLE ATTACK 44");
                 Debug.Log("HANDLE ATTACK 55");
+                AnimateLoopUnit("WALK");
                 _attackAfterMovementXTarget = mouseX;
                 _attackAfterMovementYTarget = mouseY;
                 _unitMovement.MoveBeforeAttack(mouseX, mouseY, this, ActionType.MovementBeforeAttack);
