@@ -161,18 +161,11 @@ public class Pathfinding
                 if (closedList.Contains(neighbourNode)) continue;
 
                 int hCost = CalculateDistanceCost(neighbourNode, startNode);
-
-                _grid.SetValue(neighbourNode.x, neighbourNode.y,   ":" + hCost );
-
+                
                 if (minAttackRange <= hCost && maxAttackRange >= hCost)
                 {
-                    //if (hCost < neighbourNode.hTemporary)
-                    //{
-                        //neighbourNode.hTemporary = hCost;
-                        neighbourNode.lastMovableNode = startNode;
-                    //}
+                    neighbourNode.lastMovableNode = startNode;
                     neighbourNode.isAttackable = true;
-                    
                     if (!openList.Contains(neighbourNode))
                     {
                         openList.Add(neighbourNode);
@@ -180,9 +173,6 @@ public class Pathfinding
                 }
                 else
                 {
-                    //neighbourNode.lastMovableNode = startNode;
-                    //neighbourNode.isAttackable = false;
-                    
                     if (!openList.Contains(neighbourNode))
                     {
                         openList.Add(neighbourNode);

@@ -85,22 +85,22 @@ public class UnitAbility : MonoBehaviour
                 _grid.GetCell(targetX, targetY).GetPathNode().isAttackable)
             {
                 Debug.Log("Handle ability 10.2");
-                if (_grid.GetCell(unitX + 1, unitY).GetOccupiedBy())
+                if (_grid.GetCell(unitX + 1, unitY) != null && _grid.GetCell(unitX + 1, unitY).GetOccupiedBy())
                 {
                     _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(unitX + 1, unitY).GetOccupiedBy()));
                 }
                     
-                if (_grid.GetCell(unitX - 1, unitY ).GetOccupiedBy())
+                if (_grid.GetCell(unitX - 1, unitY) != null &&_grid.GetCell(unitX - 1, unitY ).GetOccupiedBy())
                 {
                     _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(unitX - 1, unitY).GetOccupiedBy()));
                 }
                     
-                if (_grid.GetCell(unitX, unitY + 1).GetOccupiedBy())
+                if (_grid.GetCell(unitX, unitY + 1) != null &&_grid.GetCell(unitX, unitY + 1).GetOccupiedBy())
                 {
                     _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(unitX, unitY + 1).GetOccupiedBy()));
                 }
                     
-                if (_grid.GetCell(unitX, unitY - 1).GetOccupiedBy())
+                if (_grid.GetCell(unitX, unitY - 1) != null &&_grid.GetCell(unitX, unitY - 1).GetOccupiedBy())
                 {
                     _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(unitX, unitY - 1).GetOccupiedBy()));
                 }

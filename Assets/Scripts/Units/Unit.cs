@@ -162,6 +162,7 @@ public class Unit : MonoBehaviour
         //_skeletonAnimation.AnimationName = "IDLE";
         SpineEditorUtilities.ReloadSkeletonDataAssetAndComponent(_skeletonAnimation);
         _skeletonAnimation.AnimationState.SetAnimation(0, "IDLE", true);
+
     }
 
     private void HandleAction()
@@ -583,7 +584,7 @@ public class Unit : MonoBehaviour
 
     public void ResetUnitCD()
     {
-        //ReloadSprite();
+        _skeletonAnimation.skeleton.A = 1f;
         _unitAbility.RemoveOneTurnFromAbilityCD();
         SetUnitPhase(UnitPhase.Inactive);
     }
@@ -591,7 +592,7 @@ public class Unit : MonoBehaviour
     public void SkipTurn()
     {
         _grid.HideRange();
-        //_sprite.color = Color.black;
+        _skeletonAnimation.skeleton.A = 0.5f;
         SetUnitPhase(UnitPhase.OnCooldown);
         EndAction(ActionType.SkipTurn);
         
