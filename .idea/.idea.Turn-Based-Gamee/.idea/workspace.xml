@@ -95,7 +95,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Enums/ActionType.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/Grid.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Pathfinding/PathNode.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Pathfinding/Pathfinding.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitMovement.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Enums/UnitPhase.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Healtbar.cs" />
@@ -103,6 +102,7 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Win/WinPanel.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Win/WinText.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitList.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Pathfinding/Pathfinding.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitAbility.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
     </changedPaths>
@@ -160,7 +160,7 @@
       <workItem from="1615234679328" duration="13992000" />
       <workItem from="1615474273110" duration="82583000" />
       <workItem from="1616418609889" duration="13258000" />
-      <workItem from="1616941003345" duration="30842000" />
+      <workItem from="1616941003345" duration="31904000" />
     </task>
     <servers />
   </component>

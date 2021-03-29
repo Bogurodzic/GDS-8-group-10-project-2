@@ -566,6 +566,7 @@ public class Unit : MonoBehaviour
 
         if (mouseX < _grid.GetGridWidth() && mouseY < _grid.GetGridHeight() && mouseX >= 0 && mouseY >= 0 &&_unitAbility.ExecuteAbility(mouseX, mouseY, GetUnitXPosition(), GetUnitYPosition()))
         {
+            AnimateUnit("SKILL");
             EndAction(ActionType.ExecuteAbility);
         }
     }

@@ -87,28 +87,36 @@ public class UnitAbility : MonoBehaviour
                 Debug.Log("Handle ability 10.2");
                 if (_grid.GetCell(unitX + 1, unitY) != null && _grid.GetCell(unitX + 1, unitY).GetOccupiedBy())
                 {
+                    _grid.GetCell(unitX + 1, unitY).GetOccupiedBy().AnimateUnit("HURT");
                     _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(unitX + 1, unitY).GetOccupiedBy()));
+                    _grid.GetCell(unitX + 1, unitY).GetOccupiedBy().SetHealth();
                 }
                     
                 if (_grid.GetCell(unitX - 1, unitY) != null &&_grid.GetCell(unitX - 1, unitY ).GetOccupiedBy())
                 {
+                    _grid.GetCell(unitX - 1, unitY).GetOccupiedBy().AnimateUnit("HURT");
                     _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(unitX - 1, unitY).GetOccupiedBy()));
+                    _grid.GetCell(unitX - 1, unitY).GetOccupiedBy().SetHealth();
                 }
                     
                 if (_grid.GetCell(unitX, unitY + 1) != null &&_grid.GetCell(unitX, unitY + 1).GetOccupiedBy())
                 {
+                    _grid.GetCell(unitX, unitY + 1).GetOccupiedBy().AnimateUnit("HURT");
                     _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(unitX, unitY + 1).GetOccupiedBy()));
+                    _grid.GetCell(unitX, unitY + 1).GetOccupiedBy().SetHealth();
                 }
                     
                 if (_grid.GetCell(unitX, unitY - 1) != null &&_grid.GetCell(unitX, unitY - 1).GetOccupiedBy())
                 {
+                    _grid.GetCell(unitX, unitY - 1).GetOccupiedBy().AnimateUnit("HURT");
                     _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(unitX, unitY - 1).GetOccupiedBy()));
+                    _grid.GetCell(unitX, unitY - 1).GetOccupiedBy().SetHealth();
                 }
 
-                if (_grid.GetCell(unitX + 1, unitY).GetOccupiedBy() ||
-                    _grid.GetCell(unitX - 1, unitY).GetOccupiedBy() ||
-                    _grid.GetCell(unitX, unitY + 1).GetOccupiedBy() ||
-                    _grid.GetCell(unitX, unitY - 1).GetOccupiedBy())
+                if ((_grid.GetCell(unitX + 1, unitY) != null && _grid.GetCell(unitX + 1, unitY).GetOccupiedBy()) ||
+                    (_grid.GetCell(unitX - 1, unitY) != null && _grid.GetCell(unitX - 1, unitY).GetOccupiedBy()) ||
+                    (_grid.GetCell(unitX, unitY + 1) != null && _grid.GetCell(unitX, unitY + 1).GetOccupiedBy())||
+                    (_grid.GetCell(unitX, unitY - 1) != null && _grid.GetCell(unitX, unitY - 1).GetOccupiedBy()))
                 {
                     Debug.Log("Handle ability 11.2");
                     PutAbilityOnCD();
