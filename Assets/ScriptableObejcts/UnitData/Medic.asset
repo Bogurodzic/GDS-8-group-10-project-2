@@ -18,8 +18,8 @@ MonoBehaviour:
   defend: 0
   maxHp: 50
   movementRange: 3
-  minAttackRange: 1
-  maxAttackRange: 1
+  minAttackRange: 0
+  maxAttackRange: 0
   unitAbility: {fileID: 11400000, guid: ed1ebd928edf94e81835c68a9b62f3f1, type: 2}
   unitSpriteTeam1: {fileID: 21300000, guid: 7f4c5bda822b74e80a590ccb1ebb9c63, type: 3}
   unitSpriteTeam2: {fileID: 21300000, guid: 0dddd1392182e4c1db1facc8b876deb6, type: 3}
