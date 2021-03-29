@@ -22,7 +22,7 @@ public class Unit : MonoBehaviour
     private CombatLog _combatLog;
     private UnitAbility _unitAbility;
     private Healtbar _healtbar;
-
+    private UnitList _unitList;
     private bool _isDeployed = false;
     private bool _isPreDeployed = false;
     private int _preDeployedX = -9999;
@@ -405,15 +405,30 @@ public class Unit : MonoBehaviour
         return _unitPhase == UnitPhase.OnCooldown;
     }
 
+    public bool IsStandby()
+    {
+        return _unitPhase == UnitPhase.Standby;
+    }
+
     public bool IsAbilityActive()
     {
         return IsActive() && unitData.unitAbility && _unitAbility.IsAbilityReadyToCast();
     }
     
 
-    public bool IsUnitTurn()
+    public bool IsUnitTurn(bool extended = false)
     {
-        return Turn.IsUnitTurn(_unitStatistics.team) && _unitPhase != UnitPhase.OnCooldown;
+        Unit currentActiveUnit = _unitList.FindActiveUnit(GetStatistics().team).GetComponent<Unit>();
+
+        bool isTurn = Turn.IsUnitTurn(_unitStatistics.team) && _unitPhase != UnitPhase.OnCooldown;
+
+        //if (extended && currentActiveUnit.unitData.name != unitData.name &&
+          //  (currentActiveUnit.IsActive() && !currentActiveUnit.IsStandby()))
+       // {
+         //   isTurn = false;
+        //}
+
+        return isTurn;
     }
     
 
@@ -445,6 +460,7 @@ public class Unit : MonoBehaviour
     
     private void ActivateUnit()
     {
+        _unitList.DeactivateAllPlayerUnits(GetStatistics().team);
         _activityType = RangeType.Movement;
         ReloadRanges();
         _unitRange.ShowUnitRange(true);
@@ -470,7 +486,7 @@ public class Unit : MonoBehaviour
         Debug.Log(IsUnitTurn());
         Debug.Log(IsUnitClicked(mouseX, mouseY));
 
-        if (IsAlive() && IsUnitTurn() && !IsActive() && IsUnitClicked(mouseX, mouseY))
+        if (IsAlive() && IsUnitTurn(true) && !IsActive() && IsUnitClicked(mouseX, mouseY))
         {       
             Debug.Log("Handle Toggling Unit 2");
             EndAction(ActionType.Activation);
@@ -564,7 +580,7 @@ public class Unit : MonoBehaviour
         int mouseX, mouseY;
         _grid.GetCellPosition(mouseVector3, out mouseX, out mouseY);
 
-        if (mouseX < _grid.GetGridWidth() && mouseY < _grid.GetGridHeight() && mouseX >= 0 && mouseY >= 0 &&_unitAbility.ExecuteAbility(mouseX, mouseY, GetUnitXPosition(), GetUnitYPosition()))
+        if (mouseX < _grid.GetGridWidth() && mouseY < _grid.GetGridHeight() && mouseX >= 0 && mouseY >= 0 && _unitAbility.ExecuteAbility(mouseX, mouseY, GetUnitXPosition(), GetUnitYPosition()))
         {
             AnimateUnit("SKILL");
             EndAction(ActionType.ExecuteAbility);
@@ -734,10 +750,17 @@ public class Unit : MonoBehaviour
         LoadUnitRange();
         LoadUnitAbility();
         LoadHealthbar();
+        LoadUnitList();
         //PlaceUnitOnBoard();
         ReloadUnitData();
         SetHealth();
     }
+
+    private void LoadUnitList()
+    {
+        _unitList = GameObject.Find("UnitList").GetComponent<UnitList>();
+    }
+
 
     public void SetHealth()
     {

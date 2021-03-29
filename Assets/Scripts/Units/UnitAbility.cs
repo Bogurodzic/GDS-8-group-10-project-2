@@ -53,13 +53,20 @@ public class UnitAbility : MonoBehaviour
 
     public bool ExecuteAbility(int targetX, int targetY, int unitX, int unitY)
     {
+        Debug.Log("ExecuteAbility1");
         if (_abilitiesData.abilityType == AbilityType.SingleTarget)
         {
+            Debug.Log("ExecuteAbility2");
+
             if (_grid.GetCell(targetX, targetY).GetOccupiedBy() &&
                 _grid.GetCell(targetX, targetY).GetPathNode().isAttackable)
             {
+                Debug.Log("ExecuteAbility3");
+
                 if (_abilitiesData.damage > 0)
                 {
+                    Debug.Log("ExecuteAbility4");
+
                     _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(targetX, targetY).GetOccupiedBy()));
                     PutAbilityOnCD();
                     _grid.GetCell(targetX, targetY).GetOccupiedBy().SetHealth();
@@ -67,6 +74,8 @@ public class UnitAbility : MonoBehaviour
                     return true;  
                 } else if (_abilitiesData.heal > 0)
                 {
+                    Debug.Log("ExecuteAbility5");
+
                     _combatLog.LogCombat(Ability.HealUnit(_abilitiesData, _grid.GetCell(targetX, targetY).GetOccupiedBy()));
                     _grid.GetCell(targetX, targetY).GetOccupiedBy().SetHealth();
 
@@ -76,6 +85,8 @@ public class UnitAbility : MonoBehaviour
             }
             else
             {
+                Debug.Log("ExecuteAbility6");
+
                 return false;
             }         
         } else if (_abilitiesData.abilityType == AbilityType.Circle)

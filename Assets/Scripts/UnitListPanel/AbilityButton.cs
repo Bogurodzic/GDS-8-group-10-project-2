@@ -29,7 +29,10 @@ public class AbilityButton : MonoBehaviour
         if (Turn.GetCurrentTurnType() == TurnType.RegularGame)
         { 
             SetIsReady(IsUnitAbilityActive());
-            ReloadSprite();
+            if (_unitList.GetActiveUnit().GetComponent<Unit>().GetUnitAbility().GetAbilityType() != AbilityType.None)
+            {
+                ReloadSprite();
+            }
         }
 
     }

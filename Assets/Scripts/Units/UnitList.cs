@@ -130,6 +130,18 @@ public class UnitList : MonoBehaviour
         return activeUnit;
     }
 
+    public GameObject FindActiveUnit(int team)
+    {
+        if (team == 1)
+        {
+            return FindActiveUnit(player1UnitList);
+        }
+        else
+        {
+            return FindActiveUnit(player2UnitList);
+        }
+    }
+
     private void ResetAllUnitsOnCD()
     {
         foreach (var o in player1UnitList)

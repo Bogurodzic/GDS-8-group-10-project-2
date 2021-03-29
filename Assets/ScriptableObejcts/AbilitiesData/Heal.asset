@@ -20,8 +20,8 @@ MonoBehaviour:
   damage: 0
   heal: 15
   abilityType: 0
-  abilityButtonNormal: {fileID: 21300000, guid: 09acf370214764fb1b627fe9cbd68ac5,
+  abilityButtonNormal: {fileID: 21300000, guid: 9a6e75b4f627c46aeb96871f9e257850,
     type: 3}
-  abilityButtonHover: {fileID: 21300000, guid: 51f9cebc3b3b24bd19b88e779a4f774b, type: 3}
-  abilityButtonActive: {fileID: 21300000, guid: 33b6814da25374f1b8d6eee9c7cc5ca8,
+  abilityButtonHover: {fileID: 21300000, guid: 78d588d5728e342c489001f53ad91812, type: 3}
+  abilityButtonActive: {fileID: 21300000, guid: 91b13a8c58e484e7ab56b6fbf2cf7701,
     type: 3}

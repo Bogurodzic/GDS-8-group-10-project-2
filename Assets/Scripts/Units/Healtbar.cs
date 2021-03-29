@@ -124,7 +124,15 @@ public class Healtbar : MonoBehaviour
 
     private void ShowDamageText(float damage)
     {
+        damageText.color = Color.red;
         damageText.text = damage + "";
+        Invoke("HideDmageText", 2f);
+    }
+    
+    private void ShowHealText(float heal)
+    {
+        damageText.color = Color.yellow;
+        damageText.text = heal + "";
         Invoke("HideDmageText", 2f);
     }
 
