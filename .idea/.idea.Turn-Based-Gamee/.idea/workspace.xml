@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ea6c1fe-6767-43df-abde-f4f8039ac897" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObejcts/UnitData/Archer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObejcts/UnitData/Archer.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObejcts/UnitData/Boss.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObejcts/UnitData/Boss.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObejcts/UnitData/Infantry.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObejcts/UnitData/Infantry.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObejcts/UnitData/Mage.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObejcts/UnitData/Mage.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObejcts/UnitData/Spearman.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObejcts/UnitData/Spearman.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Grid/Grid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Grid/Grid.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pathfinding/PathNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pathfinding/PathNode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pathfinding/Pathfinding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pathfinding/Pathfinding.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enums/UnitPhase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/UnitPhase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPortrait.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPortrait.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Healtbar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Healtbar.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/UnitList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/UnitList.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/UnitMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/UnitMovement.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,10 +45,12 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UnitDeployment/UnitDeployment.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Sound.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ScriptableObejcts/UnitData/UnitData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Win/WinText.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PickPanel/PortraitFrame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitInfoText.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Units/Healtbar.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/09BAF65C-3F0F-440E-94EB-8E59838010B5/0a/fbfc7af1/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Win/WinPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MainMenu/Credits.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PickPanel/PlayerTurnText.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PickPanel/PickPanel.cs" root0="FORCE_HIGHLIGHTING" />
@@ -60,8 +59,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitRange.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitNameInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitAttackInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitDefInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitMovementInfo.cs" />
@@ -75,17 +72,14 @@
       <option value="$PROJECT_DIR$/Assets/ScriptableObejcts/Abilities/Abilities.cs" />
       <option value="$PROJECT_DIR$/Assets/ScriptableObejcts/Abilities/AbilitiesData.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitAbilityInfo.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Enums/UnitPhase.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/Board.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Battle/Turn.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitRange.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Battle/Attack.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Battle/Ability.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Healtbar.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitHpInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/Portrait.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/PickPanel.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitList.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPanelFrame.cs" />
       <option value="$PROJECT_DIR$/Assets/ScriptableObejcts/UnitData/UnitData.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Enums/AbilityType.cs" />
@@ -101,16 +95,21 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/Sound.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/PortraitFrame.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPanel.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPortrait.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/ReadyButton.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/MainMenu/Credits.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Enums/ActionType.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/Grid.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitMovement.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Pathfinding/PathNode.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Pathfinding/Pathfinding.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitMovement.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Enums/UnitPhase.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Healtbar.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPortrait.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Win/WinPanel.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Win/WinText.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitList.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1pLb0eqZaQJiXIFPJRkhff1DHdr" />
@@ -166,7 +165,7 @@
       <workItem from="1615234679328" duration="13992000" />
       <workItem from="1615474273110" duration="82583000" />
       <workItem from="1616418609889" duration="13258000" />
-      <workItem from="1616941003345" duration="27218000" />
+      <workItem from="1616941003345" duration="29927000" />
     </task>
     <servers />
   </component>

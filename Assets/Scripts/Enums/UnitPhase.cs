@@ -9,5 +9,6 @@ namespace Enums
         AfterDash,
         AbilityActivated,
         OnCooldown,
+        Death
     }
 }

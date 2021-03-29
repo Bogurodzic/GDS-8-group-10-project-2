@@ -171,7 +171,7 @@ public class UnitMovement : MonoBehaviour
         return optimalDistanceNode;
     }
 
-    private void RemoveUnitFromCurrentCell()
+    public void RemoveUnitFromCurrentCell()
     {
         UpdateUnitPosition();
         _grid.GetCell(GetUnitXPosition(), GetUnitYPosition()).RemoveOccupiedBy();

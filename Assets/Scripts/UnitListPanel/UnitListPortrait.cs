@@ -18,6 +18,14 @@ public class UnitListPortrait : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public void Update()
+    {
+        if (!_unit.IsAlive())
+        {
+            _portraitImage.color = Color.red;
+        }
+    }
+
     public void LoadPortraitImage()
     {
         _portraitImage = gameObject.GetComponentsInChildren<Image>()[1];

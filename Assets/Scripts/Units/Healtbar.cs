@@ -132,4 +132,9 @@ public class Healtbar : MonoBehaviour
     {
         damageText.text = "";
     }
+
+    public void TurnOffHealthBar()
+    {
+        gameObject.SetActive(false);
+    }
 }

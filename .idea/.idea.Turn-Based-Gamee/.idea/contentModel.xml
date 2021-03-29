@@ -117,6 +117,10 @@
             <e p="UnitRange.cs" t="Include" />
             <e p="UnitStatistics.cs" t="Include" />
           </e>
+          <e p="Win" t="Include">
+            <e p="WinPanel.cs" t="Include" />
+            <e p="WinText.cs" t="Include" />
+          </e>
         </e>
         <e p="Spine" t="Include">
           <e p="Editor" t="Include">

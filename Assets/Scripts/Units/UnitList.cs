@@ -6,6 +6,7 @@ public class UnitList : MonoBehaviour
 {
     public GameObject unitPrefab;
     public UnitData bossUnitData;
+    public GameObject playerWinPanel;
     private LinkedList<GameObject> player1UnitList = new LinkedList<GameObject>();
     private LinkedList<GameObject> player2UnitList = new LinkedList<GameObject>();
 
@@ -143,19 +144,73 @@ public class UnitList : MonoBehaviour
         
     }
 
+    private bool AreAllTeamUnitsOnCD(int team)
+    {
+        bool allUnitsAreOnCD = true;
+        
+        if (team == 1)
+        {
+            foreach (var o in player1UnitList)
+            {
+                if (!o.GetComponent<Unit>().IsOnCD() && o.GetComponent<Unit>().IsAlive())
+                {
+                    allUnitsAreOnCD = false;
+                }
+            }
+        } else if (team == 2)
+        {
+            foreach (var o in player2UnitList)
+            {
+                if (!o.GetComponent<Unit>().IsOnCD() && o.GetComponent<Unit>().IsAlive())
+                {
+                    allUnitsAreOnCD = false;
+                }
+            }
+        }
+
+        return allUnitsAreOnCD;
+    }
+    
+    private bool AreAllTeamUnitsDead(int team)
+    {
+        bool allUnitsAreDead = true;
+        
+        if (team == 1)
+        {
+            foreach (var o in player1UnitList)
+            {
+                if (o.GetComponent<Unit>().IsAlive())
+                {
+                    allUnitsAreDead = false;
+                }
+            }
+        } else if (team == 2)
+        {
+            foreach (var o in player2UnitList)
+            {
+                if (o.GetComponent<Unit>().IsAlive())
+                {
+                    allUnitsAreDead = false;
+                }
+            }
+        }
+
+        return allUnitsAreDead;
+    }
+
     private bool AreAllUnitsOnCD()
     {
         bool allUnitsAreOnCD = true;
         foreach (var o in player1UnitList)
         {
-            if (!o.GetComponent<Unit>().IsOnCD())
+            if (!o.GetComponent<Unit>().IsOnCD() && o.GetComponent<Unit>().IsAlive())
             {
                 allUnitsAreOnCD = false;
             }
         }
         foreach (var o in player2UnitList)
         {
-            if (!o.GetComponent<Unit>().IsOnCD())
+            if (!o.GetComponent<Unit>().IsOnCD() && o.GetComponent<Unit>().IsAlive())
             {
                 allUnitsAreOnCD = false;
             }
@@ -172,6 +227,7 @@ public class UnitList : MonoBehaviour
     {
         return _readyForDeploy;
     }
+    
 
    public GameObject GetActiveUnit()
     {
@@ -179,7 +235,22 @@ public class UnitList : MonoBehaviour
         {
             ResetAllUnitsOnCD();
         }
+
+        if (AreAllTeamUnitsOnCD(1) && Turn.IsUnitTurn(1))
+        {
+            Turn.NextTurn();
+        }
         
+        if (AreAllTeamUnitsOnCD(2) && Turn.IsUnitTurn(2))
+        {
+            Turn.NextTurn();
+        }
+
+        if (AreAllTeamUnitsDead(1) || AreAllTeamUnitsDead(2))
+        {
+            playerWinPanel.SetActive(true);
+        }
+
         GameObject activeUnitFromPlayer1UnitList = FindActiveUnit(player1UnitList);
 
         if (activeUnitFromPlayer1UnitList.GetComponent<Unit>().IsActive())

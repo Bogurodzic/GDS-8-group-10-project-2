@@ -29,6 +29,7 @@ public class Unit : MonoBehaviour
     private int _preDeployedY = -9999;
     private bool _isUnitHovered = false;
     private UnitPhase _phaseBeforeAbility;
+    private bool _isAlive = true;
 
     private int _attackAfterMovementXTarget = -9999;
     private int _attackAfterMovementYTarget = -9999;
@@ -354,6 +355,7 @@ public class Unit : MonoBehaviour
             _grid.GetCell(mouseX, mouseY).GetOccupiedBy().AnimateUnit("HURT");
             _combatLog.LogCombat(Attack.AttackUnit(this, _grid.GetCell(mouseX, mouseY).GetOccupiedBy()));
             _grid.GetCell(mouseX, mouseY).GetOccupiedBy().SetHealth();
+            _grid.GetCell(mouseX, mouseY).GetOccupiedBy().HandleDeath();
             EndAction(ActionType.Attack);
             
         } else if ((_unitPhase == UnitPhase.Standby) && IsCellOcuppiedByEnemy(mouseX, mouseY) && _unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
@@ -388,6 +390,7 @@ public class Unit : MonoBehaviour
         _grid.GetCell(mouseX, mouseY).GetOccupiedBy().AnimateUnit("HURT");
         _combatLog.LogCombat(Attack.AttackUnit(this, _grid.GetCell(mouseX, mouseY).GetOccupiedBy()));
         _grid.GetCell(mouseX, mouseY).GetOccupiedBy().SetHealth();
+        _grid.GetCell(mouseX, mouseY).GetOccupiedBy().HandleDeath();
         EndAction(ActionType.Attack);  
     }
     
@@ -466,12 +469,12 @@ public class Unit : MonoBehaviour
         Debug.Log(IsUnitTurn());
         Debug.Log(IsUnitClicked(mouseX, mouseY));
 
-        if (IsUnitTurn() && !IsActive() && IsUnitClicked(mouseX, mouseY))
+        if (IsAlive() && IsUnitTurn() && !IsActive() && IsUnitClicked(mouseX, mouseY))
         {       
             Debug.Log("Handle Toggling Unit 2");
             EndAction(ActionType.Activation);
         }
-        else if (IsUnitTurn() && IsActive() && IsUnitClicked(mouseX, mouseY))
+        else if (IsAlive() && IsUnitTurn() && IsActive() && IsUnitClicked(mouseX, mouseY))
         {
             Debug.Log("Handle Toggling Unit 3");
 
@@ -591,6 +594,29 @@ public class Unit : MonoBehaviour
         //_sprite.color = Color.black;
         SetUnitPhase(UnitPhase.OnCooldown);
         EndAction(ActionType.SkipTurn);
+        
+    }
+
+    public void HandleDeath()
+    {
+        
+        if (!CheckIfUnitIsAlive())
+        {
+            AnimateOnce("DEATH");
+            Invoke("Death", 1f);
+        }
+    }
+
+    private void Death()
+    {
+        _unitMovement.RemoveUnitFromCurrentCell();
+        _healtbar.TurnOffHealthBar();
+        _isAlive = false;
+    }
+
+    private bool CheckIfUnitIsAlive()
+    {
+        return _unitStatistics.currentHp > 0;
     }
 
     private void NextTurn()
@@ -602,6 +628,11 @@ public class Unit : MonoBehaviour
         Debug.Log("NEXT TURN 5");
 
         Turn.NextTurn();
+    }
+
+    public bool IsAlive()
+    {
+        return _isAlive;
     }
 
     private void SetUnitPhase(UnitPhase unitPhase)
@@ -710,7 +741,7 @@ public class Unit : MonoBehaviour
     {
         _healtbar.SetHealth(_unitStatistics.currentHp, _unitStatistics.maxHp);
     }
-
+    
     public void ReloadUnitData()
     {
         _unitMovement.LoadUnitMovement(unitData);
@@ -763,6 +794,11 @@ public class Unit : MonoBehaviour
         gameObject.transform.position = cellCenterPosition;
         _preDeployedX = x;
         _preDeployedY = y;
+    }
+
+    public void AnimateOnce(string animationName)
+    {
+        _skeletonAnimation.AnimationState.SetAnimation(0, animationName, false);
     }
 
     public void AnimateUnit(string animationName)
