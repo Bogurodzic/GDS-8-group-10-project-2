@@ -6,6 +6,7 @@ namespace Enums
         Attack,
         Dash,
         ExecuteAbility,
+        MovementBeforeAttack,
         SkipTurn,
         Activation,
         Deactivation,

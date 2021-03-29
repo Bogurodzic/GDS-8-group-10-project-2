@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Enums;
 using UnityEngine;
 
@@ -10,11 +11,12 @@ public class UnitMovement : MonoBehaviour
     private Grid _grid;
     private int _xPosition;
     private int _yPosition;
-
+    private Unit _unit;
     private LinkedList<PathNode> _unitPath;
     private PathNode _nextPathNode;
     private Vector3 _nextUnitPosition;
     private bool _animateMovement = false;
+    private ActionType _actionToExecuteAfterMovement;
     void Start()
     {
         LoadGrid();
@@ -83,24 +85,26 @@ public class UnitMovement : MonoBehaviour
         }
     }
 
-    public void Move(int x, int y, Unit unit)
+    public void Move(int x, int y, Unit unit, ActionType actionType)
     {
-        //RemoveUnitFromCurrentCell();
+        
         _grid.HideRange();
-        //PathNode cameFromNode = _grid.GetCell(x, y).GetPathNode().cameFromNode;
-        //while (cameFromNode != null)
-        //{
-        //    Debug.Log(cameFromNode.x + ":" + cameFromNode.y);
-        //    _grid.HighliteCell(cameFromNode.x, cameFromNode.y);
-        //    cameFromNode = cameFromNode.cameFromNode;
-        //}
-        //cellPositionCenter.z = -1;
-        //transform.position = cellPositionCenter;
-        //AddUnitToCurrentCell(unit);
-        HandleMovmentTo(x, y, unit);
+        _unit = unit;
+        _actionToExecuteAfterMovement = actionType;
+        RemoveUnitFromCurrentCell();
+        HandleMovementTo(x, y, unit);
+        
+        
+
+        /*RemoveUnitFromCurrentCell();
+        Vector3 cellPositionCenter = _grid.GetCellCenter(x, y);
+        cellPositionCenter.z = -1;
+        transform.position = cellPositionCenter;
+        AddUnitToCurrentCell(unit);*/
+
     }
 
-    private void HandleMovmentTo(int x, int y, Unit unit)
+    private void HandleMovementTo(int x, int y, Unit unit)
     {
         LinkedList<PathNode> unitPath = new LinkedList<PathNode>();
         _nextPathNode = _grid.GetCell(x, y).GetPathNode();
@@ -113,20 +117,17 @@ public class UnitMovement : MonoBehaviour
 
         _unitPath = unitPath;
         SetNewNextUnitPosition();
-        //Vector3 cellPositionCenter = _grid.GetCellCenter(x, y);
-        //_nextUnitPosition = cellPositionCenter;
-        //_animateMovement = true;
     }
 
     private void HandleAnimatingMovement()
     {
         if (_animateMovement)
         {
-            float step = 10f * Time.deltaTime;
+            float step = 20f * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, _nextUnitPosition, step);
         }
 
-        if (transform.position == _nextUnitPosition)
+        if (transform.position == _nextUnitPosition && _animateMovement)
         {
             _animateMovement = false;
             SetNewNextUnitPosition();
@@ -143,33 +144,27 @@ public class UnitMovement : MonoBehaviour
             _animateMovement = true;
             _unitPath.RemoveFirst();
         }
+        else
+        {
+            AddUnitToCurrentCell(_unit);
+            
+            gameObject.GetComponent<Unit>().EndAction(_actionToExecuteAfterMovement);
+            
+            _unit = null;
+        }
     }
 
-    public void MoveBeforeAttack(int x, int y, Unit unit)
+    public void MoveBeforeAttack(int x, int y, Unit unit, ActionType actionType)
     {
         PathNode targetNode = _grid.GetCell(x, y).GetPathNode();
-        PathNode lastMovableNode = GetOptimalDistanceNode(targetNode, unit) ;
-        
-        Move(lastMovableNode.x, lastMovableNode.y, unit);
+        PathNode lastMovableNode = GetOptimalDistanceNode(targetNode, unit);
+        Move(lastMovableNode.x, lastMovableNode.y, unit, actionType);
     }
 
     private PathNode GetOptimalDistanceNode(PathNode targetNode, Unit unit)
     {
         
         PathNode optimalDistanceNode = targetNode.lastMovableNode;
-       /* int optimalDistance = targetNode.hCost - optimalDistanceNode.hCost;
-
-        while (optimalDistance < unit.getUnitRange().maxRange)
-        {
-            if (targetNode.hCost - optimalDistanceNode.cameFromNode.hCost > unit.getUnitRange().maxRange)
-            {
-                break;
-            }
-            
-            optimalDistanceNode = optimalDistanceNode.cameFromNode;
-            optimalDistance = targetNode.hCost - optimalDistanceNode.hCost;
-        } */
-
         return optimalDistanceNode;
     }
 

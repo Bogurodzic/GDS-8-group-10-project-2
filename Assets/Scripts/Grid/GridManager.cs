@@ -78,7 +78,7 @@ public class GridManager : MonoBehaviour
     {
         int tilePositionX = _gridPosition.x + x;
         int tilePositionY = _gridPosition.y + y;
-        _map.SetTileFlags(new Vector3Int(tilePositionX, tilePositionY, 0), TileFlags.None);
+        //_map.SetTileFlags(new Vector3Int(tilePositionX, tilePositionY, 0), TileFlags.None);
 
 
         if (color == Color.red)
