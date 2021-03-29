@@ -422,11 +422,11 @@ public class Unit : MonoBehaviour
 
         bool isTurn = Turn.IsUnitTurn(_unitStatistics.team) && _unitPhase != UnitPhase.OnCooldown;
 
-        //if (extended && currentActiveUnit.unitData.name != unitData.name &&
-          //  (currentActiveUnit.IsActive() && !currentActiveUnit.IsStandby()))
-       // {
-         //   isTurn = false;
-        //}
+        if (currentActiveUnit.unitData.name != unitData.name &&
+            (currentActiveUnit.IsActive() && !currentActiveUnit.IsStandby()))
+        {
+            isTurn = false;
+        }
 
         return isTurn;
     }

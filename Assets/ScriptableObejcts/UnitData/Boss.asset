@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Boss
   m_EditorClassIdentifier: 
   unitName: Boss
-  minAttack: 500
-  maxAttack: 1000
+  minAttack: 25
+  maxAttack: 35
   defend: 20
   maxHp: 120
-  movementRange: 20
+  movementRange: 4
   minAttackRange: 1
   maxAttackRange: 1
   unitAbility: {fileID: 0}
