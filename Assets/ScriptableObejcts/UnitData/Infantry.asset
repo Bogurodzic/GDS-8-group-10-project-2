@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Infantry
   m_EditorClassIdentifier: 
   unitName: Infantry
-  minAttack: 20
-  maxAttack: 40
+  minAttack: 35
+  maxAttack: 45
   defend: 0
-  maxHp: 200
-  movementRange: 3
+  maxHp: 100
+  movementRange: 5
   minAttackRange: 1
   maxAttackRange: 1
   unitAbility: {fileID: 11400000, guid: 0313b3e5ea4524b9faba69a3cbff12cd, type: 2}

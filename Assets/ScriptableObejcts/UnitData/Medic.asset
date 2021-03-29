@@ -16,8 +16,8 @@ MonoBehaviour:
   minAttack: 0
   maxAttack: 0
   defend: 0
-  maxHp: 10
-  movementRange: 6
+  maxHp: 50
+  movementRange: 3
   minAttackRange: 1
   maxAttackRange: 1
   unitAbility: {fileID: 11400000, guid: ed1ebd928edf94e81835c68a9b62f3f1, type: 2}

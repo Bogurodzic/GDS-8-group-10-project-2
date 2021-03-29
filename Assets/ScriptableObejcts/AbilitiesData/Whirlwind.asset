@@ -16,8 +16,8 @@ MonoBehaviour:
   minRange: 1
   maxRange: 1
   areaOfEffect: 1
-  cooldown: 3
-  damage: 50
+  cooldown: 2
+  damage: 40
   heal: 0
   abilityType: 2
   abilityButtonNormal: {fileID: 21300000, guid: 4daa9a13f7c954340a5de4357fbe0b81,

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Spearman
   m_EditorClassIdentifier: 
   unitName: Spearman
-  minAttack: 20
-  maxAttack: 40
+  minAttack: 25
+  maxAttack: 30
   defend: 10
-  maxHp: 150
-  movementRange: 3
+  maxHp: 80
+  movementRange: 5
   minAttackRange: 1
   maxAttackRange: 2
   unitAbility: {fileID: 11400000, guid: fdc196f9ff4d948619dc29aaea5c2d3b, type: 2}

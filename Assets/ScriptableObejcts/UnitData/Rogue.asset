@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Rogue
   m_EditorClassIdentifier: 
   unitName: Rogue
-  minAttack: 0
-  maxAttack: 100
+  minAttack: 15
+  maxAttack: 20
   defend: 0
-  maxHp: 50
-  movementRange: 15
+  maxHp: 70
+  movementRange: 6
   minAttackRange: 1
   maxAttackRange: 1
   unitAbility: {fileID: 11400000, guid: 03b065fdb32554320836fd66844ac4d3, type: 2}

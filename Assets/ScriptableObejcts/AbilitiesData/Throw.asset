@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Throw
   m_EditorClassIdentifier: 
   description: Attack with larger range
-  minRange: 5
-  maxRange: 15
+  minRange: 2
+  maxRange: 4
   areaOfEffect: 1
   cooldown: 2
   damage: 30

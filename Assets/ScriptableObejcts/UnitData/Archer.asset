@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Archer
   m_EditorClassIdentifier: 
   unitName: Archer
-  minAttack: 10
-  maxAttack: 20
+  minAttack: 15
+  maxAttack: 25
   defend: 0
-  maxHp: 50
-  movementRange: 3
-  minAttackRange: 2
-  maxAttackRange: 6
+  maxHp: 80
+  movementRange: 4
+  minAttackRange: 1
+  maxAttackRange: 5
   unitAbility: {fileID: 0}
   unitSpriteTeam1: {fileID: 21300000, guid: 4ab1c022d8ff84318a53bee18b22f583, type: 3}
   unitSpriteTeam2: {fileID: 21300000, guid: 2c84943369eda4d95be42da0085bfac1, type: 3}
