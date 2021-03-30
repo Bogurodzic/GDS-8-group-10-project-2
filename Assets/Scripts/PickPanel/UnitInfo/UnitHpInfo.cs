@@ -8,4 +8,9 @@ public class UnitHpInfo : UnitInfoText
     {
         txt.text = _initialText + " " + _unitData.maxHp;
     }
+
+    public void ShowUnitHP(int unitCurrentHp, int unitMaxHp)
+    {
+        txt.text = _initialText + " " + unitCurrentHp + "/" + unitMaxHp;
+    }
 }

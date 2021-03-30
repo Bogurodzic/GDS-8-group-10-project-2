@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9ea6c1fe-6767-43df-abde-f4f8039ac897" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Grid/TilePallette/Land.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Grid/TilePallette/Land.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Battle/Turn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Battle/Turn.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,75 +24,86 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Battle/Ability.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PickPanel/ReadyButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PickPanel/PickedUnits.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PickPanel/PortraitFrame.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitInfoText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPanelFrame.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MainMenu/QuitWarningPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/09BAF65C-3F0F-440E-94EB-8E59838010B5/58/2bb99113/Transform.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Units/Healtbar.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PickPanel/PlayerTurnText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPortrait.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PickPanel/Portrait.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UnitListPanel/AbilityButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ScriptableObejcts/TileData/TileData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PickPanel/PickPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitAbilityInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/CombatLog.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PickPanel/RemainingSelectionText.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UnitDeployment/UnitDeployment.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Sound.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ScriptableObejcts/UnitData/UnitData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Win/WinText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PickPanel/PortraitFrame.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitInfoText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Units/Healtbar.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/09BAF65C-3F0F-440E-94EB-8E59838010B5/0a/fbfc7af1/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Win/WinPanel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MainMenu/Credits.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PickPanel/PlayerTurnText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PickPanel/PickPanel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/SkipTurn.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MainMenu/QuitWarning.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridCell.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Enums/UnityPhase.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Pathfinding/PathNode.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/MainMenu/StartGame.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/MainMenu/QuitGame.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitStatistics.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/PickPortrait.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/PickList.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/PortraitFrame.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/ReadyButton.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitHp.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitName.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitAttack.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitRange.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitNameInfo.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitHpInfo.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitAttackInfo.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitDefInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitMovementInfo.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitInfoText.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/PlayerTurnText.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/RemainingSelectionText.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/Portrait.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Enums/TurnType.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/PickedUnits.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UnitDeployment/UnitDeployment.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Pathfinding/Pathfinding.cs" />
       <option value="$PROJECT_DIR$/Assets/ScriptableObejcts/Abilities/Abilities.cs" />
       <option value="$PROJECT_DIR$/Assets/ScriptableObejcts/Abilities/AbilitiesData.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitAbilityInfo.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Enums/UnitPhase.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/Board.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Battle/Turn.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/PickPanel.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Enums/AbilityType.cs" />
-      <option value="$PROJECT_DIR$/Assets/ScriptableObejcts/AbilitiesData/AbilitiesData.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitRange.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Battle/Attack.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Enums/ActionType.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Battle/Ability.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitList.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/AbilityButton.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitMovement.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/Grid.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitAbility.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Healtbar.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitHpInfo.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/Portrait.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/PickPanel.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPanelFrame.cs" />
       <option value="$PROJECT_DIR$/Assets/ScriptableObejcts/UnitData/UnitData.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Enums/AbilityType.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/SkipTurn.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridUtils.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/MainMenu/QuitWarning.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/MainMenu/QuitGame.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/MainMenu/QuitWarningPanel.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/TurnText.cs" />
+      <option value="$PROJECT_DIR$/Assets/ScriptableObejcts/AbilitiesData/AbilitiesData.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Sound.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/PortraitFrame.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/ReadyButton.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/MainMenu/Credits.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Enums/ActionType.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/Grid.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitMovement.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Enums/UnitPhase.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Win/WinText.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Pathfinding/Pathfinding.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitAbility.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPanel.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/AbilityButton.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPortrait.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitInfoText.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Pathfinding/PathNode.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridCell.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Battle/Attack.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Healtbar.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitList.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/MainMenu/StartGame.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Win/WinPanel.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Battle/Turn.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
     </changedPaths>
   </component>
@@ -116,6 +128,14 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../Turn Based Game Builds/turn based game v0.6.0 mac.app/Contents/MacOS/Turn-Based-Game" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../Turn Based Game Builds/turn based game v0.6.0 mac.app/Contents/MacOS" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
@@ -148,6 +168,7 @@
       <workItem from="1615234679328" duration="13992000" />
       <workItem from="1615474273110" duration="82583000" />
       <workItem from="1616418609889" duration="13258000" />
+      <workItem from="1616941003345" duration="38926000" />
     </task>
     <servers />
   </component>

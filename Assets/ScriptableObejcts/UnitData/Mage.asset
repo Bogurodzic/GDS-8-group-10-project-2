@@ -12,16 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cea203f27a234a51b49477e5922c1bc, type: 3}
   m_Name: Mage
   m_EditorClassIdentifier: 
-  minAttack: 50
-  maxAttack: 100
+  unitName: Mage
+  minAttack: 35
+  maxAttack: 50
   defend: 0
-  maxHp: 10
-  movementRange: 2
-  minAttackRange: 3
-  maxAttackRange: 5
+  maxHp: 50
+  movementRange: 4
+  minAttackRange: 1
+  maxAttackRange: 4
   unitAbility: {fileID: 0}
   unitSpriteTeam1: {fileID: 21300000, guid: 34339f972e5d54c629e96e121ca012d8, type: 3}
   unitSpriteTeam2: {fileID: 21300000, guid: d82e8e13ec8004fbab77589fbeb0e1f2, type: 3}
-  unitPickerSprite: {fileID: 3093637269524986797, guid: 117d62492eb5a4ce58205e32a69770dd,
+  unitPickerSprite: {fileID: 785491092164136635, guid: e12375eef647c43fd93b302bd9654290,
     type: 3}
-  unitListSprite: {fileID: 0}
+  unitListSprite: {fileID: 785491092164136635, guid: 89ac21b47f81f40fab3a998bc1ba7861,
+    type: 3}
+  skeletonDataAsset: {fileID: 11400000, guid: 8d4a2ca7bf65e4625a11f8d28c34323a, type: 2}

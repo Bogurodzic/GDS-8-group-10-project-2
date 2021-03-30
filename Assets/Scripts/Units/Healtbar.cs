@@ -37,9 +37,19 @@ public class Healtbar : MonoBehaviour
         
         if (health != _previousHealth)
         {
-            float dealedDamage = _previousHealth - health;
-            ShowDamageText(dealedDamage);
-            _previousHealth = health;
+            if (health > _previousHealth)
+            {
+                float healed = health - _previousHealth;
+                ShowHealText(healed);
+                _previousHealth = health;
+            }
+            else
+            {
+                float dealedDamage = _previousHealth - health;
+                ShowDamageText(dealedDamage);
+                _previousHealth = health;
+            }
+
         }
         
         targetProgress = health / maxHealth;
@@ -103,6 +113,10 @@ public class Healtbar : MonoBehaviour
         {
             Slider.value = Slider.value - 0.01f * Time.deltaTime * sliderSpeed;
             ReloadSliderColor();
+        } else if (Slider.value < targetProgress)
+        {
+            Slider.value = Slider.value + 0.01f * Time.deltaTime * sliderSpeed;
+            ReloadSliderColor(); 
         }
         else
         {
@@ -124,12 +138,25 @@ public class Healtbar : MonoBehaviour
 
     private void ShowDamageText(float damage)
     {
+        damageText.color = Color.red;
         damageText.text = damage + "";
+        Invoke("HideDmageText", 2f);
+    }
+    
+    private void ShowHealText(float heal)
+    {
+        damageText.color = Color.yellow;
+        damageText.text = heal + "";
         Invoke("HideDmageText", 2f);
     }
 
     private void HideDmageText()
     {
         damageText.text = "";
+    }
+
+    public void TurnOffHealthBar()
+    {
+        gameObject.SetActive(false);
     }
 }

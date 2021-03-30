@@ -8,6 +8,7 @@ public class PortraitFrame : MonoBehaviour
 
     public Sprite inactiveSprite;
     public Sprite activeSprite;
+    public Sprite higlitedSprite;
     public bool active = false;
     private Image _sprite;
     void Start()
@@ -24,6 +25,16 @@ public class PortraitFrame : MonoBehaviour
     private void LoadSprite()
     {
         _sprite = gameObject.GetComponent<Image>();
+    }
+
+    public void Hover()
+    {
+        _sprite.sprite = higlitedSprite;
+    }
+
+    public void HoverOut()
+    {
+        ReloadSprite();
     }
 
     private void ReloadSprite()

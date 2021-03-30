@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Portrait : MonoBehaviour
 {
-    private UnitData _unitData;
+    public UnitData unitData;
     private Image _portraitImage;
     private PortraitFrame _portraitFrame;
     private bool _isActive;
@@ -14,6 +14,7 @@ public class Portrait : MonoBehaviour
 
     public void Start()
     {
+        RenderUnitData();
     }
 
     public void LoadPortraitImage()
@@ -24,16 +25,21 @@ public class Portrait : MonoBehaviour
     private void ReloadPortraitImage()
     {
         Debug.Log(_portraitImage);
-        _portraitImage.sprite = _unitData.unitPickerSprite;
+        _portraitImage.sprite = unitData.unitPickerSprite;
     }
 
     public void LoadUnitData(UnitData unitDataToLoad)
     {
-        _unitData = unitDataToLoad;
+        unitData = unitDataToLoad;
         LoadPortraitImage();
         ReloadPortraitImage();
         LoadPortraitFrame();
         LoadPickPanel();
+    }
+
+    public void RenderUnitData()
+    {
+        LoadUnitData(unitData);
     }
 
     private void LoadPortraitFrame()
@@ -48,6 +54,8 @@ public class Portrait : MonoBehaviour
 
     public void TogglePortrait()
     {
+        Debug.Log("CLICK");
+        Debug.Log(unitData);
         if (_isActive)
         {
             _isActive = false;
@@ -61,7 +69,7 @@ public class Portrait : MonoBehaviour
 
     public void OnHover()
     {
-        _pickPanel.DisplayUnitInfo(_unitData);
+        _pickPanel.DisplayUnitInfo(unitData);
     }
 
     public void OnHoverOut()
@@ -82,6 +90,6 @@ public class Portrait : MonoBehaviour
 
     public UnitData GetUnitData()
     {
-        return _unitData;
+        return unitData;
     }
 }

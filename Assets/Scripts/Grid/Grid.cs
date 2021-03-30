@@ -157,7 +157,7 @@ public class Grid
             for (int y = 0; y < gridArray.GetLength(1); y++)
             {
                 _gridManager.ResetColor(x, y);
-                SetValue(x, y, "");
+                //SetValue(x, y, "");
             }
         }
     }
@@ -263,6 +263,11 @@ public class Grid
         {
             _gridManager.ChangeColor(GetGridWidth()-1, i, Color.yellow);
         }
+    }
+
+    public void HighliteCell(int x, int y)
+    {
+        _gridManager.ChangeColor(x, y, Color.blue);
     }
 
     public bool IsMouseOverDeploymentCell()

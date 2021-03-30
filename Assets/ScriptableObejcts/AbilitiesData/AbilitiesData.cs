@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Enums;
 using UnityEngine;
+using UnityEngine.UI;
+
 [CreateAssetMenu]
 public class AbilitiesData : ScriptableObject
 {
@@ -13,4 +15,7 @@ public class AbilitiesData : ScriptableObject
     public int damage;
     public int heal;
     public AbilityType abilityType;
+    public Sprite abilityButtonNormal;
+    public Sprite abilityButtonHover;
+    public Sprite abilityButtonActive;
 }

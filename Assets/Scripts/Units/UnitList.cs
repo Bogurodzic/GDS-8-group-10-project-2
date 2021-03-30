@@ -6,6 +6,7 @@ public class UnitList : MonoBehaviour
 {
     public GameObject unitPrefab;
     public UnitData bossUnitData;
+    public GameObject playerWinPanel;
     private LinkedList<GameObject> player1UnitList = new LinkedList<GameObject>();
     private LinkedList<GameObject> player2UnitList = new LinkedList<GameObject>();
 
@@ -129,18 +130,90 @@ public class UnitList : MonoBehaviour
         return activeUnit;
     }
 
+    public GameObject FindActiveUnit(int team)
+    {
+        if (team == 1)
+        {
+            return FindActiveUnit(player1UnitList);
+        }
+        else
+        {
+            return FindActiveUnit(player2UnitList);
+        }
+    }
+
     private void ResetAllUnitsOnCD()
     {
         foreach (var o in player1UnitList)
         {
-            o.GetComponent<Unit>().ResetUnitCD();
+            if (o.GetComponent<Unit>().IsAlive())
+            {
+                o.GetComponent<Unit>().ResetUnitCD();
+            }
         }
         
         foreach (var o in player2UnitList)
         {
-            o.GetComponent<Unit>().ResetUnitCD();
+            if (o.GetComponent<Unit>().IsAlive())
+            {
+                o.GetComponent<Unit>().ResetUnitCD();
+            }
         }
         
+    }
+
+    private bool AreAllTeamUnitsOnCD(int team)
+    {
+        bool allUnitsAreOnCD = true;
+        
+        if (team == 1)
+        {
+            foreach (var o in player1UnitList)
+            {
+                if (!o.GetComponent<Unit>().IsOnCD() && o.GetComponent<Unit>().IsAlive())
+                {
+                    allUnitsAreOnCD = false;
+                }
+            }
+        } else if (team == 2)
+        {
+            foreach (var o in player2UnitList)
+            {
+                if (!o.GetComponent<Unit>().IsOnCD() && o.GetComponent<Unit>().IsAlive())
+                {
+                    allUnitsAreOnCD = false;
+                }
+            }
+        }
+
+        return allUnitsAreOnCD;
+    }
+    
+    private bool AreAllTeamUnitsDead(int team)
+    {
+        bool allUnitsAreDead = true;
+        
+        if (team == 1)
+        {
+            foreach (var o in player1UnitList)
+            {
+                if (o.GetComponent<Unit>().IsAlive())
+                {
+                    allUnitsAreDead = false;
+                }
+            }
+        } else if (team == 2)
+        {
+            foreach (var o in player2UnitList)
+            {
+                if (o.GetComponent<Unit>().IsAlive())
+                {
+                    allUnitsAreDead = false;
+                }
+            }
+        }
+
+        return allUnitsAreDead;
     }
 
     private bool AreAllUnitsOnCD()
@@ -148,14 +221,14 @@ public class UnitList : MonoBehaviour
         bool allUnitsAreOnCD = true;
         foreach (var o in player1UnitList)
         {
-            if (!o.GetComponent<Unit>().IsOnCD())
+            if (!o.GetComponent<Unit>().IsOnCD() && o.GetComponent<Unit>().IsAlive())
             {
                 allUnitsAreOnCD = false;
             }
         }
         foreach (var o in player2UnitList)
         {
-            if (!o.GetComponent<Unit>().IsOnCD())
+            if (!o.GetComponent<Unit>().IsOnCD() && o.GetComponent<Unit>().IsAlive())
             {
                 allUnitsAreOnCD = false;
             }
@@ -172,14 +245,27 @@ public class UnitList : MonoBehaviour
     {
         return _readyForDeploy;
     }
+    
 
    public GameObject GetActiveUnit()
-    {
+   {
+       CheckWinCondition();
+       
         if (AreAllUnitsOnCD())
         {
             ResetAllUnitsOnCD();
         }
+
+        if (AreAllTeamUnitsOnCD(1) && Turn.IsUnitTurn(1))
+        {
+            Turn.NextTurn();
+        }
         
+        if (AreAllTeamUnitsOnCD(2) && Turn.IsUnitTurn(2))
+        {
+            Turn.NextTurn();
+        }
+
         GameObject activeUnitFromPlayer1UnitList = FindActiveUnit(player1UnitList);
 
         if (activeUnitFromPlayer1UnitList.GetComponent<Unit>().IsActive())
@@ -192,4 +278,81 @@ public class UnitList : MonoBehaviour
         return activeUnitFromPlayer2UnitList;
 
     }
+
+   public LinkedList<GameObject> GetPlayerUnitList(int playerTeam)
+   {
+       if (playerTeam == 1)
+       {
+           return player1UnitList;
+       }
+       else
+       {
+           return player2UnitList;
+       }
+   }
+   
+   public void DeactivateAllPlayerUnits(int team)
+   {
+       if (team == 1)
+       {
+           foreach (var o in player1UnitList)
+           {
+               o.GetComponent<Unit>().DeactivateUnit();
+           } 
+       }
+
+       if (team == 2)
+       {
+           foreach (var o in player2UnitList)
+           {
+               o.GetComponent<Unit>().DeactivateUnit();
+           }
+       }
+   }
+
+   public void CheckWinCondition()
+   {
+       bool boss1Dead = false;
+       bool boss2Dead = false;
+       
+       foreach (var o in player1UnitList)
+       {
+           if (o.GetComponent<Unit>().unitData.unitName == "Boss" && !o.GetComponent<Unit>().IsAlive())
+           {
+               boss1Dead = true;
+           }
+       }
+
+       foreach (var o in player2UnitList)
+       {
+           if (o.GetComponent<Unit>().unitData.unitName == "Boss" && !o.GetComponent<Unit>().IsAlive())
+           {
+               boss2Dead = true;
+           }
+       }
+
+       if (boss1Dead)
+       {
+           if (Turn.IsUnitTurn(1))
+           {
+               Turn.NextTurn();
+               playerWinPanel.SetActive(true);
+           }
+           else
+           {
+               playerWinPanel.SetActive(true);
+           }
+       } else if (boss2Dead)
+       {
+           if (Turn.IsUnitTurn(2))
+           {
+               Turn.NextTurn();
+               playerWinPanel.SetActive(true);
+           }
+           else
+           {
+               playerWinPanel.SetActive(true);
+           }
+       }
+   }
 }

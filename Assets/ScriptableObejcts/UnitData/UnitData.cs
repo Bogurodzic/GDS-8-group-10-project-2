@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Spine;
+using Spine.Unity;
 using UnityEngine;
 [CreateAssetMenu]
 public class UnitData : ScriptableObject
 {
+    public string unitName;
     public int minAttack;
     public int maxAttack;
     public int defend;
@@ -16,4 +19,5 @@ public class UnitData : ScriptableObject
     public Sprite unitSpriteTeam2;
     public Sprite unitPickerSprite;
     public Sprite unitListSprite;
+    public SkeletonDataAsset skeletonDataAsset;
 } 

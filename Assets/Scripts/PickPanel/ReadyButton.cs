@@ -6,15 +6,19 @@ using UnityEngine.UI;
 public class ReadyButton : MonoBehaviour
 {
 
-    public Sprite notReadySprite;
-    public Sprite readySprite;
+    public Sprite normalButton;
+    public Sprite hoverButton;
+    public Sprite activeButton;
     private PickPanel _pickPanel;
     private Image _image;
+    private Button _button;
     private bool _isReady = false;
     void Start()
     {
         LoadPickPanel();
         LoadImage();
+        LoadButton();
+        ReloadSprite();
     }
 
     void Update()
@@ -32,6 +36,11 @@ public class ReadyButton : MonoBehaviour
         _image = gameObject.GetComponent<Image>();
     }
 
+    private void LoadButton()
+    {
+        _button = gameObject.GetComponent<Button>();
+    }
+
     public void SetReady(bool isReady)
     {
         _isReady = isReady;
@@ -40,18 +49,34 @@ public class ReadyButton : MonoBehaviour
 
     private void ReloadSprite()
     {
-        if (_isReady)
+        SpriteState spriteState = new SpriteState();
+        spriteState = _button.spriteState;
+
+        if (!_isReady)
         {
-            _image.sprite = readySprite;
+            spriteState.pressedSprite = activeButton;
+            spriteState.highlightedSprite = activeButton;
+
+            _image.sprite = activeButton;
         }
         else
         {
-            _image.sprite = notReadySprite;
+            spriteState.pressedSprite = activeButton;
+            spriteState.highlightedSprite = hoverButton;
+
+            _image.sprite = normalButton;
         }
+
+
+        _button.spriteState = spriteState;
+        
     }
 
     public void ReadyClicked()
     {
-        _pickPanel.HandleReadyClicked();
+        if (_isReady)
+        {
+            _pickPanel.HandleReadyClicked();
+        }
     }
 }

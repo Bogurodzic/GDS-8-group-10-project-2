@@ -7,6 +7,22 @@ public static class Turn
 {
     private static TurnType _currentTurnType = TurnType.Pick;
     private static int _currentTurn = 1;
+    private static bool _turnBlocked = false;
+
+    public static bool IsTurnBlocked()
+    {
+        return _turnBlocked;
+    }
+
+    public static void BlockTurn()
+    {
+        _turnBlocked = true;
+    }
+
+    public static void UnlockTurn()
+    {
+        _turnBlocked = false;
+    }
 
     public static void NextTurn()
     {
@@ -18,6 +34,8 @@ public static class Turn
         {
             _currentTurn = 1;
         }
+        
+        UnlockTurn();
     }
 
     public static bool IsUnitTurn(int unitTeam)
@@ -45,5 +63,11 @@ public static class Turn
     public static void SetTurnType(TurnType turnType)
     {
         _currentTurnType = turnType;
+    }
+
+    public static void ResetGame()
+    {
+        SetTurnType(TurnType.Pick);
+        _currentTurn = 1;
     }
 }

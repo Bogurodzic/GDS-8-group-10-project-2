@@ -12,16 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cea203f27a234a51b49477e5922c1bc, type: 3}
   m_Name: Boss
   m_EditorClassIdentifier: 
-  minAttack: 100
-  maxAttack: 200
+  unitName: Boss
+  minAttack: 25
+  maxAttack: 35
   defend: 20
-  maxHp: 500
-  movementRange: 20
+  maxHp: 120
+  movementRange: 4
   minAttackRange: 1
-  maxAttackRange: 3
-  unitAbility: {fileID: 11400000, guid: 0313b3e5ea4524b9faba69a3cbff12cd, type: 2}
+  maxAttackRange: 1
+  unitAbility: {fileID: 0}
   unitSpriteTeam1: {fileID: 21300000, guid: e4453a5b9822a470abe9563e1a22ae5d, type: 3}
   unitSpriteTeam2: {fileID: 21300000, guid: c44ec64e09b074c9fb0b4e88b96bbf84, type: 3}
-  unitPickerSprite: {fileID: -713067964476568478, guid: 117d62492eb5a4ce58205e32a69770dd,
+  unitPickerSprite: {fileID: 4021901342150729866, guid: e12375eef647c43fd93b302bd9654290,
     type: 3}
-  unitListSprite: {fileID: 0}
+  unitListSprite: {fileID: 4021901342150729866, guid: 89ac21b47f81f40fab3a998bc1ba7861,
+    type: 3}
+  skeletonDataAsset: {fileID: 11400000, guid: 168a9c627dab445dc8bb9dd4085728c2, type: 2}
