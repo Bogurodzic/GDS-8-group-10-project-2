@@ -37,9 +37,19 @@ public class Healtbar : MonoBehaviour
         
         if (health != _previousHealth)
         {
-            float dealedDamage = _previousHealth - health;
-            ShowDamageText(dealedDamage);
-            _previousHealth = health;
+            if (health > _previousHealth)
+            {
+                float healed = health - _previousHealth;
+                ShowHealText(healed);
+                _previousHealth = health;
+            }
+            else
+            {
+                float dealedDamage = _previousHealth - health;
+                ShowDamageText(dealedDamage);
+                _previousHealth = health;
+            }
+
         }
         
         targetProgress = health / maxHealth;
