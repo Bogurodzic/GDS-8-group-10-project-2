@@ -113,6 +113,10 @@ public class Healtbar : MonoBehaviour
         {
             Slider.value = Slider.value - 0.01f * Time.deltaTime * sliderSpeed;
             ReloadSliderColor();
+        } else if (Slider.value < targetProgress)
+        {
+            Slider.value = Slider.value + 0.01f * Time.deltaTime * sliderSpeed;
+            ReloadSliderColor(); 
         }
         else
         {

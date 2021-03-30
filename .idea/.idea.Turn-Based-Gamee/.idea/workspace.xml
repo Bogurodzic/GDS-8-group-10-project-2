@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ea6c1fe-6767-43df-abde-f4f8039ac897" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Battle/Attack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Battle/Attack.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Healtbar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Healtbar.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,8 +101,8 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitInfoText.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Pathfinding/PathNode.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridCell.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Healtbar.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Battle/Attack.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Healtbar.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1pLb0eqZaQJiXIFPJRkhff1DHdr" />
