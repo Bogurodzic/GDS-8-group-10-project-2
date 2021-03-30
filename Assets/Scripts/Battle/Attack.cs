@@ -17,15 +17,16 @@ public static class Attack
     private static void DealDamage(int damage, Unit unit)
     {
       int finalDamage;
-      if (!unit.GetStatistics().flatDefend)
-      {
-        Debug.Log("resistance " + ((float)unit.GetStatistics().defend/100));
-        finalDamage = (int)((float)damage - ((float)damage * ((float)unit.GetStatistics().defend/100)));
-      }
-      else
-      {
+      
+      //if (!unit.GetStatistics().flatDefend)
+      //{
+        //Debug.Log("resistance " + ((float)unit.GetStatistics().defend/100));
+        //finalDamage = (int)((float)damage - ((float)damage * ((float)unit.GetStatistics().defend/100)));
+     // }
+      //else
+      //{
         finalDamage = damage - unit.GetStatistics().defend;
-      }
+      //}
 
       finalDamage = Mathf.RoundToInt(finalDamage);
 
@@ -36,13 +37,13 @@ public static class Attack
 
       string dealDamageLog;
 
-      if (!unit.GetStatistics().flatDefend)
-      {
-        dealDamageLog = "Defender recieved " + finalDamage + "(" + damage + " reduced by "  + unit.GetStatistics().defend + "% resistance)" + "\n";
-      } else 
-      {
+     // if (!unit.GetStatistics().flatDefend)
+     // {
+     //   dealDamageLog = "Defender recieved " + finalDamage + "(" + damage + " reduced by "  + unit.GetStatistics().defend + "% resistance)" + "\n";
+     // } else 
+      //{
         dealDamageLog = "Defender recieved " + finalDamage + "(" + damage + " reduced by " +  unit.GetStatistics().defend  + " resistance)"+ "\n";
-      }
+      //}
       
       _temporaryLog += dealDamageLog;
 

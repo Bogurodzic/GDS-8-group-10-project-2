@@ -14,6 +14,7 @@ public class PathNode
     public int hTemporary;
     public int fCost;
     public float movementCost;
+    public float bonusDef;
     public bool isObstacle;
     public bool isOccupied;
     public bool isMovable;
@@ -30,6 +31,7 @@ public class PathNode
         this.movementCost = tileData.movementCost;
         this.isObstacle = tileData.isObstacle;
         this.isOccupied = false;
+        this.bonusDef = tileData.bonusDef;
     }
 
     public void CalculateFCost()

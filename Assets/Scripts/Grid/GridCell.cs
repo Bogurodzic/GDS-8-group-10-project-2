@@ -49,25 +49,23 @@ public class GridCell
 
     public void RemoveOccupiedBy()
     {
+        _occupiedBy.GetStatistics().defend = 0;
         _occupiedBy = null;
-        Debug.Log("REMOVE:" + localPosition);
-
-        Debug.Log(this);
         _pathNode.isOccupied = false;
+        
     }
 
     public void AddOccupiedBy(Unit unit)
     {
         _occupiedBy = unit;
-        Debug.Log("ADD" + localPosition);
-
-        Debug.Log(this);
         _pathNode.isOccupied = true;
+        unit.GetStatistics().defend = (int) _pathNode.bonusDef;
 
     }
 
     public Unit GetOccupiedBy()
     {
+        
         return _occupiedBy;
     }
 }

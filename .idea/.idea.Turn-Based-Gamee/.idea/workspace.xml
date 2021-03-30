@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9ea6c1fe-6767-43df-abde-f4f8039ac897" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Battle/Attack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Battle/Attack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Grid/GridCell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Grid/GridCell.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pathfinding/PathNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pathfinding/PathNode.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,10 +55,8 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitAttackInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitDefInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitMovementInfo.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitInfoText.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/PlayerTurnText.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/RemainingSelectionText.cs" />
@@ -69,7 +69,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/Board.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Battle/Turn.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitRange.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Battle/Attack.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Battle/Ability.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitHpInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/Portrait.cs" />
@@ -91,7 +90,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Enums/ActionType.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/Grid.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Pathfinding/PathNode.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitMovement.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Enums/UnitPhase.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Win/WinPanel.cs" />
@@ -104,6 +102,10 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/AbilityButton.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPortrait.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitInfoText.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Pathfinding/PathNode.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridCell.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Battle/Attack.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1pLb0eqZaQJiXIFPJRkhff1DHdr" />
