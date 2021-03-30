@@ -32,12 +32,7 @@ public class Unit : MonoBehaviour
 
     private int _attackAfterMovementXTarget = -9999;
     private int _attackAfterMovementYTarget = -9999;
-
-    void Start()
-    {
-
-    }
-
+    
     void Update()
     {
         if (Turn.GetCurrentTurnType() == TurnType.RegularGame)
@@ -69,11 +64,6 @@ public class Unit : MonoBehaviour
         Vector3 mouseVector3 = GridUtils.GetMouseWorldPosition(Input.mousePosition);
         mouseVector3.z = 0;
         int mouseX, mouseY;
-        Debug.Log("GRID 1");
-        Debug.Log(_unitStatistics.team);
-        Debug.Log(unitData.name);
-        Debug.Log(_grid);
-        Debug.Log("GRID 2");
 
         _grid.GetCellPosition(mouseVector3, out mouseX, out mouseY);
         
@@ -156,11 +146,6 @@ public class Unit : MonoBehaviour
                     break;
             }
         }
-
-        //_skeletonAnimation.loop = true;
-        //_skeletonAnimation.AnimationName = "IDLE";
-        //SpineEditorUtilities.ReloadSkeletonDataAssetAndComponent(_skeletonAnimation);
-        
         _skeletonAnimation.Initialize(true); 
         _skeletonAnimation.Skeleton.SetSkin(_skeletonAnimation.initialSkinName); // set the skin
         _skeletonAnimation.Skeleton.SetSlotsToSetupPose(); // use the active attachments from setup pose.
@@ -207,59 +192,24 @@ public class Unit : MonoBehaviour
         switch (actionType)
         {         
             case ActionType.Activation:
-                Debug.Log("END ACTIVATION 1");
-                Debug.Log("END ACTIVATION 2");
-                Debug.Log("END ACTIVATION 3");
-                Debug.Log("END ACTIVATION 4");
-                Debug.Log("END ACTIVATION 5");
                 ActivateUnit();
                 break;
             case ActionType.Deactivation:
-                Debug.Log("END Deactivation 1");
-                Debug.Log("END Deactivation 2");
-                Debug.Log("END Deactivation 3");
-                Debug.Log("END Deactivation 4");
-                Debug.Log("END Deactivation 5");
                 DeactivateUnit();
                 break;
             case ActionType.Movement:
-                Debug.Log("END ACTION MOVEMENT 1");
-                Debug.Log("END ACTION MOVEMENT 2");
-
-                Debug.Log("END ACTION MOVEMENT 3");
-                Debug.Log("END ACTION MOVEMENT 4");
-                Debug.Log("END ACTION MOVEMENT 5");
-
                 SetUnitPhase(UnitPhase.AfterMovement);
                 AnimateIdle();
                 HandleActivatingAttackMode();
                 break;
             case ActionType.Attack:
                 _unitList.CheckWinCondition();
-                Debug.Log("END ACTION ATTACK 1");
-                Debug.Log("END ACTION ATTACK 2");
-
-                Debug.Log("END ACTION ATTACK 3");
-                Debug.Log("END ACTION ATTACK 4");
-                Debug.Log("END ACTION ATTACK 5");
                 if (_unitAbility.GetAbilityType() == AbilityType.Dash)
                 {
-                    Debug.Log("END ACTION ATTACK 11");
-                    Debug.Log("END ACTION ATTACK 22");
-
-                    Debug.Log("END ACTION ATTACK 33");
-                    Debug.Log("END ACTION ATTACK 44");
-                    Debug.Log("END ACTION ATTACK 55");
                     ActivateDash();
                 }
                 else
                 {
-                    Debug.Log("END ACTION ATTACK 111");
-                    Debug.Log("END ACTION ATTACK 222");
-
-                    Debug.Log("END ACTION ATTACK 333");
-                    Debug.Log("END ACTION ATTACK 444");
-                    Debug.Log("END ACTION ATTACK 555");
                     SkipTurn();
                 }
                 break;
@@ -267,51 +217,25 @@ public class Unit : MonoBehaviour
                 HandleAttackUnit(_attackAfterMovementXTarget, _attackAfterMovementYTarget);
                 break;
             case ActionType.ActiveAbility:
-                Debug.Log("END ACTION ACTIVATE ABILITY 1");
-                Debug.Log("END ACTION ACTIVATE ABILITY 2");
-                Debug.Log("END ACTION ACTIVATE ABILITY 3");
-                Debug.Log("END ACTION ACTIVATE ABILITY 4");
-                Debug.Log("END ACTION ACTIVATE ABILITY 5");
-
                 ActiveAbility();
                 break;
             case ActionType.ExecuteAbility:
                 _unitList.CheckWinCondition();
                 if (_unitAbility.GetAbilityType() == AbilityType.Dash)
                 {
-                    Debug.Log("END EXECUTE ACTIVATE ABILITY 1");
-                    Debug.Log("END EXECUTE ACTIVATE ABILITY 2");
-                    Debug.Log("END EXECUTE ACTIVATE ABILITY 3");
-                    Debug.Log("END EXECUTE ACTIVATE ABILITY 4");
-                    Debug.Log("END EXECUTE ACTIVATE ABILITY 5");
                     ActivateDash();
                 }
                 else
                 {
-                    Debug.Log("END EXECUTE ACTIVATE ABILITY 11");
-                    Debug.Log("END EXECUTE ACTIVATE ABILITY 22");
-                    Debug.Log("END EXECUTE ACTIVATE ABILITY 33");
-                    Debug.Log("END EXECUTE ACTIVATE ABILITY 44");
-                    Debug.Log("END EXECUTE ACTIVATE ABILITY 55");
                     SkipTurn();
                 }
                 break;
             case ActionType.Dash:
-                Debug.Log("END DASH 1");
-                Debug.Log("END DASH 2");
-                Debug.Log("END DASH 3");
-                Debug.Log("END DASH 4");
-                Debug.Log("END DASH 5");
                 AnimateIdle();
                 SkipTurn();
                 break;
             case ActionType.SkipTurn:
-                Debug.Log("END SKIP 1");
-                Debug.Log("END SKIP 2");
-                Debug.Log("END SKIP 3");
-                Debug.Log("END SKIP 4");
-                Debug.Log("END SKIP 5");
-                Invoke("NextTurn", 0.05f);
+                Invoke("NextTurn", 0.4f);
                 break;
         }
     }
@@ -325,9 +249,9 @@ public class Unit : MonoBehaviour
         
         if (_unitPhase == UnitPhase.Standby && _unitMovement.IsInMovementRange(mouseX, mouseY))
         {
+            Turn.BlockTurn();
             AnimateLoopUnit("WALK");
             _unitMovement.Move(mouseX, mouseY, this, ActionType.Movement);
-            //EndAction(ActionType.Movement);
         }
     }
     
@@ -354,40 +278,27 @@ public class Unit : MonoBehaviour
 
         if (_unitPhase == UnitPhase.AfterMovement && IsCellOcuppiedByEnemy(mouseX, mouseY) && _unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
         {
-            Debug.Log("HANDLE ATTACK 1");
-            Debug.Log("HANDLE ATTACK 2");
-            Debug.Log("HANDLE ATTACK 3");
-            Debug.Log("HANDLE ATTACK 4");
-            Debug.Log("HANDLE ATTACK 5");
-
+            
             AnimateUnit("ATTACK");
             _grid.GetCell(mouseX, mouseY).GetOccupiedBy().AnimateUnit("HURT");
             _combatLog.LogCombat(Attack.AttackUnit(this, _grid.GetCell(mouseX, mouseY).GetOccupiedBy()));
             _grid.GetCell(mouseX, mouseY).GetOccupiedBy().SetHealth();
             _grid.GetCell(mouseX, mouseY).GetOccupiedBy().HandleDeath();
+            Turn.BlockTurn();
             EndAction(ActionType.Attack);
-            
         } else if ((_unitPhase == UnitPhase.Standby) && IsCellOcuppiedByEnemy(mouseX, mouseY) && _unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
         {
             if (!_grid.IsPositionInAttackRange(mouseX, mouseY, _unitRange.minRange, _unitRange.maxRange))
-            {            
-                Debug.Log("HANDLE ATTACK 11");
-                Debug.Log("HANDLE ATTACK 22");
-                Debug.Log("HANDLE ATTACK 33");
-                Debug.Log("HANDLE ATTACK 44");
-                Debug.Log("HANDLE ATTACK 55");
+            {
                 AnimateLoopUnit("WALK");
                 _attackAfterMovementXTarget = mouseX;
                 _attackAfterMovementYTarget = mouseY;
                 _unitMovement.MoveBeforeAttack(mouseX, mouseY, this, ActionType.MovementBeforeAttack);
+                Turn.BlockTurn();
             }
             else
             {
-                Debug.Log("HANDLE ATTACK 111");
-                Debug.Log("HANDLE ATTACK 222");
-                Debug.Log("HANDLE ATTACK 333");
-                Debug.Log("HANDLE ATTACK 444");
-                Debug.Log("HANDLE ATTACK 555");
+                Turn.BlockTurn();
                 HandleAttackUnit(mouseX, mouseY);
             }
         }
@@ -427,15 +338,14 @@ public class Unit : MonoBehaviour
     public bool IsUnitTurn(bool extended = false)
     {
         Unit currentActiveUnit = _unitList.FindActiveUnit(GetStatistics().team).GetComponent<Unit>();
-
         bool isTurn = Turn.IsUnitTurn(_unitStatistics.team) && _unitPhase != UnitPhase.OnCooldown;
-
-        if (currentActiveUnit.unitData.name != unitData.name &&
-            (currentActiveUnit.IsActive() && !currentActiveUnit.IsStandby()))
+        
+        if (currentActiveUnit.unitData.name != unitData.name && Turn.IsTurnBlocked())
         {
             isTurn = false;
         }
-
+        
+        
         return isTurn;
     }
     
@@ -489,20 +399,12 @@ public class Unit : MonoBehaviour
         mouseVector3.z = 0;
         int mouseX, mouseY;
         _grid.GetCellPosition(mouseVector3, out mouseX, out mouseY);
-        
-        Debug.Log("Handle Toggling Unit 1");
-        Debug.Log(IsUnitTurn());
-        Debug.Log(IsUnitClicked(mouseX, mouseY));
-
         if (IsAlive() && IsUnitTurn(true) && !IsActive() && IsUnitClicked(mouseX, mouseY))
         {       
-            Debug.Log("Handle Toggling Unit 2");
             EndAction(ActionType.Activation);
         }
         else if (IsAlive() && IsUnitTurn() && IsActive() && IsUnitClicked(mouseX, mouseY))
         {
-            Debug.Log("Handle Toggling Unit 3");
-
             EndAction(ActionType.Deactivation);
         }
     }
@@ -511,8 +413,6 @@ public class Unit : MonoBehaviour
     {
         if (IsAlive() && IsUnitTurn() && IsActive() && IsStandby())
         {
-            Debug.Log("Handle Toggling Unit 3");
-
             EndAction(ActionType.Deactivation);
             return true;
         }
@@ -544,10 +444,6 @@ public class Unit : MonoBehaviour
         mouseVector3.z = 0;
         int mouseX, mouseY;
         _grid.GetCellPosition(mouseVector3, out mouseX, out mouseY);
-
-        Debug.Log("HandleDeactivatingUnit");
-        Debug.Log(mouseX);
-        Debug.Log(mouseY);
         if (IsActive() && !_unitMovement.IsInMovementRange(mouseX, mouseY) && !_unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(),_unitMovement.GetUnitYPosition(),mouseX, mouseY) &&
             (mouseX < _grid.GetGridWidth() && mouseY < _grid.GetGridHeight() && mouseX >= 0 && mouseY >= 0))
         {
@@ -573,7 +469,6 @@ public class Unit : MonoBehaviour
 
     public void ToggleAbility()
     {
-        Debug.Log("Handle ability 3");
         _phaseBeforeAbility = _unitPhase;
         EndAction(ActionType.ActiveAbility);
     }
@@ -591,8 +486,8 @@ public class Unit : MonoBehaviour
 
     private void ActiveAbility()
     {
+        Turn.BlockTurn();
         SetUnitPhase(UnitPhase.AbilityActivated);
-        Debug.Log("Handle ability 4");
         _unitAbility.ActiveAbility(GetUnitXPosition(), GetUnitYPosition());
     }
 
@@ -635,7 +530,6 @@ public class Unit : MonoBehaviour
         _skeletonAnimation.skeleton.A = 0.5f;
         SetUnitPhase(UnitPhase.OnCooldown);
         EndAction(ActionType.SkipTurn);
-        
     }
 
     public void HandleDeath()
@@ -662,12 +556,6 @@ public class Unit : MonoBehaviour
 
     private void NextTurn()
     {
-        Debug.Log("NEXT TURN 1");
-        Debug.Log("NEXT TURN 2");
-        Debug.Log("NEXT TURN 3");
-        Debug.Log("NEXT TURN 4");
-        Debug.Log("NEXT TURN 5");
-
         Turn.NextTurn();
     }
 
@@ -774,7 +662,6 @@ public class Unit : MonoBehaviour
         LoadUnitAbility();
         LoadHealthbar();
         LoadUnitList();
-        //PlaceUnitOnBoard();
         ReloadUnitData();
         SetHealth();
     }
