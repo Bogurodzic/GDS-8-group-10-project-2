@@ -146,12 +146,18 @@ public class UnitList : MonoBehaviour
     {
         foreach (var o in player1UnitList)
         {
-            o.GetComponent<Unit>().ResetUnitCD();
+            if (o.GetComponent<Unit>().IsAlive())
+            {
+                o.GetComponent<Unit>().ResetUnitCD();
+            }
         }
         
         foreach (var o in player2UnitList)
         {
-            o.GetComponent<Unit>().ResetUnitCD();
+            if (o.GetComponent<Unit>().IsAlive())
+            {
+                o.GetComponent<Unit>().ResetUnitCD();
+            }
         }
         
     }
@@ -242,7 +248,9 @@ public class UnitList : MonoBehaviour
     
 
    public GameObject GetActiveUnit()
-    {
+   {
+       CheckWinCondition();
+       
         if (AreAllUnitsOnCD())
         {
             ResetAllUnitsOnCD();
@@ -256,11 +264,6 @@ public class UnitList : MonoBehaviour
         if (AreAllTeamUnitsOnCD(2) && Turn.IsUnitTurn(2))
         {
             Turn.NextTurn();
-        }
-
-        if (AreAllTeamUnitsDead(1) || AreAllTeamUnitsDead(2))
-        {
-            playerWinPanel.SetActive(true);
         }
 
         GameObject activeUnitFromPlayer1UnitList = FindActiveUnit(player1UnitList);
@@ -305,8 +308,51 @@ public class UnitList : MonoBehaviour
                o.GetComponent<Unit>().DeactivateUnit();
            }
        }
-        
+   }
 
-        
+   public void CheckWinCondition()
+   {
+       bool boss1Dead = false;
+       bool boss2Dead = false;
+       
+       foreach (var o in player1UnitList)
+       {
+           if (o.GetComponent<Unit>().unitData.unitName == "Boss" && !o.GetComponent<Unit>().IsAlive())
+           {
+               boss1Dead = true;
+           }
+       }
+
+       foreach (var o in player2UnitList)
+       {
+           if (o.GetComponent<Unit>().unitData.unitName == "Boss" && !o.GetComponent<Unit>().IsAlive())
+           {
+               boss2Dead = true;
+           }
+       }
+
+       if (boss1Dead)
+       {
+           if (Turn.IsUnitTurn(1))
+           {
+               Turn.NextTurn();
+               playerWinPanel.SetActive(true);
+           }
+           else
+           {
+               playerWinPanel.SetActive(true);
+           }
+       } else if (boss2Dead)
+       {
+           if (Turn.IsUnitTurn(2))
+           {
+               Turn.NextTurn();
+               playerWinPanel.SetActive(true);
+           }
+           else
+           {
+               playerWinPanel.SetActive(true);
+           }
+       }
    }
 }

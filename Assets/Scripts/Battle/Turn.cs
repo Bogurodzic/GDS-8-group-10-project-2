@@ -46,4 +46,10 @@ public static class Turn
     {
         _currentTurnType = turnType;
     }
+
+    public static void ResetGame()
+    {
+        SetTurnType(TurnType.Pick);
+        _currentTurn = 1;
+    }
 }

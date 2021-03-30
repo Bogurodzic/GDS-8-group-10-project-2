@@ -235,6 +235,7 @@ public class Unit : MonoBehaviour
                 HandleActivatingAttackMode();
                 break;
             case ActionType.Attack:
+                _unitList.CheckWinCondition();
                 Debug.Log("END ACTION ATTACK 1");
                 Debug.Log("END ACTION ATTACK 2");
 
@@ -275,6 +276,7 @@ public class Unit : MonoBehaviour
                 ActiveAbility();
                 break;
             case ActionType.ExecuteAbility:
+                _unitList.CheckWinCondition();
                 if (_unitAbility.GetAbilityType() == AbilityType.Dash)
                 {
                     Debug.Log("END EXECUTE ACTIVATE ABILITY 1");

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Enums;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,6 +18,7 @@ public class WinPanel : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
+        Turn.ResetGame();
         SceneManager.LoadScene("MainMenu");
     }
 }

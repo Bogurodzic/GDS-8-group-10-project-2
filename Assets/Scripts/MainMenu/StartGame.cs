@@ -9,4 +9,5 @@ public class StartGame : MonoBehaviour
     {
         SceneManager.LoadScene("Scenes/Game");
     }
+    
 }
