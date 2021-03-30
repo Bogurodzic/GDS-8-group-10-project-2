@@ -75,12 +75,15 @@ public class UnitListPortrait : MonoBehaviour
     {
         if (_unit.IsActive())
         {
-            _unit.DeactivateUnit();
-            SetPotraitActive(false);
+
+            bool deactivated = _unit.TryDeactivate();
+            if (deactivated)
+            {
+                SetPotraitActive(false);
+            }
         }
         else
         {
-            _unitListPanel.DeactivateAllPlayerUnits();
             bool isFrameReadyToActivate = _unit.HandleTogglingFromFrame();
             Debug.Log("ISFRAMEREADYTOACTIVE");
             Debug.Log(isFrameReadyToActivate);

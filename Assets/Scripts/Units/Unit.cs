@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Enums;
 using Spine.Unity;
-using Spine.Unity.Editor;
 using UnityEngine;
 
 public class Unit : MonoBehaviour
@@ -160,8 +159,15 @@ public class Unit : MonoBehaviour
 
         //_skeletonAnimation.loop = true;
         //_skeletonAnimation.AnimationName = "IDLE";
-        SpineEditorUtilities.ReloadSkeletonDataAssetAndComponent(_skeletonAnimation);
+        //SpineEditorUtilities.ReloadSkeletonDataAssetAndComponent(_skeletonAnimation);
+        
+        _skeletonAnimation.Initialize(true); 
+        _skeletonAnimation.Skeleton.SetSkin(_skeletonAnimation.initialSkinName); // set the skin
+        _skeletonAnimation.Skeleton.SetSlotsToSetupPose(); // use the active attachments from setup pose.
+        _skeletonAnimation.AnimationState.Apply( _skeletonAnimation.Skeleton); // use the active attachments from the active animations.
+        
         _skeletonAnimation.AnimationState.SetAnimation(0, "IDLE", true);
+
 
     }
 
@@ -496,6 +502,21 @@ public class Unit : MonoBehaviour
             Debug.Log("Handle Toggling Unit 3");
 
             EndAction(ActionType.Deactivation);
+        }
+    }
+
+    public bool TryDeactivate()
+    {
+        if (IsAlive() && IsUnitTurn() && IsActive() && IsStandby())
+        {
+            Debug.Log("Handle Toggling Unit 3");
+
+            EndAction(ActionType.Deactivation);
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
