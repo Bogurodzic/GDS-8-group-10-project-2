@@ -37,6 +37,9 @@ public class UnitInfoText : MonoBehaviour
 
     public void ResetText()
     {
-        txt.text = "";
+        if (txt)
+        {
+            txt.text = "";
+        }
     }
 }
