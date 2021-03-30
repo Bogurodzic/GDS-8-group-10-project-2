@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: TILES_ROCKS_2
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -3100903438110431293, guid: b56688025bc5a44e5abba49df0d4f89d,
+  m_Sprite: {fileID: -3601600486372499019, guid: 8cfada6ca03a54d57a120219e2e2ef2b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
