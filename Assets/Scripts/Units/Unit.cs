@@ -560,6 +560,7 @@ public class Unit : MonoBehaviour
 
     public void SkipTurn()
     {
+        _unitListPanel.DeactivateUnitPortrait(this);
         Turn.SetIsFirstUnitInTurnSelected(false);
         _grid.HideRange();
         _unitAnimations.MakeUnitTransparent();
