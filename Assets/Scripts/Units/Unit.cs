@@ -22,6 +22,7 @@ public class Unit : MonoBehaviour
     private UnitAbility _unitAbility;
     private Healtbar _healtbar;
     private UnitList _unitList;
+    private UnitListPanel _unitListPanel;
     private bool _isDeployed = false;
     private bool _isPreDeployed = false;
     private int _preDeployedX = -9999;
@@ -87,11 +88,18 @@ public class Unit : MonoBehaviour
 
                 ShowRangesOnHover();
             } */
+            
             if (!Turn.IsFirstUnitInTurnSelected())
             {
                 Debug.Log("HANDLE HOVERING 4:" + mouseX + "-" + mouseY);
 
                 ShowRangesOnHover();
+                _unitListPanel.OnHoverUnit(this);
+            }
+
+            if (Turn.IsFirstUnitInTurnSelected() && !Turn.IsUnitTurn(GetStatistics().team))
+            {
+                _unitListPanel.OnHoverUnit(this);
             }
         } else if (!IsActive() && (mouseX != GetUnitXPosition() || mouseY != GetUnitYPosition()) && _isUnitHovered)
         {
@@ -111,6 +119,12 @@ public class Unit : MonoBehaviour
                 Debug.Log("HANDLE HOVERING 7:" + mouseX + "-" + mouseY);
 
                 _grid.HideRange();
+                _unitListPanel.OnHoverOutUnit();
+            }
+
+            if (!isCellOccupied && !Turn.IsUnitTurn(GetStatistics().team))
+            {
+                _unitListPanel.OnHoverOutUnit();
             }
             
         }
@@ -118,6 +132,33 @@ public class Unit : MonoBehaviour
         
         
         
+    }
+
+    public void HoverFromFrame()
+    {
+        if (!Turn.IsFirstUnitInTurnSelected())
+        {
+            ShowRangesOnHover();
+            _unitListPanel.ShowUnitInfo(this);
+        }
+
+        if (Turn.IsFirstUnitInTurnSelected() && !Turn.IsUnitTurn(GetStatistics().team))
+        {
+            _unitListPanel.ShowUnitInfo(this);
+        }
+    }
+
+    public void HoverOutFromFrame()
+    {
+        if (!Turn.IsFirstUnitInTurnSelected())
+        {
+            _grid.HideRange();
+            _unitListPanel.HideUnitInfo();
+        }
+        else if (Turn.IsFirstUnitInTurnSelected() && !Turn.IsUnitTurn(GetStatistics().team) )
+        {
+            _unitListPanel.HideUnitInfo();
+        }
     }
 
     private void PlaceUnitOnBoard()
@@ -421,6 +462,7 @@ public class Unit : MonoBehaviour
     private void ActivateUnit()
     {
         _unitList.DeactivateAllPlayerUnits(GetStatistics().team);
+        _unitListPanel.ActivateUnitPortrait(this);
         _activityType = RangeType.Movement;
         Turn.SetIsFirstUnitInTurnSelected(true);
         ReloadRanges();
@@ -572,6 +614,7 @@ public class Unit : MonoBehaviour
         if (IsUnitTurn())
         {
             Turn.SetIsFirstUnitInTurnSelected(false);
+            _unitListPanel.DeactivateUnitPortrait(this);
             _healtbar.SetSliderVisbility(false);
             SetUnitPhase(UnitPhase.Inactive);
             _grid.HideRange(); 
@@ -725,6 +768,7 @@ public class Unit : MonoBehaviour
         LoadUnitAbility();
         LoadHealthbar();
         LoadUnitList();
+        LoadUnitListPanel();
         ReloadUnitData();
         SetHealth();
     }
@@ -732,6 +776,17 @@ public class Unit : MonoBehaviour
     private void LoadUnitList()
     {
         _unitList = GameObject.Find("UnitList").GetComponent<UnitList>();
+    }
+
+    private void LoadUnitListPanel()
+    {
+        if (GetStatistics().team == 1)
+        {
+            _unitListPanel = GameObject.Find("UnitListPanelLeft").GetComponent<UnitListPanel>();
+        } else if (GetStatistics().team == 2)
+        {
+            _unitListPanel = GameObject.Find("UnitListPanelRight").GetComponent<UnitListPanel>();
+        }
     }
 
 

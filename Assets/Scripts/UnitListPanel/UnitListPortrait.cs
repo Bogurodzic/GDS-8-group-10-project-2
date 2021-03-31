@@ -61,13 +61,15 @@ public class UnitListPortrait : MonoBehaviour
 
     public void OnHover()
     {
-        _unitListPanel.ShowUnitInfo(_unit);
+       // _unitListPanel.ShowUnitInfo(_unit);
+       _unit.HoverFromFrame();
         _portraitFrame.Hover();
     }
 
     public void OnHoverOut()
     { 
-        _unitListPanel.HideUnitInfo();
+        //_unitListPanel.HideUnitInfo();
+        _unit.HoverOutFromFrame();
         _portraitFrame.HoverOut();
     }
 
@@ -85,8 +87,6 @@ public class UnitListPortrait : MonoBehaviour
         else
         {
             bool isFrameReadyToActivate = _unit.HandleTogglingFromFrame();
-            Debug.Log("ISFRAMEREADYTOACTIVE");
-            Debug.Log(isFrameReadyToActivate);
             if (isFrameReadyToActivate)
             {
                 SetPotraitActive(true);
