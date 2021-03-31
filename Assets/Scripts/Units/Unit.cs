@@ -54,9 +54,21 @@ public class Unit : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                if (IsUnitTurn() && IsActive())
+                Mesh[] myMesh = new Mesh[6];
+                
+                DestroyImmediate(gameObject.GetComponent<SkeletonAnimation>());
+                DestroyImmediate(gameObject.GetComponent<MeshFilter>());
+                DestroyImmediate(gameObject.GetComponent<MeshRenderer>());
+                _unitAnimations.BlockAnimations();
+                _sprite = gameObject.AddComponent<SpriteRenderer>();
+
+                if (GetStatistics().team == 1)
                 {
-                    SkipTurn();
+                    _sprite.sprite = unitData.unitSpriteTeam1;
+                }
+                else
+                {
+                    _sprite.sprite = unitData.unitSpriteTeam2;
                 }
             }
 
