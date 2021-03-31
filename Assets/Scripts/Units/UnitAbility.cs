@@ -151,13 +151,14 @@ public class UnitAbility : MonoBehaviour
 
     private void ShowAbilityRange(int unitPositionX, int unitPositionY)
     {
+        int unitTeam = gameObject.GetComponentInParent<Unit>().GetStatistics().team;
         Debug.Log("Handle ability 7");
 
         if (_abilitiesData.abilityType == AbilityType.SingleTarget)
         {
             Debug.Log("Handle ability 8.1");
 
-            _grid.CalculateCostToAllTiles(unitPositionX, unitPositionY, 0, _abilitiesData.minRange, _abilitiesData.maxRange);
+            _grid.CalculateCostToAllTiles(unitPositionX, unitPositionY, 0, _abilitiesData.minRange, _abilitiesData.maxRange, unitTeam);
             _grid.HideRange();
             _grid.ShowRange(RangeType.Attack);
         }
@@ -166,7 +167,7 @@ public class UnitAbility : MonoBehaviour
         {
             Debug.Log("Handle ability 8.2");
 
-            _grid.CalculateCostToAllTiles(unitPositionX, unitPositionY, 0, 1, 1);
+            _grid.CalculateCostToAllTiles(unitPositionX, unitPositionY, 0, 1, 1, unitTeam);
             _grid.HideRange();
             _grid.ShowRange(RangeType.Attack);
         }

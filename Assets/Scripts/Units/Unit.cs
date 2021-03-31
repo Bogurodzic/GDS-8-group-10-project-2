@@ -29,6 +29,7 @@ public class Unit : MonoBehaviour
     private bool _isUnitHovered = false;
     private UnitPhase _phaseBeforeAbility;
     private bool _isAlive = true;
+    private bool _rangesOnHoverVisible = true;
 
     private int _attackAfterMovementXTarget = -9999;
     private int _attackAfterMovementYTarget = -9999;
@@ -37,6 +38,8 @@ public class Unit : MonoBehaviour
     {
         if (Turn.GetCurrentTurnType() == TurnType.RegularGame)
         {
+            HandleHoveringUnit();
+            
             if (Input.GetMouseButtonDown(0))
             {
                 HandleAction();
@@ -55,27 +58,66 @@ public class Unit : MonoBehaviour
                 }
             }
 
-            HandleHoveringUnit();
+            
         }
     }
 
     private void HandleHoveringUnit()
     {
+        
         Vector3 mouseVector3 = GridUtils.GetMouseWorldPosition(Input.mousePosition);
         mouseVector3.z = 0;
         int mouseX, mouseY;
 
         _grid.GetCellPosition(mouseVector3, out mouseX, out mouseY);
+
+        bool isCellOccupied = (mouseX < _grid.GetGridWidth() && mouseY < _grid.GetGridHeight() && mouseX >= 0 && mouseY >= 0) && _grid.GetCell(mouseX, mouseY).GetPathNode().isOccupied;
         
+        Debug.Log("HANDLE HOVERING 1:" + mouseX + "-" + mouseY);
         if (!IsActive() && mouseX == GetUnitXPosition() && mouseY == GetUnitYPosition() && !_isUnitHovered)
         {
+            Debug.Log("HANDLE HOVERING 2:" + mouseX + "-" + mouseY);
+
             _isUnitHovered = true;
             _healtbar.SetSliderVisbility(true);
+
+            /*if (!Turn.IsUnitTurn(GetStatistics().team) && Turn.IsFirstUnitInTurnSelected())
+            {
+                Debug.Log("HANDLE HOVERING 3:" + mouseX + "-" + mouseY);
+
+                ShowRangesOnHover();
+            } */
+            if (!Turn.IsFirstUnitInTurnSelected())
+            {
+                Debug.Log("HANDLE HOVERING 4:" + mouseX + "-" + mouseY);
+
+                ShowRangesOnHover();
+            }
         } else if (!IsActive() && (mouseX != GetUnitXPosition() || mouseY != GetUnitYPosition()) && _isUnitHovered)
         {
+            Debug.Log("HANDLE HOVERING 5:" + mouseX + "-" + mouseY);
+
             _isUnitHovered = false;
             _healtbar.SetSliderVisbility(false);
+
+            /*if (Turn.IsFirstUnitInTurnSelected() && !isCellOccupied)
+            {
+                Debug.Log("HANDLE HOVERING 6:" + mouseX + "-" + mouseY);
+
+                _unitList.GetActiveUnit().GetComponent<Unit>().ShowActiveUnitsRanges();
+            }*/
+            if (!Turn.IsFirstUnitInTurnSelected() &&  !isCellOccupied)
+            {
+                Debug.Log("HANDLE HOVERING 7:" + mouseX + "-" + mouseY);
+
+                _grid.HideRange();
+            }
+            
         }
+
+        
+        
+        
     }
 
     private void PlaceUnitOnBoard()
@@ -380,6 +422,7 @@ public class Unit : MonoBehaviour
     {
         _unitList.DeactivateAllPlayerUnits(GetStatistics().team);
         _activityType = RangeType.Movement;
+        Turn.SetIsFirstUnitInTurnSelected(true);
         ReloadRanges();
         _unitRange.ShowUnitRange(true);
         _unitMovement.ShowMovementRange(false);
@@ -390,7 +433,24 @@ public class Unit : MonoBehaviour
 
     private void ReloadRanges()
     {
-        _grid.CalculateCostToAllTiles(GetUnitXPosition(), GetUnitYPosition(), _unitMovement.movementRange, _unitRange.minRange, _unitRange.maxRange);
+        _grid.CalculateCostToAllTiles(GetUnitXPosition(), GetUnitYPosition(), _unitMovement.movementRange, _unitRange.minRange, _unitRange.maxRange, GetStatistics().team);
+    }
+
+    private void ShowRangesOnHover()
+    {
+        _rangesOnHoverVisible = true;
+        _grid.CalculateCostToAllTiles(GetUnitXPosition(), GetUnitYPosition(), _unitMovement.movementRange, _unitRange.minRange, _unitRange.maxRange, GetStatistics().team);
+        _unitRange.ShowUnitRange(true);
+        _unitMovement.ShowMovementRange(false);
+        _gridManager.ChangeColor(GetUnitXPosition(), GetUnitYPosition(), Color.magenta);
+    }
+
+    private void ShowActiveUnitsRanges()
+    {
+        ReloadRanges();
+        _unitRange.ShowUnitRange(true);
+        _unitMovement.ShowMovementRange(false);
+        _gridManager.ChangeColor(GetUnitXPosition(), GetUnitYPosition(), Color.magenta);
     }
     
     private void HandleTogglingUnit()
@@ -455,7 +515,7 @@ public class Unit : MonoBehaviour
     {
         if (IsUnitTurn())
         {
-            _grid.CalculateCostToAllTiles(GetUnitXPosition(), GetUnitYPosition(), 0, _unitRange.minRange, _unitRange.maxRange);
+            _grid.CalculateCostToAllTiles(GetUnitXPosition(), GetUnitYPosition(), 0, _unitRange.minRange, _unitRange.maxRange, GetStatistics().team);
             _unitRange.ShowUnitRange(true);
         }
     }
@@ -463,7 +523,7 @@ public class Unit : MonoBehaviour
     private void ActivateDash()
     {
         SetUnitPhase(UnitPhase.AfterAttack);
-        _grid.CalculateCostToAllTiles(GetUnitXPosition(), GetUnitYPosition(), _unitMovement.movementRange, 0, 0);
+        _grid.CalculateCostToAllTiles(GetUnitXPosition(), GetUnitYPosition(), _unitMovement.movementRange, 0, 0, GetStatistics().team);
         _unitMovement.ShowMovementRange(true);
     }
 
@@ -511,6 +571,7 @@ public class Unit : MonoBehaviour
     {
         if (IsUnitTurn())
         {
+            Turn.SetIsFirstUnitInTurnSelected(false);
             _healtbar.SetSliderVisbility(false);
             SetUnitPhase(UnitPhase.Inactive);
             _grid.HideRange(); 
@@ -526,6 +587,7 @@ public class Unit : MonoBehaviour
 
     public void SkipTurn()
     {
+        Turn.SetIsFirstUnitInTurnSelected(false);
         _grid.HideRange();
         _skeletonAnimation.skeleton.A = 0.5f;
         SetUnitPhase(UnitPhase.OnCooldown);
@@ -556,6 +618,7 @@ public class Unit : MonoBehaviour
 
     private void NextTurn()
     {
+        _grid.HideRange();
         Turn.NextTurn();
     }
 

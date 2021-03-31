@@ -51,7 +51,7 @@ public class Pathfinding
     }
 
     public void CalculateCostToAllTiles(int startX, int startY, int movementRange, int minAttackRange,
-        int maxAttackRange)
+        int maxAttackRange, int team)
     {
         PathNode startNode = _grid.GetCell(startX, startY).GetPathNode();
         _openList = new List<PathNode> { startNode };
@@ -63,7 +63,7 @@ public class Pathfinding
         startNode.hCost = CalculateDistanceCost(startNode, startNode);
         startNode.CalculateFCost(); 
         
-        IterateOverOpenListWithoutEndNode(startNode, movementRange, minAttackRange, maxAttackRange);
+        IterateOverOpenListWithoutEndNode(startNode, movementRange, minAttackRange, maxAttackRange, team);
     }
 
     private void ResetPathNodes()
@@ -84,7 +84,7 @@ public class Pathfinding
     }
     
     private void IterateOverOpenListWithoutEndNode(PathNode startNode, int movementRange, int minAttackRange,
-        int maxAttackRange)
+        int maxAttackRange, int team)
     {
         while (_openList.Count > 0)
         {
@@ -101,7 +101,7 @@ public class Pathfinding
                 {
                     _closedList.Add(neighbourNode);
                     continue;
-                } else if ((neighbourNode.isOccupied && _grid.GetCell(neighbourNode.x, neighbourNode.y).GetOccupiedBy().GetStatistics().team != Turn.GetUnitTurn()))
+                } else if ((neighbourNode.isOccupied && _grid.GetCell(neighbourNode.x, neighbourNode.y).GetOccupiedBy().GetStatistics().team != team))
                 {
                     neighbourNode.hCost = CalculateDistanceCost(neighbourNode, startNode);
                     int gCost = currentNode.gCost + (int) neighbourNode.movementCost;

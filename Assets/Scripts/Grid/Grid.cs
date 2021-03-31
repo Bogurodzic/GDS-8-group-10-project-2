@@ -238,9 +238,9 @@ public class Grid
     }
     
     public void CalculateCostToAllTiles(int unitXPosition, int unitYPosition, int movementRange, int minAttackRange,
-        int maxAttackRange)
+        int maxAttackRange, int team)
     {
-        _pathfinding.CalculateCostToAllTiles(unitXPosition, unitYPosition, movementRange, minAttackRange, maxAttackRange);
+        _pathfinding.CalculateCostToAllTiles(unitXPosition, unitYPosition, movementRange, minAttackRange, maxAttackRange, team);
     }
 
     public void CalculateCostToAllTiles(int x, int y, RangeType rangeType)
