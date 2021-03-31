@@ -193,7 +193,7 @@ MonoBehaviour:
   Slider: {fileID: 3931477275534608282}
   healthText: {fileID: 7977299875167371915}
   damageText: {fileID: 2742067592664079118}
-  Offset: {x: 0, y: 9, z: 0}
+  Offset: {x: 0, y: 13, z: 0}
   sliderSpeed: 25
 --- !u!1 &3983837581737547450
 GameObject:
@@ -564,6 +564,7 @@ GameObject:
   - component: {fileID: 8673913214927299157}
   - component: {fileID: 8673913214927299154}
   - component: {fileID: 8673913214927299155}
+  - component: {fileID: -506882119548421975}
   m_Layer: 0
   m_Name: SpineUnit
   m_TagString: Untagged
@@ -740,5 +741,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ad341045728744d7ae5627aa7c2b140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-506882119548421975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8673913214927299164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1783602d91e493da876e84fac961ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

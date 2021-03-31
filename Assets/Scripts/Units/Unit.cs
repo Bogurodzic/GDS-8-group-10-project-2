@@ -12,7 +12,6 @@ public class Unit : MonoBehaviour
     private Grid _grid;
     private GridManager _gridManager;
     private SpriteRenderer _sprite;
-    private SkeletonAnimation _skeletonAnimation;
     private UnitMovement _unitMovement;
     private UnitStatistics _unitStatistics;
     private UnitRange _unitRange;
@@ -23,6 +22,8 @@ public class Unit : MonoBehaviour
     private Healtbar _healtbar;
     private UnitList _unitList;
     private UnitListPanel _unitListPanel;
+    private UnitAnimations _unitAnimations;
+
     private bool _isDeployed = false;
     private bool _isPreDeployed = false;
     private int _preDeployedX = -9999;
@@ -168,77 +169,6 @@ public class Unit : MonoBehaviour
 
         _grid.GetCell(positionX, positionY).AddOccupiedBy(this);
     }
-
-    private void ReloadSprite()
-    {
-        _skeletonAnimation.skeletonDataAsset = unitData.skeletonDataAsset;
-        
-        if (_unitStatistics.team == 1)
-        {
-            switch (unitData.unitName)
-            {
-                case "Archer":
-                    _skeletonAnimation.initialSkinName = "ARCHER BLUE";
-                    break;
-                case "Boss":
-                    _skeletonAnimation.initialSkinName = "BOSS BLUE";
-                    break;
-                case "Infantry":
-                    _skeletonAnimation.initialSkinName = "SWORDMAN BLUE";
-                    break;
-                case "Mage":
-                    _skeletonAnimation.initialSkinName = "WIZARD BLUE";
-                    break;
-                case "Medic":
-                    _skeletonAnimation.initialSkinName = "MEDIC BLUE";
-                    break;
-                case "Rogue":
-                    _skeletonAnimation.initialSkinName = "ROGUE BLUE";
-                    break;
-                case "Spearman":
-                    _skeletonAnimation.initialSkinName = "SPEARMAN BLUE";
-                    break;
-            }
-            
-        }
-        else
-        {
-            _skeletonAnimation.initialFlipX = true;
-            switch (unitData.unitName)
-            {
-                case "Archer":
-                    _skeletonAnimation.initialSkinName = "ARCHER RED";
-                    break;
-                case "Boss":
-                    _skeletonAnimation.initialSkinName = "BOSS RED";
-                    break;
-                case "Infantry":
-                    _skeletonAnimation.initialSkinName = "SWORDMAN RED";
-                    break;
-                case "Mage":
-                    _skeletonAnimation.initialSkinName = "WIZARD RED";
-                    break;
-                case "Medic":
-                    _skeletonAnimation.initialSkinName = "MEDIC RED";
-                    break;
-                case "Rogue":
-                    _skeletonAnimation.initialSkinName = "ROGUE RED";
-                    break;
-                case "Spearman":
-                    _skeletonAnimation.initialSkinName = "SPEARMAN RED";
-                    break;
-            }
-        }
-        _skeletonAnimation.Initialize(true); 
-        _skeletonAnimation.Skeleton.SetSkin(_skeletonAnimation.initialSkinName); // set the skin
-        _skeletonAnimation.Skeleton.SetSlotsToSetupPose(); // use the active attachments from setup pose.
-        _skeletonAnimation.AnimationState.Apply( _skeletonAnimation.Skeleton); // use the active attachments from the active animations.
-        
-        _skeletonAnimation.AnimationState.SetAnimation(0, "IDLE", true);
-
-
-    }
-
     private void HandleAction()
     {
         switch (_unitPhase)
@@ -282,7 +212,7 @@ public class Unit : MonoBehaviour
                 break;
             case ActionType.Movement:
                 SetUnitPhase(UnitPhase.AfterMovement);
-                AnimateIdle();
+                _unitAnimations.AnimateIdle();
                 HandleActivatingAttackMode();
                 break;
             case ActionType.Attack:
@@ -314,7 +244,7 @@ public class Unit : MonoBehaviour
                 }
                 break;
             case ActionType.Dash:
-                AnimateIdle();
+                _unitAnimations.AnimateIdle();
                 SkipTurn();
                 break;
             case ActionType.SkipTurn:
@@ -333,7 +263,7 @@ public class Unit : MonoBehaviour
         if (_unitPhase == UnitPhase.Standby && _unitMovement.IsInMovementRange(mouseX, mouseY))
         {
             Turn.BlockTurn();
-            AnimateLoopUnit("WALK");
+            _unitAnimations.AnimateLoopUnit("WALK");
             _unitMovement.Move(mouseX, mouseY, this, ActionType.Movement);
         }
     }
@@ -347,7 +277,7 @@ public class Unit : MonoBehaviour
         
         if (_unitMovement.IsInMovementRange(mouseX, mouseY))
         {
-            AnimateLoopUnit("WALK");
+            _unitAnimations.AnimateLoopUnit("WALK");
             _unitMovement.Move(mouseX, mouseY, this, ActionType.Dash);
         }
     }
@@ -362,8 +292,8 @@ public class Unit : MonoBehaviour
         if (_unitPhase == UnitPhase.AfterMovement && IsCellOcuppiedByEnemy(mouseX, mouseY) && _unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
         {
             
-            AnimateUnit("ATTACK");
-            _grid.GetCell(mouseX, mouseY).GetOccupiedBy().AnimateUnit("HURT");
+            _unitAnimations.AnimateUnit("ATTACK");
+            _grid.GetCell(mouseX, mouseY).GetOccupiedBy().GetUnitAnimations().AnimateUnit("HURT");
             _combatLog.LogCombat(Attack.AttackUnit(this, _grid.GetCell(mouseX, mouseY).GetOccupiedBy()));
             _grid.GetCell(mouseX, mouseY).GetOccupiedBy().SetHealth();
             _grid.GetCell(mouseX, mouseY).GetOccupiedBy().HandleDeath();
@@ -373,7 +303,7 @@ public class Unit : MonoBehaviour
         {
             if (!_grid.IsPositionInAttackRange(mouseX, mouseY, _unitRange.minRange, _unitRange.maxRange))
             {
-                AnimateLoopUnit("WALK");
+                _unitAnimations.AnimateLoopUnit("WALK");
                 _attackAfterMovementXTarget = mouseX;
                 _attackAfterMovementYTarget = mouseY;
                 _unitMovement.MoveBeforeAttack(mouseX, mouseY, this, ActionType.MovementBeforeAttack);
@@ -389,8 +319,8 @@ public class Unit : MonoBehaviour
 
     private void HandleAttackUnit(int mouseX, int mouseY)
     {
-        AnimateUnit("ATTACK");
-        _grid.GetCell(mouseX, mouseY).GetOccupiedBy().AnimateUnit("HURT");
+        _unitAnimations.AnimateUnit("ATTACK");
+        _grid.GetCell(mouseX, mouseY).GetOccupiedBy().GetUnitAnimations().AnimateUnit("HURT");
         _combatLog.LogCombat(Attack.AttackUnit(this, _grid.GetCell(mouseX, mouseY).GetOccupiedBy()));
         _grid.GetCell(mouseX, mouseY).GetOccupiedBy().SetHealth();
         _grid.GetCell(mouseX, mouseY).GetOccupiedBy().HandleDeath();
@@ -602,7 +532,7 @@ public class Unit : MonoBehaviour
 
         if (mouseX < _grid.GetGridWidth() && mouseY < _grid.GetGridHeight() && mouseX >= 0 && mouseY >= 0 && _unitAbility.ExecuteAbility(mouseX, mouseY, GetUnitXPosition(), GetUnitYPosition()))
         {
-            AnimateUnit("SKILL");
+            _unitAnimations.AnimateUnit("SKILL");
             EndAction(ActionType.ExecuteAbility);
         }
     }
@@ -623,7 +553,7 @@ public class Unit : MonoBehaviour
 
     public void ResetUnitCD()
     {
-        _skeletonAnimation.skeleton.A = 1f;
+        _unitAnimations.RemoveUnitTransparency();
         _unitAbility.RemoveOneTurnFromAbilityCD();
         SetUnitPhase(UnitPhase.Inactive);
     }
@@ -632,7 +562,7 @@ public class Unit : MonoBehaviour
     {
         Turn.SetIsFirstUnitInTurnSelected(false);
         _grid.HideRange();
-        _skeletonAnimation.skeleton.A = 0.5f;
+        _unitAnimations.MakeUnitTransparent();
         SetUnitPhase(UnitPhase.OnCooldown);
         EndAction(ActionType.SkipTurn);
     }
@@ -642,7 +572,7 @@ public class Unit : MonoBehaviour
         
         if (!CheckIfUnitIsAlive())
         {
-            AnimateOnce("DEATH");
+            _unitAnimations.AnimateOnce("DEATH");
             Invoke("Death", 1f);
         }
     }
@@ -685,16 +615,15 @@ public class Unit : MonoBehaviour
         return _unitRange;
     }
 
+    public UnitAnimations GetUnitAnimations()
+    {
+        return _unitAnimations;
+    }
+
     public UnitAbility GetUnitAbility()
     {
         return _unitAbility;
     }
-
-    public SkeletonAnimation GetSkeletonAnimation()
-    {
-        return _skeletonAnimation;
-    }
-    
     private int GetUnitXPosition()
     {
         int positionX, positionY;
@@ -712,7 +641,7 @@ public class Unit : MonoBehaviour
     private void LoadSprite()
     {
         _sprite = gameObject.GetComponent<SpriteRenderer>();
-        _skeletonAnimation = gameObject.GetComponent<SkeletonAnimation>();
+        _unitAnimations = gameObject.GetComponent<UnitAnimations>();
     }
     
     private void LoadGrid()
@@ -801,7 +730,7 @@ public class Unit : MonoBehaviour
         _unitStatistics.LoadUnitStatistics(unitData);
         _unitRange.LoadUnitRange(unitData);
         _unitAbility.LoadUnitAbility(unitData);
-        ReloadSprite();
+        _unitAnimations.ReloadSprite(unitData, GetStatistics());
     }
 
     public bool IsUnitDeployed()
@@ -847,26 +776,5 @@ public class Unit : MonoBehaviour
         gameObject.transform.position = cellCenterPosition;
         _preDeployedX = x;
         _preDeployedY = y;
-    }
-
-    public void AnimateOnce(string animationName)
-    {
-        _skeletonAnimation.AnimationState.SetAnimation(0, animationName, false);
-    }
-
-    public void AnimateUnit(string animationName)
-    {
-        _skeletonAnimation.AnimationState.SetAnimation(0, animationName, false);
-        _skeletonAnimation.AnimationState.AddAnimation(0, "IDLE", true, 0f);
-    }
-
-    public void AnimateLoopUnit(string animationName)
-    {
-        _skeletonAnimation.AnimationState.SetAnimation(0, animationName, true);
-    }
-
-    public void AnimateIdle()
-    {
-        _skeletonAnimation.AnimationState.SetAnimation(0, "IDLE", true);
     }
 }
