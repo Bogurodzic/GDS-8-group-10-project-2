@@ -35,6 +35,7 @@ public class Unit : MonoBehaviour
 
     private int _attackAfterMovementXTarget = -9999;
     private int _attackAfterMovementYTarget = -9999;
+    private bool _designerModeOn = false;
     
     void Update()
     {
@@ -52,8 +53,10 @@ public class Unit : MonoBehaviour
                 HandleActivatingAttackMode();
             }
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && !_designerModeOn)
             {
+                _designerModeOn = true;
+
                 Mesh[] myMesh = new Mesh[6];
                 
                 DestroyImmediate(gameObject.GetComponent<SkeletonAnimation>());
@@ -70,6 +73,8 @@ public class Unit : MonoBehaviour
                 {
                     _sprite.sprite = unitData.unitSpriteTeam2;
                 }
+                
+                transform.localScale = Vector3.one;
             }
 
             
@@ -595,6 +600,11 @@ public class Unit : MonoBehaviour
         _unitMovement.RemoveUnitFromCurrentCell();
         _healtbar.TurnOffHealthBar();
         _isAlive = false;
+
+        if (_designerModeOn)
+        {
+            GetComponent<SpriteRenderer>().color = Color.clear;
+        }
     }
 
     private bool CheckIfUnitIsAlive()

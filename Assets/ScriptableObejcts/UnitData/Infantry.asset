@@ -21,8 +21,10 @@ MonoBehaviour:
   minAttackRange: 1
   maxAttackRange: 1
   unitAbility: {fileID: 11400000, guid: 0313b3e5ea4524b9faba69a3cbff12cd, type: 2}
-  unitSpriteTeam1: {fileID: 21300000, guid: 8aa565889e4d7412297ce075f5510f54, type: 3}
-  unitSpriteTeam2: {fileID: 21300000, guid: 1365f6a54e7114e4f8f6ae5a33196559, type: 3}
+  unitSpriteTeam1: {fileID: -2305219993210457091, guid: 94e3bdd25081f4fb6914c85d3aed79aa,
+    type: 3}
+  unitSpriteTeam2: {fileID: -3777404259050671863, guid: 94e3bdd25081f4fb6914c85d3aed79aa,
+    type: 3}
   unitPickerSprite: {fileID: 8746389353966651759, guid: e12375eef647c43fd93b302bd9654290,
     type: 3}
   unitListSprite: {fileID: 8746389353966651759, guid: 89ac21b47f81f40fab3a998bc1ba7861,

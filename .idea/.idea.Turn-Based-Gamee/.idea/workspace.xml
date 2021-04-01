@@ -104,8 +104,8 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPortrait.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitAbility.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitMovement.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitAnimations.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1pLb0eqZaQJiXIFPJRkhff1DHdr" />

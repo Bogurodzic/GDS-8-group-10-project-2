@@ -8,6 +8,8 @@ public class UnitAnimations : MonoBehaviour
     private SkeletonAnimation _skeletonAnimation;
     private SpriteRenderer _sprite;
     private bool _blockAnimation = false;
+    private UnitData _unitData;
+    private UnitStatistics _unitStatistics;
     void Start()
     {
         LoadSprite();
@@ -20,7 +22,6 @@ public class UnitAnimations : MonoBehaviour
     
     private void LoadSprite()
     {
-        _sprite = gameObject.GetComponent<SpriteRenderer>();
         _skeletonAnimation = gameObject.GetComponent<SkeletonAnimation>();
     }
 
@@ -30,10 +31,21 @@ public class UnitAnimations : MonoBehaviour
         {
             _skeletonAnimation.skeleton.A = 0.5f;
         }
+        else
+        {
+            if (!_sprite)
+            {
+                _sprite = GetComponent<SpriteRenderer>();
+            }
+
+            _sprite.color = Color.gray;
+        }
     }
     
     public void ReloadSprite(UnitData unitData, UnitStatistics unitStatistics)
     {
+        _unitData = unitData;
+        _unitStatistics = unitStatistics;
         if (!_blockAnimation)
         {
             if (!_skeletonAnimation)
@@ -144,7 +156,18 @@ public class UnitAnimations : MonoBehaviour
 
     public void RemoveUnitTransparency()
     {
-        _skeletonAnimation.skeleton.A = 1f;
+        if (!_blockAnimation)
+        {
+            _skeletonAnimation.skeleton.A = 1f;
+        }
+        else
+        {
+            if (!_sprite)
+            {
+                _sprite = GetComponent<SpriteRenderer>();
+            }
+            _sprite.color = Color.white;
+        }
     }
     
     
