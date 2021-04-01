@@ -92,6 +92,7 @@
               <e p="UnitMovementInfo.cs" t="Include" />
               <e p="UnitNameInfo.cs" t="Include" />
               <e p="UnitRangeInfo.cs" t="Include" />
+              <e p="UnitSprite.cs" t="Include" />
             </e>
           </e>
           <e p="UI" t="Include">

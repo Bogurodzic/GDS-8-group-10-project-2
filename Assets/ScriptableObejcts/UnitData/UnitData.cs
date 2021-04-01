@@ -19,5 +19,7 @@ public class UnitData : ScriptableObject
     public Sprite unitSpriteTeam2;
     public Sprite unitPickerSprite;
     public Sprite unitListSprite;
+    public Sprite unitPickerSpriteOverviewTeam1;
+    public Sprite unitPickerSpriteOverviewTeam2;
     public SkeletonDataAsset skeletonDataAsset;
 } 

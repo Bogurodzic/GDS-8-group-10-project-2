@@ -12,6 +12,7 @@ public class UnitInfo : MonoBehaviour
     private UnitDefInfo _unitDefInfo;
     private UnitMovementInfo _unitMovementInfo;
     private UnitAbilityInfo _unitAbilityInfo;
+    private UnitSprite _unitSprite;
     void Start()
     {
         LoadUnitName();
@@ -21,6 +22,7 @@ public class UnitInfo : MonoBehaviour
         LoadUnitDefInfo();
         LoadUnitMovementInfo();
         LoadUnitAbilityInfo();
+        LoadUnitSprite();
     }
 
     void Update()
@@ -62,6 +64,11 @@ public class UnitInfo : MonoBehaviour
     {
         _unitAbilityInfo = gameObject.GetComponentInChildren<UnitAbilityInfo>();
     }
+    
+    private void LoadUnitSprite()
+    {
+        _unitSprite = gameObject.GetComponentInChildren<UnitSprite>();
+    }
 
     
     public void LoadUnitData(UnitData unitData)
@@ -74,6 +81,7 @@ public class UnitInfo : MonoBehaviour
         _unitDefInfo.LoadUnitData(unitData);
         _unitMovementInfo.LoadUnitData(unitData);
         _unitAbilityInfo.LoadUnitData(unitData);
+        _unitSprite.RenderSprite(unitData);
     }
 
     public void ResetText()
@@ -85,5 +93,6 @@ public class UnitInfo : MonoBehaviour
         _unitDefInfo.ResetText();
         _unitMovementInfo.ResetText();
         _unitAbilityInfo.ResetText();
+        _unitSprite.ResetSprite();
     }
 }

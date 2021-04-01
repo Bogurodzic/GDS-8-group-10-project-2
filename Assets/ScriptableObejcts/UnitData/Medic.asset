@@ -29,4 +29,8 @@ MonoBehaviour:
     type: 3}
   unitListSprite: {fileID: -3318599381743113759, guid: 89ac21b47f81f40fab3a998bc1ba7861,
     type: 3}
+  unitPickerSpriteOverviewTeam1: {fileID: 21300000, guid: 7f4c5bda822b74e80a590ccb1ebb9c63,
+    type: 3}
+  unitPickerSpriteOverviewTeam2: {fileID: 21300000, guid: 0dddd1392182e4c1db1facc8b876deb6,
+    type: 3}
   skeletonDataAsset: {fileID: 11400000, guid: b9f00e9b227e84fd58933d8e82129a2d, type: 2}
