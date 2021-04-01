@@ -489,12 +489,12 @@ public class Unit : MonoBehaviour
 
     public bool HandleTogglingFromFrame()
     {
-        if (IsUnitTurn() && !IsActive())
+        if (IsUnitTurn() && !IsActive() && IsAlive())
         {
             EndAction(ActionType.Activation);
             return true;
         } 
-        else if (IsUnitTurn() && IsActive())
+        else if (IsUnitTurn() && IsActive() && IsAlive())
         {
             EndAction(ActionType.Deactivation);
             return false;
