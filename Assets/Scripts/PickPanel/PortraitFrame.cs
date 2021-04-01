@@ -29,7 +29,10 @@ public class PortraitFrame : MonoBehaviour
 
     public void Hover()
     {
-        _sprite.sprite = higlitedSprite;
+        if (!active)
+        {
+            _sprite.sprite = higlitedSprite;
+        }
     }
 
     public void HoverOut()

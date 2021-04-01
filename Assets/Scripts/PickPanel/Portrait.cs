@@ -79,11 +79,13 @@ public class Portrait : MonoBehaviour
     public void OnHover()
     {
         _pickPanel.DisplayUnitInfo(unitData);
+        _portraitFrame.Hover();
     }
 
     public void OnHoverOut()
     {
         _pickPanel.ResetUnitInfo();
+        _portraitFrame.HoverOut();
     }
 
     public void SetPotraitActive(bool isActive)
