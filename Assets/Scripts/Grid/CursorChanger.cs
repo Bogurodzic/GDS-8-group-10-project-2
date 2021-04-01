@@ -57,7 +57,7 @@ public class CursorChanger : MonoBehaviour
                         ChangeCursorTo(movementCursor);
                         break;
                     }
-                    else if (pathNode.isAttackable)
+                    else if (pathNode.isAttackable && pathNode.isOccupied && gridCell.GetOccupiedBy().GetStatistics().team != unit.GetStatistics().team)
                     {
                         ChangeCursorTo(attackCursor);
                         break;
@@ -70,20 +70,16 @@ public class CursorChanger : MonoBehaviour
                 case UnitPhase.AbilityActivated:
                     if (pathNode.isAttackable)
                     {
-                        if (unit.unitData.unitAbility.abilityName == "Whirlwind")
+                        if (unit.unitData.unitAbility.abilityName == "Whirlwind" && pathNode.isOccupied && gridCell.GetOccupiedBy().GetStatistics().team != unit.GetStatistics().team)
                         {
                             ChangeCursorTo(whirlwindSkillCursor);
-                        } else if (unit.unitData.unitAbility.abilityName == "Throw")
+                        } else if (unit.unitData.unitAbility.abilityName == "Throw" && pathNode.isOccupied && gridCell.GetOccupiedBy().GetStatistics().team != unit.GetStatistics().team)
                         {
                             ChangeCursorTo(throwSkillCursor);
 
-                        } else if (unit.unitData.unitAbility.abilityName == "Heal")
+                        } else if (unit.unitData.unitAbility.abilityName == "Heal" && pathNode.isOccupied && gridCell.GetOccupiedBy().GetStatistics().team == unit.GetStatistics().team)
                         {
                             ChangeCursorTo(healSkillCursor);
-                        }
-                        else
-                        {
-                            ChangeCursorTo(attackCursor);
                         }
                         break;
                     }
