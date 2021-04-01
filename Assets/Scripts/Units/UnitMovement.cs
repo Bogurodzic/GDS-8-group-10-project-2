@@ -93,15 +93,6 @@ public class UnitMovement : MonoBehaviour
         _actionToExecuteAfterMovement = actionType;
         RemoveUnitFromCurrentCell();
         HandleMovementTo(x, y, unit);
-        
-        
-
-        /*RemoveUnitFromCurrentCell();
-        Vector3 cellPositionCenter = _grid.GetCellCenter(x, y);
-        cellPositionCenter.z = -1;
-        transform.position = cellPositionCenter;
-        AddUnitToCurrentCell(unit);*/
-
     }
 
     private void HandleMovementTo(int x, int y, Unit unit)
@@ -140,6 +131,16 @@ public class UnitMovement : MonoBehaviour
         {
             _nextPathNode = _unitPath.First.Value;
             Vector3 cellPositionCenter = _grid.GetCellCenter(_nextPathNode.x, _nextPathNode.y);
+            if (transform.position.x < cellPositionCenter.x)
+
+            {
+                gameObject.GetComponentInParent<UnitAnimations>().FaceAnimationToRight();
+            }
+            else if (transform.position.x > cellPositionCenter.x)
+            {
+                gameObject.GetComponentInParent<UnitAnimations>().FaceAnimationToLeft();
+            }
+            
             _nextUnitPosition = cellPositionCenter;
             _animateMovement = true;
             _unitPath.RemoveFirst();

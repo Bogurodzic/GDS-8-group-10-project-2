@@ -67,7 +67,6 @@ public class UnitListPanel : MonoBehaviour
 
     private void InitialisePanel()
     {
-        _panelInitialised = true;
         LoadUnitList();
         LoadPlayerUnits();
         LoadUnitListPanelFrame();
@@ -75,6 +74,8 @@ public class UnitListPanel : MonoBehaviour
         unitListPanelFrame.SetActive(true);
         HideUnitInfo();
         abilityButton.SetActive(false);
+        _panelInitialised = true;
+
     }
 
     private void LoadUnitListPanelFrame()
@@ -105,13 +106,83 @@ public class UnitListPanel : MonoBehaviour
     }
     
 
-    public void DeactivateAllPlayerUnits()
+    public void DeactivateAllPlayersPortraits()
     {
-        _unitList.DeactivateAllPlayerUnits(team);
         foreach (var unitListPortrait in unitListPortraits)
         {
             unitListPortrait.GetComponent<UnitListPortrait>().SetPotraitActive(false);
         }
+    }
+
+    public void DeactivateUnitPortrait(Unit unit)
+    {
+        GameObject unitPortrait = FindUnitPortrait(unit);
+        if (unitPortrait)
+        {
+            unitPortrait.GetComponent<UnitListPortrait>().SetPotraitActive(false);
+        }
+    }
+    
+    public void ActivateUnitPortrait(Unit unit)
+    {
+        GameObject unitPortrait = FindUnitPortrait(unit);
+        if (unitPortrait)
+        {
+            unitPortrait.GetComponent<UnitListPortrait>().SetPotraitActive(true);
+        }
+    }
+
+    public void OnHoverUnit(Unit unit)
+    {
+        if (_panelInitialised)
+        {
+            HoverOutAllUnitPortrait();
+            ShowUnitInfo(unit);
+            HoverUnitPortrait(unit);        
+        }
+
+    }
+
+    public void OnHoverOutUnit()
+    {
+        if (_panelInitialised)
+        {
+            HideUnitInfo();
+            HoverOutAllUnitPortrait();
+        }
+    } 
+
+    private void HoverUnitPortrait(Unit unit)
+    {
+        GameObject unitPortrait = FindUnitPortrait(unit);
+        if (unitPortrait)
+        {
+            unitPortrait.GetComponent<UnitListPortrait>().OnHover();
+        }
+    }
+
+    private void HoverOutAllUnitPortrait()
+    {
+        foreach (var unitListPortrait in unitListPortraits)
+        {
+            unitListPortrait.GetComponent<UnitListPortrait>().OnHoverOut();
+ 
+        }
+    }
+
+    private GameObject FindUnitPortrait(Unit unit)
+    {
+        GameObject unitPortrait = null;
+        
+        foreach (var unitListPortrait in unitListPortraits)
+        {
+            if (unitListPortrait.GetComponent<UnitListPortrait>().GetUnitData().unitName == unit.unitData.unitName)
+            {
+                unitPortrait = unitListPortrait;
+            }    
+        }
+
+        return unitPortrait;
     }
 
     public void ShowUnitInfo(Unit unit)

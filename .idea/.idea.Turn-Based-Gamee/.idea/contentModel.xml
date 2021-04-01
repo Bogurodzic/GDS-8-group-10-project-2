@@ -57,6 +57,7 @@
           </e>
           <e p="Grid" t="Include">
             <e p="Board.cs" t="Include" />
+            <e p="CursorChanger.cs" t="Include" />
             <e p="Grid.cs" t="Include" />
             <e p="GridCell.cs" t="Include" />
             <e p="GridManager.cs" t="Include" />
@@ -91,7 +92,12 @@
               <e p="UnitMovementInfo.cs" t="Include" />
               <e p="UnitNameInfo.cs" t="Include" />
               <e p="UnitRangeInfo.cs" t="Include" />
+              <e p="UnitSprite.cs" t="Include" />
             </e>
+          </e>
+          <e p="Singletons" t="Include">
+            <e p="GenericSingletonClass.cs" t="Include" />
+            <e p="MusicManager.cs" t="Include" />
           </e>
           <e p="UI" t="Include">
             <e p="CombatLog.cs" t="Include" />
@@ -112,9 +118,11 @@
             <e p="Healtbar.cs" t="Include" />
             <e p="Unit.cs" t="Include" />
             <e p="UnitAbility.cs" t="Include" />
+            <e p="UnitAnimations.cs" t="Include" />
             <e p="UnitList.cs" t="Include" />
             <e p="UnitMovement.cs" t="Include" />
             <e p="UnitRange.cs" t="Include" />
+            <e p="UnitSounds.cs" t="Include" />
             <e p="UnitStatistics.cs" t="Include" />
           </e>
           <e p="Win" t="Include">

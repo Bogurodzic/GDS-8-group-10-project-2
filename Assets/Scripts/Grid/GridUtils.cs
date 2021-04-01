@@ -14,7 +14,7 @@ public static class GridUtils
     {
         Vector3 worldPosiiton = camera.ScreenToWorldPoint(mousePosition);
         
-        worldPosiiton.z = 0;
+        //worldPosiiton.z = 0;
         return worldPosiiton;
     }
 

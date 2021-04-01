@@ -10,6 +10,7 @@ public class UnitAbility : MonoBehaviour
     private Grid _grid;
     private CombatLog _combatLog;
     private int cdTurns = 0;
+    private UnitSounds _unitSounds;
     void Start()
     {
         LoadGrid();
@@ -37,6 +38,8 @@ public class UnitAbility : MonoBehaviour
         {
             _abilitiesData = unitData.unitAbility;
         }
+
+        _unitSounds = gameObject.GetComponent<UnitSounds>();
     }
 
     public void ActiveAbility(int unitPositionX, int unitPositionY)
@@ -53,6 +56,8 @@ public class UnitAbility : MonoBehaviour
 
     public bool ExecuteAbility(int targetX, int targetY, int unitX, int unitY)
     {
+        Unit unit = _grid.GetCell(unitX, unitY).GetOccupiedBy();
+
         Debug.Log("ExecuteAbility1");
         if (_abilitiesData.abilityType == AbilityType.SingleTarget)
         {
@@ -63,19 +68,21 @@ public class UnitAbility : MonoBehaviour
             {
                 Debug.Log("ExecuteAbility3");
 
-                if (_abilitiesData.damage > 0)
+                if (_abilitiesData.damage > 0 && _grid.GetCell(targetX, targetY).GetOccupiedBy().GetStatistics().team != unit.GetStatistics().team)
                 {
                     Debug.Log("ExecuteAbility4");
-
+                    _unitSounds.PlayAbilitySound();
+                    _grid.GetCell(targetX, targetY).GetOccupiedBy().GetUnitAnimations().AnimateUnit("HURT");
                     _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(targetX, targetY).GetOccupiedBy()));
                     PutAbilityOnCD();
                     _grid.GetCell(targetX, targetY).GetOccupiedBy().SetHealth();
+                    _grid.GetCell(targetX, targetY).GetOccupiedBy().HandleDeath();
 
                     return true;  
-                } else if (_abilitiesData.heal > 0)
+                } else if (_abilitiesData.heal > 0 && _grid.GetCell(targetX, targetY).GetOccupiedBy().GetStatistics().team == unit.GetStatistics().team)
                 {
                     Debug.Log("ExecuteAbility5");
-
+                    _unitSounds.PlayAbilitySound();
                     _combatLog.LogCombat(Ability.HealUnit(_abilitiesData, _grid.GetCell(targetX, targetY).GetOccupiedBy()));
                     _grid.GetCell(targetX, targetY).GetOccupiedBy().SetHealth();
 
@@ -96,40 +103,45 @@ public class UnitAbility : MonoBehaviour
                 _grid.GetCell(targetX, targetY).GetPathNode().isAttackable)
             {
                 Debug.Log("Handle ability 10.2");
-                if (_grid.GetCell(unitX + 1, unitY) != null && _grid.GetCell(unitX + 1, unitY).GetOccupiedBy())
+                if (_grid.GetCell(unitX + 1, unitY) != null && _grid.GetCell(unitX + 1, unitY).GetOccupiedBy() && _grid.GetCell(unitX + 1, unitY).GetOccupiedBy().GetStatistics().team != unit.GetStatistics().team)
                 {
-                    _grid.GetCell(unitX + 1, unitY).GetOccupiedBy().AnimateUnit("HURT");
+                    _grid.GetCell(unitX + 1, unitY).GetOccupiedBy().GetUnitAnimations().AnimateUnit("HURT");
                     _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(unitX + 1, unitY).GetOccupiedBy()));
                     _grid.GetCell(unitX + 1, unitY).GetOccupiedBy().SetHealth();
+                    _grid.GetCell(unitX + 1, unitY).GetOccupiedBy().HandleDeath();
                 }
                     
-                if (_grid.GetCell(unitX - 1, unitY) != null &&_grid.GetCell(unitX - 1, unitY ).GetOccupiedBy())
+                if (_grid.GetCell(unitX - 1, unitY) != null &&_grid.GetCell(unitX - 1, unitY ).GetOccupiedBy()  && _grid.GetCell(unitX - 1, unitY).GetOccupiedBy().GetStatistics().team != unit.GetStatistics().team)
                 {
-                    _grid.GetCell(unitX - 1, unitY).GetOccupiedBy().AnimateUnit("HURT");
+                    _grid.GetCell(unitX - 1, unitY).GetOccupiedBy().GetUnitAnimations().AnimateUnit("HURT");
                     _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(unitX - 1, unitY).GetOccupiedBy()));
                     _grid.GetCell(unitX - 1, unitY).GetOccupiedBy().SetHealth();
+                    _grid.GetCell(unitX - 1, unitY).GetOccupiedBy().HandleDeath();
                 }
                     
-                if (_grid.GetCell(unitX, unitY + 1) != null &&_grid.GetCell(unitX, unitY + 1).GetOccupiedBy())
+                if (_grid.GetCell(unitX, unitY + 1) != null &&_grid.GetCell(unitX, unitY + 1).GetOccupiedBy()  && _grid.GetCell(unitX, unitY + 1).GetOccupiedBy().GetStatistics().team != unit.GetStatistics().team)
                 {
-                    _grid.GetCell(unitX, unitY + 1).GetOccupiedBy().AnimateUnit("HURT");
+                    _grid.GetCell(unitX, unitY + 1).GetOccupiedBy().GetUnitAnimations().AnimateUnit("HURT");
                     _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(unitX, unitY + 1).GetOccupiedBy()));
                     _grid.GetCell(unitX, unitY + 1).GetOccupiedBy().SetHealth();
+                    _grid.GetCell(unitX, unitY + 1).GetOccupiedBy().HandleDeath();
                 }
                     
-                if (_grid.GetCell(unitX, unitY - 1) != null &&_grid.GetCell(unitX, unitY - 1).GetOccupiedBy())
+                if (_grid.GetCell(unitX, unitY - 1) != null &&_grid.GetCell(unitX, unitY - 1).GetOccupiedBy()  && _grid.GetCell(unitX, unitY - 1).GetOccupiedBy().GetStatistics().team != unit.GetStatistics().team)
                 {
-                    _grid.GetCell(unitX, unitY - 1).GetOccupiedBy().AnimateUnit("HURT");
+                    _grid.GetCell(unitX, unitY - 1).GetOccupiedBy().GetUnitAnimations().AnimateUnit("HURT");
                     _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(unitX, unitY - 1).GetOccupiedBy()));
                     _grid.GetCell(unitX, unitY - 1).GetOccupiedBy().SetHealth();
+                    _grid.GetCell(unitX, unitY - 1).GetOccupiedBy().HandleDeath();
                 }
 
-                if ((_grid.GetCell(unitX + 1, unitY) != null && _grid.GetCell(unitX + 1, unitY).GetOccupiedBy()) ||
-                    (_grid.GetCell(unitX - 1, unitY) != null && _grid.GetCell(unitX - 1, unitY).GetOccupiedBy()) ||
-                    (_grid.GetCell(unitX, unitY + 1) != null && _grid.GetCell(unitX, unitY + 1).GetOccupiedBy())||
-                    (_grid.GetCell(unitX, unitY - 1) != null && _grid.GetCell(unitX, unitY - 1).GetOccupiedBy()))
+                if ((_grid.GetCell(unitX + 1, unitY) != null && _grid.GetCell(unitX + 1, unitY).GetOccupiedBy()) && _grid.GetCell(unitX + 1, unitY).GetOccupiedBy().GetStatistics().team != unit.GetStatistics().team ||
+                    (_grid.GetCell(unitX - 1, unitY) != null && _grid.GetCell(unitX - 1, unitY).GetOccupiedBy()) && _grid.GetCell(unitX - 1, unitY).GetOccupiedBy().GetStatistics().team != unit.GetStatistics().team ||
+                    (_grid.GetCell(unitX, unitY + 1) != null && _grid.GetCell(unitX, unitY + 1).GetOccupiedBy()) && _grid.GetCell(unitX, unitY + 1).GetOccupiedBy().GetStatistics().team != unit.GetStatistics().team ||
+                    (_grid.GetCell(unitX, unitY - 1) != null && _grid.GetCell(unitX, unitY - 1).GetOccupiedBy()) && _grid.GetCell(unitX, unitY - 1).GetOccupiedBy().GetStatistics().team != unit.GetStatistics().team)
                 {
                     Debug.Log("Handle ability 11.2");
+                    _unitSounds.PlayAbilitySound();
                     PutAbilityOnCD();
                     return true;
                 }
@@ -151,13 +163,14 @@ public class UnitAbility : MonoBehaviour
 
     private void ShowAbilityRange(int unitPositionX, int unitPositionY)
     {
+        int unitTeam = gameObject.GetComponentInParent<Unit>().GetStatistics().team;
         Debug.Log("Handle ability 7");
 
         if (_abilitiesData.abilityType == AbilityType.SingleTarget)
         {
             Debug.Log("Handle ability 8.1");
 
-            _grid.CalculateCostToAllTiles(unitPositionX, unitPositionY, 0, _abilitiesData.minRange, _abilitiesData.maxRange);
+            _grid.CalculateCostToAllTiles(unitPositionX, unitPositionY, 0, _abilitiesData.minRange, _abilitiesData.maxRange, unitTeam);
             _grid.HideRange();
             _grid.ShowRange(RangeType.Attack);
         }
@@ -166,7 +179,7 @@ public class UnitAbility : MonoBehaviour
         {
             Debug.Log("Handle ability 8.2");
 
-            _grid.CalculateCostToAllTiles(unitPositionX, unitPositionY, 0, 1, 1);
+            _grid.CalculateCostToAllTiles(unitPositionX, unitPositionY, 0, 1, 1, unitTeam);
             _grid.HideRange();
             _grid.ShowRange(RangeType.Attack);
         }

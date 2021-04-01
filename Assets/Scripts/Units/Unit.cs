@@ -12,7 +12,6 @@ public class Unit : MonoBehaviour
     private Grid _grid;
     private GridManager _gridManager;
     private SpriteRenderer _sprite;
-    private SkeletonAnimation _skeletonAnimation;
     private UnitMovement _unitMovement;
     private UnitStatistics _unitStatistics;
     private UnitRange _unitRange;
@@ -20,8 +19,13 @@ public class Unit : MonoBehaviour
     private UnitPhase _unitPhase = UnitPhase.Inactive;
     private CombatLog _combatLog;
     private UnitAbility _unitAbility;
+    private UnitSounds _unitSounds;
     private Healtbar _healtbar;
     private UnitList _unitList;
+    private UnitListPanel _unitListPanel;
+    private UnitAnimations _unitAnimations;
+    private CursorChanger _cursorChanger;
+
     private bool _isDeployed = false;
     private bool _isPreDeployed = false;
     private int _preDeployedX = -9999;
@@ -29,14 +33,18 @@ public class Unit : MonoBehaviour
     private bool _isUnitHovered = false;
     private UnitPhase _phaseBeforeAbility;
     private bool _isAlive = true;
+    private bool _rangesOnHoverVisible = true;
 
     private int _attackAfterMovementXTarget = -9999;
     private int _attackAfterMovementYTarget = -9999;
+    private bool _designerModeOn = false;
     
     void Update()
     {
         if (Turn.GetCurrentTurnType() == TurnType.RegularGame)
         {
+
+            
             if (Input.GetMouseButtonDown(0))
             {
                 HandleAction();
@@ -47,34 +55,135 @@ public class Unit : MonoBehaviour
                 HandleActivatingAttackMode();
             }
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (IsActive() && Input.GetKeyDown(KeyCode.P))
             {
-                if (IsUnitTurn() && IsActive())
+                SkipTurn();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space) && !_designerModeOn)
+            {
+                _designerModeOn = true;
+
+                Mesh[] myMesh = new Mesh[6];
+                
+                DestroyImmediate(gameObject.GetComponent<SkeletonAnimation>());
+                DestroyImmediate(gameObject.GetComponent<MeshFilter>());
+                DestroyImmediate(gameObject.GetComponent<MeshRenderer>());
+                _unitAnimations.BlockAnimations();
+                _sprite = gameObject.AddComponent<SpriteRenderer>();
+
+                if (GetStatistics().team == 1)
                 {
-                    SkipTurn();
+                    _sprite.sprite = unitData.unitSpriteTeam1;
                 }
+                else
+                {
+                    _sprite.sprite = unitData.unitSpriteTeam2;
+                }
+                
+                transform.localScale = Vector3.one;
             }
 
             HandleHoveringUnit();
+            HandleCursor();
         }
     }
 
     private void HandleHoveringUnit()
     {
+        
         Vector3 mouseVector3 = GridUtils.GetMouseWorldPosition(Input.mousePosition);
         mouseVector3.z = 0;
         int mouseX, mouseY;
 
         _grid.GetCellPosition(mouseVector3, out mouseX, out mouseY);
+
+        bool isCellOccupied = (mouseX < _grid.GetGridWidth() && mouseY < _grid.GetGridHeight() && mouseX >= 0 && mouseY >= 0) && _grid.GetCell(mouseX, mouseY).GetPathNode().isOccupied;
         
+        Debug.Log("HANDLE HOVERING 1:" + mouseX + "-" + mouseY);
         if (!IsActive() && mouseX == GetUnitXPosition() && mouseY == GetUnitYPosition() && !_isUnitHovered)
         {
+            Debug.Log("HANDLE HOVERING 2:" + mouseX + "-" + mouseY);
+
             _isUnitHovered = true;
             _healtbar.SetSliderVisbility(true);
+
+            /*if (!Turn.IsUnitTurn(GetStatistics().team) && Turn.IsFirstUnitInTurnSelected())
+            {
+                Debug.Log("HANDLE HOVERING 3:" + mouseX + "-" + mouseY);
+
+                ShowRangesOnHover();
+            } */
+            
+            if (!Turn.IsFirstUnitInTurnSelected())
+            {
+                Debug.Log("HANDLE HOVERING 4:" + mouseX + "-" + mouseY);
+
+                ShowRangesOnHover();
+                _unitListPanel.OnHoverUnit(this);
+            }
+
+            if (Turn.IsFirstUnitInTurnSelected() && !Turn.IsUnitTurn(GetStatistics().team))
+            {
+                _unitListPanel.OnHoverUnit(this);
+            }
         } else if (!IsActive() && (mouseX != GetUnitXPosition() || mouseY != GetUnitYPosition()) && _isUnitHovered)
         {
+            Debug.Log("HANDLE HOVERING 5:" + mouseX + "-" + mouseY);
+
             _isUnitHovered = false;
             _healtbar.SetSliderVisbility(false);
+
+            /*if (Turn.IsFirstUnitInTurnSelected() && !isCellOccupied)
+            {
+                Debug.Log("HANDLE HOVERING 6:" + mouseX + "-" + mouseY);
+
+                _unitList.GetActiveUnit().GetComponent<Unit>().ShowActiveUnitsRanges();
+            }*/
+            if (!Turn.IsFirstUnitInTurnSelected() &&  !isCellOccupied)
+            {
+                Debug.Log("HANDLE HOVERING 7:" + mouseX + "-" + mouseY);
+
+                _grid.HideRange();
+                _unitListPanel.OnHoverOutUnit();
+            }
+
+            if (!isCellOccupied && !Turn.IsUnitTurn(GetStatistics().team))
+            {
+                _unitListPanel.OnHoverOutUnit();
+            }
+            
+        }
+
+        
+        
+        
+    }
+
+    public void HoverFromFrame()
+    {
+        if (!Turn.IsFirstUnitInTurnSelected())
+        {
+            ShowRangesOnHover();
+            _unitListPanel.ShowUnitInfo(this);
+        }
+
+        if (Turn.IsFirstUnitInTurnSelected() && !Turn.IsUnitTurn(GetStatistics().team))
+        {
+            _unitListPanel.ShowUnitInfo(this);
+        }
+    }
+
+    public void HoverOutFromFrame()
+    {
+        if (!Turn.IsFirstUnitInTurnSelected())
+        {
+            _grid.HideRange();
+            _unitListPanel.HideUnitInfo();
+        }
+        else if (Turn.IsFirstUnitInTurnSelected() && !Turn.IsUnitTurn(GetStatistics().team) )
+        {
+            _unitListPanel.HideUnitInfo();
         }
     }
 
@@ -85,77 +194,6 @@ public class Unit : MonoBehaviour
 
         _grid.GetCell(positionX, positionY).AddOccupiedBy(this);
     }
-
-    private void ReloadSprite()
-    {
-        _skeletonAnimation.skeletonDataAsset = unitData.skeletonDataAsset;
-        
-        if (_unitStatistics.team == 1)
-        {
-            switch (unitData.unitName)
-            {
-                case "Archer":
-                    _skeletonAnimation.initialSkinName = "ARCHER BLUE";
-                    break;
-                case "Boss":
-                    _skeletonAnimation.initialSkinName = "BOSS BLUE";
-                    break;
-                case "Infantry":
-                    _skeletonAnimation.initialSkinName = "SWORDMAN BLUE";
-                    break;
-                case "Mage":
-                    _skeletonAnimation.initialSkinName = "WIZARD BLUE";
-                    break;
-                case "Medic":
-                    _skeletonAnimation.initialSkinName = "MEDIC BLUE";
-                    break;
-                case "Rogue":
-                    _skeletonAnimation.initialSkinName = "ROGUE BLUE";
-                    break;
-                case "Spearman":
-                    _skeletonAnimation.initialSkinName = "SPEARMAN BLUE";
-                    break;
-            }
-            
-        }
-        else
-        {
-            _skeletonAnimation.initialFlipX = true;
-            switch (unitData.unitName)
-            {
-                case "Archer":
-                    _skeletonAnimation.initialSkinName = "ARCHER RED";
-                    break;
-                case "Boss":
-                    _skeletonAnimation.initialSkinName = "BOSS RED";
-                    break;
-                case "Infantry":
-                    _skeletonAnimation.initialSkinName = "SWORDMAN RED";
-                    break;
-                case "Mage":
-                    _skeletonAnimation.initialSkinName = "WIZARD RED";
-                    break;
-                case "Medic":
-                    _skeletonAnimation.initialSkinName = "MEDIC RED";
-                    break;
-                case "Rogue":
-                    _skeletonAnimation.initialSkinName = "ROGUE RED";
-                    break;
-                case "Spearman":
-                    _skeletonAnimation.initialSkinName = "SPEARMAN RED";
-                    break;
-            }
-        }
-        _skeletonAnimation.Initialize(true); 
-        _skeletonAnimation.Skeleton.SetSkin(_skeletonAnimation.initialSkinName); // set the skin
-        _skeletonAnimation.Skeleton.SetSlotsToSetupPose(); // use the active attachments from setup pose.
-        _skeletonAnimation.AnimationState.Apply( _skeletonAnimation.Skeleton); // use the active attachments from the active animations.
-        
-        _skeletonAnimation.AnimationState.SetAnimation(0, "IDLE", true);
-
-
-    }
-
     private void HandleAction()
     {
         switch (_unitPhase)
@@ -199,7 +237,7 @@ public class Unit : MonoBehaviour
                 break;
             case ActionType.Movement:
                 SetUnitPhase(UnitPhase.AfterMovement);
-                AnimateIdle();
+                _unitAnimations.AnimateIdle();
                 HandleActivatingAttackMode();
                 break;
             case ActionType.Attack:
@@ -231,7 +269,7 @@ public class Unit : MonoBehaviour
                 }
                 break;
             case ActionType.Dash:
-                AnimateIdle();
+                _unitAnimations.AnimateIdle();
                 SkipTurn();
                 break;
             case ActionType.SkipTurn:
@@ -250,7 +288,7 @@ public class Unit : MonoBehaviour
         if (_unitPhase == UnitPhase.Standby && _unitMovement.IsInMovementRange(mouseX, mouseY))
         {
             Turn.BlockTurn();
-            AnimateLoopUnit("WALK");
+            _unitAnimations.AnimateLoopUnit("WALK");
             _unitMovement.Move(mouseX, mouseY, this, ActionType.Movement);
         }
     }
@@ -264,7 +302,7 @@ public class Unit : MonoBehaviour
         
         if (_unitMovement.IsInMovementRange(mouseX, mouseY))
         {
-            AnimateLoopUnit("WALK");
+            _unitAnimations.AnimateLoopUnit("WALK");
             _unitMovement.Move(mouseX, mouseY, this, ActionType.Dash);
         }
     }
@@ -279,8 +317,9 @@ public class Unit : MonoBehaviour
         if (_unitPhase == UnitPhase.AfterMovement && IsCellOcuppiedByEnemy(mouseX, mouseY) && _unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
         {
             
-            AnimateUnit("ATTACK");
-            _grid.GetCell(mouseX, mouseY).GetOccupiedBy().AnimateUnit("HURT");
+            _unitAnimations.AnimateUnit("ATTACK");
+            _unitSounds.PlayAttackSound();
+            _grid.GetCell(mouseX, mouseY).GetOccupiedBy().GetUnitAnimations().AnimateUnit("HURT");
             _combatLog.LogCombat(Attack.AttackUnit(this, _grid.GetCell(mouseX, mouseY).GetOccupiedBy()));
             _grid.GetCell(mouseX, mouseY).GetOccupiedBy().SetHealth();
             _grid.GetCell(mouseX, mouseY).GetOccupiedBy().HandleDeath();
@@ -290,7 +329,7 @@ public class Unit : MonoBehaviour
         {
             if (!_grid.IsPositionInAttackRange(mouseX, mouseY, _unitRange.minRange, _unitRange.maxRange))
             {
-                AnimateLoopUnit("WALK");
+                _unitAnimations.AnimateLoopUnit("WALK");
                 _attackAfterMovementXTarget = mouseX;
                 _attackAfterMovementYTarget = mouseY;
                 _unitMovement.MoveBeforeAttack(mouseX, mouseY, this, ActionType.MovementBeforeAttack);
@@ -306,8 +345,9 @@ public class Unit : MonoBehaviour
 
     private void HandleAttackUnit(int mouseX, int mouseY)
     {
-        AnimateUnit("ATTACK");
-        _grid.GetCell(mouseX, mouseY).GetOccupiedBy().AnimateUnit("HURT");
+        _unitAnimations.AnimateUnit("ATTACK");
+        _unitSounds.PlayAttackSound();
+        _grid.GetCell(mouseX, mouseY).GetOccupiedBy().GetUnitAnimations().AnimateUnit("HURT");
         _combatLog.LogCombat(Attack.AttackUnit(this, _grid.GetCell(mouseX, mouseY).GetOccupiedBy()));
         _grid.GetCell(mouseX, mouseY).GetOccupiedBy().SetHealth();
         _grid.GetCell(mouseX, mouseY).GetOccupiedBy().HandleDeath();
@@ -332,6 +372,11 @@ public class Unit : MonoBehaviour
     public bool IsAbilityActive()
     {
         return IsActive() && unitData.unitAbility && _unitAbility.IsAbilityReadyToCast();
+    }
+
+    public UnitPhase GetUnitPhase()
+    {
+        return _unitPhase;
     }
     
 
@@ -378,19 +423,39 @@ public class Unit : MonoBehaviour
     
     private void ActivateUnit()
     {
+        Debug.Log("ACTIVATING UNIT: " + unitData.unitName + " TEAM: " + GetStatistics().team);
         _unitList.DeactivateAllPlayerUnits(GetStatistics().team);
+        _unitListPanel.ActivateUnitPortrait(this);
         _activityType = RangeType.Movement;
+        Turn.SetIsFirstUnitInTurnSelected(true);
         ReloadRanges();
         _unitRange.ShowUnitRange(true);
         _unitMovement.ShowMovementRange(false);
-        _gridManager.ChangeColor(GetUnitXPosition(), GetUnitYPosition(), Color.magenta);
+        _gridManager.ChangeColor(GetUnitXPosition(), GetUnitYPosition(), Color.yellow);
         _healtbar.SetSliderVisbility(true);
         SetUnitPhase(UnitPhase.Standby);
     }
 
     private void ReloadRanges()
     {
-        _grid.CalculateCostToAllTiles(GetUnitXPosition(), GetUnitYPosition(), _unitMovement.movementRange, _unitRange.minRange, _unitRange.maxRange);
+        _grid.CalculateCostToAllTiles(GetUnitXPosition(), GetUnitYPosition(), _unitMovement.movementRange, _unitRange.minRange, _unitRange.maxRange, GetStatistics().team);
+    }
+
+    private void ShowRangesOnHover()
+    {
+        _rangesOnHoverVisible = true;
+        _grid.CalculateCostToAllTiles(GetUnitXPosition(), GetUnitYPosition(), _unitMovement.movementRange, _unitRange.minRange, _unitRange.maxRange, GetStatistics().team);
+        _unitRange.ShowUnitRange(true);
+        _unitMovement.ShowMovementRange(false);
+        _gridManager.ChangeColor(GetUnitXPosition(), GetUnitYPosition(), Color.yellow);
+    }
+
+    private void ShowActiveUnitsRanges()
+    {
+        ReloadRanges();
+        _unitRange.ShowUnitRange(true);
+        _unitMovement.ShowMovementRange(false);
+        _gridManager.ChangeColor(GetUnitXPosition(), GetUnitYPosition(), Color.magenta);
     }
     
     private void HandleTogglingUnit()
@@ -424,12 +489,12 @@ public class Unit : MonoBehaviour
 
     public bool HandleTogglingFromFrame()
     {
-        if (IsUnitTurn() && !IsActive())
+        if (IsUnitTurn() && !IsActive() && IsAlive())
         {
             EndAction(ActionType.Activation);
             return true;
         } 
-        else if (IsUnitTurn() && IsActive())
+        else if (IsUnitTurn() && IsActive() && IsAlive())
         {
             EndAction(ActionType.Deactivation);
             return false;
@@ -455,7 +520,7 @@ public class Unit : MonoBehaviour
     {
         if (IsUnitTurn())
         {
-            _grid.CalculateCostToAllTiles(GetUnitXPosition(), GetUnitYPosition(), 0, _unitRange.minRange, _unitRange.maxRange);
+            _grid.CalculateCostToAllTiles(GetUnitXPosition(), GetUnitYPosition(), 0, _unitRange.minRange, _unitRange.maxRange, GetStatistics().team);
             _unitRange.ShowUnitRange(true);
         }
     }
@@ -463,7 +528,7 @@ public class Unit : MonoBehaviour
     private void ActivateDash()
     {
         SetUnitPhase(UnitPhase.AfterAttack);
-        _grid.CalculateCostToAllTiles(GetUnitXPosition(), GetUnitYPosition(), _unitMovement.movementRange, 0, 0);
+        _grid.CalculateCostToAllTiles(GetUnitXPosition(), GetUnitYPosition(), _unitMovement.movementRange, 0, 0, GetStatistics().team);
         _unitMovement.ShowMovementRange(true);
     }
 
@@ -477,6 +542,7 @@ public class Unit : MonoBehaviour
     {
         if (_phaseBeforeAbility == UnitPhase.Standby)
         {
+            Turn.UnlockTurn();
             EndAction(ActionType.Activation);
         } else if (_phaseBeforeAbility == UnitPhase.AfterMovement)
         {
@@ -500,7 +566,7 @@ public class Unit : MonoBehaviour
 
         if (mouseX < _grid.GetGridWidth() && mouseY < _grid.GetGridHeight() && mouseX >= 0 && mouseY >= 0 && _unitAbility.ExecuteAbility(mouseX, mouseY, GetUnitXPosition(), GetUnitYPosition()))
         {
-            AnimateUnit("SKILL");
+            _unitAnimations.AnimateUnit("SKILL");
             EndAction(ActionType.ExecuteAbility);
         }
     }
@@ -511,6 +577,8 @@ public class Unit : MonoBehaviour
     {
         if (IsUnitTurn())
         {
+            Turn.SetIsFirstUnitInTurnSelected(false);
+            _unitListPanel.DeactivateUnitPortrait(this);
             _healtbar.SetSliderVisbility(false);
             SetUnitPhase(UnitPhase.Inactive);
             _grid.HideRange(); 
@@ -519,16 +587,19 @@ public class Unit : MonoBehaviour
 
     public void ResetUnitCD()
     {
-        _skeletonAnimation.skeleton.A = 1f;
+        _unitAnimations.RemoveUnitTransparency();
         _unitAbility.RemoveOneTurnFromAbilityCD();
         SetUnitPhase(UnitPhase.Inactive);
     }
 
     public void SkipTurn()
     {
+        _unitListPanel.DeactivateUnitPortrait(this);
+        Turn.SetIsFirstUnitInTurnSelected(false);
         _grid.HideRange();
-        _skeletonAnimation.skeleton.A = 0.5f;
+        _unitAnimations.MakeUnitTransparent();
         SetUnitPhase(UnitPhase.OnCooldown);
+        _cursorChanger.ResetCursor();
         EndAction(ActionType.SkipTurn);
     }
 
@@ -537,7 +608,8 @@ public class Unit : MonoBehaviour
         
         if (!CheckIfUnitIsAlive())
         {
-            AnimateOnce("DEATH");
+            _unitAnimations.AnimateOnce("DEATH");
+            _unitSounds.PlayDeathSound();
             Invoke("Death", 1f);
         }
     }
@@ -547,6 +619,11 @@ public class Unit : MonoBehaviour
         _unitMovement.RemoveUnitFromCurrentCell();
         _healtbar.TurnOffHealthBar();
         _isAlive = false;
+
+        if (_designerModeOn)
+        {
+            GetComponent<SpriteRenderer>().color = Color.clear;
+        }
     }
 
     private bool CheckIfUnitIsAlive()
@@ -556,6 +633,7 @@ public class Unit : MonoBehaviour
 
     private void NextTurn()
     {
+        _grid.HideRange();
         Turn.NextTurn();
     }
 
@@ -579,16 +657,15 @@ public class Unit : MonoBehaviour
         return _unitRange;
     }
 
+    public UnitAnimations GetUnitAnimations()
+    {
+        return _unitAnimations;
+    }
+
     public UnitAbility GetUnitAbility()
     {
         return _unitAbility;
     }
-
-    public SkeletonAnimation GetSkeletonAnimation()
-    {
-        return _skeletonAnimation;
-    }
-    
     private int GetUnitXPosition()
     {
         int positionX, positionY;
@@ -606,7 +683,7 @@ public class Unit : MonoBehaviour
     private void LoadSprite()
     {
         _sprite = gameObject.GetComponent<SpriteRenderer>();
-        _skeletonAnimation = gameObject.GetComponent<SkeletonAnimation>();
+        _unitAnimations = gameObject.GetComponent<UnitAnimations>();
     }
     
     private void LoadGrid()
@@ -627,6 +704,11 @@ public class Unit : MonoBehaviour
     private void LoadUnitMovement()
     {
         _unitMovement = gameObject.GetComponent<UnitMovement>();
+    }
+
+    private void LoadUnitSounds()
+    {
+        _unitSounds = gameObject.GetComponent<UnitSounds>();
     }
     
     private void LoadUnitStatistics()
@@ -662,6 +744,9 @@ public class Unit : MonoBehaviour
         LoadUnitAbility();
         LoadHealthbar();
         LoadUnitList();
+        LoadUnitListPanel();
+        LoadUnitSounds();
+        LoadCursorChanger();
         ReloadUnitData();
         SetHealth();
     }
@@ -669,6 +754,30 @@ public class Unit : MonoBehaviour
     private void LoadUnitList()
     {
         _unitList = GameObject.Find("UnitList").GetComponent<UnitList>();
+    }
+
+    private void LoadUnitListPanel()
+    {
+        if (GetStatistics().team == 1)
+        {
+            _unitListPanel = GameObject.Find("UnitListPanelLeft").GetComponent<UnitListPanel>();
+        } else if (GetStatistics().team == 2)
+        {
+            _unitListPanel = GameObject.Find("UnitListPanelRight").GetComponent<UnitListPanel>();
+        }
+    }
+
+    private void LoadCursorChanger()
+    {
+        _cursorChanger = GameObject.Find("Testing").GetComponent<CursorChanger>();
+    }
+
+    private void HandleCursor()
+    {
+        if (IsActive())
+        {
+            _cursorChanger.ShowCursor(this);
+        }
     }
 
 
@@ -683,7 +792,8 @@ public class Unit : MonoBehaviour
         _unitStatistics.LoadUnitStatistics(unitData);
         _unitRange.LoadUnitRange(unitData);
         _unitAbility.LoadUnitAbility(unitData);
-        ReloadSprite();
+        _unitAnimations.ReloadSprite(unitData, GetStatistics());
+        _unitSounds.LoadUnitSounds(unitData);
     }
 
     public bool IsUnitDeployed()
@@ -729,26 +839,5 @@ public class Unit : MonoBehaviour
         gameObject.transform.position = cellCenterPosition;
         _preDeployedX = x;
         _preDeployedY = y;
-    }
-
-    public void AnimateOnce(string animationName)
-    {
-        _skeletonAnimation.AnimationState.SetAnimation(0, animationName, false);
-    }
-
-    public void AnimateUnit(string animationName)
-    {
-        _skeletonAnimation.AnimationState.SetAnimation(0, animationName, false);
-        _skeletonAnimation.AnimationState.AddAnimation(0, "IDLE", true, 0f);
-    }
-
-    public void AnimateLoopUnit(string animationName)
-    {
-        _skeletonAnimation.AnimationState.SetAnimation(0, animationName, true);
-    }
-
-    public void AnimateIdle()
-    {
-        _skeletonAnimation.AnimationState.SetAnimation(0, "IDLE", true);
     }
 }

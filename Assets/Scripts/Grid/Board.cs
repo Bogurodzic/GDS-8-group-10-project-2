@@ -10,11 +10,14 @@ public class Board : MonoBehaviour
     private Grid _grid;
     private GridManager _gridManager;
     private UnitList _unitList;
+
+    private CursorChanger _cursorChanger;
     private void Awake()
     {
         LoadGridManager();
         LoadUnitList();
         _grid = new Grid(_gridManager.GetGridSize().x, _gridManager.GetGridSize().y, _gridManager.GetGridCellSize().x, new Vector3( _gridManager.GetGridPosition().x * _gridManager.GetGridCellSize().x,_gridManager.GetGridPosition().y * _gridManager.GetGridCellSize().x,0), this._gridManager);
+        _cursorChanger = gameObject.GetComponent<CursorChanger>();
     }
 
     void Update()
@@ -22,6 +25,11 @@ public class Board : MonoBehaviour
         if (Turn.GetCurrentTurnType() == TurnType.Deployment && _unitList.ReadyForDeploy())
         {
             HandleDeployment();
+        }
+
+        if (Turn.GetCurrentTurnType() == TurnType.RegularGame && !_cursorChanger.IsCursorChangerInitialised())
+        {
+            _cursorChanger.Initialise(_grid, _gridManager);
         }
     }
 
@@ -51,6 +59,7 @@ public class Board : MonoBehaviour
                     _grid.HideRange();
                     Turn.NextTurn();
                     Turn.SetTurnType(TurnType.RegularGame);
+                    MusicManager.Instance.PlayMusicBattle();
                 }
 
             }

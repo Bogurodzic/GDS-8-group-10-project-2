@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class Portrait : MonoBehaviour
 {
     public UnitData unitData;
+    public AudioClip selectMusic;
+    private AudioSource _audioSource;
     private Image _portraitImage;
     private PortraitFrame _portraitFrame;
     private bool _isActive;
@@ -15,6 +17,7 @@ public class Portrait : MonoBehaviour
     public void Start()
     {
         RenderUnitData();
+        LoadAudioSource();
     }
 
     public void LoadPortraitImage()
@@ -42,6 +45,11 @@ public class Portrait : MonoBehaviour
         LoadUnitData(unitData);
     }
 
+    public void LoadAudioSource()
+    {
+        _audioSource = gameObject.GetComponent<AudioSource>();
+    }
+
     private void LoadPortraitFrame()
     {
         _portraitFrame = gameObject.GetComponentInChildren<PortraitFrame>();
@@ -56,6 +64,7 @@ public class Portrait : MonoBehaviour
     {
         Debug.Log("CLICK");
         Debug.Log(unitData);
+        PlaySelectSound();
         if (_isActive)
         {
             _isActive = false;
@@ -70,11 +79,13 @@ public class Portrait : MonoBehaviour
     public void OnHover()
     {
         _pickPanel.DisplayUnitInfo(unitData);
+        _portraitFrame.Hover();
     }
 
     public void OnHoverOut()
     {
         _pickPanel.ResetUnitInfo();
+        _portraitFrame.HoverOut();
     }
 
     public void SetPotraitActive(bool isActive)
@@ -91,5 +102,14 @@ public class Portrait : MonoBehaviour
     public UnitData GetUnitData()
     {
         return unitData;
+    }
+
+    private void PlaySelectSound()
+    {
+        if (MusicManager.Instance.IsEnabled())
+        {
+            _audioSource.clip = selectMusic;
+            _audioSource.Play();       
+        }
     }
 }

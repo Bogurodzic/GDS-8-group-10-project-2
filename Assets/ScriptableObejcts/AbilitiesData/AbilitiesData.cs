@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class AbilitiesData : ScriptableObject
 {
     public string description;
+    public string abilityName;
     public int minRange;
     public int maxRange;
     public int areaOfEffect;
@@ -18,4 +19,5 @@ public class AbilitiesData : ScriptableObject
     public Sprite abilityButtonNormal;
     public Sprite abilityButtonHover;
     public Sprite abilityButtonActive;
+    public AudioClip abilityAudio;
 }

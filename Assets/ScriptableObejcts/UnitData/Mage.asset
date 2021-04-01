@@ -21,10 +21,18 @@ MonoBehaviour:
   minAttackRange: 1
   maxAttackRange: 4
   unitAbility: {fileID: 0}
-  unitSpriteTeam1: {fileID: 21300000, guid: 34339f972e5d54c629e96e121ca012d8, type: 3}
-  unitSpriteTeam2: {fileID: 21300000, guid: d82e8e13ec8004fbab77589fbeb0e1f2, type: 3}
+  unitSpriteTeam1: {fileID: -8559135331029472787, guid: 94e3bdd25081f4fb6914c85d3aed79aa,
+    type: 3}
+  unitSpriteTeam2: {fileID: -4141022253182717084, guid: 94e3bdd25081f4fb6914c85d3aed79aa,
+    type: 3}
   unitPickerSprite: {fileID: 785491092164136635, guid: e12375eef647c43fd93b302bd9654290,
     type: 3}
   unitListSprite: {fileID: 785491092164136635, guid: 89ac21b47f81f40fab3a998bc1ba7861,
     type: 3}
+  unitPickerSpriteOverviewTeam1: {fileID: 21300000, guid: 34339f972e5d54c629e96e121ca012d8,
+    type: 3}
+  unitPickerSpriteOverviewTeam2: {fileID: 21300000, guid: d82e8e13ec8004fbab77589fbeb0e1f2,
+    type: 3}
   skeletonDataAsset: {fileID: 11400000, guid: 8d4a2ca7bf65e4625a11f8d28c34323a, type: 2}
+  attackClip: {fileID: 8300000, guid: 737c51f13e4904e84b4f05cae45eff71, type: 3}
+  deathClip: {fileID: 8300000, guid: e04b78a6b27cb40c198fcf1656a79623, type: 3}

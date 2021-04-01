@@ -8,6 +8,7 @@ public static class Turn
     private static TurnType _currentTurnType = TurnType.Pick;
     private static int _currentTurn = 1;
     private static bool _turnBlocked = false;
+    private static bool _firstUnitInTurnSelected = false;
 
     public static bool IsTurnBlocked()
     {
@@ -33,6 +34,11 @@ public static class Turn
         else
         {
             _currentTurn = 1;
+        }
+
+        if (_currentTurnType == TurnType.RegularGame)
+        {
+            _firstUnitInTurnSelected = false;
         }
         
         UnlockTurn();
@@ -69,5 +75,17 @@ public static class Turn
     {
         SetTurnType(TurnType.Pick);
         _currentTurn = 1;
+        _turnBlocked = false;
+        _firstUnitInTurnSelected = false;
+    }
+
+    public static void SetIsFirstUnitInTurnSelected(bool isSelected)
+    {
+        _firstUnitInTurnSelected = isSelected;
+    }
+
+    public static bool IsFirstUnitInTurnSelected()
+    {
+        return _firstUnitInTurnSelected;
     }
 }

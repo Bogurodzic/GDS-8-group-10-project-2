@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class UnitList : MonoBehaviour
 {
+
     public GameObject unitPrefab;
     public UnitData bossUnitData;
     public GameObject playerWinPanel;
     private LinkedList<GameObject> player1UnitList = new LinkedList<GameObject>();
     private LinkedList<GameObject> player2UnitList = new LinkedList<GameObject>();
-
     private GameObject _nextUnitToDeploy;
     private bool _readyForDeploy = false;
 
