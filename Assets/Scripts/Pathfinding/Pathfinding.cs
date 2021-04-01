@@ -129,8 +129,10 @@ public class Pathfinding
                         neighbourNode.lastMovableNode = currentNode;
                     } else if (neighbourNode.gCost > movementRange && currentNode.gCost <= movementRange)
                     {
-
-                        IterateOverOpenListWithoutEndNodeForAttack(currentNode, minAttackRange, maxAttackRange);
+                        if (!currentNode.isOccupied || movementRange == 0)
+                        {
+                            IterateOverOpenListWithoutEndNodeForAttack(currentNode, minAttackRange, maxAttackRange);
+                        }
                     }
 
                     if (!_openList.Contains(neighbourNode))
