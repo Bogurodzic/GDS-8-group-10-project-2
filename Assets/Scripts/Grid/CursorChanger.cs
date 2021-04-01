@@ -81,6 +81,10 @@ public class CursorChanger : MonoBehaviour
                         {
                             ChangeCursorTo(healSkillCursor);
                         }
+                        else
+                        {
+                            ResetCursor();
+                        }
                         break;
                     }
                     else

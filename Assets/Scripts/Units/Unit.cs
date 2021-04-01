@@ -537,6 +537,7 @@ public class Unit : MonoBehaviour
     {
         if (_phaseBeforeAbility == UnitPhase.Standby)
         {
+            Turn.UnlockTurn();
             EndAction(ActionType.Activation);
         } else if (_phaseBeforeAbility == UnitPhase.AfterMovement)
         {

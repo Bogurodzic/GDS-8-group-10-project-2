@@ -144,6 +144,6 @@ public class AbilityButton : MonoBehaviour
     
     private void DeactivateAbility()
     {
-        _unitList.GetActiveUnit().GetComponent<Unit>().DeactivateUnit();
+        _unitList.GetActiveUnit().GetComponent<Unit>().DeactivateAbility();
     }
 }

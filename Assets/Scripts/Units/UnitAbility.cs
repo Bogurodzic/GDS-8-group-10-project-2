@@ -56,6 +56,8 @@ public class UnitAbility : MonoBehaviour
 
     public bool ExecuteAbility(int targetX, int targetY, int unitX, int unitY)
     {
+        Unit unit = _grid.GetCell(unitX, unitY).GetOccupiedBy();
+
         Debug.Log("ExecuteAbility1");
         if (_abilitiesData.abilityType == AbilityType.SingleTarget)
         {
@@ -66,7 +68,7 @@ public class UnitAbility : MonoBehaviour
             {
                 Debug.Log("ExecuteAbility3");
 
-                if (_abilitiesData.damage > 0)
+                if (_abilitiesData.damage > 0 && _grid.GetCell(targetX, targetY).GetOccupiedBy().GetStatistics().team != unit.GetStatistics().team)
                 {
                     Debug.Log("ExecuteAbility4");
                     _unitSounds.PlayAbilitySound();
@@ -75,7 +77,7 @@ public class UnitAbility : MonoBehaviour
                     _grid.GetCell(targetX, targetY).GetOccupiedBy().SetHealth();
 
                     return true;  
-                } else if (_abilitiesData.heal > 0)
+                } else if (_abilitiesData.heal > 0 && _grid.GetCell(targetX, targetY).GetOccupiedBy().GetStatistics().team == unit.GetStatistics().team)
                 {
                     Debug.Log("ExecuteAbility5");
                     _unitSounds.PlayAbilitySound();
@@ -95,7 +97,6 @@ public class UnitAbility : MonoBehaviour
         } else if (_abilitiesData.abilityType == AbilityType.Circle)
         {
             Debug.Log("Handle ability 9.2");
-            Unit unit = _grid.GetCell(unitX, unitY).GetOccupiedBy();
             if (_grid.GetCell(targetX, targetY).GetOccupiedBy() &&
                 _grid.GetCell(targetX, targetY).GetPathNode().isAttackable)
             {
