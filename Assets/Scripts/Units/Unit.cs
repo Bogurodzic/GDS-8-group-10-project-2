@@ -43,8 +43,7 @@ public class Unit : MonoBehaviour
     {
         if (Turn.GetCurrentTurnType() == TurnType.RegularGame)
         {
-            HandleHoveringUnit();
-            HandleCursor();
+
             
             if (Input.GetMouseButtonDown(0))
             {
@@ -80,7 +79,8 @@ public class Unit : MonoBehaviour
                 transform.localScale = Vector3.one;
             }
 
-            
+            HandleHoveringUnit();
+            HandleCursor();
         }
     }
 
@@ -426,7 +426,7 @@ public class Unit : MonoBehaviour
         ReloadRanges();
         _unitRange.ShowUnitRange(true);
         _unitMovement.ShowMovementRange(false);
-        _gridManager.ChangeColor(GetUnitXPosition(), GetUnitYPosition(), Color.magenta);
+        _gridManager.ChangeColor(GetUnitXPosition(), GetUnitYPosition(), Color.yellow);
         _healtbar.SetSliderVisbility(true);
         SetUnitPhase(UnitPhase.Standby);
     }
@@ -442,7 +442,7 @@ public class Unit : MonoBehaviour
         _grid.CalculateCostToAllTiles(GetUnitXPosition(), GetUnitYPosition(), _unitMovement.movementRange, _unitRange.minRange, _unitRange.maxRange, GetStatistics().team);
         _unitRange.ShowUnitRange(true);
         _unitMovement.ShowMovementRange(false);
-        _gridManager.ChangeColor(GetUnitXPosition(), GetUnitYPosition(), Color.magenta);
+        _gridManager.ChangeColor(GetUnitXPosition(), GetUnitYPosition(), Color.yellow);
     }
 
     private void ShowActiveUnitsRanges()

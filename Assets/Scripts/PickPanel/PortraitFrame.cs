@@ -29,9 +29,12 @@ public class PortraitFrame : MonoBehaviour
 
     public void Hover()
     {
-        if (!active)
+        if (_sprite)
         {
-            _sprite.sprite = higlitedSprite;
+            if (!active)
+            {
+                _sprite.sprite = higlitedSprite;
+            }
         }
     }
 
@@ -42,13 +45,16 @@ public class PortraitFrame : MonoBehaviour
 
     private void ReloadSprite()
     {
-        if (active)
+        if (_sprite)
         {
-            _sprite.sprite = activeSprite;
-        }
-        else
-        {
-            _sprite.sprite = inactiveSprite;
+            if (active)
+            {
+                _sprite.sprite = activeSprite;
+            }
+            else
+            {
+                _sprite.sprite = inactiveSprite;
+            } 
         }
     }
 

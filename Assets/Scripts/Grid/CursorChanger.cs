@@ -89,7 +89,7 @@ public class CursorChanger : MonoBehaviour
                         break;
                     }
                 case UnitPhase.AfterMovement:
-                    if (pathNode.isAttackable)
+                    if (pathNode.isAttackable && pathNode.isOccupied && gridCell.GetOccupiedBy().GetStatistics().team != unit.GetStatistics().team)
                     {
                         ChangeCursorTo(attackCursor);
                         break;
