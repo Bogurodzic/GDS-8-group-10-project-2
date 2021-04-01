@@ -55,6 +55,11 @@ public class Unit : MonoBehaviour
                 HandleActivatingAttackMode();
             }
 
+            if (IsActive() && Input.GetKeyDown(KeyCode.P))
+            {
+                SkipTurn();
+            }
+
             if (Input.GetKeyDown(KeyCode.Space) && !_designerModeOn)
             {
                 _designerModeOn = true;
