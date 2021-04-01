@@ -27,7 +27,7 @@ public class CursorChanger : MonoBehaviour
 
     private void ChangeCursorTo(Texture2D newCursor)
     {
-        Cursor.SetCursor(newCursor, Vector3.zero, CursorMode.ForceSoftware);
+        Cursor.SetCursor(newCursor, new Vector2(0, 25), CursorMode.ForceSoftware);
     }
 
     public void ResetCursor()

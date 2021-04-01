@@ -418,6 +418,7 @@ public class Unit : MonoBehaviour
     
     private void ActivateUnit()
     {
+        Debug.Log("ACTIVATING UNIT: " + unitData.unitName + " TEAM: " + GetStatistics().team);
         _unitList.DeactivateAllPlayerUnits(GetStatistics().team);
         _unitListPanel.ActivateUnitPortrait(this);
         _activityType = RangeType.Movement;
