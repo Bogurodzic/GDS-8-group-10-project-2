@@ -95,42 +95,43 @@ public class UnitAbility : MonoBehaviour
         } else if (_abilitiesData.abilityType == AbilityType.Circle)
         {
             Debug.Log("Handle ability 9.2");
+            Unit unit = _grid.GetCell(unitX, unitY).GetOccupiedBy();
             if (_grid.GetCell(targetX, targetY).GetOccupiedBy() &&
                 _grid.GetCell(targetX, targetY).GetPathNode().isAttackable)
             {
                 Debug.Log("Handle ability 10.2");
-                if (_grid.GetCell(unitX + 1, unitY) != null && _grid.GetCell(unitX + 1, unitY).GetOccupiedBy())
+                if (_grid.GetCell(unitX + 1, unitY) != null && _grid.GetCell(unitX + 1, unitY).GetOccupiedBy() && _grid.GetCell(unitX + 1, unitY).GetOccupiedBy().GetStatistics().team != unit.GetStatistics().team)
                 {
                     _grid.GetCell(unitX + 1, unitY).GetOccupiedBy().GetUnitAnimations().AnimateUnit("HURT");
                     _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(unitX + 1, unitY).GetOccupiedBy()));
                     _grid.GetCell(unitX + 1, unitY).GetOccupiedBy().SetHealth();
                 }
                     
-                if (_grid.GetCell(unitX - 1, unitY) != null &&_grid.GetCell(unitX - 1, unitY ).GetOccupiedBy())
+                if (_grid.GetCell(unitX - 1, unitY) != null &&_grid.GetCell(unitX - 1, unitY ).GetOccupiedBy()  && _grid.GetCell(unitX - 1, unitY).GetOccupiedBy().GetStatistics().team != unit.GetStatistics().team)
                 {
                     _grid.GetCell(unitX - 1, unitY).GetOccupiedBy().GetUnitAnimations().AnimateUnit("HURT");
                     _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(unitX - 1, unitY).GetOccupiedBy()));
                     _grid.GetCell(unitX - 1, unitY).GetOccupiedBy().SetHealth();
                 }
                     
-                if (_grid.GetCell(unitX, unitY + 1) != null &&_grid.GetCell(unitX, unitY + 1).GetOccupiedBy())
+                if (_grid.GetCell(unitX, unitY + 1) != null &&_grid.GetCell(unitX, unitY + 1).GetOccupiedBy()  && _grid.GetCell(unitX, unitY + 1).GetOccupiedBy().GetStatistics().team != unit.GetStatistics().team)
                 {
                     _grid.GetCell(unitX, unitY + 1).GetOccupiedBy().GetUnitAnimations().AnimateUnit("HURT");
                     _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(unitX, unitY + 1).GetOccupiedBy()));
                     _grid.GetCell(unitX, unitY + 1).GetOccupiedBy().SetHealth();
                 }
                     
-                if (_grid.GetCell(unitX, unitY - 1) != null &&_grid.GetCell(unitX, unitY - 1).GetOccupiedBy())
+                if (_grid.GetCell(unitX, unitY - 1) != null &&_grid.GetCell(unitX, unitY - 1).GetOccupiedBy()  && _grid.GetCell(unitX, unitY - 1).GetOccupiedBy().GetStatistics().team != unit.GetStatistics().team)
                 {
                     _grid.GetCell(unitX, unitY - 1).GetOccupiedBy().GetUnitAnimations().AnimateUnit("HURT");
                     _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(unitX, unitY - 1).GetOccupiedBy()));
                     _grid.GetCell(unitX, unitY - 1).GetOccupiedBy().SetHealth();
                 }
 
-                if ((_grid.GetCell(unitX + 1, unitY) != null && _grid.GetCell(unitX + 1, unitY).GetOccupiedBy()) ||
-                    (_grid.GetCell(unitX - 1, unitY) != null && _grid.GetCell(unitX - 1, unitY).GetOccupiedBy()) ||
-                    (_grid.GetCell(unitX, unitY + 1) != null && _grid.GetCell(unitX, unitY + 1).GetOccupiedBy())||
-                    (_grid.GetCell(unitX, unitY - 1) != null && _grid.GetCell(unitX, unitY - 1).GetOccupiedBy()))
+                if ((_grid.GetCell(unitX + 1, unitY) != null && _grid.GetCell(unitX + 1, unitY).GetOccupiedBy()) && _grid.GetCell(unitX + 1, unitY).GetOccupiedBy().GetStatistics().team != unit.GetStatistics().team ||
+                    (_grid.GetCell(unitX - 1, unitY) != null && _grid.GetCell(unitX - 1, unitY).GetOccupiedBy()) && _grid.GetCell(unitX - 1, unitY).GetOccupiedBy().GetStatistics().team != unit.GetStatistics().team ||
+                    (_grid.GetCell(unitX, unitY + 1) != null && _grid.GetCell(unitX, unitY + 1).GetOccupiedBy()) && _grid.GetCell(unitX, unitY + 1).GetOccupiedBy().GetStatistics().team != unit.GetStatistics().team ||
+                    (_grid.GetCell(unitX, unitY - 1) != null && _grid.GetCell(unitX, unitY - 1).GetOccupiedBy()) && _grid.GetCell(unitX, unitY - 1).GetOccupiedBy().GetStatistics().team != unit.GetStatistics().team)
                 {
                     Debug.Log("Handle ability 11.2");
                     _unitSounds.PlayAbilitySound();
