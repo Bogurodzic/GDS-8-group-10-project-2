@@ -6,15 +6,33 @@ using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour
 {
+    public AudioClip startButtonClip;
+    private AudioSource _audioSource;
+    
     public void Start()
     {
-        MusicManager.Instance.PlayMusicMenu();
+        LoadAudioSource();
+        //MusicManager.Instance.PlayMusicMenu();
     }
 
     public void StarGame()
     {
+        PlayStartButton();
         MusicManager.Instance.PlayMusicDeployment();
         SceneManager.LoadScene("Scenes/Game");
     }
-    
+
+    private void LoadAudioSource()
+    {
+        _audioSource = gameObject.GetComponent<AudioSource>();
+    }
+
+    private void PlayStartButton()
+    {
+        if (MusicManager.Instance.IsEnabled())
+        {
+            _audioSource.clip = startButtonClip;
+            _audioSource.Play();
+        }
+    }
 }
