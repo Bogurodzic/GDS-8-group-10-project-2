@@ -1,0 +1,258 @@
+
+GDS - BOSS.png
+size: 2048,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+BOSS BLUE/Body_Bottom
+  rotate: true
+  xy: 1489, 31
+  size: 225, 184
+  orig: 227, 186
+  offset: 1, 1
+  index: -1
+BOSS BLUE/Body_Top
+  rotate: false
+  xy: 1489, 258
+  size: 242, 250
+  orig: 244, 252
+  offset: 1, 1
+  index: -1
+BOSS RED/Body_Top
+  rotate: false
+  xy: 1489, 258
+  size: 242, 250
+  orig: 242, 250
+  offset: 0, 0
+  index: -1
+BOSS BLUE/Head
+  rotate: true
+  xy: 682, 181
+  size: 327, 476
+  orig: 329, 478
+  offset: 1, 1
+  index: -1
+BOSS BLUE/L_Arm
+  rotate: false
+  xy: 342, 16
+  size: 134, 140
+  orig: 136, 142
+  offset: 1, 1
+  index: -1
+BOSS BLUE/R_Arm
+  rotate: false
+  xy: 342, 16
+  size: 134, 140
+  orig: 136, 142
+  offset: 1, 1
+  index: -1
+BOSS RED/L_Arm
+  rotate: false
+  xy: 342, 16
+  size: 134, 140
+  orig: 134, 140
+  offset: 0, 0
+  index: -1
+BOSS RED/R_Arm
+  rotate: false
+  xy: 342, 16
+  size: 134, 140
+  orig: 134, 140
+  offset: 0, 0
+  index: -1
+BOSS BLUE/L_Finger
+  rotate: false
+  xy: 554, 7
+  size: 53, 44
+  orig: 55, 46
+  offset: 1, 1
+  index: -1
+BOSS RED/L_Finger
+  rotate: false
+  xy: 554, 7
+  size: 53, 44
+  orig: 53, 44
+  offset: 0, 0
+  index: -1
+BOSS BLUE/L_Foot
+  rotate: true
+  xy: 823, 88
+  size: 91, 58
+  orig: 93, 60
+  offset: 1, 1
+  index: -1
+BOSS BLUE/R_Foot
+  rotate: true
+  xy: 823, 88
+  size: 91, 58
+  orig: 93, 60
+  offset: 1, 1
+  index: -1
+BOSS RED/L_Foot
+  rotate: true
+  xy: 823, 88
+  size: 91, 58
+  orig: 91, 58
+  offset: 0, 0
+  index: -1
+BOSS RED/R_Foot
+  rotate: true
+  xy: 823, 88
+  size: 91, 58
+  orig: 91, 58
+  offset: 0, 0
+  index: -1
+BOSS BLUE/L_Hand
+  rotate: true
+  xy: 554, 53
+  size: 103, 94
+  orig: 105, 96
+  offset: 1, 1
+  index: -1
+BOSS RED/L_Hand
+  rotate: true
+  xy: 554, 53
+  size: 103, 94
+  orig: 103, 94
+  offset: 0, 0
+  index: -1
+BOSS BLUE/L_Leg
+  rotate: false
+  xy: 478, 2
+  size: 74, 154
+  orig: 76, 156
+  offset: 1, 1
+  index: -1
+BOSS BLUE/R_Leg
+  rotate: false
+  xy: 478, 2
+  size: 74, 154
+  orig: 76, 156
+  offset: 1, 1
+  index: -1
+BOSS RED/L_Leg
+  rotate: false
+  xy: 478, 2
+  size: 74, 154
+  orig: 74, 154
+  offset: 0, 0
+  index: -1
+BOSS RED/R_Leg
+  rotate: false
+  xy: 478, 2
+  size: 74, 154
+  orig: 74, 154
+  offset: 0, 0
+  index: -1
+BOSS BLUE/L_Shoulder
+  rotate: true
+  xy: 2, 17
+  size: 139, 168
+  orig: 141, 170
+  offset: 1, 1
+  index: -1
+BOSS RED/L_Shoulder
+  rotate: true
+  xy: 2, 17
+  size: 139, 168
+  orig: 139, 168
+  offset: 0, 0
+  index: -1
+BOSS BLUE/L_Thigh
+  rotate: false
+  xy: 650, 38
+  size: 81, 118
+  orig: 83, 120
+  offset: 1, 1
+  index: -1
+BOSS BLUE/R_Thigh
+  rotate: false
+  xy: 650, 38
+  size: 81, 118
+  orig: 83, 120
+  offset: 1, 1
+  index: -1
+BOSS RED/L_Thigh
+  rotate: false
+  xy: 650, 38
+  size: 81, 118
+  orig: 81, 118
+  offset: 0, 0
+  index: -1
+BOSS RED/R_Thigh
+  rotate: false
+  xy: 650, 38
+  size: 81, 118
+  orig: 81, 118
+  offset: 0, 0
+  index: -1
+BOSS BLUE/R_Finger
+  rotate: true
+  xy: 733, 10
+  size: 74, 96
+  orig: 76, 98
+  offset: 1, 1
+  index: -1
+BOSS RED/R_Finger
+  rotate: true
+  xy: 733, 10
+  size: 74, 96
+  orig: 74, 96
+  offset: 0, 0
+  index: -1
+BOSS BLUE/R_Hand
+  rotate: true
+  xy: 733, 86
+  size: 93, 88
+  orig: 95, 90
+  offset: 1, 1
+  index: -1
+BOSS RED/R_Hand
+  rotate: true
+  xy: 733, 86
+  size: 93, 88
+  orig: 93, 88
+  offset: 0, 0
+  index: -1
+BOSS BLUE/R_Shoulder
+  rotate: true
+  xy: 172, 26
+  size: 130, 168
+  orig: 132, 170
+  offset: 1, 1
+  index: -1
+BOSS RED/R_Shoulder
+  rotate: true
+  xy: 172, 26
+  size: 130, 168
+  orig: 130, 168
+  offset: 0, 0
+  index: -1
+BOSS BLUE/R_weapon
+  rotate: true
+  xy: 2, 158
+  size: 350, 678
+  orig: 352, 680
+  offset: 1, 1
+  index: -1
+BOSS RED/R_weapon
+  rotate: true
+  xy: 2, 158
+  size: 350, 678
+  orig: 350, 678
+  offset: 0, 0
+  index: -1
+BOSS RED/Body_Bottom
+  rotate: true
+  xy: 1675, 31
+  size: 225, 184
+  orig: 225, 184
+  offset: 0, 0
+  index: -1
+BOSS RED/Head
+  rotate: false
+  xy: 1160, 32
+  size: 327, 476
+  orig: 327, 476
+  offset: 0, 0
+  index: -1

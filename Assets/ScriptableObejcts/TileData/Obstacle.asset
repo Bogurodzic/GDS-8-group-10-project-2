@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a1ffce9740fb4c63848ef97ca5a18f5, type: 3}
+  m_Name: Obstacle
+  m_EditorClassIdentifier: 
+  tiles:
+  - {fileID: 11400000, guid: 38a824406a78e4cbcb56ac645565035f, type: 2}
+  - {fileID: 11400000, guid: e16222432b3bb467a8123d65ad636fb2, type: 2}
+  - {fileID: 11400000, guid: a1359086a8fa74f9e83a6041a1ec1c34, type: 2}
+  - {fileID: 11400000, guid: 036387c8de4bf43afaa5e4644c646689, type: 2}
+  - {fileID: 11400000, guid: 9c3dda1f05dc74e06af4201f164380df, type: 2}
+  - {fileID: 11400000, guid: 4a6c8bdc2affc4e8786e64d10b8ef23b, type: 2}
+  - {fileID: 11400000, guid: d31c136c711924f76a42ce8ca1d91fbd, type: 2}
+  - {fileID: 11400000, guid: eaf0e6365871649b9b07b5c84165d982, type: 2}
+  - {fileID: 11400000, guid: d11a0822f3a1f4fba9d9e5b1cbc9ac1d, type: 2}
+  - {fileID: 11400000, guid: 090ffd2fe2c5f426ca7c3a379fa2cc2c, type: 2}
+  - {fileID: 11400000, guid: 94de672a662264bb3ba06cc7167435cf, type: 2}
+  - {fileID: 11400000, guid: ecd1348ddec3043eca23b47a3a948a15, type: 2}
+  movementCost: 0
+  bonusDef: 0
+  isObstacle: 1

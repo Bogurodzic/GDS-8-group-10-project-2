@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e83d435aec704e55af2b4140a918c98, type: 3}
+  m_Name: Whirlwind
+  m_EditorClassIdentifier: 
+  description: Attack everyone around unit
+  abilityName: Whirlwind
+  minRange: 1
+  maxRange: 1
+  areaOfEffect: 1
+  cooldown: 2
+  damage: 40
+  heal: 0
+  abilityType: 2
+  abilityButtonNormal: {fileID: 21300000, guid: 4daa9a13f7c954340a5de4357fbe0b81,
+    type: 3}
+  abilityButtonHover: {fileID: 21300000, guid: e8f6c70a0546a4878885c57986c38a60, type: 3}
+  abilityButtonActive: {fileID: 21300000, guid: 962fbaa5f017c45eeb0f21ecd238cf20,
+    type: 3}
+  abilityAudio: {fileID: 8300000, guid: f12956061dc42478a87486190d42a196, type: 3}

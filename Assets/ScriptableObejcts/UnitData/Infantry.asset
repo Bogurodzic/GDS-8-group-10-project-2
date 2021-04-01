@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cea203f27a234a51b49477e5922c1bc, type: 3}
+  m_Name: Infantry
+  m_EditorClassIdentifier: 
+  unitName: Infantry
+  minAttack: 35
+  maxAttack: 45
+  defend: 0
+  maxHp: 100
+  movementRange: 5
+  minAttackRange: 1
+  maxAttackRange: 1
+  unitAbility: {fileID: 11400000, guid: 0313b3e5ea4524b9faba69a3cbff12cd, type: 2}
+  unitSpriteTeam1: {fileID: -2305219993210457091, guid: 94e3bdd25081f4fb6914c85d3aed79aa,
+    type: 3}
+  unitSpriteTeam2: {fileID: -3777404259050671863, guid: 94e3bdd25081f4fb6914c85d3aed79aa,
+    type: 3}
+  unitPickerSprite: {fileID: 8746389353966651759, guid: e12375eef647c43fd93b302bd9654290,
+    type: 3}
+  unitListSprite: {fileID: 8746389353966651759, guid: 89ac21b47f81f40fab3a998bc1ba7861,
+    type: 3}
+  unitPickerSpriteOverviewTeam1: {fileID: 21300000, guid: 8aa565889e4d7412297ce075f5510f54,
+    type: 3}
+  unitPickerSpriteOverviewTeam2: {fileID: 21300000, guid: 1365f6a54e7114e4f8f6ae5a33196559,
+    type: 3}
+  skeletonDataAsset: {fileID: 11400000, guid: e38e7a79d66524639a258b19a1d77bbb, type: 2}
+  attackClip: {fileID: 8300000, guid: 40fdef08dd8e74ce794560253901df70, type: 3}
+  deathClip: {fileID: 8300000, guid: b2267763cbee841c1a4f556069deeabf, type: 3}

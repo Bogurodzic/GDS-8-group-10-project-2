@@ -1,0 +1,258 @@
+
+GDS - ROGUE - DO animacji.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ROGUE BLUE/Body
+  rotate: false
+  xy: 2, 176
+  size: 285, 328
+  orig: 287, 330
+  offset: 1, 1
+  index: -1
+ROGUE RED/Body
+  rotate: false
+  xy: 2, 176
+  size: 285, 328
+  orig: 285, 328
+  offset: 0, 0
+  index: -1
+ROGUE BLUE/Head
+  rotate: false
+  xy: 289, 193
+  size: 248, 311
+  orig: 250, 313
+  offset: 1, 1
+  index: -1
+ROGUE BLUE/L_Arm
+  rotate: true
+  xy: 405, 2
+  size: 113, 132
+  orig: 115, 134
+  offset: 1, 1
+  index: -1
+ROGUE BLUE/R_Arm
+  rotate: true
+  xy: 405, 2
+  size: 113, 132
+  orig: 115, 134
+  offset: 1, 1
+  index: -1
+ROGUE RED/L_Arm
+  rotate: true
+  xy: 405, 2
+  size: 113, 132
+  orig: 113, 132
+  offset: 0, 0
+  index: -1
+ROGUE RED/R_Arm
+  rotate: true
+  xy: 405, 2
+  size: 113, 132
+  orig: 113, 132
+  offset: 0, 0
+  index: -1
+ROGUE BLUE/L_Finger
+  rotate: false
+  xy: 619, 148
+  size: 52, 43
+  orig: 54, 45
+  offset: 1, 1
+  index: -1
+ROGUE RED/L_Finger
+  rotate: false
+  xy: 619, 148
+  size: 52, 43
+  orig: 52, 43
+  offset: 0, 0
+  index: -1
+ROGUE BLUE/L_Foot
+  rotate: false
+  xy: 441, 142
+  size: 87, 49
+  orig: 89, 51
+  offset: 1, 1
+  index: -1
+ROGUE RED/L_Foot
+  rotate: false
+  xy: 441, 142
+  size: 87, 49
+  orig: 87, 49
+  offset: 0, 0
+  index: -1
+ROGUE BLUE/L_Hand
+  rotate: false
+  xy: 900, 108
+  size: 96, 83
+  orig: 98, 85
+  offset: 1, 1
+  index: -1
+ROGUE RED/L_Hand
+  rotate: false
+  xy: 900, 108
+  size: 96, 83
+  orig: 96, 83
+  offset: 0, 0
+  index: -1
+ROGUE BLUE/L_Leg
+  rotate: true
+  xy: 2, 10
+  size: 67, 139
+  orig: 69, 141
+  offset: 1, 1
+  index: -1
+ROGUE RED/L_Leg
+  rotate: true
+  xy: 2, 10
+  size: 67, 139
+  orig: 67, 139
+  offset: 0, 0
+  index: -1
+ROGUE BLUE/L_Shoulder
+  rotate: false
+  xy: 740, 22
+  size: 158, 169
+  orig: 160, 171
+  offset: 1, 1
+  index: -1
+ROGUE RED/L_Shoulder
+  rotate: false
+  xy: 740, 22
+  size: 158, 169
+  orig: 158, 169
+  offset: 0, 0
+  index: -1
+ROGUE BLUE/L_Thigh
+  rotate: true
+  xy: 284, 3
+  size: 74, 119
+  orig: 76, 121
+  offset: 1, 1
+  index: -1
+ROGUE RED/L_Thigh
+  rotate: true
+  xy: 284, 3
+  size: 74, 119
+  orig: 74, 119
+  offset: 0, 0
+  index: -1
+ROGUE BLUE/L_Weapon
+  rotate: true
+  xy: 539, 10
+  size: 130, 199
+  orig: 132, 201
+  offset: 1, 1
+  index: -1
+ROGUE RED/L_Weapon
+  rotate: true
+  xy: 539, 10
+  size: 130, 199
+  orig: 130, 199
+  offset: 0, 0
+  index: -1
+ROGUE BLUE/R_Finger
+  rotate: false
+  xy: 2, 79
+  size: 316, 95
+  orig: 318, 97
+  offset: 1, 1
+  index: -1
+ROGUE RED/R_Finger
+  rotate: false
+  xy: 2, 79
+  size: 316, 95
+  orig: 316, 95
+  offset: 0, 0
+  index: -1
+ROGUE BLUE/R_Foot
+  rotate: false
+  xy: 530, 142
+  size: 87, 49
+  orig: 89, 51
+  offset: 1, 1
+  index: -1
+ROGUE RED/R_Foot
+  rotate: false
+  xy: 530, 142
+  size: 87, 49
+  orig: 87, 49
+  offset: 0, 0
+  index: -1
+ROGUE BLUE/R_Hand
+  rotate: false
+  xy: 900, 27
+  size: 76, 79
+  orig: 78, 81
+  offset: 1, 1
+  index: -1
+ROGUE RED/R_Hand
+  rotate: false
+  xy: 900, 27
+  size: 76, 79
+  orig: 76, 79
+  offset: 0, 0
+  index: -1
+ROGUE BLUE/R_Leg
+  rotate: true
+  xy: 143, 10
+  size: 67, 139
+  orig: 69, 141
+  offset: 1, 1
+  index: -1
+ROGUE RED/R_Leg
+  rotate: true
+  xy: 143, 10
+  size: 67, 139
+  orig: 67, 139
+  offset: 0, 0
+  index: -1
+ROGUE BLUE/R_Shoulder
+  rotate: true
+  xy: 539, 346
+  size: 158, 169
+  orig: 160, 171
+  offset: 1, 1
+  index: -1
+ROGUE RED/R_Shoulder
+  rotate: true
+  xy: 539, 346
+  size: 158, 169
+  orig: 158, 169
+  offset: 0, 0
+  index: -1
+ROGUE BLUE/R_Thigh
+  rotate: true
+  xy: 320, 117
+  size: 74, 119
+  orig: 76, 121
+  offset: 1, 1
+  index: -1
+ROGUE RED/R_Thigh
+  rotate: true
+  xy: 320, 117
+  size: 74, 119
+  orig: 74, 119
+  offset: 0, 0
+  index: -1
+ROGUE BLUE/R_Weapon
+  rotate: true
+  xy: 539, 214
+  size: 130, 199
+  orig: 132, 201
+  offset: 1, 1
+  index: -1
+ROGUE RED/R_Weapon
+  rotate: true
+  xy: 539, 214
+  size: 130, 199
+  orig: 130, 199
+  offset: 0, 0
+  index: -1
+ROGUE RED/Head
+  rotate: false
+  xy: 740, 193
+  size: 248, 311
+  orig: 248, 311
+  offset: 0, 0
+  index: -1

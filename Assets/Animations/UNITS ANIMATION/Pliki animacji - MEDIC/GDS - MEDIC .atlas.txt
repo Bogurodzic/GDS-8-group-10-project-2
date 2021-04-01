@@ -1,0 +1,384 @@
+
+GDS - MEDIC .png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+MEDIC BLUE/Body_Bottom
+  rotate: false
+  xy: 585, 52
+  size: 275, 286
+  orig: 277, 288
+  offset: 1, 1
+  index: -1
+MEDIC BLUE/Body_Top
+  rotate: true
+  xy: 2, 5
+  size: 231, 243
+  orig: 233, 245
+  offset: 1, 1
+  index: -1
+MEDIC BLUE/Head
+  rotate: false
+  xy: 310, 340
+  size: 251, 294
+  orig: 253, 296
+  offset: 1, 1
+  index: -1
+MEDIC BLUE/Hip
+  rotate: true
+  xy: 815, 461
+  size: 174, 108
+  orig: 176, 110
+  offset: 1, 1
+  index: -1
+MEDIC BLUE/L_Arm
+  rotate: true
+  xy: 464, 241
+  size: 97, 119
+  orig: 99, 121
+  offset: 1, 1
+  index: -1
+MEDIC BLUE/L_Finger
+  rotate: false
+  xy: 818, 7
+  size: 52, 43
+  orig: 54, 45
+  offset: 1, 1
+  index: -1
+MEDIC BLUE/L_Foot
+  rotate: false
+  xy: 971, 8
+  size: 87, 49
+  orig: 89, 51
+  offset: 1, 1
+  index: -1
+MEDIC BLUE/R_Foot
+  rotate: false
+  xy: 971, 8
+  size: 87, 49
+  orig: 89, 51
+  offset: 1, 1
+  index: -1
+MEDIC BLUE/L_Hand
+  rotate: false
+  xy: 492, 159
+  size: 87, 80
+  orig: 89, 82
+  offset: 1, 1
+  index: -1
+MEDIC BLUE/L_Leg
+  rotate: false
+  xy: 1024, 219
+  size: 59, 137
+  orig: 61, 139
+  offset: 1, 1
+  index: -1
+MEDIC BLUE/R_Leg
+  rotate: false
+  xy: 1024, 219
+  size: 59, 137
+  orig: 61, 139
+  offset: 1, 1
+  index: -1
+MEDIC BLUE/L_Shoulder
+  rotate: false
+  xy: 1065, 867
+  size: 124, 155
+  orig: 126, 157
+  offset: 1, 1
+  index: -1
+MEDIC BLUE/L_Thigh
+  rotate: false
+  xy: 815, 342
+  size: 74, 117
+  orig: 76, 119
+  offset: 1, 1
+  index: -1
+MEDIC BLUE/R_Thigh
+  rotate: false
+  xy: 815, 342
+  size: 74, 117
+  orig: 76, 119
+  offset: 1, 1
+  index: -1
+MEDIC BLUE/L_eyebrow
+  rotate: false
+  xy: 1065, 849
+  size: 51, 16
+  orig: 53, 18
+  offset: 1, 1
+  index: -1
+MEDIC BLUE/R_Arm
+  rotate: true
+  xy: 799, 637
+  size: 97, 119
+  orig: 99, 121
+  offset: 1, 1
+  index: -1
+MEDIC BLUE/R_Finger
+  rotate: false
+  xy: 955, 751
+  size: 75, 95
+  orig: 77, 97
+  offset: 1, 1
+  index: -1
+MEDIC BLUE/R_Hand
+  rotate: false
+  xy: 967, 398
+  size: 76, 80
+  orig: 78, 82
+  offset: 1, 1
+  index: -1
+MEDIC BLUE/R_Shoulder
+  rotate: true
+  xy: 862, 59
+  size: 124, 155
+  orig: 126, 157
+  offset: 1, 1
+  index: -1
+MEDIC BLUE/R_Weapon
+  rotate: true
+  xy: 310, 240
+  size: 98, 152
+  orig: 100, 154
+  offset: 1, 1
+  index: -1
+MEDIC RED/R_Weapon
+  rotate: true
+  xy: 310, 240
+  size: 98, 152
+  orig: 98, 152
+  offset: 0, 0
+  index: -1
+MEDIC BLUE/R_eyebrow
+  rotate: true
+  xy: 935, 6
+  size: 51, 16
+  orig: 53, 18
+  offset: 1, 1
+  index: -1
+MEDIC BLUE/eyes_close
+  rotate: true
+  xy: 988, 206
+  size: 150, 34
+  orig: 152, 36
+  offset: 1, 1
+  index: -1
+MEDIC BLUE/eyes_open
+  rotate: false
+  xy: 492, 5
+  size: 161, 45
+  orig: 163, 47
+  offset: 1, 1
+  index: -1
+MEDIC BLUE/hair
+  rotate: false
+  xy: 2, 631
+  size: 306, 391
+  orig: 308, 393
+  offset: 1, 1
+  index: -1
+MEDIC BLUE/mouth_normal
+  rotate: false
+  xy: 492, 57
+  size: 31, 18
+  orig: 33, 20
+  offset: 1, 1
+  index: -1
+MEDIC BLUE/mouth_open
+  rotate: true
+  xy: 967, 358
+  size: 38, 30
+  orig: 40, 32
+  offset: 1, 1
+  index: -1
+MEDIC BLUE/shawl
+  rotate: false
+  xy: 310, 636
+  size: 366, 386
+  orig: 368, 388
+  offset: 1, 1
+  index: -1
+MEDIC RED/shawl
+  rotate: false
+  xy: 310, 636
+  size: 366, 386
+  orig: 366, 386
+  offset: 0, 0
+  index: -1
+MEDIC RED/Body_Bottom
+  rotate: false
+  xy: 678, 736
+  size: 275, 286
+  orig: 275, 286
+  offset: 0, 0
+  index: -1
+MEDIC RED/Body_Top
+  rotate: true
+  xy: 247, 5
+  size: 231, 243
+  orig: 231, 243
+  offset: 0, 0
+  index: -1
+MEDIC RED/Head
+  rotate: false
+  xy: 563, 340
+  size: 250, 294
+  orig: 250, 294
+  offset: 0, 0
+  index: -1
+MEDIC RED/Hip
+  rotate: true
+  xy: 955, 848
+  size: 174, 108
+  orig: 174, 108
+  offset: 0, 0
+  index: -1
+MEDIC RED/L_Arm
+  rotate: true
+  xy: 678, 637
+  size: 97, 119
+  orig: 97, 119
+  offset: 0, 0
+  index: -1
+MEDIC RED/L_Finger
+  rotate: true
+  xy: 872, 5
+  size: 52, 43
+  orig: 52, 43
+  offset: 0, 0
+  index: -1
+MEDIC RED/L_Foot
+  rotate: true
+  xy: 1041, 662
+  size: 87, 49
+  orig: 87, 49
+  offset: 0, 0
+  index: -1
+MEDIC RED/R_Foot
+  rotate: true
+  xy: 1041, 662
+  size: 87, 49
+  orig: 87, 49
+  offset: 0, 0
+  index: -1
+MEDIC RED/L_Hand
+  rotate: false
+  xy: 492, 77
+  size: 87, 80
+  orig: 87, 80
+  offset: 0, 0
+  index: -1
+MEDIC RED/L_Leg
+  rotate: false
+  xy: 1055, 80
+  size: 59, 137
+  orig: 59, 137
+  offset: 0, 0
+  index: -1
+MEDIC RED/R_Leg
+  rotate: false
+  xy: 1055, 80
+  size: 59, 137
+  orig: 59, 137
+  offset: 0, 0
+  index: -1
+MEDIC RED/L_Shoulder
+  rotate: false
+  xy: 862, 185
+  size: 124, 155
+  orig: 124, 155
+  offset: 0, 0
+  index: -1
+MEDIC RED/L_Thigh
+  rotate: false
+  xy: 891, 342
+  size: 74, 117
+  orig: 74, 117
+  offset: 0, 0
+  index: -1
+MEDIC RED/R_Thigh
+  rotate: false
+  xy: 891, 342
+  size: 74, 117
+  orig: 74, 117
+  offset: 0, 0
+  index: -1
+MEDIC RED/L_eyebrow
+  rotate: true
+  xy: 917, 6
+  size: 51, 16
+  orig: 51, 16
+  offset: 0, 0
+  index: -1
+MEDIC RED/R_Arm
+  rotate: true
+  xy: 920, 637
+  size: 97, 119
+  orig: 97, 119
+  offset: 0, 0
+  index: -1
+MEDIC RED/R_Finger
+  rotate: false
+  xy: 1032, 751
+  size: 75, 95
+  orig: 75, 95
+  offset: 0, 0
+  index: -1
+MEDIC RED/R_Hand
+  rotate: true
+  xy: 1060, 2
+  size: 76, 80
+  orig: 76, 80
+  offset: 0, 0
+  index: -1
+MEDIC RED/R_Shoulder
+  rotate: false
+  xy: 925, 480
+  size: 124, 155
+  orig: 124, 155
+  offset: 0, 0
+  index: -1
+MEDIC RED/R_eyebrow
+  rotate: true
+  xy: 953, 6
+  size: 51, 16
+  orig: 51, 16
+  offset: 0, 0
+  index: -1
+MEDIC RED/eyes_close
+  rotate: true
+  xy: 1019, 64
+  size: 140, 34
+  orig: 140, 34
+  offset: 0, 0
+  index: -1
+MEDIC RED/eyes_open
+  rotate: false
+  xy: 655, 5
+  size: 161, 45
+  orig: 161, 45
+  offset: 0, 0
+  index: -1
+MEDIC RED/hair
+  rotate: false
+  xy: 2, 238
+  size: 306, 391
+  orig: 306, 391
+  offset: 0, 0
+  index: -1
+MEDIC RED/mouth_normal
+  rotate: false
+  xy: 525, 57
+  size: 31, 18
+  orig: 31, 18
+  offset: 0, 0
+  index: -1
+MEDIC RED/mouth_open
+  rotate: true
+  xy: 999, 358
+  size: 38, 30
+  orig: 38, 30
+  offset: 0, 0
+  index: -1

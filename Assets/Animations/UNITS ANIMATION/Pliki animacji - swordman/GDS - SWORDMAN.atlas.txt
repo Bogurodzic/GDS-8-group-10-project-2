@@ -1,0 +1,258 @@
+
+GDS - SWORDMAN.png
+size: 2048,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+SWORDMAN BLUE/Body
+  rotate: false
+  xy: 834, 176
+  size: 224, 333
+  orig: 226, 335
+  offset: 1, 1
+  index: -1
+SWORDMAN BLUE/Head
+  rotate: false
+  xy: 260, 172
+  size: 285, 337
+  orig: 287, 339
+  offset: 1, 1
+  index: -1
+SWORDMAN BLUE/L_Arm
+  rotate: false
+  xy: 882, 47
+  size: 122, 127
+  orig: 124, 129
+  offset: 1, 1
+  index: -1
+SWORDMAN BLUE/R_Arm
+  rotate: false
+  xy: 882, 47
+  size: 122, 127
+  orig: 124, 129
+  offset: 1, 1
+  index: -1
+SWORDMAN BLUE/L_Finger
+  rotate: false
+  xy: 882, 2
+  size: 52, 43
+  orig: 54, 45
+  offset: 1, 1
+  index: -1
+SWORDMAN BLUE/L_Foot
+  rotate: false
+  xy: 1130, 5
+  size: 87, 49
+  orig: 89, 51
+  offset: 1, 1
+  index: -1
+SWORDMAN BLUE/L_Hand
+  rotate: true
+  xy: 1462, 85
+  size: 96, 83
+  orig: 98, 85
+  offset: 1, 1
+  index: -1
+SWORDMAN BLUE/L_Leg
+  rotate: false
+  xy: 606, 31
+  size: 67, 139
+  orig: 69, 141
+  offset: 1, 1
+  index: -1
+SWORDMAN BLUE/L_Shoulder
+  rotate: true
+  xy: 2, 16
+  size: 139, 168
+  orig: 141, 170
+  offset: 1, 1
+  index: -1
+SWORDMAN BLUE/L_Thigh
+  rotate: false
+  xy: 1130, 56
+  size: 81, 118
+  orig: 83, 120
+  offset: 1, 1
+  index: -1
+SWORDMAN BLUE/R_Finger
+  rotate: false
+  xy: 1618, 39
+  size: 75, 95
+  orig: 77, 97
+  offset: 1, 1
+  index: -1
+SWORDMAN BLUE/R_Foot
+  rotate: false
+  xy: 1286, 183
+  size: 87, 49
+  orig: 89, 51
+  offset: 1, 1
+  index: -1
+SWORDMAN BLUE/R_Hand
+  rotate: false
+  xy: 1462, 4
+  size: 76, 79
+  orig: 78, 81
+  offset: 1, 1
+  index: -1
+SWORDMAN BLUE/R_Leg
+  rotate: false
+  xy: 744, 31
+  size: 67, 139
+  orig: 69, 141
+  offset: 1, 1
+  index: -1
+SWORDMAN BLUE/R_Shoulder
+  rotate: false
+  xy: 342, 2
+  size: 130, 168
+  orig: 132, 170
+  offset: 1, 1
+  index: -1
+SWORDMAN BLUE/R_Thigh
+  rotate: false
+  xy: 1296, 63
+  size: 81, 118
+  orig: 83, 120
+  offset: 1, 1
+  index: -1
+SWORDMAN BLUE/R_Weapon
+  rotate: false
+  xy: 2, 157
+  size: 256, 352
+  orig: 258, 354
+  offset: 1, 1
+  index: -1
+SWORDMAN RED/R_Weapon
+  rotate: false
+  xy: 2, 157
+  size: 256, 352
+  orig: 256, 352
+  offset: 0, 0
+  index: -1
+SWORDMAN BLUE/Shield
+  rotate: false
+  xy: 1286, 234
+  size: 259, 275
+  orig: 261, 277
+  offset: 1, 1
+  index: -1
+SWORDMAN RED/Body
+  rotate: false
+  xy: 1060, 176
+  size: 224, 333
+  orig: 224, 333
+  offset: 0, 0
+  index: -1
+SWORDMAN RED/Head
+  rotate: false
+  xy: 547, 172
+  size: 285, 337
+  orig: 285, 337
+  offset: 0, 0
+  index: -1
+SWORDMAN RED/L_Arm
+  rotate: false
+  xy: 1006, 47
+  size: 122, 127
+  orig: 122, 127
+  offset: 0, 0
+  index: -1
+SWORDMAN RED/R_Arm
+  rotate: false
+  xy: 1006, 47
+  size: 122, 127
+  orig: 122, 127
+  offset: 0, 0
+  index: -1
+SWORDMAN RED/L_Finger
+  rotate: false
+  xy: 936, 2
+  size: 52, 43
+  orig: 52, 43
+  offset: 0, 0
+  index: -1
+SWORDMAN RED/L_Foot
+  rotate: false
+  xy: 1219, 5
+  size: 87, 49
+  orig: 87, 49
+  offset: 0, 0
+  index: -1
+SWORDMAN RED/L_Hand
+  rotate: true
+  xy: 1547, 136
+  size: 96, 83
+  orig: 96, 83
+  offset: 0, 0
+  index: -1
+SWORDMAN RED/L_Leg
+  rotate: false
+  xy: 675, 31
+  size: 67, 139
+  orig: 67, 139
+  offset: 0, 0
+  index: -1
+SWORDMAN RED/L_Shoulder
+  rotate: true
+  xy: 172, 16
+  size: 139, 168
+  orig: 139, 168
+  offset: 0, 0
+  index: -1
+SWORDMAN RED/L_Thigh
+  rotate: false
+  xy: 1213, 56
+  size: 81, 118
+  orig: 81, 118
+  offset: 0, 0
+  index: -1
+SWORDMAN RED/R_Finger
+  rotate: false
+  xy: 1632, 137
+  size: 75, 95
+  orig: 75, 95
+  offset: 0, 0
+  index: -1
+SWORDMAN RED/R_Foot
+  rotate: false
+  xy: 1375, 183
+  size: 87, 49
+  orig: 87, 49
+  offset: 0, 0
+  index: -1
+SWORDMAN RED/R_Hand
+  rotate: false
+  xy: 1540, 4
+  size: 76, 79
+  orig: 76, 79
+  offset: 0, 0
+  index: -1
+SWORDMAN RED/R_Leg
+  rotate: false
+  xy: 813, 31
+  size: 67, 139
+  orig: 67, 139
+  offset: 0, 0
+  index: -1
+SWORDMAN RED/R_Shoulder
+  rotate: false
+  xy: 474, 2
+  size: 130, 168
+  orig: 130, 168
+  offset: 0, 0
+  index: -1
+SWORDMAN RED/R_Thigh
+  rotate: false
+  xy: 1379, 63
+  size: 81, 118
+  orig: 81, 118
+  offset: 0, 0
+  index: -1
+SWORDMAN RED/Shield
+  rotate: false
+  xy: 1547, 234
+  size: 259, 275
+  orig: 259, 275
+  offset: 0, 0
+  index: -1

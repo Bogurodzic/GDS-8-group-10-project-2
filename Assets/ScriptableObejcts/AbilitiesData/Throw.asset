@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e83d435aec704e55af2b4140a918c98, type: 3}
+  m_Name: Throw
+  m_EditorClassIdentifier: 
+  description: Attack with larger range
+  abilityName: Throw
+  minRange: 2
+  maxRange: 4
+  areaOfEffect: 1
+  cooldown: 2
+  damage: 30
+  heal: 0
+  abilityType: 0
+  abilityButtonNormal: {fileID: 21300000, guid: 5010c13f3b8e44f97ba7b461282ed338,
+    type: 3}
+  abilityButtonHover: {fileID: 21300000, guid: 5f5548b2974e449048a9044acb49b513, type: 3}
+  abilityButtonActive: {fileID: 21300000, guid: b7ba2533108ae43cca3958f646f47d92,
+    type: 3}
+  abilityAudio: {fileID: 8300000, guid: 27f5d47c211884d5fa0a4591f7e1038b, type: 3}

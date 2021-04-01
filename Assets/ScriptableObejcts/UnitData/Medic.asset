@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cea203f27a234a51b49477e5922c1bc, type: 3}
+  m_Name: Medic
+  m_EditorClassIdentifier: 
+  unitName: Medic
+  minAttack: 0
+  maxAttack: 0
+  defend: 0
+  maxHp: 50
+  movementRange: 3
+  minAttackRange: 0
+  maxAttackRange: 0
+  unitAbility: {fileID: 11400000, guid: ed1ebd928edf94e81835c68a9b62f3f1, type: 2}
+  unitSpriteTeam1: {fileID: -5737820095614823521, guid: 94e3bdd25081f4fb6914c85d3aed79aa,
+    type: 3}
+  unitSpriteTeam2: {fileID: -3008719014197112714, guid: 94e3bdd25081f4fb6914c85d3aed79aa,
+    type: 3}
+  unitPickerSprite: {fileID: -3318599381743113759, guid: e12375eef647c43fd93b302bd9654290,
+    type: 3}
+  unitListSprite: {fileID: -3318599381743113759, guid: 89ac21b47f81f40fab3a998bc1ba7861,
+    type: 3}
+  unitPickerSpriteOverviewTeam1: {fileID: 21300000, guid: 7f4c5bda822b74e80a590ccb1ebb9c63,
+    type: 3}
+  unitPickerSpriteOverviewTeam2: {fileID: 21300000, guid: 0dddd1392182e4c1db1facc8b876deb6,
+    type: 3}
+  skeletonDataAsset: {fileID: 11400000, guid: b9f00e9b227e84fd58933d8e82129a2d, type: 2}
+  attackClip: {fileID: 0}
+  deathClip: {fileID: 8300000, guid: 73621d7d68b3e4f4cb9fc12eb742dddc, type: 3}
