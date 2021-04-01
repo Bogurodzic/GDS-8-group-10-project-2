@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Heal
   m_EditorClassIdentifier: 
   description: Healing ability
+  abilityName: Heal
   minRange: 1
   maxRange: 3
   areaOfEffect: 1

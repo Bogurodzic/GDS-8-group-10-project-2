@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Whirlwind
   m_EditorClassIdentifier: 
   description: Attack everyone around unit
+  abilityName: Whirlwind
   minRange: 1
   maxRange: 1
   areaOfEffect: 1

@@ -57,6 +57,7 @@
           </e>
           <e p="Grid" t="Include">
             <e p="Board.cs" t="Include" />
+            <e p="CursorChanger.cs" t="Include" />
             <e p="Grid.cs" t="Include" />
             <e p="GridCell.cs" t="Include" />
             <e p="GridManager.cs" t="Include" />

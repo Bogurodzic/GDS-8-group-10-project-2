@@ -2283,6 +2283,7 @@ GameObject:
   - component: {fileID: 635395132}
   - component: {fileID: 635395133}
   - component: {fileID: 635395134}
+  - component: {fileID: 635395135}
   m_Layer: 0
   m_Name: Testing
   m_TagString: Untagged
@@ -2328,6 +2329,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7fa2dd045984403afcf53498e16ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &635395135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635395131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f21c4070839104c6dab8d3ca4dde8673, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementCursor: {fileID: 2800000, guid: b96033b4d5ca745038b505120c5c7076, type: 3}
+  attackCursor: {fileID: 2800000, guid: 298a4e58d4af945d1b49a3850157f766, type: 3}
+  healSkillCursor: {fileID: 2800000, guid: a26529396565740bb83a3d7fd82aede8, type: 3}
+  throwSkillCursor: {fileID: 2800000, guid: a2419ff3c101440d3bccf35ef3cab1e6, type: 3}
+  whirlwindSkillCursor: {fileID: 2800000, guid: 16ea6a033abbf4008b105806c726239d,
+    type: 3}
 --- !u!1 &692221125
 GameObject:
   m_ObjectHideFlags: 0

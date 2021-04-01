@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Throw
   m_EditorClassIdentifier: 
   description: Attack with larger range
+  abilityName: Throw
   minRange: 2
   maxRange: 4
   areaOfEffect: 1

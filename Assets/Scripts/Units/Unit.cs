@@ -23,6 +23,7 @@ public class Unit : MonoBehaviour
     private UnitList _unitList;
     private UnitListPanel _unitListPanel;
     private UnitAnimations _unitAnimations;
+    private CursorChanger _cursorChanger;
 
     private bool _isDeployed = false;
     private bool _isPreDeployed = false;
@@ -42,6 +43,7 @@ public class Unit : MonoBehaviour
         if (Turn.GetCurrentTurnType() == TurnType.RegularGame)
         {
             HandleHoveringUnit();
+            HandleCursor();
             
             if (Input.GetMouseButtonDown(0))
             {
@@ -363,6 +365,11 @@ public class Unit : MonoBehaviour
     {
         return IsActive() && unitData.unitAbility && _unitAbility.IsAbilityReadyToCast();
     }
+
+    public UnitPhase GetUnitPhase()
+    {
+        return _unitPhase;
+    }
     
 
     public bool IsUnitTurn(bool extended = false)
@@ -582,6 +589,7 @@ public class Unit : MonoBehaviour
         _grid.HideRange();
         _unitAnimations.MakeUnitTransparent();
         SetUnitPhase(UnitPhase.OnCooldown);
+        _cursorChanger.ResetCursor();
         EndAction(ActionType.SkipTurn);
     }
 
@@ -721,6 +729,7 @@ public class Unit : MonoBehaviour
         LoadHealthbar();
         LoadUnitList();
         LoadUnitListPanel();
+        LoadCursorChanger();
         ReloadUnitData();
         SetHealth();
     }
@@ -738,6 +747,19 @@ public class Unit : MonoBehaviour
         } else if (GetStatistics().team == 2)
         {
             _unitListPanel = GameObject.Find("UnitListPanelRight").GetComponent<UnitListPanel>();
+        }
+    }
+
+    private void LoadCursorChanger()
+    {
+        _cursorChanger = GameObject.Find("Testing").GetComponent<CursorChanger>();
+    }
+
+    private void HandleCursor()
+    {
+        if (IsActive())
+        {
+            _cursorChanger.ShowCursor(this);
         }
     }
 

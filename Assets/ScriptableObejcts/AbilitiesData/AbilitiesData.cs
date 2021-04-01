@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class AbilitiesData : ScriptableObject
 {
     public string description;
+    public string abilityName;
     public int minRange;
     public int maxRange;
     public int areaOfEffect;
