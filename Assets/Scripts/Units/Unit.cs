@@ -19,6 +19,7 @@ public class Unit : MonoBehaviour
     private UnitPhase _unitPhase = UnitPhase.Inactive;
     private CombatLog _combatLog;
     private UnitAbility _unitAbility;
+    private UnitSounds _unitSounds;
     private Healtbar _healtbar;
     private UnitList _unitList;
     private UnitListPanel _unitListPanel;
@@ -312,6 +313,7 @@ public class Unit : MonoBehaviour
         {
             
             _unitAnimations.AnimateUnit("ATTACK");
+            _unitSounds.PlayAttackSound();
             _grid.GetCell(mouseX, mouseY).GetOccupiedBy().GetUnitAnimations().AnimateUnit("HURT");
             _combatLog.LogCombat(Attack.AttackUnit(this, _grid.GetCell(mouseX, mouseY).GetOccupiedBy()));
             _grid.GetCell(mouseX, mouseY).GetOccupiedBy().SetHealth();
@@ -339,6 +341,7 @@ public class Unit : MonoBehaviour
     private void HandleAttackUnit(int mouseX, int mouseY)
     {
         _unitAnimations.AnimateUnit("ATTACK");
+        _unitSounds.PlayAttackSound();
         _grid.GetCell(mouseX, mouseY).GetOccupiedBy().GetUnitAnimations().AnimateUnit("HURT");
         _combatLog.LogCombat(Attack.AttackUnit(this, _grid.GetCell(mouseX, mouseY).GetOccupiedBy()));
         _grid.GetCell(mouseX, mouseY).GetOccupiedBy().SetHealth();
@@ -599,6 +602,7 @@ public class Unit : MonoBehaviour
         if (!CheckIfUnitIsAlive())
         {
             _unitAnimations.AnimateOnce("DEATH");
+            _unitSounds.PlayDeathSound();
             Invoke("Death", 1f);
         }
     }
@@ -694,6 +698,11 @@ public class Unit : MonoBehaviour
     {
         _unitMovement = gameObject.GetComponent<UnitMovement>();
     }
+
+    private void LoadUnitSounds()
+    {
+        _unitSounds = gameObject.GetComponent<UnitSounds>();
+    }
     
     private void LoadUnitStatistics()
     {
@@ -729,6 +738,7 @@ public class Unit : MonoBehaviour
         LoadHealthbar();
         LoadUnitList();
         LoadUnitListPanel();
+        LoadUnitSounds();
         LoadCursorChanger();
         ReloadUnitData();
         SetHealth();
@@ -776,6 +786,7 @@ public class Unit : MonoBehaviour
         _unitRange.LoadUnitRange(unitData);
         _unitAbility.LoadUnitAbility(unitData);
         _unitAnimations.ReloadSprite(unitData, GetStatistics());
+        _unitSounds.LoadUnitSounds(unitData);
     }
 
     public bool IsUnitDeployed()

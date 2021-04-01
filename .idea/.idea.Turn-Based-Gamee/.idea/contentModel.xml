@@ -122,6 +122,7 @@
             <e p="UnitList.cs" t="Include" />
             <e p="UnitMovement.cs" t="Include" />
             <e p="UnitRange.cs" t="Include" />
+            <e p="UnitSounds.cs" t="Include" />
             <e p="UnitStatistics.cs" t="Include" />
           </e>
           <e p="Win" t="Include">

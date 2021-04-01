@@ -22,4 +22,6 @@ public class UnitData : ScriptableObject
     public Sprite unitPickerSpriteOverviewTeam1;
     public Sprite unitPickerSpriteOverviewTeam2;
     public SkeletonDataAsset skeletonDataAsset;
+    public AudioClip attackClip;
+    public AudioClip deathClip;
 } 

@@ -4,11 +4,11 @@
     <list default="true" id="9ea6c1fe-6767-43df-abde-f4f8039ac897" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Battle/Turn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Battle/Turn.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Grid/Board.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Grid/Board.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MainMenu/StartGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MainMenu/StartGame.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Sound.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Sound.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Units/SpineUnit.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Units/SpineUnit.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObejcts/UnitData/UnitData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObejcts/UnitData/UnitData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/boss_attack.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sounds/boss_attack.mp3.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +53,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitInfoText.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Units/Healtbar.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/09BAF65C-3F0F-440E-94EB-8E59838010B5/0a/fbfc7af1/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Units/UnitSounds.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Win/WinPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MainMenu/Credits.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PickPanel/PlayerTurnText.cs" root0="FORCE_HIGHLIGHTING" />
@@ -62,7 +63,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/UnitDeployment/UnitDeployment.cs" />
       <option value="$PROJECT_DIR$/Assets/ScriptableObejcts/Abilities/Abilities.cs" />
       <option value="$PROJECT_DIR$/Assets/ScriptableObejcts/Abilities/AbilitiesData.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitAbilityInfo.cs" />
@@ -103,8 +103,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/Grid.cs" />
       <option value="$PROJECT_DIR$/Assets/ScriptableObejcts/AbilitiesData/AbilitiesData.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/CursorChanger.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
-      <option value="$PROJECT_DIR$/Assets/ScriptableObejcts/UnitData/UnitData.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitInfo.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitSprite.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Battle/Turn.cs" />
@@ -113,6 +111,9 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/Board.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/Sound.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Singletons/MusicManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/ScriptableObejcts/UnitData/UnitData.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitSounds.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1pLb0eqZaQJiXIFPJRkhff1DHdr" />
