@@ -10,6 +10,7 @@ public class UnitAbility : MonoBehaviour
     private Grid _grid;
     private CombatLog _combatLog;
     private int cdTurns = 0;
+    private UnitSounds _unitSounds;
     void Start()
     {
         LoadGrid();
@@ -37,6 +38,8 @@ public class UnitAbility : MonoBehaviour
         {
             _abilitiesData = unitData.unitAbility;
         }
+
+        _unitSounds = gameObject.GetComponent<UnitSounds>();
     }
 
     public void ActiveAbility(int unitPositionX, int unitPositionY)
@@ -66,7 +69,7 @@ public class UnitAbility : MonoBehaviour
                 if (_abilitiesData.damage > 0)
                 {
                     Debug.Log("ExecuteAbility4");
-
+                    _unitSounds.PlayAbilitySound();
                     _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(targetX, targetY).GetOccupiedBy()));
                     PutAbilityOnCD();
                     _grid.GetCell(targetX, targetY).GetOccupiedBy().SetHealth();
@@ -75,7 +78,7 @@ public class UnitAbility : MonoBehaviour
                 } else if (_abilitiesData.heal > 0)
                 {
                     Debug.Log("ExecuteAbility5");
-
+                    _unitSounds.PlayAbilitySound();
                     _combatLog.LogCombat(Ability.HealUnit(_abilitiesData, _grid.GetCell(targetX, targetY).GetOccupiedBy()));
                     _grid.GetCell(targetX, targetY).GetOccupiedBy().SetHealth();
 
@@ -130,6 +133,7 @@ public class UnitAbility : MonoBehaviour
                     (_grid.GetCell(unitX, unitY - 1) != null && _grid.GetCell(unitX, unitY - 1).GetOccupiedBy()))
                 {
                     Debug.Log("Handle ability 11.2");
+                    _unitSounds.PlayAbilitySound();
                     PutAbilityOnCD();
                     return true;
                 }

@@ -26,3 +26,4 @@ MonoBehaviour:
   abilityButtonHover: {fileID: 21300000, guid: e8f6c70a0546a4878885c57986c38a60, type: 3}
   abilityButtonActive: {fileID: 21300000, guid: 962fbaa5f017c45eeb0f21ecd238cf20,
     type: 3}
+  abilityAudio: {fileID: 8300000, guid: f12956061dc42478a87486190d42a196, type: 3}

@@ -19,4 +19,5 @@ public class AbilitiesData : ScriptableObject
     public Sprite abilityButtonNormal;
     public Sprite abilityButtonHover;
     public Sprite abilityButtonActive;
+    public AudioClip abilityAudio;
 }

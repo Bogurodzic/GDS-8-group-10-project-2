@@ -7,6 +7,7 @@ public class UnitSounds : MonoBehaviour
     private AudioSource _audioSource;
     private AudioClip _deathSound;
     private AudioClip _attackSound;
+    private AudioClip _abilitySound;
     void Start()
     {
     }
@@ -26,6 +27,10 @@ public class UnitSounds : MonoBehaviour
         LoadAudio();
         _deathSound = unitData.deathClip;
         _attackSound = unitData.attackClip;
+        if (unitData.unitAbility && unitData.unitAbility.abilityAudio)
+        {
+            _abilitySound = unitData.unitAbility.abilityAudio;
+        }
     }
 
     public void PlayAttackSound()
@@ -42,6 +47,15 @@ public class UnitSounds : MonoBehaviour
         if (MusicManager.Instance.IsEnabled())
         {
             _audioSource.clip = _deathSound;
+            _audioSource.Play();
+        }
+    }
+
+    public void PlayAbilitySound()
+    {
+        if (MusicManager.Instance.IsEnabled())
+        {
+            _audioSource.clip = _abilitySound;
             _audioSource.Play();
         }
     }

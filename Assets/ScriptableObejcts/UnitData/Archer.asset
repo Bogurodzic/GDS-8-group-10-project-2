@@ -34,3 +34,5 @@ MonoBehaviour:
   unitPickerSpriteOverviewTeam2: {fileID: 21300000, guid: 2c84943369eda4d95be42da0085bfac1,
     type: 3}
   skeletonDataAsset: {fileID: 11400000, guid: df9214cd0606d4c76a4e345efff05b50, type: 2}
+  attackClip: {fileID: 8300000, guid: 0229c2924f0314d41a7386cabd5442c2, type: 3}
+  deathClip: {fileID: 8300000, guid: 2140b7b30f55d4666ab47cf1b23356a2, type: 3}
