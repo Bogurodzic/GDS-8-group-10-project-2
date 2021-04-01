@@ -35,7 +35,14 @@ public class Sound : MonoBehaviour
 
     public void ToggleSound()
     {
-        _isSoundMuted = !_isSoundMuted;
+        if (MusicManager.Instance.IsEnabled())
+        {
+            MusicManager.Instance.Disable();
+        }
+        else
+        {
+            MusicManager.Instance.Enable();
+        }
         ReloadSprite();
     }
 
@@ -44,7 +51,7 @@ public class Sound : MonoBehaviour
         SpriteState spriteState = new SpriteState();
         spriteState = _button.spriteState;
 
-        if (_isSoundMuted)
+        if (!MusicManager.Instance.IsEnabled())
         {
             spriteState.pressedSprite = hoverButton;
                 spriteState.highlightedSprite = activeButton;

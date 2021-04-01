@@ -59,6 +59,7 @@ public class Board : MonoBehaviour
                     _grid.HideRange();
                     Turn.NextTurn();
                     Turn.SetTurnType(TurnType.RegularGame);
+                    MusicManager.Instance.PlayMusicBattle();
                 }
 
             }

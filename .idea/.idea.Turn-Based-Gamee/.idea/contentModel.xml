@@ -95,6 +95,10 @@
               <e p="UnitSprite.cs" t="Include" />
             </e>
           </e>
+          <e p="Singletons" t="Include">
+            <e p="GenericSingletonClass.cs" t="Include" />
+            <e p="MusicManager.cs" t="Include" />
+          </e>
           <e p="UI" t="Include">
             <e p="CombatLog.cs" t="Include" />
             <e p="SkipTurn.cs" t="Include" />

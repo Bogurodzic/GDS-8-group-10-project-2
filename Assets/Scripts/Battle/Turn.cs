@@ -75,6 +75,8 @@ public static class Turn
     {
         SetTurnType(TurnType.Pick);
         _currentTurn = 1;
+        _turnBlocked = false;
+        _firstUnitInTurnSelected = false;
     }
 
     public static void SetIsFirstUnitInTurnSelected(bool isSelected)
