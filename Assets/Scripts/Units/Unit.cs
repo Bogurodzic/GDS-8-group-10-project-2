@@ -35,6 +35,8 @@ public class Unit : MonoBehaviour
     private bool _isAlive = true;
     private bool _rangesOnHoverVisible = true;
 
+    private int _currentTargetX = -9999;
+    private int _currentTargetY = -9999;
     private int _attackAfterMovementXTarget = -9999;
     private int _attackAfterMovementYTarget = -9999;
     private bool _designerModeOn = false;
@@ -316,15 +318,7 @@ public class Unit : MonoBehaviour
 
         if (_unitPhase == UnitPhase.AfterMovement && IsCellOcuppiedByEnemy(mouseX, mouseY) && _unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
         {
-            
-            _unitAnimations.AnimateUnit("ATTACK");
-            _unitSounds.PlayAttackSound();
-            _grid.GetCell(mouseX, mouseY).GetOccupiedBy().GetUnitAnimations().AnimateUnit("HURT");
-            _combatLog.LogCombat(Attack.AttackUnit(this, _grid.GetCell(mouseX, mouseY).GetOccupiedBy()));
-            _grid.GetCell(mouseX, mouseY).GetOccupiedBy().SetHealth();
-            _grid.GetCell(mouseX, mouseY).GetOccupiedBy().HandleDeath();
-            Turn.BlockTurn();
-            EndAction(ActionType.Attack);
+            HandleAttackUnit(mouseX, mouseY);
         } else if ((_unitPhase == UnitPhase.Standby) && IsCellOcuppiedByEnemy(mouseX, mouseY) && _unitRange.IsInAttackRange(_unitMovement.GetUnitXPosition(), _unitMovement.GetUnitYPosition(),mouseX, mouseY))
         {
             if (!_grid.IsPositionInAttackRange(mouseX, mouseY, _unitRange.minRange, _unitRange.maxRange))
@@ -337,7 +331,6 @@ public class Unit : MonoBehaviour
             }
             else
             {
-                Turn.BlockTurn();
                 HandleAttackUnit(mouseX, mouseY);
             }
         }
@@ -345,14 +338,33 @@ public class Unit : MonoBehaviour
 
     private void HandleAttackUnit(int mouseX, int mouseY)
     {
+        Turn.BlockTurn();
+        _currentTargetX = mouseX;
+        _currentTargetY = mouseY;
         _unitAnimations.AnimateUnit("ATTACK");
         _unitSounds.PlayAttackSound();
-        _grid.GetCell(mouseX, mouseY).GetOccupiedBy().GetUnitAnimations().AnimateUnit("HURT");
-        _combatLog.LogCombat(Attack.AttackUnit(this, _grid.GetCell(mouseX, mouseY).GetOccupiedBy()));
-        _grid.GetCell(mouseX, mouseY).GetOccupiedBy().SetHealth();
-        _grid.GetCell(mouseX, mouseY).GetOccupiedBy().HandleDeath();
+        if (unitData.unitName == "Archer")
+        {
+            Invoke("HandleRecievingDamage", 2f);
+        } else if (unitData.unitName == "Rogue")
+        {
+            HandleRecievingDamage();
+        }
+        else
+        {
+            Invoke("HandleRecievingDamage", 0.5f);
+        }
+    }
+
+    private void HandleRecievingDamage()
+    {
+        _grid.GetCell(_currentTargetX, _currentTargetY).GetOccupiedBy().GetUnitAnimations().AnimateUnit("HURT");
+        _combatLog.LogCombat(Attack.AttackUnit(this, _grid.GetCell(_currentTargetX, _currentTargetY).GetOccupiedBy()));
+        _grid.GetCell(_currentTargetX, _currentTargetY).GetOccupiedBy().SetHealth();
+        _grid.GetCell(_currentTargetX, _currentTargetY).GetOccupiedBy().HandleDeath();
         EndAction(ActionType.Attack);  
     }
+    
     
     public bool IsActive()
     {
