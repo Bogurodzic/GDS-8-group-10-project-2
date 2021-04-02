@@ -39,8 +39,6 @@ public class UnitDeployment : MonoBehaviour
     public void ActiveDeployment()
     {
         _deploymentActive = true;
-        //_grid.HiglightLeftDeployArea();
-       // _grid.HiglightRightDeployArea();
         _unitList.CreateUnitListForPlayers(PickedUnits.Get1PlayerPickedUnits(), PickedUnits.Get2PlayerPickedUnits());
         PrepareAreaForPlacingUnit();
     }

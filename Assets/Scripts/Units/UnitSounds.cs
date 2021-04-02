@@ -8,15 +8,7 @@ public class UnitSounds : MonoBehaviour
     private AudioClip _deathSound;
     private AudioClip _attackSound;
     private AudioClip _abilitySound;
-    void Start()
-    {
-    }
-
-    void Update()
-    {
-        
-    }
-
+ 
     private void LoadAudio()
     {
         _audioSource = gameObject.GetComponent<AudioSource>();

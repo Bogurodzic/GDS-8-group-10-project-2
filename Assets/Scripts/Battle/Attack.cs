@@ -19,10 +19,11 @@ public static class Attack
       int finalDamage;
       int defend = unit.GetStatistics().defend;
       bool flatDefend = false;
-      
+      string currentDefenderHpLog;
+      string dealDamageLog;
+
       if (!flatDefend)
       {
-        Debug.Log("resistance " + ((float)unit.GetStatistics().defend/100));
         finalDamage = (int)((float)damage - ((float)damage * ((float)unit.GetStatistics().defend/100)));
       }
       else
@@ -37,8 +38,6 @@ public static class Attack
         finalDamage = 0;
       }
 
-      string dealDamageLog;
-      
       if (!flatDefend)
       {
         dealDamageLog = "Defender recieved " + finalDamage + "(" + damage + " reduced by "  + defend + "% resistance)" + "\n";
@@ -48,11 +47,8 @@ public static class Attack
       }
       
       _temporaryLog += dealDamageLog;
-
       unit.GetStatistics().currentHp = unit.GetStatistics().currentHp - finalDamage;
-
-      string currentDefenderHpLog;
-
+      
       if (unit.GetStatistics().currentHp > 0)
       {
         currentDefenderHpLog = "Current defender hp: " + unit.GetStatistics().currentHp + "\n";
@@ -61,7 +57,7 @@ public static class Attack
       {
         currentDefenderHpLog = "Defender is dead" + "\n";
       }
-
+      
       _temporaryLog += currentDefenderHpLog;
     }
 }

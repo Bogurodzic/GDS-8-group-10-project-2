@@ -14,11 +14,6 @@ public class UnitAnimations : MonoBehaviour
     {
         LoadSprite();
     }
-
-    void Update()
-    {
-        
-    }
     
     private void LoadSprite()
     {

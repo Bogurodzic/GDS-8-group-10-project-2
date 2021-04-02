@@ -7,12 +7,10 @@ public class PickPanel : MonoBehaviour
 {
     public UnitData[] unitsToPick;
     public GameObject portraitPrefab;
-
     public int currentPlayerPickingTurn = 1;
     public int maxPlayerChoices = 4;
     public int player1ActiveChoices = 0;
     public int player2ActiveChoices = 0;
-
     public GameObject[] portraits;
     private ReadyButton _readyButton;
     private UnitInfo _unitInfo;
@@ -20,29 +18,6 @@ public class PickPanel : MonoBehaviour
     {
         LoadReadyButton();
         LoadUnitInfo();
-    }
-
-    void Update()
-    {
-        
-    }
-    
-    private void LoadReadyButton()
-    {
-        _readyButton = GameObject.Find("ReadyButton").GetComponent<ReadyButton>();
-    }
-
-    private void LoadUnitInfo()
-    {
-        _unitInfo = GameObject.Find("UnitInfo").GetComponent<UnitInfo>();
-    }
-
-    private void ResetPortraits()
-    {
-        foreach (var portrait in portraits)
-        {
-            portrait.GetComponent<Portrait>().SetPotraitActive(false);
-        }
     }
     
     public bool CanActivatePotrait()
@@ -52,22 +27,6 @@ public class PickPanel : MonoBehaviour
         {
             return true;
 
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    private bool CanCurrentPlayerActivatePortrait()
-    {
-        if (currentPlayerPickingTurn == 1 && player1ActiveChoices < maxPlayerChoices)
-        {
-            return true;
-        }
-        else if (currentPlayerPickingTurn == 2 && player2ActiveChoices < maxPlayerChoices)
-        {
-            return true;
         }
         else
         {
@@ -110,7 +69,6 @@ public class PickPanel : MonoBehaviour
 
     public void HandleReadyClicked()
     {
-        Debug.Log("HandleReadyClicked");
         if (currentPlayerPickingTurn == 1)
         {
             NextPlayerPickingTurn();
@@ -120,11 +78,31 @@ public class PickPanel : MonoBehaviour
             DeactivatePanel();
         }
     }
+    
+    public void DisplayUnitInfo(UnitData unitData)
+    {
+        _unitInfo.LoadUnitData(unitData);
+    }
 
+    public void ResetUnitInfo()
+    {
+        _unitInfo.ResetText();
+    }
+
+    public int GetRemainingSelections()
+    {
+        if (currentPlayerPickingTurn == 1)
+        {
+            return maxPlayerChoices - player1ActiveChoices;
+        }
+        else
+        {
+            return maxPlayerChoices - player2ActiveChoices;
+        }
+    }
+    
     private void NextPlayerPickingTurn()
     {
-        Debug.Log("READY");
-        Debug.Log(GetCurrentPlayerPickedUnits());
         PickedUnits.AddPlayerPickedUnits(GetCurrentPlayerPickedUnits());
         Turn.NextTurn();
         currentPlayerPickingTurn = 2;
@@ -172,26 +150,38 @@ public class PickPanel : MonoBehaviour
             player2ActiveChoices = choices;
         }
     }
-
-    public void DisplayUnitInfo(UnitData unitData)
+    
+    private bool CanCurrentPlayerActivatePortrait()
     {
-        _unitInfo.LoadUnitData(unitData);
-    }
-
-    public void ResetUnitInfo()
-    {
-        _unitInfo.ResetText();
-    }
-
-    public int GetRemainingSelections()
-    {
-        if (currentPlayerPickingTurn == 1)
+        if (currentPlayerPickingTurn == 1 && player1ActiveChoices < maxPlayerChoices)
         {
-            return maxPlayerChoices - player1ActiveChoices;
+            return true;
+        }
+        else if (currentPlayerPickingTurn == 2 && player2ActiveChoices < maxPlayerChoices)
+        {
+            return true;
         }
         else
         {
-            return maxPlayerChoices - player2ActiveChoices;
+            return false;
+        }
+    }
+    
+    private void LoadReadyButton()
+    {
+        _readyButton = GameObject.Find("ReadyButton").GetComponent<ReadyButton>();
+    }
+
+    private void LoadUnitInfo()
+    {
+        _unitInfo = GameObject.Find("UnitInfo").GetComponent<UnitInfo>();
+    }
+
+    private void ResetPortraits()
+    {
+        foreach (var portrait in portraits)
+        {
+            portrait.GetComponent<Portrait>().SetPotraitActive(false);
         }
     }
 }

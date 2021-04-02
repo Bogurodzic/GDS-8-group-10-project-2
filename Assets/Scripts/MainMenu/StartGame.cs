@@ -12,7 +12,6 @@ public class StartGame : MonoBehaviour
     public void Start()
     {
         LoadAudioSource();
-        //MusicManager.Instance.PlayMusicMenu();
     }
 
     public void StarGame()

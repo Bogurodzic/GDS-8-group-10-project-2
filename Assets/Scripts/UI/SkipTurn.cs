@@ -30,7 +30,6 @@ public class SkipTurn : MonoBehaviour
     public void HandleClick()
     {
         Unit unit = _unitList.GetActiveUnit().GetComponent<Unit>();
-
         if (unit.IsActive())
         {
             unit.SkipTurn();
@@ -45,7 +44,6 @@ public class SkipTurn : MonoBehaviour
     private bool IsUnitActive()
     {
         Unit unit = _unitList.GetActiveUnit().GetComponent<Unit>();
-
         return unit.IsActive();
     }
 }

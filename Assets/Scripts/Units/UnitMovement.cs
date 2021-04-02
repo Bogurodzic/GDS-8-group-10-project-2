@@ -24,13 +24,8 @@ public class UnitMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-        }
-
         UpdateUnitPosition();
         HandleAnimatingMovement();
-
     }
 
     public void LoadUnitMovement(UnitData unitData)
@@ -148,9 +143,7 @@ public class UnitMovement : MonoBehaviour
         else
         {
             AddUnitToCurrentCell(_unit);
-            
             gameObject.GetComponent<Unit>().EndAction(_actionToExecuteAfterMovement);
-            
             _unit = null;
         }
     }
@@ -159,9 +152,6 @@ public class UnitMovement : MonoBehaviour
     {
         PathNode targetNode = _grid.GetCell(x, y).GetPathNode();
         PathNode lastMovableNode = targetNode.lastMovableNode;
-        Debug.Log("MoveBeforeAttackE: " + x + " " + y);
-
-        Debug.Log("LAST MOVABLE NODE: " + lastMovableNode.x + " " + lastMovableNode.y);
         Move(lastMovableNode.x, lastMovableNode.y, unit, actionType);
     }
 

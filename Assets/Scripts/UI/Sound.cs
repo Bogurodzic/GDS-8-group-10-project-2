@@ -12,6 +12,7 @@ public class Sound : MonoBehaviour
     private Button _button;
     private Image _image;
     private bool _isSoundMuted;
+    
     void Start()
     {
         LoadButton();
@@ -65,9 +66,7 @@ public class Sound : MonoBehaviour
 
                     _image.sprite = normalButton;
         }
-
-
-        _button.spriteState = spriteState;
         
+        _button.spriteState = spriteState;
     }
 }

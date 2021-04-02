@@ -19,16 +19,10 @@ public class Healtbar : MonoBehaviour
     private float targetProgress;
     private bool _isVisible = false;
     private bool _blockSlider = false;
-
     private float _previousHealth;
-    
-    
+
     public void SetHealth(float health, float maxHealth)
     {
- 
-        //Slider.gameObject.SetActive(health > 0);
-        //Slider.value = health/maxHealth;
-        //Slider.maxValue = 1f;
         if (Turn.GetCurrentTurnType() == TurnType.RegularGame)
         {
             BlockSlider();
@@ -53,13 +47,7 @@ public class Healtbar : MonoBehaviour
         }
         
         targetProgress = health / maxHealth;
-        
-        Debug.Log(Slider.gameObject.active);
-        Debug.Log(health);
-        Debug.Log(maxHealth);
-
         ReloadSliderColor();
-        //Slider.fillRect.GetComponentInChildren<Image>().color = Low;
         SetText(health, maxHealth);
     }
     void Start()
@@ -84,15 +72,12 @@ public class Healtbar : MonoBehaviour
         else
         {
             Slider.gameObject.SetActive(false);
-
         }
     }
 
     public void SetSliderVisbility(bool isVisible)
     {
-
-            _isVisible = isVisible;
-        
+        _isVisible = isVisible;
     }
 
     public void BlockSlider()

@@ -16,11 +16,6 @@ public class UnitAbility : MonoBehaviour
         LoadGrid();
         LoadCombatLog();
     }
-
-    void Update()
-    {
-
-    }
     
     private void LoadGrid()
     {
@@ -44,12 +39,8 @@ public class UnitAbility : MonoBehaviour
 
     public void ActiveAbility(int unitPositionX, int unitPositionY)
     {
-        Debug.Log("Handle ability 5");
-
         if (_abilitiesData && _abilitiesData.abilityType != AbilityType.Dash)
         {
-            Debug.Log("Handle ability 6");
-
             ShowAbilityRange(unitPositionX, unitPositionY);
         }
     }
@@ -58,19 +49,13 @@ public class UnitAbility : MonoBehaviour
     {
         Unit unit = _grid.GetCell(unitX, unitY).GetOccupiedBy();
 
-        Debug.Log("ExecuteAbility1");
         if (_abilitiesData.abilityType == AbilityType.SingleTarget)
         {
-            Debug.Log("ExecuteAbility2");
-
             if (_grid.GetCell(targetX, targetY).GetOccupiedBy() &&
                 _grid.GetCell(targetX, targetY).GetPathNode().isAttackable)
             {
-                Debug.Log("ExecuteAbility3");
-
                 if (_abilitiesData.damage > 0 && _grid.GetCell(targetX, targetY).GetOccupiedBy().GetStatistics().team != unit.GetStatistics().team)
                 {
-                    Debug.Log("ExecuteAbility4");
                     _unitSounds.PlayAbilitySound();
                     _grid.GetCell(targetX, targetY).GetOccupiedBy().GetUnitAnimations().AnimateUnit("HURT");
                     _combatLog.LogCombat(Ability.AttackUnit(_abilitiesData, _grid.GetCell(targetX, targetY).GetOccupiedBy()));
@@ -81,7 +66,6 @@ public class UnitAbility : MonoBehaviour
                     return true;  
                 } else if (_abilitiesData.heal > 0 && _grid.GetCell(targetX, targetY).GetOccupiedBy().GetStatistics().team == unit.GetStatistics().team)
                 {
-                    Debug.Log("ExecuteAbility5");
                     _unitSounds.PlayAbilitySound();
                     _combatLog.LogCombat(Ability.HealUnit(_abilitiesData, _grid.GetCell(targetX, targetY).GetOccupiedBy()));
                     _grid.GetCell(targetX, targetY).GetOccupiedBy().SetHealth();
@@ -92,17 +76,13 @@ public class UnitAbility : MonoBehaviour
             }
             else
             {
-                Debug.Log("ExecuteAbility6");
-
                 return false;
             }         
         } else if (_abilitiesData.abilityType == AbilityType.Circle)
         {
-            Debug.Log("Handle ability 9.2");
             if (_grid.GetCell(targetX, targetY).GetOccupiedBy() &&
                 _grid.GetCell(targetX, targetY).GetPathNode().isAttackable)
             {
-                Debug.Log("Handle ability 10.2");
                 if (_grid.GetCell(unitX + 1, unitY) != null && _grid.GetCell(unitX + 1, unitY).GetOccupiedBy() && _grid.GetCell(unitX + 1, unitY).GetOccupiedBy().GetStatistics().team != unit.GetStatistics().team)
                 {
                     _grid.GetCell(unitX + 1, unitY).GetOccupiedBy().GetUnitAnimations().AnimateUnit("HURT");
@@ -140,14 +120,12 @@ public class UnitAbility : MonoBehaviour
                     (_grid.GetCell(unitX, unitY + 1) != null && _grid.GetCell(unitX, unitY + 1).GetOccupiedBy()) && _grid.GetCell(unitX, unitY + 1).GetOccupiedBy().GetStatistics().team != unit.GetStatistics().team ||
                     (_grid.GetCell(unitX, unitY - 1) != null && _grid.GetCell(unitX, unitY - 1).GetOccupiedBy()) && _grid.GetCell(unitX, unitY - 1).GetOccupiedBy().GetStatistics().team != unit.GetStatistics().team)
                 {
-                    Debug.Log("Handle ability 11.2");
                     _unitSounds.PlayAbilitySound();
                     PutAbilityOnCD();
                     return true;
                 }
                 else
                 {
-                    Debug.Log("Handle ability 12.2");
                     return false;
                 }
             }
@@ -164,12 +142,9 @@ public class UnitAbility : MonoBehaviour
     private void ShowAbilityRange(int unitPositionX, int unitPositionY)
     {
         int unitTeam = gameObject.GetComponentInParent<Unit>().GetStatistics().team;
-        Debug.Log("Handle ability 7");
 
         if (_abilitiesData.abilityType == AbilityType.SingleTarget)
         {
-            Debug.Log("Handle ability 8.1");
-
             _grid.CalculateCostToAllTiles(unitPositionX, unitPositionY, 0, _abilitiesData.minRange, _abilitiesData.maxRange, unitTeam);
             _grid.HideRange();
             _grid.ShowRange(RangeType.Attack);
@@ -177,8 +152,6 @@ public class UnitAbility : MonoBehaviour
 
         if (_abilitiesData.abilityType == AbilityType.Circle)
         {
-            Debug.Log("Handle ability 8.2");
-
             _grid.CalculateCostToAllTiles(unitPositionX, unitPositionY, 0, 1, 1, unitTeam);
             _grid.HideRange();
             _grid.ShowRange(RangeType.Attack);

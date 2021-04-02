@@ -16,10 +16,6 @@ public class UnitListPanelFrame : MonoBehaviour
         LoadInfo();
         gameObject.SetActive(false);
     }
-    void Update()
-    {
-        
-    }
 
     private void LoadInfo()
     {

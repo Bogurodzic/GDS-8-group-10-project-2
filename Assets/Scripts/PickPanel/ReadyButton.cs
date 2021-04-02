@@ -20,11 +20,6 @@ public class ReadyButton : MonoBehaviour
         LoadButton();
         ReloadSprite();
     }
-
-    void Update()
-    {
-        
-    }
     
     private void LoadPickPanel()
     {
@@ -66,10 +61,8 @@ public class ReadyButton : MonoBehaviour
 
             _image.sprite = normalButton;
         }
-
-
-        _button.spriteState = spriteState;
         
+        _button.spriteState = spriteState;
     }
 
     public void ReadyClicked()

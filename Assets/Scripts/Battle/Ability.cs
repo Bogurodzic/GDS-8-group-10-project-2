@@ -8,7 +8,6 @@ public class Ability {
 
     public static string AttackUnit(AbilitiesData abilityData, Unit defender)
     {
-
         if (abilityData.abilityType == AbilityType.SingleTarget)
         {
             int damage = abilityData.damage;
@@ -38,43 +37,30 @@ public class Ability {
     private static void Heal(int heal, Unit healTarget)
     {
         int finalHeal = heal;
-
         string doHealLog;
-
+        string healTargetHpLog;
 
         doHealLog = "Target recieved " + finalHeal + "\n";
         _temporaryLog += doHealLog;
-
         healTarget.GetStatistics().currentHp = healTarget.GetStatistics().currentHp + finalHeal;
-
-        string healTargetHpLog;
-
         if (healTarget.GetStatistics().currentHp > healTarget.GetStatistics().maxHp)
         {
             healTarget.GetStatistics().currentHp = healTarget.GetStatistics().maxHp;
         }
-        
         healTargetHpLog = "Current target hp: " +  healTarget.GetStatistics().currentHp + "\n";
-
-
-
         _temporaryLog += healTargetHpLog;
     }
 
     private static void DealDamage(int damage, Unit defender)
     {
         int finalDamage = damage;
-
         string dealDamageLog;
+        string currentDefenderHpLog;
 
 
         dealDamageLog = "Defender recieved " + finalDamage + "\n";
         _temporaryLog += dealDamageLog;
-
         defender.GetStatistics().currentHp = defender.GetStatistics().currentHp - finalDamage;
-
-        string currentDefenderHpLog;
-
         if (defender.GetStatistics().currentHp > 0)
         {
             currentDefenderHpLog = "Current defender hp: " + defender.GetStatistics().currentHp + "\n";
@@ -83,7 +69,6 @@ public class Ability {
         {
             currentDefenderHpLog = "Defender is dead" + "\n";
         }
-
         _temporaryLog += currentDefenderHpLog;
     }
 }
