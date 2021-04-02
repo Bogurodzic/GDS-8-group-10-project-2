@@ -15,12 +15,7 @@ public class UnitRange : MonoBehaviour
     {
         LoadComponents();
     }
-
-    void Update()
-    {
-
-    }
-
+    
     public void LoadUnitRange(UnitData unitData)
     {
         minRange = unitData.minAttackRange;

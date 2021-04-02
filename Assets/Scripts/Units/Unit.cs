@@ -45,18 +45,11 @@ public class Unit : MonoBehaviour
     {
         if (Turn.GetCurrentTurnType() == TurnType.RegularGame)
         {
-
-            
             if (Input.GetMouseButtonDown(0))
             {
                 HandleAction();
             }
-
-            if (Input.GetMouseButtonDown(1))
-            {
-                HandleActivatingAttackMode();
-            }
-
+            
             if (IsActive() && Input.GetKeyDown(KeyCode.P))
             {
                 SkipTurn();
@@ -99,7 +92,6 @@ public class Unit : MonoBehaviour
 
     private void HandleHoveringUnit()
     {
-        
         Vector3 mouseVector3 = GridUtils.GetMouseWorldPosition(Input.mousePosition);
         mouseVector3.z = 0;
         int mouseX, mouseY;
@@ -108,25 +100,13 @@ public class Unit : MonoBehaviour
 
         bool isCellOccupied = (mouseX < _grid.GetGridWidth() && mouseY < _grid.GetGridHeight() && mouseX >= 0 && mouseY >= 0) && _grid.GetCell(mouseX, mouseY).GetPathNode().isOccupied;
         
-        Debug.Log("HANDLE HOVERING 1:" + mouseX + "-" + mouseY);
         if (!IsActive() && mouseX == GetUnitXPosition() && mouseY == GetUnitYPosition() && !_isUnitHovered)
         {
-            Debug.Log("HANDLE HOVERING 2:" + mouseX + "-" + mouseY);
-
             _isUnitHovered = true;
             _healtbar.SetSliderVisbility(true);
 
-            /*if (!Turn.IsUnitTurn(GetStatistics().team) && Turn.IsFirstUnitInTurnSelected())
-            {
-                Debug.Log("HANDLE HOVERING 3:" + mouseX + "-" + mouseY);
-
-                ShowRangesOnHover();
-            } */
-            
             if (!Turn.IsFirstUnitInTurnSelected())
             {
-                Debug.Log("HANDLE HOVERING 4:" + mouseX + "-" + mouseY);
-
                 ShowRangesOnHover();
                 _unitListPanel.OnHoverUnit(this);
             }
@@ -137,17 +117,9 @@ public class Unit : MonoBehaviour
             }
         } else if (!IsActive() && (mouseX != GetUnitXPosition() || mouseY != GetUnitYPosition()) && _isUnitHovered)
         {
-            Debug.Log("HANDLE HOVERING 5:" + mouseX + "-" + mouseY);
-
             _isUnitHovered = false;
             _healtbar.SetSliderVisbility(false);
 
-            /*if (Turn.IsFirstUnitInTurnSelected() && !isCellOccupied)
-            {
-                Debug.Log("HANDLE HOVERING 6:" + mouseX + "-" + mouseY);
-
-                _unitList.GetActiveUnit().GetComponent<Unit>().ShowActiveUnitsRanges();
-            }*/
             if (!Turn.IsFirstUnitInTurnSelected() &&  !isCellOccupied)
             {
                 Debug.Log("HANDLE HOVERING 7:" + mouseX + "-" + mouseY);
@@ -160,12 +132,7 @@ public class Unit : MonoBehaviour
             {
                 _unitListPanel.OnHoverOutUnit();
             }
-            
         }
-
-        
-        
-        
     }
 
     public void HoverFromFrame()
@@ -202,6 +169,7 @@ public class Unit : MonoBehaviour
 
         _grid.GetCell(positionX, positionY).AddOccupiedBy(this);
     }
+    
     private void HandleAction()
     {
         switch (_unitPhase)
@@ -230,7 +198,6 @@ public class Unit : MonoBehaviour
             case UnitPhase.OnCooldown:
                 break;
         }
-  
     }
 
     public void EndAction(ActionType actionType)
@@ -371,7 +338,6 @@ public class Unit : MonoBehaviour
         EndAction(ActionType.Attack);  
     }
     
-    
     public bool IsActive()
     {
         return _unitPhase != UnitPhase.Inactive && _unitPhase != UnitPhase.OnCooldown;
@@ -402,17 +368,13 @@ public class Unit : MonoBehaviour
     {
         Unit currentActiveUnit = _unitList.FindActiveUnit(GetStatistics().team).GetComponent<Unit>();
         bool isTurn = Turn.IsUnitTurn(_unitStatistics.team) && _unitPhase != UnitPhase.OnCooldown;
-        
         if (currentActiveUnit.unitData.name != unitData.name && Turn.IsTurnBlocked())
         {
             isTurn = false;
         }
-        
-        
         return isTurn;
     }
     
-
     public bool IsUnitClicked(int mouseX, int mouseY)
     {
         int positionX, positionY;
@@ -441,7 +403,6 @@ public class Unit : MonoBehaviour
     
     private void ActivateUnit()
     {
-        Debug.Log("ACTIVATING UNIT: " + unitData.unitName + " TEAM: " + GetStatistics().team);
         _unitList.DeactivateAllPlayerUnits(GetStatistics().team);
         _unitListPanel.ActivateUnitPortrait(this);
         _activityType = RangeType.Movement;
@@ -623,7 +584,6 @@ public class Unit : MonoBehaviour
 
     public void HandleDeath()
     {
-        
         if (!CheckIfUnitIsAlive())
         {
             _unitAnimations.AnimateOnce("DEATH");
@@ -637,7 +597,6 @@ public class Unit : MonoBehaviour
         _unitMovement.RemoveUnitFromCurrentCell();
         _healtbar.TurnOffHealthBar();
         _isAlive = false;
-
         if (_designerModeOn)
         {
             GetComponent<SpriteRenderer>().color = Color.clear;

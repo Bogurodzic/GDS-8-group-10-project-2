@@ -6,6 +6,7 @@ using UnityEngine;
 public class TurnText : MonoBehaviour
 {
     private UnityEngine.UI.Text txt;
+    
     void Start()
     {
         txt = GetComponent<UnityEngine.UI.Text>();

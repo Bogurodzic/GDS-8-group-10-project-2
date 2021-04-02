@@ -15,12 +15,7 @@ public class CombatLog : MonoBehaviour
     {
         txt = GetComponent<UnityEngine.UI.Text>();
     }
-
-    void Update()
-    {
-
-    }
-
+    
     public void LogCombat(string log)
     {
         _combatLog.Add(log);

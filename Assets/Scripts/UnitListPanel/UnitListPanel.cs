@@ -14,10 +14,6 @@ public class UnitListPanel : MonoBehaviour
     private LinkedList<GameObject> _playerUnitList;
     private UnitListPanelFrame _unitListPanelFrame;
     private bool _panelInitialised = false;
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
@@ -29,10 +25,6 @@ public class UnitListPanel : MonoBehaviour
         if (_panelInitialised)
         {
             ReloadButton();
-            Debug.Log("UNIT NAME: " + _unitList.GetActiveUnit().GetComponent<Unit>().unitData.name);
-            Debug.Log("UNIT NAME: " + _unitList.GetActiveUnit().GetComponent<Unit>().unitData.name);
-            Debug.Log("UNIT NAME: " + _unitList.GetActiveUnit().GetComponent<Unit>().unitData.name);
-
         }
     }
 
@@ -57,10 +49,6 @@ public class UnitListPanel : MonoBehaviour
 
     private bool HasUnitAbility()
     {
-        Debug.Log("HasUnitAbility");
-        Debug.Log(_unitList.GetActiveUnit().GetComponent<Unit>().unitData.unitName);
-        Debug.Log(_unitList.GetActiveUnit().GetComponent<Unit>().GetUnitAbility().GetAbilityType());
-        Debug.Log(IsUnitTurn());
         return _unitList.GetActiveUnit().GetComponent<Unit>().GetUnitAbility().GetAbilityType() != AbilityType.None;
     }
 
@@ -75,7 +63,6 @@ public class UnitListPanel : MonoBehaviour
         HideUnitInfo();
         abilityButton.SetActive(false);
         _panelInitialised = true;
-
     }
 
     private void LoadUnitListPanelFrame()

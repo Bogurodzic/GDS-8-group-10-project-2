@@ -45,7 +45,6 @@ public class AbilityButton : MonoBehaviour
     private void LoadSprite()
     {
         _image = gameObject.GetComponent<Image>();
-        //_sprite = gameObject.GetComponent<SpriteRenderer>();
     }
 
     private void LoadButtonText()
@@ -86,12 +85,10 @@ public class AbilityButton : MonoBehaviour
     {
         if (_isReady)
         {
-            //_sprite.sprite = readyButtonSprite;
             ReloadButtonStates(true);
         }
         else
         {
-            //_image.sprite = notReadyButtonSprite;
             ReloadButtonStates(false);
             if (GetRemainingAbilityCD() > 0)
             {
@@ -126,10 +123,8 @@ public class AbilityButton : MonoBehaviour
 
     public void HandleAbility()
     {
-        Debug.Log("Handle ability 1");
         if (IsUnitAbilityActive() && !IsAbilityActivated())
         {
-            Debug.Log("Handle ability 2");
             ActivateAbility();
         } else if (IsUnitAbilityActive() && IsAbilityActivated())
         {

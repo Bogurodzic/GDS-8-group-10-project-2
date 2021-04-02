@@ -14,17 +14,7 @@ public class CursorChanger : MonoBehaviour
     private bool _isCursorChangerInitialised = false;
     private Grid _grid;
     private GridManager _gridManager;
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    
     private void ChangeCursorTo(Texture2D newCursor)
     {
         Cursor.SetCursor(newCursor, new Vector2(0, 25), CursorMode.ForceSoftware);

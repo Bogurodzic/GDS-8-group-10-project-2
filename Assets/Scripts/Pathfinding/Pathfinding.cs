@@ -17,39 +17,7 @@ public class Pathfinding
     {
         this._grid = grid;
     }
-
-    public List<PathNode> FindPath(int startX, int startY, int endX, int endY)
-    {
-        PathNode startNode = _grid.GetCell(startX, startY).GetPathNode();
-        PathNode endNode = _grid.GetCell(endX, endY).GetPathNode();
-        _openList = new List<PathNode> { startNode };
-        _closedList = new List<PathNode>();
-
-        ResetPathNodes();
-
-        startNode.gCost = 0;
-        startNode.hCost = CalculateDistanceCost(startNode, endNode);
-        startNode.CalculateFCost();
-
-
-        return IterateOverOpenListWithEndNode(endNode);
-    }
-
-    public void CalculateCostToAllTiles(int startX, int startY, RangeType rangeType)
-    {
-        PathNode startNode = _grid.GetCell(startX, startY).GetPathNode();
-        _openList = new List<PathNode> { startNode };
-        _closedList = new List<PathNode>();
-
-        ResetPathNodes();
-
-        startNode.gCost = 0;
-        startNode.hCost = CalculateDistanceCost(startNode, startNode);
-        startNode.CalculateFCost(); 
-        
-        IterateOverOpenListWithoutEndNode(startNode, rangeType);
-    }
-
+    
     public void CalculateCostToAllTiles(int startX, int startY, int movementRange, int minAttackRange,
         int maxAttackRange, int team)
     {
@@ -157,7 +125,6 @@ public class Pathfinding
             openList.Remove(currentNode);
             closedList.Add(currentNode);
 
-
             foreach (PathNode neighbourNode in GetNeighbourList(currentNode))
             {
                 if (closedList.Contains(neighbourNode)) continue;
@@ -185,85 +152,6 @@ public class Pathfinding
                 }
             }
         }
-    }
-
-    private void IterateOverOpenListWithoutEndNode(PathNode startNode, RangeType rangeType)
-    {
-        while (_openList.Count > 0)
-        {
-            PathNode currentNode = GetLowestFCostNode(_openList);
-
-            _openList.Remove(currentNode);
-            _closedList.Add(currentNode);
-            
-            foreach (PathNode neighbourNode in GetNeighbourList(currentNode))
-            {
-                if (_closedList.Contains(neighbourNode)) continue;
-                if (neighbourNode.isObstacle || (rangeType == RangeType.Movement && neighbourNode.isOccupied))
-                {
-                    _closedList.Add(neighbourNode);
-                    continue;
-                }
-                
-                int tentativeGCost = currentNode.gCost + (int) neighbourNode.movementCost;
-                if (tentativeGCost < neighbourNode.gCost)
-                {
-                    neighbourNode.cameFromNode = currentNode;
-                    neighbourNode.gCost = tentativeGCost;
-                    neighbourNode.hCost = CalculateDistanceCost(neighbourNode, startNode);
-                    neighbourNode.CalculateFCost();
-
-                    if (!_openList.Contains(neighbourNode))
-                    {
-                        _openList.Add(neighbourNode);
-                    }
-                }
-            }
-        }
-
-    }
-
-    private List<PathNode> IterateOverOpenListWithEndNode(PathNode endNode)
-    {
-        while (_openList.Count > 0)
-        {
-            PathNode currentNode = GetLowestFCostNode(_openList);
-            if (currentNode == endNode)
-            {
-                return CalculatePath(endNode);
-            }
-
-            _openList.Remove(currentNode);
-            _closedList.Add(currentNode);
-
-
-            foreach (PathNode neighbourNode in GetNeighbourList(currentNode))
-            {
-                if (_closedList.Contains(neighbourNode)) continue;
-                if (neighbourNode.isObstacle)
-                {
-                    _closedList.Add(neighbourNode);
-                    continue;
-                }
-                
-                int tentativeGCost = currentNode.gCost  + (int) neighbourNode.movementCost;
-                if (tentativeGCost < neighbourNode.gCost)
-                {
-                    neighbourNode.cameFromNode = currentNode;
-                    neighbourNode.gCost = tentativeGCost;
-                    neighbourNode.hCost = CalculateDistanceCost(neighbourNode, endNode);
-                    neighbourNode.CalculateFCost();
-
-                    if (!_openList.Contains(neighbourNode))
-                    {
-                        _openList.Add(neighbourNode);
-                    }
-                }
-            }
-        }
-
-        return null;
-
     }
     
     private List<PathNode> GetNeighbourList(PathNode currentNode)

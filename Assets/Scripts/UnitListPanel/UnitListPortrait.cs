@@ -33,7 +33,6 @@ public class UnitListPortrait : MonoBehaviour
 
     private void ReloadPortraitImage()
     {
-        Debug.Log(_portraitImage);
         _portraitImage.sprite = _unitData.unitListSprite;
     }
 
@@ -56,19 +55,15 @@ public class UnitListPortrait : MonoBehaviour
     {
         _unitListPanel = gameObject.GetComponentInParent<UnitListPanel>();
     }
-
-
-
+    
     public void OnHover()
     {
-       // _unitListPanel.ShowUnitInfo(_unit);
        _unit.HoverFromFrame();
         _portraitFrame.Hover();
     }
 
     public void OnHoverOut()
     { 
-        //_unitListPanel.HideUnitInfo();
         _unit.HoverOutFromFrame();
         _portraitFrame.HoverOut();
     }
