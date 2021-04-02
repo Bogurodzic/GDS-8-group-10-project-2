@@ -15,7 +15,7 @@ MonoBehaviour:
   unitName: Boss
   minAttack: 25
   maxAttack: 35
-  defend: 20
+  defend: 0
   maxHp: 120
   movementRange: 4
   minAttackRange: 1

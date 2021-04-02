@@ -15,7 +15,7 @@ MonoBehaviour:
   unitName: Spearman
   minAttack: 25
   maxAttack: 30
-  defend: 10
+  defend: 0
   maxHp: 80
   movementRange: 5
   minAttackRange: 1
