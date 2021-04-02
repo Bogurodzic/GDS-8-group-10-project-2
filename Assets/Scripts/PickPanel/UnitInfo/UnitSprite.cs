@@ -11,11 +11,6 @@ public class UnitSprite : MonoBehaviour
         LoadSprite();
     }
 
-    void Update()
-    {
-        
-    }
-
     private void LoadSprite()
     {
         _sprite = gameObject.GetComponent<Image>();

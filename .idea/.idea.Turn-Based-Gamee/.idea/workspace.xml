@@ -2,7 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ea6c1fe-6767-43df-abde-f4f8039ac897" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Turn-Based-Gamee/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Battle/Ability.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Battle/Ability.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Battle/Attack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Battle/Attack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Grid/CursorChanger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Grid/CursorChanger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Grid/Grid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Grid/Grid.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Grid/GridCell.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Grid/GridCell.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Grid/GridManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Grid/GridManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Grid/GridUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Grid/GridUtils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MainMenu/QuitWarningPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MainMenu/QuitWarningPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MainMenu/StartGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MainMenu/StartGame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pathfinding/Pathfinding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pathfinding/Pathfinding.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PickPanel/PickPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PickPanel/PickPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PickPanel/Portrait.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PickPanel/Portrait.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PickPanel/ReadyButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PickPanel/ReadyButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitInfoText.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitInfoText.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitSprite.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitSprite.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Singletons/MusicManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Singletons/MusicManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/CombatLog.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/CombatLog.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/SkipTurn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/SkipTurn.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Sound.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Sound.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/TurnText.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/TurnText.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UnitDeployment/UnitDeployment.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UnitDeployment/UnitDeployment.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/AbilityButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/AbilityButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPanelFrame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPanelFrame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPortrait.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPortrait.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Healtbar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Healtbar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/UnitAbility.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/UnitAbility.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/UnitAnimations.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/UnitAnimations.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/UnitList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/UnitList.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/UnitMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/UnitMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/UnitRange.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/UnitRange.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/UnitSounds.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/UnitSounds.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,57 +92,57 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/ScriptableObejcts/Abilities/Abilities.cs" />
-      <option value="$PROJECT_DIR$/Assets/ScriptableObejcts/Abilities/AbilitiesData.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitAbilityInfo.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitRange.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Battle/Ability.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitHpInfo.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/PickPanel.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPanelFrame.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Enums/AbilityType.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI/SkipTurn.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/MainMenu/QuitWarning.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/MainMenu/QuitGame.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/MainMenu/QuitWarningPanel.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI/TurnText.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/ReadyButton.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/MainMenu/Credits.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Enums/ActionType.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Enums/UnitPhase.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Win/WinText.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitInfoText.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Pathfinding/PathNode.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridCell.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Battle/Attack.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Healtbar.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Win/WinPanel.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridUtils.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitList.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPanel.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPortrait.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitMovement.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitAnimations.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/Grid.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitInfo.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitSprite.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Battle/Turn.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Singletons/GenericSingletonClass.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/Board.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Sound.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Singletons/MusicManager.cs" />
       <option value="$PROJECT_DIR$/Assets/ScriptableObejcts/UnitData/UnitData.cs" />
       <option value="$PROJECT_DIR$/Assets/ScriptableObejcts/AbilitiesData/AbilitiesData.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitSounds.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/MainMenu/StartGame.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/Portrait.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/PortraitFrame.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Pathfinding/Pathfinding.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/AbilityButton.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Battle/Ability.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Battle/Attack.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Grid/CursorChanger.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/Grid.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridCell.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Grid/GridUtils.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/MainMenu/QuitWarningPanel.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/MainMenu/StartGame.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Pathfinding/Pathfinding.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitInfo.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitInfoText.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/UnitInfo/UnitSprite.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/PickPanel.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/Portrait.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/PickPanel/ReadyButton.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Singletons/MusicManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/CombatLog.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/SkipTurn.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Sound.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/TurnText.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UnitDeployment/UnitDeployment.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/AbilityButton.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPanel.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPanelFrame.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UnitListPanel/UnitListPortrait.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Healtbar.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitSounds.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitRange.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitMovement.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitList.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitAnimations.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Units/UnitAbility.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Units/Unit.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1pLb0eqZaQJiXIFPJRkhff1DHdr" />

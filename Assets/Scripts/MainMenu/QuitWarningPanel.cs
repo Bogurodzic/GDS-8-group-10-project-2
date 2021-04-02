@@ -8,12 +8,7 @@ public class QuitWarningPanel : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
-
-    void Update()
-    {
-        
-    }
-
+    
     public void OnCancelClick()
     {
         QuitWarning.Hide();

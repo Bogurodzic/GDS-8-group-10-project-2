@@ -11,10 +11,8 @@ public class MusicManager : GenericSingletonClass<MusicManager>
     public AudioClip musicVictory;
 
     private AudioSource _audioSource;
-    
     private bool _isEnabled = true;
-
-
+    
     public void Start()
     {
         _audioSource = gameObject.GetComponent<AudioSource>();

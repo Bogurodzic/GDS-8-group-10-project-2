@@ -12,17 +12,7 @@ public class UnitList : MonoBehaviour
     private LinkedList<GameObject> player2UnitList = new LinkedList<GameObject>();
     private GameObject _nextUnitToDeploy;
     private bool _readyForDeploy = false;
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
+    
     public void CreateUnitListForPlayers(LinkedList<UnitData> player1PickedUnits,
         LinkedList<UnitData> player2PickedUnits)
     {
@@ -62,15 +52,6 @@ public class UnitList : MonoBehaviour
 
     public void HandleNextUnitToDeploy()
     {
-        foreach (var o in player1UnitList)
-        {
-            Debug.Log(o);
-        }
-        foreach (var o in player2UnitList)
-        {
-            Debug.Log(o);
-        }
-
         if (Turn.GetUnitTurn() == 1)
         {
             _nextUnitToDeploy = FindNextUnitToDeploy(player1UnitList);

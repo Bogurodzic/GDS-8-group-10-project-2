@@ -27,7 +27,6 @@ public class Portrait : MonoBehaviour
 
     private void ReloadPortraitImage()
     {
-        Debug.Log(_portraitImage);
         _portraitImage.sprite = unitData.unitPickerSprite;
     }
 
@@ -49,21 +48,9 @@ public class Portrait : MonoBehaviour
     {
         _audioSource = gameObject.GetComponent<AudioSource>();
     }
-
-    private void LoadPortraitFrame()
-    {
-        _portraitFrame = gameObject.GetComponentInChildren<PortraitFrame>();
-    }
-
-    private void LoadPickPanel()
-    {
-        _pickPanel = gameObject.GetComponentInParent<PickPanel>();
-    }
-
+    
     public void TogglePortrait()
     {
-        Debug.Log("CLICK");
-        Debug.Log(unitData);
         PlaySelectSound();
         if (_isActive)
         {
@@ -103,7 +90,17 @@ public class Portrait : MonoBehaviour
     {
         return unitData;
     }
+    
+    private void LoadPortraitFrame()
+    {
+        _portraitFrame = gameObject.GetComponentInChildren<PortraitFrame>();
+    }
 
+    private void LoadPickPanel()
+    {
+        _pickPanel = gameObject.GetComponentInParent<PickPanel>();
+    }
+    
     private void PlaySelectSound()
     {
         if (MusicManager.Instance.IsEnabled())

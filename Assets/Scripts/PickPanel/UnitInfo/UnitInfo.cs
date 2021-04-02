@@ -24,12 +24,7 @@ public class UnitInfo : MonoBehaviour
         LoadUnitAbilityInfo();
         LoadUnitSprite();
     }
-
-    void Update()
-    {
-        
-    }
-
+    
     private void LoadUnitName()
     {
         _unitName = gameObject.GetComponentInChildren<UnitNameInfo>();

@@ -18,12 +18,7 @@ public class UnitInfoText : MonoBehaviour
     {
         _initialText = txt.text;
     }
-
-    public void Update()
-    {
-    }
-
-
+    
     public void LoadUnitData(UnitData unitData)
     {
         _unitData = unitData;
