@@ -84,6 +84,12 @@ public class Unit : MonoBehaviour
                 }
                 
                 transform.localScale = Vector3.one;
+
+                if (_combatLog.transform.position.y != _combatLog.GetLogYPosition())
+                {
+                    _combatLog.transform.position = new Vector3(_combatLog.transform.position.x,
+                        _combatLog.GetLogYPosition(), _combatLog.transform.position.z);
+                }
             }
 
             HandleHoveringUnit();
